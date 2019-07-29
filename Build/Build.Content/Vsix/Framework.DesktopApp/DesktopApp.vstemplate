@@ -1,0 +1,110 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework WPF Project</Name>
+    <Description>Genesys Quick-Start Framework for WPF desktop apps project includes Customer and Customer Search functionality using the Genesys Source Framework.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.DesktopApp</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.DesktopApp.csproj" File="Framework.DesktopApp.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml">App.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml.cs">App.xaml.cs</ProjectItem>
+      <Folder Name="App_Data" TargetFolderName="App_Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.config">AppSettings.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Debug.config">AppSettings.Debug.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Release.config">AppSettings.Release.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.config">ConnectionStrings.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Debug.config">ConnectionStrings.Debug.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Release.config">ConnectionStrings.Release.config</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Debug.bat">PostBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Release.bat">PostBuild.Release.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Debug.bat">PreBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Release.bat">PreBuild.Release.bat</ProjectItem>
+      </Folder>
+      <Folder Name="Application" TargetFolderName="Application">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IWpfApplication.cs">IWpfApplication.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WpfApplication.cs">WpfApplication.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="WpfViewModel.cs">WpfViewModel.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Content" TargetFolderName="Content">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApplicationStyles.xaml">ApplicationStyles.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ControlStyles.xaml">ControlStyles.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GlyphiconStyles.xaml">GlyphiconStyles.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="LayoutStyles.xaml">LayoutStyles.xaml</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="false" TargetFileName="favicon.ico">favicon.ico</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml">MainWindow.xaml</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml.cs">MainWindow.xaml.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Pages" TargetFolderName="Pages">
+        <Folder Name="Customer" TargetFolderName="Customer">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerCreate.xaml">CustomerCreate.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerCreate.xaml.cs">CustomerCreate.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerDelete.xaml">CustomerDelete.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerDelete.xaml.cs">CustomerDelete.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerEdit.xaml">CustomerEdit.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerEdit.xaml.cs">CustomerEdit.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearch.xaml">CustomerSearch.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearch.xaml.cs">CustomerSearch.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSummary.xaml">CustomerSummary.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSummary.xaml.cs">CustomerSummary.xaml.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ReadOnlyPage.cs">ReadOnlyPage.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SaveablePage.cs">SaveablePage.cs</ProjectItem>
+        <Folder Name="Shared" TargetFolderName="Shared">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Error.xaml">Error.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Error.xaml.cs">Error.xaml.cs</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.resx">Resources.resx</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resources.Designer.cs">Resources.Designer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.settings">Settings.settings</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Resources" TargetFolderName="Resources">
+        <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-Genesys-Source-Framework.png">Map-of-the-Genesys-Source-Framework.png</ProjectItem>
+      </Folder>
+      <Folder Name="Themes" TargetFolderName="Themes">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Generic.xaml">Generic.xaml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GenericLayout.cs">GenericLayout.cs</ProjectItem>
+      </Folder>
+      <Folder Name="UserControls" TargetFolderName="UserControls">
+        <Folder Name="Layout" TargetFolderName="Layout">
+          <ProjectItem ReplaceParameters="true" TargetFileName="HamburgerMenu.xaml">HamburgerMenu.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HamburgerMenu.xaml.cs">HamburgerMenu.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HeaderBar.xaml">HeaderBar.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="HeaderBar.xaml.cs">HeaderBar.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="TopMenu.xaml">TopMenu.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="TopMenu.xaml.cs">TopMenu.xaml.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Progress" TargetFolderName="Progress">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ProgressProcessingRing.xaml">ProgressProcessingRing.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ProgressProcessingRing.xaml.cs">ProgressProcessingRing.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ProgressRing.xaml">ProgressRing.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ProgressRing.xaml.cs">ProgressRing.xaml.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ReadOnlyControl.cs">ReadOnlyControl.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SaveableControl.cs">SaveableControl.cs</ProjectItem>
+        <Folder Name="Toolbox" TargetFolderName="Toolbox">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ClipboardCopy.xaml">ClipboardCopy.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ClipboardCopy.xaml.cs">ClipboardCopy.xaml.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="OkCancel.xaml">OkCancel.xaml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="OkCancel.xaml.cs">OkCancel.xaml.cs</ProjectItem>
+        </Folder>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

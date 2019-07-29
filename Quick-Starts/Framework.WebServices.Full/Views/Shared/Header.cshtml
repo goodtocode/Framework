@@ -1,0 +1,33 @@
+﻿<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <div class="logo-company text-center">genesys source</div>
+            <div class="logo-product text-center">Framework for MVC</div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@("v1/" + CustomerSearchController.ControllerName + "/-1/i/x/")" alt="@(CustomerSearchController.GetAction)">@(CustomerSearchController.GetActionText) <span class="sr-only">*</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="http://docs.GenesysSource.com/products/genesys-framework/genesys-framework-ebook.pdf" alt="Docs" target="_blank">eBook</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="http://www.genesysstack.com/genesys-framework" alt="Genesys Framework" target="_blank">Genesys Framework</a>
+                        <a class="dropdown-item" href="http://www.genesysstack.com/cloud-dev-environment" alt="Cloud Dev Environment" target="_blank">Cloud Dev Environment</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="text-right">
+                <a href="@("v1/" + CustomerSearchController.ControllerName + "/-1/i/x/")" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search Endpoint</a>
+                <small class="padding-xs">Database: @Html.Raw(CustomerController.CanConnect() ? "<span class='text-success'>[&#x2714;] Connected</span>" : "<strong><span class='text-danger'>[&#x2718;] Not connected</span></strong>")</small>
+            </div>
+        </div>
+    </nav>
+</div>

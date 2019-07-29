@@ -1,0 +1,161 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Content", "Build.Content\Build.Content.csproj", "{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Test.Sites", "Build.Test.Sites\Build.Test.Sites.csproj", "{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Test.Framework", "Build.Test.Framework\Build.Test.Framework.csproj", "{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build.Scripts.CICD", "Build.Scripts.CICD\Build.Scripts.CICD.csproj", "{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build.Scripts.Modules", "Build.Scripts.Modules\Build.Scripts.Modules.csproj", "{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		QA|Any CPU = QA|Any CPU
+		QA|x86 = QA|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Debug|x86.Build.0 = Debug|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.QA|Any CPU.Build.0 = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.QA|x86.ActiveCfg = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.QA|x86.Build.0 = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|x86.Build.0 = Release|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|x86.Build.0 = Debug|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|Any CPU.ActiveCfg = QA|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|Any CPU.Build.0 = QA|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|x86.ActiveCfg = QA|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|x86.Build.0 = QA|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|x86.ActiveCfg = Release|Any CPU
+		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|x86.Build.0 = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|Any CPU.Build.0 = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|x86.ActiveCfg = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|x86.Build.0 = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|x86.Build.0 = Release|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.QA|Any CPU.ActiveCfg = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.QA|Any CPU.Build.0 = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.QA|x86.ActiveCfg = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.QA|x86.Build.0 = Debug|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Release|x86.Build.0 = Release|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Debug|x86.Build.0 = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.QA|Any CPU.ActiveCfg = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.QA|Any CPU.Build.0 = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.QA|x86.ActiveCfg = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.QA|x86.Build.0 = Debug|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Release|x86.ActiveCfg = Release|Any CPU
+		{70DEB4B3-BB4F-4F45-9C4E-E8C21EB36E98}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBF64749-A809-435C-8025-E247589EAE9B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://genesyssource.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Build.Content\\Build.Content.csproj
+		SccProjectName1 = Build.Content
+		SccLocalPath1 = Build.Content
+		SccProjectUniqueName2 = Build.Test.Framework\\Build.Test.Framework.csproj
+		SccProjectName2 = Build.Test.Framework
+		SccLocalPath2 = Build.Test.Framework
+		SccProjectUniqueName3 = Build.Test.Sites\\Build.Test.Sites.csproj
+		SccProjectName3 = Build.Test.Sites
+		SccLocalPath3 = Build.Test.Sites
+		SccProjectUniqueName4 = Build.Scripts.CICD\\Build.Scripts.CICD.csproj
+		SccProjectName4 = Build.Scripts.CICD
+		SccLocalPath4 = Build.Scripts.CICD
+		SccProjectUniqueName5 = Build.Scripts.Modules\\Build.Scripts.Modules.csproj
+		SccProjectName5 = Build.Scripts.Modules
+		SccLocalPath5 = Build.Scripts.Modules
+	EndGlobalSection
+	GlobalSection(TeamFrameworkVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFrameworkServer = https://genesyssource.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Build.Scripts.CICD\\Build.Scripts.CICD.pssproj
+		SccProjectName1 = Build.Scripts.CICD
+		SccLocalPath1 = Build.Scripts.CICD
+		SccProjectUniqueName2 = Vsix\\Framework.Templater.Mvc\\Framework.Templater.Mvc.csproj
+		SccProjectTopLevelParentUniqueName2 = Build.Entities.sln
+		SccProjectName2 = Vsix/Framework.Templater.Mvc
+		SccLocalPath2 = Vsix\\Framework.Templater.Mvc
+		SccProjectUniqueName3 = Vsix\\Framework.Templater.WebApi\\Framework.Templater.WebApi.csproj
+		SccProjectTopLevelParentUniqueName3 = Build.Entities.sln
+		SccProjectName3 = Vsix/Framework.Templater.WebApi
+		SccLocalPath3 = Vsix\\Framework.Templater.WebApi
+		SccProjectUniqueName4 = Vsix\\Framework.Templater.Wpf\\Framework.Templater.Wpf.csproj
+		SccProjectTopLevelParentUniqueName4 = Build.Entities.sln
+		SccProjectName4 = Vsix/Framework.Templater.Wpf
+		SccLocalPath4 = Vsix\\Framework.Templater.Wpf
+		SccProjectUniqueName5 = Vsix\\Framework.Templater.Universal\\Framework.Templater.Universal.csproj
+		SccProjectTopLevelParentUniqueName5 = Build.Entities.sln
+		SccProjectName5 = Vsix/Framework.Templater.Universal
+		SccLocalPath5 = Vsix\\Framework.Templater.Universal
+		SccProjectUniqueName6 = Build.Scripts.Modules\\Build.Scripts.Modules.pssproj
+		SccProjectName6 = Build.Scripts.Modules
+		SccLocalPath6 = Build.Scripts.Modules
+		SccProjectUniqueName7 = Vsix\\Entities.Templater.Mvc\\Entities.Templater.Mvc.csproj
+		SccProjectTopLevelParentUniqueName7 = Build.Entities.sln
+		SccProjectName7 = Vsix/Entities.Templater.Mvc
+		SccLocalPath7 = Vsix\\Entities.Templater.Mvc
+		SccProjectUniqueName8 = Vsix\\Entities.Templater.Universal\\Entities.Templater.Universal.csproj
+		SccProjectTopLevelParentUniqueName8 = Build.Entities.sln
+		SccProjectName8 = Vsix/Entities.Templater.Universal
+		SccLocalPath8 = Vsix\\Entities.Templater.Universal
+		SccProjectUniqueName9 = Vsix\\Entities.Templater.WebApi\\Entities.Templater.WebApi.csproj
+		SccProjectTopLevelParentUniqueName9 = Build.Entities.sln
+		SccProjectName9 = Vsix/Entities.Templater.WebApi
+		SccLocalPath9 = Vsix\\Entities.Templater.WebApi
+		SccProjectUniqueName10 = Vsix\\Entities.Templater.Wpf\\Entities.Templater.Wpf.csproj
+		SccProjectTopLevelParentUniqueName10 = Build.Entities.sln
+		SccProjectName10 = Vsix/Entities.Templater.Wpf
+		SccLocalPath10 = Vsix\\Entities.Templater.Wpf
+		SccProjectUniqueName11 = Build.Content\\Build.Content.xproj
+		SccProjectName11 = Build.Content
+		SccLocalPath11 = Build.Content
+	EndGlobalSection
+EndGlobal

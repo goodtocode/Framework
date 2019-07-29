@@ -1,0 +1,40 @@
+##############################################
+# .tfignore
+##############################################
+
+# Ignore Packages folder
+packages
+# Do not ignore packages needed for .NET targetting
+!packages/*.targets
+
+# Ignore compilation output
+bin
+obj
+
+# Ignore Visual Studio local files
+*.user
+# Ignore MS Test results
+testresults
+# Ignore .jfm SSDT Temp file
+*.jfm
+# Ignore primary source control (TFS/VSS)
+*.vspscc
+
+
+##############################################
+### Examples
+##############################################
+# Ignore .cpp files in the ProjA sub-folder and all its subfolders
+ProjA\*.cpp
+# 
+# Ignore .txt files in this folder 
+#\*.txt
+#
+# Ignore .xml files in this folder and all its sub-folders
+#*.xml
+#
+# Ignore all files in the Temp sub-folder
+#\Temp
+#
+# Do not ignore .dll files in this folder nor in any of its sub-folders
+#!*.dll

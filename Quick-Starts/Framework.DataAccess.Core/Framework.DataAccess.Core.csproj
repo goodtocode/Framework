@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <PackageId>Framework.DataAccess.Core</PackageId>
+    <RootNamespace>Framework.DataAccess</RootNamespace>
+    <Version>4.18.9</Version>
+    <Authors>Genesys Source</Authors>
+    <Company>Genesys Source</Company>
+    <Product>Genesys Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
+    <Description>Genesys Source Framework Web foundation classes for your app, controllers, views and model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.genesyssource.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.genesyssource.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/genesyssource/framework-for-core</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Customer\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Framework.DataAccess.Core.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Framework.DataAccess.Shared\Customer\CustomerInfo.cs">
+      <Link>Customer\CustomerInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Customer\CustomerType.cs">
+      <Link>Customer\CustomerType.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Genesys.Extensions.Core" Version="4.18.19050.2" />
+    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="Genesys.Framework.DataAccess.Core" Version="4.18.19060.2" />
+    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Interop.Standard\Framework.Interop.Standard.csproj" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+</Project>

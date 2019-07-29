@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
+    <PackageId>GoodToCode.Framework.Test.Core</PackageId>
+    <Version>4.18.9</Version>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</Product>
+    <Description>GoodToCode Framework CRUD Data Access Object classes for ASP.NET Core MVC, Web API Core, Xamarin iOS, Xamarin Android and .NET Standard libraries.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.goodtocode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.goodtocode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.goodtocode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/goodtocode/framework</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="App_Data\FrameworkData_Primary_log.ldf" />
+    <None Remove="GoodToCode.Framework.Test.Core.csproj.vspscc" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19186.1" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataTier\Framework.DataAccess.Core\GoodToCode.Framework.DataAccess.Core.csproj" />
+    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
+    <ProjectReference Include="..\..\MiddleTier\Framework.Models.Standard\GoodToCode.Framework.Models.Standard.csproj" />
+    <ProjectReference Include="..\..\PresentationTier\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json" />
+    <None Update="appsettings.Development.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.Local.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.Staging.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="appsettings.Production.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Update="App_Data\FrameworkData_Primary.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+</Project>

@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*** Open Graph tags ***@
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Framework.WebApp" />
+    <meta property="og:title" content="Site powered by Genesys Source Framework" />
+    <meta name="keywords" itemprop="keywords" content=".NET, ASP.NET, MVC, Web API, WPF, Universal, UWP, Cross-platform, Xamarin, reusable, framework" />
+    <meta name="description" itemprop="description" property="og:description" content="This site is built with the Genesys Source Framework that centralizes your reusable business objects, such as a CustomerInfo object, in one unified full-stack solution. And shares your reusable objects...with all of your code, in all of your apps.
+        Your objects. Your data. Your app. Built on SOLID and ACID principles. Using standard Microsoft .NET technologies." />
+    <meta name="author" content="Genesys Source" />
+    <meta property="article:publisher" content="http://www.facebook.com/Your-Facebook-Page" />
+    <meta property="og:url" itemprop="url" content="http://localhost" />
+    <meta itemprop="thumbnailUrl" content="http://www.genesyssource.com/Genesys/Images/Genesys-Framework/Genesys-Framework-Logo.png" /> @*large rectangle image*@
+    <meta property="og:image" itemprop="image" content="http://www.genesyssource.com/Genesys/Images/Genesys-Source/Genesys-Source-Logo-Square.png" /> @*80x80 simple company logo*@
+    <meta itemprop="logo" content="http://www.genesyssource.com/Genesys/Images/Genesys-Framework/Genesys-Framework-Logo.png" />
+    @*** Facebook tags ***@
+    <meta property="fb:admins" content="Your-Admin-Id" /> @*Get From: https://developers.facebook.com/tools/explorer/*@
+    <meta property="fb:app_id" content="Your-App-Id" /> @*Create app at: https://developers.facebook.com*@
+    <meta property="fb:page_id" content="Your-Page-Id" /> @*View source on page or About section*@
+    @*** Twitter tags ***@
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@("@Your-Twitter-Handle")" />
+    <meta name="twitter:url" content="http://www.twitter.com/Your-Twitter-Page" />
+    <meta name="twitter:title" content="Site powered by Genesys Source Framework" />
+    <meta name="twitter:description" content="This site is built with the Genesys Source Framework that centralizes your reusable business objects, such as a CustomerInfo object, in one unified full-stack solution. And shares your reusable objects...with all of your code, in all of your apps.
+        Your objects. Your data. Your app. Built on SOLID and ACID principles. Using standard Microsoft .NET technologies." />
+    <meta name="twitter:image" content="http://www.genesyssource.com/Genesys/Images/Genesys-Source/Genesys-Source-Logo-Square.png" /> @*80x80 simple company logo*@
+    @**** End tags ****@
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    <title>Genesys Quick-Start Framework for MVC - Reusable business object framework. Full-stack, cross-platform and open-source.</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scriptsHead", required: false)
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/header.cshtml")
+    <div class="container">
+        <div class="body-content">
+            @RenderBody()
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/footer.cshtml")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

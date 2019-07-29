@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Genesys.Entity.Interop.Standard</id>
+    <version>4.18.10.352281</version>
+    <title>Genesys Source Framework Interop for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</title>
+    <description>Genesys Source Framework Interop for your business entities and models. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile..</description>
+    <authors>Genesys Source</authors>
+    <owners>Genesys Source</owners>
+    <licenseUrl>http://www.genesyssource.com/policy/nuget/license.html</licenseUrl>
+    <projectUrl>http://www.genesyssource.com</projectUrl>
+    <iconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Monthly sprint release. See full release notes at GenesysSource.com.</releaseNotes>
+    <copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</copyright>
+    <tags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
+    <dependencies>
+      <group>
+        <dependency id="Genesys.Extensions.Standard" version="4.0.0" />
+        <dependency id="Genesys.Framework.Interop.Standard" version="4.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.dll" target="lib\netcoreapp2.1" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.xml" target="lib\netcoreapp2.1" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.pdb" target="lib\netcoreapp2.1" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.dll" target="lib\netcoreapp2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.xml" target="lib\netcoreapp2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.pdb" target="lib\netcoreapp2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.dll" target="lib\netstandard2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.xml" target="lib\netstandard2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.pdb" target="lib\netstandard2.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.dll" target="lib\uap10.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.xml" target="lib\uap10.0" />
+    <file src="\lib\Genesys-Entities\Genesys.Entity.Interop.Standard.pdb" target="lib\uap10.0" />
+  </files>
+</package>

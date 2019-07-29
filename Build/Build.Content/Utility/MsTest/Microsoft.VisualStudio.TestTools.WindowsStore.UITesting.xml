@@ -1,0 +1,2208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.VisualStudio.TestTools.WindowsStore.UITesting</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.Gesture">
+      <summary> Contains static methods for performing Touch gestures. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.DoubleTap(Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a double tap gesture.</summary>
+      <param name="screenCoordinates">The coordinates on the screen where the double tap gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.DoubleTap(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary> Perform a double tap gesture. </summary>
+      <param name="control">Control on which the double tap gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.DoubleTap(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a double tap gesture.</summary>
+      <param name="control">Control on which the double tap gesture is to be performed.</param>
+      <param name="relativeCoordinates">A point relative to the control coordinates, at which the double tap gesture will be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Flick(Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32,Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Flick(Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32,System.Double,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Flick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32,Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Flick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32,System.Double,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Pinch(Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)">
+      <summary>Perform a pinch gesture which essentially is used for three types of interactions: optical zoom, resizing, and semantic zoom.</summary>
+      <param name="point1">A point on screen at which user places one of two fingers to perform a pinch gesture.</param>
+      <param name="point2">A point on screen at which user places the second finger to perform a pinch gesture.</param>
+      <param name="distanceToMove">The distance each finger moves toward each other in pixels.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Pinch(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)">
+      <summary>Perform a pinch gesture which essentially is used for three types of interactions: optical zoom, resizing, and semantic zoom.</summary>
+      <param name="control">Control on which the pinch gesture is to be performed.</param>
+      <param name="distanceToMove">The distance each finger moves toward each other in pixels.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.PressAndHold(Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a press and hold gesture which is mainly associated with activating a tooltip or a context menu.</summary>
+      <param name="screenCoordinates">The coordinates on the screen where the press and hold gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.PressAndHold(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Perform a press and hold gesture which is mainly associated with activating a tooltip or a context menu.</summary>
+      <param name="control">Control on which the press and hold gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.PressAndHold(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a press and hold gesture which is mainly associated with activating a tooltip or a context menu.</summary>
+      <param name="control">Control on which the press and hold gesture is to be performed.</param>
+      <param name="relativeCoordinates">A point relative to the control coordinates, at which the press and hold gesture will be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.PressAndHold(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)">
+      <summary>Perform a press and hold gesture which is mainly associated with activating a tooltip or a context menu.</summary>
+      <param name="control">Control on which the press and hold gesture is to be performed.</param>
+      <param name="durationInMilliseconds">The duration to hold in milliseconds.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Slide(Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a slide gesture. A slide gesture is used primarily for panning interactions but can also be used for moving, drawing, or writing.</summary>
+      <param name="startPoint">The coordinates on the screen where sliding is to begin.</param>
+      <param name="endPoint">The coordinates on the screen where sliding is to end.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Slide(Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Slide(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary>Perform a slide gesture. A slide gesture is used primarily for panning interactions but can also be used for moving, drawing, or writing.</summary>
+      <param name="control">Control on which the slide gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Slide(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Stretch(Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)">
+      <summary>Perform a stretch gesture which essentially is used for three types of interactions: optical zoom, resizing, and semantic zoom.</summary>
+      <param name="point1">A point on screen at which user places one of two fingers to perform a stretch gesture.</param>
+      <param name="point2">A point on screen at which user places the second finger to perform a stretch gesture.</param>
+      <param name="distanceToMove">The distance each finger moves away from each other in pixels.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Stretch(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.UInt32)">
+      <summary>Perform a stretch gesture which essentially is used for three types of interactions: optical zoom, resizing, and semantic zoom.</summary>
+      <param name="control">Control on which the stretch gesture is to be performed.</param>
+      <param name="distanceToMove">The distance each finger moves away from each other in pixels.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Swipe(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection)">
+      <summary>Perform a swipe gesture which is a quick slide of a finger for a short distance. For example, swipe across an email in your inbox to select it or swipe down on a tile to select it.</summary>
+      <param name="control">Control on which the swipe gesture is to be performed.</param>
+      <param name="swipeDirection">The direction of the swipe gesture (Up/Down/Left/Right).</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Swipe(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Swipe(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.Double)">
+      <summary>Perform a swipe gesture which is a quick slide of a finger for a short distance. For example, swipe across an email in your inbox to select it or swipe down on a tile to select it.</summary>
+      <param name="control">Control on which the swipe gesture is to be performed.</param>
+      <param name="directionInDegrees">The direction of the swipe gesture in degrees. Value lies between [0,360].</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Swipe(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.Double,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Tap(Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary> Perform a tap gesture. </summary>
+      <param name="screenCoordinates">The coordinates on the screen where the tap gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Tap(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary> Perform a tap gesture. </summary>
+      <param name="control">Control on which the tap gesture is to be performed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Tap(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)">
+      <summary> Perform a tap gesture. </summary>
+      <param name="control">Control on which the tap gesture is to be performed.</param>
+      <param name="relativeCoordinates">A point relative to the control coordinates, on which to perform the tap gesture.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Turn(Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Double)">
+      <summary>Perform a turn gesture.</summary>
+      <param name="point1">The focal point around which rotation is to be performed on the screen.</param>
+      <param name="point2">A point on screen at which user places the second finger to perform a turn gesture.</param>
+      <param name="rotationAngleInDegress">The angle of turn. Value lies between [-360,360].</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Turn(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Double)">
+      <summary>Perform a turn gesture.</summary>
+      <param name="control">Control on which the turn gesture is to be performed.</param>
+      <param name="rotationAngleInDegress">The angle of turn. Value lies between [-360,360].</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Gesture.Turn(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.Double)">
+      <summary>Perform a turn gesture.</summary>
+      <param name="control">Control on which the turn gesture is to be performed.</param>
+      <param name="rotationAngleInDegress">The angle of turn. Value lies between [-360,360].</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.PressModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.PressModifierKeys(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.PressModifierKeysImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.ReleaseModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.ReleaseModifierKeys(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.ReleaseModifierKeysImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeys(System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Keyboard.SendKeysImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Click(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.ClickImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClick(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.DoubleClickImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Hover(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Hover(Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Hover(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Hover(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.HoverImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Move(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.Move(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.MoveImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.MoveScrollWheel(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.Int32,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.MoveScrollWheel(System.Int32,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.MoveScrollWheelImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,System.Int32,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StartDragging(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StartDragging(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StartDragging(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StartDraggingImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StopDragging(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StopDragging(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Mouse.StopDraggingImplementation(Microsoft.VisualStudio.TestTools.UITesting.UITestControl,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Boolean)"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.Playback">
+      <summary>Class contains the settings that must be used for playback.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.Cancel">
+      <summary>Cancels the playback of the current operation.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.Cleanup">
+      <summary>Performs clean up after the UITest playback.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.EncryptText(System.String)">
+      <summary>Encrypts a given text for passing to playback as password property.</summary>
+      <returns>The encrypted text.</returns>
+      <param name="textToEncrypt">The string to encode.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.GetCorePropertyProvider(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Gets the core property provider for the UI control.</summary>
+      <returns>The core property provider for UI control.</returns>
+      <param name="uiControl">The UI control for which the core property provider is to be obtained.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.GetCoreTechnologyManager(System.String)">
+      <summary>Gets the core technology manager for the given technology.</summary>
+      <returns>The technology manager for the specified technology.</returns>
+      <param name="technologyName">The name of the required technology manager.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.GetNativeCoreTechnologyManager(System.String)">
+      <summary>Gets the native core technology manager for the given technology.</summary>
+      <returns>The technology manager for the given technology.</returns>
+      <param name="technologyName">The name of the required technology manager.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.Initialize">
+      <summary>Initializes playback for the UITest.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.Playback.IsInitialized">
+      <summary>Gets or sets a value that indicates whether playback has been initialized.</summary>
+      <returns>A value that indicates whether playback has been initialized.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.Playback.IsSessionStarted">
+      <summary>Gets or sets a value that indicates whether the playback session has started.</summary>
+      <returns>A value that indicates whether the playback session has started.</returns>
+    </member>
+    <member name="E:Microsoft.VisualStudio.TestTools.UITesting.Playback.PlaybackError">
+      <summary>This event is raised when an exception occurs during playback.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.Playback.PlaybackSettings">
+      <summary>Gets the current playback settings.</summary>
+      <returns>The current playback settings.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.StartSession">
+      <summary>Starts a new session for playback. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.StopSession">
+      <summary>Stops the current playback session.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.Playback.Wait(System.Int32)">
+      <summary>Makes the playback pause for a specified time.</summary>
+      <returns>The actual wait duration.</returns>
+      <param name="thinkTimeMilliseconds">The wait duration in milliseconds.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorEventArgs">
+      <summary>Represents the event arguments that are available when an action fails during a test playback.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorEventArgs.#ctor(System.Exception)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorEventArgs" /> class by using the provided exception.</summary>
+      <param name="ex">The exception that caused the playback error event.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorEventArgs.Error">
+      <summary>Gets the exception that caused the playback error event.</summary>
+      <returns>The exception that caused the playback error event.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorEventArgs.Result">
+      <summary>Gets or sets a user choice for the result of the error.</summary>
+      <returns>One of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorOptions" /> values.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorOptions">
+      <summary>Represents the options that a user can choose when a playback error occurs.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorOptions.Default">
+      <summary>The default action is to stop the playback when an action fails.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorOptions.Retry">
+      <summary>Retry the failed action during playback.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.PlaybackErrorOptions.Skip">
+      <summary>Skip the failed action during playback.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings">
+      <summary> Settings to be used for Playback. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.AlwaysSearchControls"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.ContinueOnError"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.DelayBetweenActions"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.ImeLanguageList"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.LoggerOverrideState">
+      <summary> This State will maintain overrides to HtmlLoggerState Will get preference over Eqt Trace when overridden </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.MatchExactHierarchy"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.MaximumRetryCount">
+      <summary> Gets or sets the number of times a retry can be done for a single action via PlaybackError handler in a coded ui test. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.ResetToDefault"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SearchInMinimizedWindows"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SearchTimeout"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SendKeysAsScanCode"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SetEncryptionKeyLocation(System.String,System.Int32)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.ShouldSearchFailFast"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SkipSetPropertyVerification"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.SmartMatchOptions"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.ThinkTimeMultiplier"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.WaitForReadyLevel"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PlaybackSettings.WaitForReadyTimeout"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection">
+      <summary> Contains searchable properties of UITestControl.  </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.#ctor">
+      <summary> Default constructor. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Add(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpression)">
+      <summary> Add new PropertyExpression to the collection. If the property with same name already exists, then updates its value. </summary>
+      <param name="propertyExpression">PropertyExpression to be added.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Add(System.String,System.String)">
+      <summary> Add new property, value pair to property collection. If the property with same name already exists, then updates its value. </summary>
+      <param name="propertyName">The name of the property.</param>
+      <param name="propertyValue">Value of the property.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Add(System.String,System.String,Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionOperator)">
+      <summary> Add new property, value pair and a PropertyExpressionOperator to property collection. If the property with same name already exists, then updates its value. </summary>
+      <param name="propertyName">The name of the property.</param>
+      <param name="propertyValue">Value of the property.</param>
+      <param name="conditionOperator">The operator e.g. Contains.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Add(System.String[])">
+      <summary> Add multiple property, value pairs to property collection. If the property with same name already exists, then updates its value. </summary>
+      <param name="nameValuePairs">Name value pairs to be added.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.AddRange(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpression[])">
+      <summary> Add a range of PropertyExpressions to the collection. If the property with same name already exists, then updates its value. </summary>
+      <param name="propertyExpressions">PropertyExpressions to be added</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.AddRange(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection)">
+      <summary> Add a range of PropertyExpressions from another collection. If the property with same name already exists, then updates its value. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Clear">
+      <summary> Clears the collection. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Clone">
+      <summary> Creates a PropertyExpressionCollection which is a clone of the current instance. </summary>
+      <returns>A new object which is copy of the current instance.</returns>
+    </member>
+    <member name="E:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.CollectionChanged">
+      <summary> Event fired when this collection is changed. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Contains(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpression)">
+      <summary> Checks whether PropertyExpression with same name, value and operator is present in the collection </summary>
+      <returns>True if present.</returns>
+      <param name="item">Item to check for presence</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Contains(System.String)">
+      <summary> Check whether the given property is present in the collection </summary>
+      <returns>True if present.</returns>
+      <param name="propertyName">Property name to be found.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.CopyTo(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpression[],System.Int32)">
+      <summary> Copy collections to a PropertyExpression array. </summary>
+      <param name="expressionArray">Array to be copied to.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Count">
+      <summary> Gets the item count in the collection. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Equals(System.Object)">
+      <summary> Object.Equals override </summary>
+      <returns>True if the other object is equal to this PropertyExpressionCollection, false otherwise.</returns>
+      <param name="other">The other object for equals comparison.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Find(System.String)">
+      <summary> Returns the associated PropertyExpression in the collection for the given property name </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.GetEnumerator">
+      <summary> Gets an enumerator to iterate through the collection </summary>
+      <returns>IEnumerator reference for iteration</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.GetHashCode">
+      <summary> Hashcode of the PropertyExpressionCollection </summary>
+      <returns>Hashcode for the PropertyExpressionCollection</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.IsReadOnly">
+      <summary> Gets if the collection is readonly </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Item(System.String)">
+      <summary> Gets or sets the property value for search. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Remove(Microsoft.VisualStudio.TestTools.UITesting.PropertyExpression)">
+      <summary> Removes the PropertyExpression with the same name, value and operator from the collection </summary>
+      <param name="propertyExpression">PropertyExpression to remove</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.PropertyExpressionObservableCollection.Remove(System.String)">
+      <summary> Remove PropertyExpression with the given name from the collection. </summary>
+      <param name="propertyName">Property name to remove.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy">
+      <summary>Proxy UITechnologyElement class. Extension plugins must override this and customize their technology element behavior.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy,Microsoft.VisualStudio.TestTools.UITest.Extension.IUITechnologyElement)">
+      <summary>Initializes the proxy element with the given technology manager.</summary>
+      <param name="technologyManager">Technology manager of the proxy element</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.AutomationElement"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.CacheProperties">
+      <summary>Caches all the common properties of this element for future use so that these properties can be used later even when the underlining UI control no longer exists. This typically includes properties like Name, ClassName, ControlType, QueryId and other properties used in identification string.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.ChildIndex">
+      <summary>Gets the 0-based position in the parent element's collection.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.ClassName">
+      <summary>Gets the class name of this element.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.ControlTypeName">
+      <summary>Gets the universal control type of this element.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.EnsureVisibleByScrolling(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+      <summary>Scrolls this element into view. If the technology manager does not support scrolling multiple containers, then the outPointX and outPointY should be returned as -1, -1.</summary>
+      <param name="pointX">The relative x coordinate of point to make visible.</param>
+      <param name="pointY">The relative y coordinate of point to make visible.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.Equals(Microsoft.VisualStudio.TestTools.UITest.Extension.IUITechnologyElement)">
+      <summary>Determines whether the specified object is equal to the current object.</summary>
+      <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
+      <param name="element">The object to compare with the current object.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.Equals(System.Object)">
+      <summary>Determines whether the specified object is equal to the current object.</summary>
+      <returns>True if the specified object is equal to the current object; otherwise, false.</returns>
+      <param name="obj">The object to compare with the current object.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.FriendlyName">
+      <summary>Gets the user-friendly name for this element like display text that will help the user to quickly recognize the element on the screen.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetBoundingRectangle(System.Int32@,System.Int32@,System.Int32@,System.Int32@)">
+      <summary>Gets the coordinates of the rectangle that completely encloses this element.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetClickablePoint(System.Int32@,System.Int32@)">
+      <summary>Gets a clickable point for this element. The framework will use this to obtain clickable point if UITechnologyElement.GetOption(UITechnologyElementOption.GetClickablePointFrom) returns GetClickablePointFromTechnologyManager. To use the default algorithm provided by the framework, throw NotSupportedException.</summary>
+      <param name="pointX">The x-coordinate of clickable point.</param>
+      <param name="pointY">The y-coordinate of clickable point.</param>
+      <exception cref="T:System.NotSupportedException">Throws System.NotSupportedException if this operation is not supported.</exception>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetHashCode">
+      <summary>Gets the hash code for this object. .NET Design Guidelines suggests overriding this too if Equals is overridden.</summary>
+      <returns>The hash code.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetNativeControlType(Microsoft.VisualStudio.TestTools.UITest.Extension.NativeControlTypeKind)">
+      <summary>Gets the native control type of this element. This can be used in tandem with the universal type obtained via GetControlType() when just the ControlType is not enough to differentiate a control. For example, if the native technology element is HTML, this could be the tag name.</summary>
+      <returns>If supported, the native type of the control or else null.</returns>
+      <param name="nativeControlTypeKind">The kind of the native control type requested.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetOption(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElementOption)">
+      <summary>Gets the option for this IUITechnologyElement.</summary>
+      <returns>The value of this element option.</returns>
+      <param name="technologyElementOption">The element option to obtain.</param>
+      <exception cref="T:System.NotSupportedException">Throws System.NotSupportedException if the element option is not supported.</exception>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetPropertyValue(System.String)">
+      <summary>Gets the value for the specified property for this element.</summary>
+      <returns>The value of the property.</returns>
+      <param name="propertyName">The name of the property.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetQueryIdForRelatedElement(Microsoft.VisualStudio.TestTools.UITest.Extension.UITestElementKind,System.Object,System.Int32@)">
+      <summary>Gets the QueryId for the related element specified by UITestElementKind.</summary>
+      <returns>The QueryId of the element.</returns>
+      <param name="relatedElement">The kind of related element.</param>
+      <param name="additionalInfo">Any additional information that is required.</param>
+      <param name="maxDepth">The maximum depth to search under this element to find the required component.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetRequestedState(Microsoft.VisualStudio.TestTools.UITest.Extension.State.AccessibleStates)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetRightToLeftProperty(Microsoft.VisualStudio.TestTools.UITest.Extension.RightToLeftKind)">
+      <summary>Gets the true/false value for right to left format based on the kind specified.</summary>
+      <returns>True if layout or text that is based on the RightToLeftKind passed is right to left, false otherwise.</returns>
+      <param name="rightToLeftKind">Either the layout or text kind to check for.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.GetScrolledPercentage(Microsoft.VisualStudio.TestTools.UITest.Extension.ScrollDirection,Microsoft.VisualStudio.TestTools.UITest.Extension.IUITechnologyElement)">
+      <summary>Gets the amount scrolled in percentage.</summary>
+      <returns>The amount in percentage.</returns>
+      <param name="scrollElement">The element which is either the vertical or horizontal scroll bar.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.InitializeProgrammaticScroll">
+      <summary>Initializes this element to do programmatic scrolling.</summary>
+      <returns>True if element supports programmatic scrolling and initialization is successful, false otherwise.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.InvokeProgrammaticAction(Microsoft.VisualStudio.TestTools.UITest.Extension.ProgrammaticActionOption)">
+      <summary>Performs programmatic action, based on the ProgrammaticActionOption passed, on this element.</summary>
+      <param name="programmaticActionOption">The option corresponding the action to perform.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.IsLeafNode">
+      <summary>Gets whether this element is a leaf node (that is does not have any children) or not.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.IsPassword">
+      <summary>Gets a value that indicates whether this element contains protected content or not.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.IsTreeSwitchingRequired">
+      <summary>Gets whether the tree switching is required for window-less tree switching cases.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.Name">
+      <summary>Gets the name of this element.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.NativeElement">
+      <summary>Gets the underlying native technology element (like IAccessible) corresponding this element.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.QueryId">
+      <summary>Gets a QueryId that can be used to uniquely identify/find this element. In some cases, such as TreeItem, the QueryIds might contain the complete element hierarchy but most of the time it will contain only important ancestors of the element. The technology manager must decide which ancestor to capture in the hierarchy by appropriately setting the QueryId.Ancestor property of each element. The APIs in condition classes like AndCondition.ToString() and AndCondition.Parse() may be used to convert from this class to string or vice-versa. EXT-PROTO1-NOTES: This QID also recursively converts all the ancestor core technology elements into the extension element and stitches the ancestor hierarchy appropriately.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.ScrollProgrammatically(Microsoft.VisualStudio.TestTools.UITest.Extension.ScrollDirection,Microsoft.VisualStudio.TestTools.UITest.Extension.ScrollAmount)">
+      <summary>Does the programmatic scrolling for this element.</summary>
+      <param name="scrollDirection">The direction to scroll.</param>
+      <param name="scrollAmount">The amount to scroll.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.SetFocus">
+      <summary>Sets the focus on this element.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.SetOption(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElementOption,System.Object)">
+      <summary>Sets the option for this IUITechnologyElement.</summary>
+      <param name="technologyElementOption">The element option to set.</param>
+      <param name="optionValue">The value of this element option.</param>
+      <exception cref="T:System.NotSupportedException">Throws System.NotSupportedException if the element option is not supported.</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.SwitchingElement">
+      <summary>Gets or sets the container element if one technology is hosted inside another technology. This is used by the Entities.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.TechnologyManager">
+      <summary>Gets the corresponding technology manager.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.TechnologyName">
+      <summary>Gets the name of the corresponding technology. This value should be same as UITechnologyManager.TechnologyName.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.TopLevelElement">
+      <summary>Gets or sets the top level window corresponding to this element. The top level windows are typically children of desktop. If this is not set, the framework will set this to the top-most ancestor of the element (after ignoring the desktop as ancestor).</summary>
+      <returns>The top level window.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.ToString">
+      <summary>Gets the string representation of this control.</summary>
+      <returns>The string representation.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.Value">
+      <summary>Gets the value of this element.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.WaitForReady">
+      <summary>Waits for the element to be ready for user action.</summary>
+      <exception cref="T:System.TimeoutException">Throws TimeoutException if control is not ready in allotted time.</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyElementProxy.WindowHandle">
+      <summary>Gets the handle to the Win32 window that contains this element.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy.ChildrenEnumeratorProxy">
+      <summary>Enumerator wrapper class for inner core children enumerator.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy.ChildrenEnumeratorProxy.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy,System.Collections.IEnumerator)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy.ChildrenEnumeratorProxy.Current"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy.ChildrenEnumeratorProxy.MoveNext"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITechnologyManagerProxy.ChildrenEnumeratorProxy.Reset"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor">
+      <summary> The abstract class for implementing custom action support for UI controls. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.Click(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.GetControlSupportLevel(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement)">
+      <summary> Gets the support level of the provider for the specified control. </summary>
+      <returns>The support level for the control.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.Hover(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.MouseMove(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.MoveScrollWheel(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,System.Int32,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.PressModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.ReleaseKeyboard">
+      <summary> Resets the keyboard to normal state if applicable. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.ReleaseModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.ReleaseMouse">
+      <summary> Resets the mouse to normal state if applicable. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.SendKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.StartDragging(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestActionExecutor.StopDragging(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.EnsureClickable(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.TryGetClickablePoint(Microsoft.VisualStudio.TestTools.UITest.Input.Point@)"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames">
+      <summary>Represents the names of the common properties in all <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> objects.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.BoundingRectangle">
+      <summary>Returns "BoundingRectangle".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.ClassName">
+      <summary>Returns "ClassName".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.ControlType">
+      <summary>Returns "ControlType".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Enabled">
+      <summary>Returns "Enabled".</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Equals(System.Object)">
+      <summary>Determines whether the provided object is equal to the current instance.</summary>
+      <returns>true if the objects are equal; otherwise, false.</returns>
+      <param name="obj">An object that can be cast to a <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames" /> object.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Equals(System.Object,System.Object)">
+      <summary>Determines whether the provided objects are equal.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Exists">
+      <summary>Returns "Exists".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.FriendlyName">
+      <summary>Returns "FriendlyName".</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.GetHashCode"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.GetType">
+      <summary>Returns the <see cref="T:System.Type" /> of the control.</summary>
+      <returns>The <see cref="T:System.Type" /> of the control.</returns>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.HasFocus">
+      <summary>Returns "HasFocus".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Height">
+      <summary>Gets the height of the control. Data type: System.Int32</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Instance">
+      <summary>Returns "Instance".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.IsTopParent">
+      <summary>Returns "IsTopParent".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Left">
+      <summary>Gets the x-coordinate of the left edge of the control. Data type: System.Int32</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.MaxDepth">
+      <summary>Returns "MaxDepth".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Name">
+      <summary>Returns "Name".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.NativeElement">
+      <summary>Returns "NativeElement".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.QueryId">
+      <summary>Returns "QueryId".</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.ReferenceEquals(System.Object,System.Object)">
+      <summary>Determines whether the two provided object references refer to the same instance.</summary>
+      <returns>true if the objects both refer to the same instance; otherwise, false.</returns>
+      <param name="objA">A <see cref="T:System.Object" />.</param>
+      <param name="objB">A <see cref="T:System.Object" />.</param>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.State">
+      <summary>Gets the state of the control. Data type: ControlStates</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.TechnologyName">
+      <summary>Returns "TechnologyName".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Top">
+      <summary>Gets the x-coordinate of the top edge of the control. Data type: System.Int32</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.TopParent">
+      <summary>Returns "TopParent".</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.ToString">
+      <summary>Returns a string representation of this instance.</summary>
+      <returns>A string representation of this instance.</returns>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.UITechnologyElement">
+      <summary>Returns "UITechnologyElement".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.Width">
+      <summary>Gets the width of the control. Data type: System.Int32</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestControl.PropertyNames.WindowHandle">
+      <summary>Returns "WindowHandle".</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection.Capacity"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection.Clear"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection.Count"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection.RemoveAt(System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection.System#Collections#IEnumerable#GetEnumerator"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControlFactory">
+      <summary> Factory class to create UITestControls from point, native element ...etc. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlFactory.FromNativeElement(System.Object,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlFactory.FromPoint(Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestControlFactory.FromWindowHandle(System.IntPtr)"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection">
+      <summary> Gesture direction. Up/Down/Left/Right. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection.Down">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection.Left">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection.Right">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.UITestGestureDirection.Up">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor">
+      <summary>Class to contain information about a property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.#ctor(System.Type)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor" /> class using default read permissions.</summary>
+      <param name="dataType">Data type of the property value.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.#ctor(System.Type,Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyAttributes)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor" /> class with no category.</summary>
+      <param name="dataType">Data type of the property value.</param>
+      <param name="attributes">Permissions that are associated with the property.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.#ctor(System.Type,Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyAttributes,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor" /> class with the specified permissions and category.</summary>
+      <param name="dataType">Data type of the property value.</param>
+      <param name="attributes">Permissions that are associated with the property.</param>
+      <param name="category">Category to which the property belongs.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.#ctor(System.Type,System.String)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor" /> class using default read permissions.</summary>
+      <param name="dataType">Data type of the property value.</param>
+      <param name="category">Category to which the property belongs.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.Attributes">
+      <summary>Gets the permissions for the property.</summary>
+      <returns>The permissions for the property.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.Category">
+      <summary>Gets the category into which this property falls.</summary>
+      <returns>The category into which this property falls.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.DataType">
+      <summary>Gets the data type of the property value.</summary>
+      <returns>The data type of the property value.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.UITestPropertyDescriptor.ToString">
+      <summary>The string representation of this instance.</summary>
+      <returns>The string representation.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.Click(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.DoubleClick(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.GetControlSupportLevel(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.Hover(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.MouseMove(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.MoveScrollWheel(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,System.Int32,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.PressModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.ReleaseKeyboard"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.ReleaseModifierKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.ReleaseMouse"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.SendKeys(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,System.String,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.StartDragging(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.MouseButtons,Microsoft.VisualStudio.TestTools.UITest.Input.ModifierKeys,Microsoft.VisualStudio.TestTools.UITest.Input.Point)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WebViewActionExecutor.StopDragging(Microsoft.VisualStudio.TestTools.UITest.Extension.UITechnologyElement,Microsoft.VisualStudio.TestTools.UITest.Input.Point,System.Boolean)"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl">
+      <summary> Represents a DirectUI control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.AutomationId">
+      <summary> Gets the control's automation Id. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.FrameworkId"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.GetUITestControlsForSearch">
+      <summary> Gets the array of UITestControl that will be used for Searching.  Overridden to validate the search properties </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.GetValidSearchProperties">
+      <summary> Helper function to return the valid search properties </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.State">
+      <summary> Gets or sets the state of the control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.Value">
+      <summary> Gets or sets the state of the control. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.PropertyNames">
+      <summary> Contains property names common to all DirectUI controls. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.PropertyNames.AutomationId">
+      <summary> Gets the control's automationId. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.DirectUIControls.DirectUIControl.PropertyNames.FrameworkId">
+      <summary> Gets the control's framework id Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink">
+      <summary>Represents an area hyperlink control for testing the user interface (UI) of a Web page.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.AbsolutePath">
+      <summary>Gets the value of the AbsolutePath attribute of this area hyperlink control.</summary>
+      <returns>The value of the absolute path attribute of this area hyperlink control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.Alt">
+      <summary>Gets the alternate text for this area hyperlink control.</summary>
+      <returns>The alternate text for this area hyperlink control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.Href">
+      <summary>Gets the value of the href attribute of this area hyperlink control.</summary>
+      <returns>The value of the href attribute of this area hyperlink control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAreaHyperlink.Target">
+      <summary>Gets the value of the target attribute of this area hyperlink control.</summary>
+      <returns>The value of the target attribute of this area hyperlink control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAudio">
+      <summary>Represents an HTML audio control.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAudio.#ctor">
+      <summary>Creates a new instance of the HtmlAudio class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlAudio.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton">
+      <summary>Represents a button control to test the user interface (UI) of Web pages.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlButton.DisplayText">
+      <summary>Gets the text of this button control.</summary>
+      <returns>The text of the button.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell">
+      <summary>Represents a table cell for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.ColumnIndex">
+      <summary>Gets the index of the column in the table row.</summary>
+      <returns>The index of the column in the table row.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.RowIndex">
+      <summary>Gets the index of the table row for this cell.</summary>
+      <returns>The index of the table row for this cell.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.Value">
+      <summary>Gets the value inside a table-cell.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames.ColumnIndex">
+      <summary>Returns "ColumnIndex".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames.RowIndex">
+      <summary>Returns "RowIndex".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCell.PropertyNames.Value">
+      <summary>Gets the value inside a table-cell. Data-Type: System.String</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox">
+      <summary>Represents a check box for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.Checked">
+      <summary>Gets or sets a value that indicates whether the check box is selected.</summary>
+      <returns>true if the check box is selected; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.LabeledBy">
+      <summary>Gets the label text of this control.</summary>
+      <returns>The label text of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.Value">
+      <summary>Gets the value of the value attribute of the check box.</summary>
+      <returns>The value of the value attribute of the check box.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames.Checked">
+      <summary>Returns "Checked".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames.LabeledBy">
+      <summary>Returns "LabeledBy".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox.PropertyNames.Value">
+      <summary>Returns "Value".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.ItemCount">
+      <summary>Returns "ItemCount".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.Items">
+      <summary>Returns "Items".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.LabeledBy">
+      <summary>Returns "LabeledBy".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.SelectedIndex">
+      <summary>Returns "SelectedIndex".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.SelectedItem">
+      <summary>Returns "SelectedItem".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlComboBox.PropertyNames.Size">
+      <summary>Returns "Size".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl">
+      <summary>Provides a base class for controls to test the user interface (UI) of Web pages.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl" /> class. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.AccessKey">
+      <summary>Gets the value of the AccessKey attribute of this control.</summary>
+      <returns>The access key of the control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.Class">
+      <summary>Gets the value of the Class attribute of this control.</summary>
+      <returns>The value of the Class attribute of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.ControlDefinition">
+      <summary>Gets the definition of the control in the HTML page.</summary>
+      <returns>The definition of the control in the HTML page.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.HelpText">
+      <summary>Gets the value of the HelpText attribute of this control.</summary>
+      <returns>The help text that is associated with this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.Id">
+      <summary>Gets the value of the ID attribute of this control.</summary>
+      <returns>The ID of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.InnerText">
+      <summary>Gets the text content of this control.</summary>
+      <returns>The text content of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.TagInstance">
+      <summary>Gets the index of the control in the collection of controls on the page that has the same tag name.</summary>
+      <returns>The index of the control in the collection of controls on the page that has the same tag name.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.TagName">
+      <summary>Gets the tag name of this control.</summary>
+      <returns>The tag name of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.Title">
+      <summary>Gets the value of the Title attribute of this control.</summary>
+      <returns>The value of the Title attribute of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.Type">
+      <summary>Gets the value of the Type attribute of this control.</summary>
+      <returns>The value of the Type attribute of this control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlControl.ValueAttribute">
+      <summary>Gets the value of the Value attribute of this control.</summary>
+      <returns>The value of the Value attribute of this control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCustom">
+      <summary>Represents an HTML custom control to test the user interface (UI) of Web pages.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCustom.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCustom" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCustom.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCustom" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv">
+      <summary>Represents a Div control to test the user interface (UI) of Web pages.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv" /> class. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.DisplayText">
+      <summary>Gets the text in this control.</summary>
+      <returns>The text in this control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDiv.PropertyNames.DisplayText">
+      <summary>Returns "DisplayText".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument">
+      <summary>Represents an HTML document control to test the user interface (UI) of Web pages.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.AbsolutePath">
+      <summary>Gets the absolute path of the document.</summary>
+      <returns>The absolute path of the document.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.FrameDocument">
+      <summary>Gets a value that indicates whether this HTML document control resides in a frame.</summary>
+      <returns>true if this HTML document control resides in a frame; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PageUrl">
+      <summary>Gets the URL for the document.</summary>
+      <returns>The URL for the document.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.RedirectingPage">
+      <summary>Gets a value that indicates whether this HTML document is a redirecting page.</summary>
+      <returns>true if this HTML document is a redirecting page; otherwise, false.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames.AbsolutePath">
+      <summary>Returns "AbsolutePath".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames.FrameDocument">
+      <summary>Returns "FrameDocument".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames.PageUrl">
+      <summary>Returns "PageUrl".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlDocument.PropertyNames.RedirectingPage">
+      <summary>Returns "RedirectingPage".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.CopyPastedText">
+      <summary>Returns "CopyPastedText".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.DefaultText">
+      <summary>Returns "DefaultText".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.IsPassword">
+      <summary>Returns "IsPassword".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.LabeledBy">
+      <summary>Returns "LabeledBy".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.MaxLength">
+      <summary>Returns "MaxLength".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.Password">
+      <summary>Returns "Password".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.ReadOnly">
+      <summary>Returns "ReadOnly".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEdit.PropertyNames.Text">
+      <summary>Returns "Text".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv">
+      <summary>Represents an editable Div control for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv" /> class by using the provided parent control. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.CopyPastedText">
+      <summary>Gets or sets the text in a text box by using copy and paste. Can be used for search.</summary>
+      <returns>The text in a text box.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.DefaultText">
+      <summary>Gets the default text for the edit control.</summary>
+      <returns>The default text.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.IsPassword">
+      <summary>Gets a value that indicates whether the control is a password control.</summary>
+      <returns>true if the control is a password control; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.LabeledBy">
+      <summary>Gets the label text of the control.</summary>
+      <returns>The label text of the control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.Password">
+      <summary>Gets the encoded contents of the control.</summary>
+      <returns>The encoded contents.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.ReadOnly">
+      <summary>Gets a value that indicates whether the control is read-only.</summary>
+      <returns>true if the control is read-only; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.Text">
+      <summary>Gets or sets the contents of the control.</summary>
+      <returns>The contents of the control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.CopyPastedText">
+      <summary>Returns "CopyPastedText".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.DefaultText">
+      <summary>Returns "DefaultText".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.IsPassword">
+      <summary>Returns "IsPassword".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.LabeledBy">
+      <summary>Returns "LabeledBy".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.Password">
+      <summary>Returns "Password".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.ReadOnly">
+      <summary>Returns "ReadOnly".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlEditableDiv.PropertyNames.Text">
+      <summary>Returns "Text".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame">
+      <summary>Represents a frame control for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame" /> class. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame.AbsolutePath">
+      <summary>Gets the absolute path for the contents of the frame control.</summary>
+      <returns>The absolute path for the contents of the frame control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame.PageUrl">
+      <summary>Gets the URL for the page that appears in the frame.</summary>
+      <returns>The URL for the page that appears in the frame.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlFrame.Scrollable">
+      <summary>Gets a value that indicates whether this frame control is scrollable.</summary>
+      <returns>true if this frame control is scrollable; otherwise, false.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlCheckBox" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames.AbsolutePath">
+      <summary>Returns "AbsolutePath".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames.Alt">
+      <summary>Returns "Alt".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames.Href">
+      <summary>Returns "Href".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlHyperlink.PropertyNames.Target">
+      <summary>Returns "Target".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.AbsolutePath">
+      <summary>Returns "AbsolutePath".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.Alt">
+      <summary>Returns "Alt".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.Href">
+      <summary>Returns "Href".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.LinkAbsolutePath">
+      <summary>Returns "LinkAbsolutePath".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlImage.PropertyNames.Src">
+      <summary>Returns "Src".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton">
+      <summary>Represents an input button for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton" /> class. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlInputButton.DisplayText">
+      <summary>Gets the display text for this input button.</summary>
+      <returns>The display text for this input button.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel.PropertyNames.DisplayText">
+      <summary>Returns "DisplayText".</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlLabel.PropertyNames.LabelFor">
+      <summary>Returns "LabelFor".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList">
+      <summary>Represents a list control for web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList" /> class.</summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.GetContent">
+      <summary>Gets the content of the control.</summary>
+      <returns>The content of the control.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.IsMultipleSelection">
+      <summary>Gets a value that indicates whether this list control allows selection of multiple items.</summary>
+      <returns>true if this control allows selection of multiple items; otherwise, false.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.ItemCount">
+      <summary>Gets the number of items in this list.</summary>
+      <returns>The number of items in this list.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.Items">
+      <summary>Gets a collection of items in this list.</summary>
+      <returns>A collection of items in this list.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.LabeledBy">
+      <summary>Gets the display text in the label of this list.</summary>
+      <returns>The display text in the label of this list.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.SelectedIndices">
+      <summary>Gets an array of the index numbers for all selected items.</summary>
+      <returns>An array of the index numbers for all selected items.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.SelectedItems">
+      <summary>Gets an array of the selected items.</summary>
+      <returns>An array of the selected items.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.SelectedItemsAsString">
+      <summary>Gets a string that contains a comma-delimited list of the selected items in this list.</summary>
+      <returns>A string that contains a comma-delimited list of the selected items in this list.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlList.Size">
+      <summary>Gets the value of the Size attribute of this control.</summary>
+      <returns>The value of the Size attribute of this control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem">
+      <summary>Represents a list item control for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem" /> class.</summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem.DisplayText">
+      <summary>Gets the display text for this list item.</summary>
+      <returns>The display text for this list item.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem.Select">
+      <summary>Selects the list item in the list or combobox.</summary>
+      <exception cref="T:System.InvalidOperationException">The list item is not part of a list or a combobox control.</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlListItem.Selected">
+      <summary>Gets a value that indicates whether this list item is selected.</summary>
+      <returns>true if this list item is selected; otherwise, false.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia">
+      <summary>Represents a Html media control.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.#ctor">
+      <summary>Creates a new instance of HtmlMedia class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.AutoPlay">
+      <summary>Gets the value of autoplay attribute of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Controls">
+      <summary>Gets the value of controls attribute of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.CurrentSrc">
+      <summary>Gets the current source of the media.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.CurrentTime">
+      <summary>Gets the current playing time of the media.</summary>
+      <returns>Returns <see cref="T:System.TimeSpan" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.CurrentTimeAsString">
+      <summary>Gets the current playing time of the media as string.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Duration">
+      <summary>Gets the duration of the media.</summary>
+      <returns>Returns <see cref="T:System.TimeSpan" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.DurationAsString">
+      <summary>Gets the duration of the media as string.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Ended">
+      <summary>Gets the ended state of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Loop">
+      <summary>Gets the value of loop attribute of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Mute">
+      <summary>Mutes the media.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Muted">
+      <summary>Gets the muted state of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Pause">
+      <summary>Pauses the media.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Pause(System.TimeSpan)">
+      <summary>Pauses media at the specified time.</summary>
+      <param name="pauseTime">Time to pause the media.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Paused">
+      <summary>Gets the paused state of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Play">
+      <summary>Plays the media.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Play(System.TimeSpan)">
+      <summary>Plays media from the specified start time.</summary>
+      <param name="startTime">Starting time.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PlaybackRate">
+      <summary>Gets the playback rate of the media.</summary>
+      <returns>Returns <see cref="T:System.Single" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.ReadyState">
+      <summary>Gets the ready state value of the media.</summary>
+      <returns>Returns <see cref="T:System.Int32" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Seek(System.TimeSpan)">
+      <summary>Seeks media to the specified time.</summary>
+      <param name="seekToTime">Time to seek to.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Seeking">
+      <summary>Gets the seeking state of the media.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.SetVolume(System.Single)">
+      <summary>Sets the volume of the media.</summary>
+      <param name="volume">Volume to set.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Src">
+      <summary>Gets the value of src attribute of the media.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Unmute">
+      <summary>Unmutes the media.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.Volume">
+      <summary>Gets the current volume of the media.</summary>
+      <returns>Returns <see cref="T:System.Single" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames">
+      <summary>Contains property names of HtmlMedia.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.AutoPlay">
+      <summary>Gets the value of the autoplay attribute of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Controls">
+      <summary>Gets the value of the controls attribute of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.CurrentSrc">
+      <summary>Gets the current source of the media. Data-type: System.String</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.CurrentTime">
+      <summary>Gets the current time of the media. Data-type: System.TimeSpan</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.CurrentTimeAsString">
+      <summary>Gets the current time of the media as a string. Data-type: System.String</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Duration">
+      <summary>Gets the duration of the media. Data-type: System.TimeSpan</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.DurationAsString">
+      <summary>Gets the duration of the media as a string. Data-type: string</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Ended">
+      <summary>Gets the ended state of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Loop">
+      <summary>Gets the value of the loop attribute of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Muted">
+      <summary>Gets the muted state of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Paused">
+      <summary>Gets the paused state of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.PlaybackRate">
+      <summary>Gets or sets the playback rate of the media. Data-type: float</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.ReadyState">
+      <summary>Gets the ready state value of the media. Data-type: int</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Seeking">
+      <summary>Gets the seeking state of the media. Data-type: System.Boolean</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Src">
+      <summary>Gets the value of the src attribute of the media. Can be used for search. Data-type: System.String</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlMedia.PropertyNames.Volume">
+      <summary>Gets the current volume of the media. Data-type: float</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar">
+      <summary>Represents a scroll bar control for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar" /> class by using the provided parent control.</summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.Orientation">
+      <summary>Gets the orientation direction for this scroll bar.</summary>
+      <returns>The orientation direction for this scroll bar.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlScrollBar.PropertyNames.Orientation">
+      <summary>Returns "Orientation".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider">
+      <summary>Represents an HTML Slider control.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.#ctor">
+      <summary>Creates a new instance of the HtmlSlider class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Disabled">
+      <summary>Gets whether the control is disabled.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Max">
+      <summary>Gets the maximum position enabled on the slider.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Min">
+      <summary>Gets the minimum position enabled on the slider.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Required">
+      <summary>Gets whether the control is required.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Step">
+      <summary>Gets the step value enabled on the slider.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.Value">
+      <summary>Gets the value of the slider as a string.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.ValueAsNumber">
+      <summary>Gets the current value of the slider as a floating point number.</summary>
+      <returns>Returns <see cref="T:System.Double" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames">
+      <summary> Contains property names of HtmlSlider </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Disabled"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Max"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Min"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Required"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Step"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.Value"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSlider.PropertyNames.ValueAsNumber"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan">
+      <summary>Represents a span control for Web page user interface (UI) testing.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan" /> class. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan" /> class. </summary>
+      <param name="parent">The <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.UITestControl" /> that contains this control.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.DisplayText">
+      <summary>Gets the text that appears in this span control.</summary>
+      <returns>The text that appears in this span control.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.PropertyNames">
+      <summary>Contains a field for each property of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan" /> user interface (UI) testing control where each field is named for, and returns, the name of the corresponding property.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.PropertyNames" /> class. </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlSpan.PropertyNames.DisplayText">
+      <summary>Returns "DisplayText".</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlVideo.PropertyNames">
+      <summary>Contains property names of HtmlVideo</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlVideo.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlVideo.PropertyNames.Poster">
+      <summary>Gets the value of poster attribute of the video. Can be used for search. Data-type: System.String</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlVideo.PropertyNames.VideoHeight"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.HtmlControls.HtmlVideo.PropertyNames.VideoWidth">
+      <summary>Gets the width of the video. Data-type: System.Int32</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton">
+      <summary> Represents a Xaml Button control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.DisplayText">
+      <summary> Gets the button's display text. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.PropertyNames">
+      <summary> Contains the property names of XamlButton </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlButton.PropertyNames.DisplayText">
+      <summary> Gets the text displayed on the button Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox">
+      <summary> Represents a Xaml CheckBox control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.Checked">
+      <summary> Gets or sets the checkbox's checked state. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.Indeterminate">
+      <summary> Gets or sets the checkbox's indeterminate state. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.PropertyNames">
+      <summary> Contains the property names of XamlCheckBox. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.PropertyNames.Checked">
+      <summary> Gets or sets the checkbox's checked state. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlCheckBox.PropertyNames.Indeterminate">
+      <summary> Gets or sets the checkbox's indeterminate state. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox">
+      <summary> Represents a WinDotNet combo box control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.Expanded">
+      <summary> Gets or sets the combobox's expanded state. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.GetContent">
+      <summary> Gets the content of the control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.Items">
+      <summary> Gets the collection of listitems under the combobox. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.SelectedIndex">
+      <summary> Gets or sets the index of the selected item in a combobox. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.SelectedItem">
+      <summary> Gets or sets the selected item in a combobox. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames">
+      <summary> Contains the property names of WinDotNetComboBox. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames.Expanded">
+      <summary> Gets or sets the combobox's expanded state. Data-Type: boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames.Items">
+      <summary> Gets the collection of listitems under the combobox. Data-Type: Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames.SelectedIndex">
+      <summary> Gets or sets the index of the selected item in a combobox. Data-Type: System.Int32 </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlComboBox.PropertyNames.SelectedItem">
+      <summary> Gets or sets the selected item in a combobox. Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl">
+      <summary> Represents a Xaml control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.AcceleratorKey">
+      <summary> Gets the control's accelerator key. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.AccessKey">
+      <summary> Gets the control's access key. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.AutomationId">
+      <summary> Gets the control's automation Id. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.Font">
+      <summary> Gets the font if TextProperty is supported. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.FontSize">
+      <summary> Gets the control's FontSize. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.FontWeight">
+      <summary> Gets the control's FontWeight. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.FrameworkId">
+      <summary> Gets the FrameworkId associated with the control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.GetUITestControlsForSearch">
+      <summary> Gets the array of UITestControl that will be used for Searching.  Overridden to validate the search properties </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.HelpText">
+      <summary> Gets the help text associated with the control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.ItemStatus"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.LabeledBy">
+      <summary> Gets the control's label text. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames">
+      <summary> Contains property names common to all Xaml controls. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.AcceleratorKey">
+      <summary> Gets the control's accelerator key. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.AccessKey">
+      <summary> Gets the control's access key. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.AutomationId">
+      <summary> Gets the control's automationId. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.Font">
+      <summary> Gets the control's Font. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.FontSize">
+      <summary> Gets the control's Font Size. Can be used for search. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.FontWeight">
+      <summary> Gets the control's Font Weight. Can be used for search. Data-Type: System.Int32 </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.FrameworkId">
+      <summary> Gets the control's FrameworkId. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.HelpText">
+      <summary> Gets the help text associated with the control. Data-type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.ItemStatus">
+      <summary> Gets the control's item status. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl.PropertyNames.LabeledBy">
+      <summary> Gets the control's LabeledBy. Can be used for search. Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit">
+      <summary> Represents a Xaml edit control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.IsPassword">
+      <summary> Gets a value indicating whether the edit control is a password control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.Password">
+      <summary> Sets the encoded text in a password type edit control </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.ReadOnly">
+      <summary> Gets a value indicating whether the edit control is read-only. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.SelectionText">
+      <summary> Gets the text that is selected in the edit control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.Text">
+      <summary> Gets or sets the text in the edit control. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames">
+      <summary> Contains property names of XamlEdit. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.IsPassword">
+      <summary> Gets a value indicating whether the edit control is a password control. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.Password">
+      <summary> Sets the encoded text in a password type edit control Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.ReadOnly">
+      <summary> Gets a value indicating whether the edit control is read-only. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.SelectionText">
+      <summary> Gets the text that is selected in the edit control. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlEdit.PropertyNames.Text">
+      <summary> Gets or sets the text in the edit control. Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView">
+      <summary> Represents a Xaml FlipView control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.FlipNext">
+      <summary> Method used to navigate Next in XamlFlipView </summary>
+      <exception cref="T:System.InvalidOperationException">Throws InvalidOperationException if Navigation fails.</exception>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.FlipPrevious">
+      <summary> Method used to navigate Previous in XamlFlipView </summary>
+      <exception cref="T:System.InvalidOperationException">Throws InvalidOperationException if Navigation fails.</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.ItemNames">
+      <summary> Gets the ItemNames of the control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.Items">
+      <summary> Gets the collection of child FlipViewItems of the FlipView. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.SelectedIndex">
+      <summary> Gets or sets the index of the selected item of the FlipView. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.SelectedItem">
+      <summary> Gets or sets the selected item of the FlipView. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames">
+      <summary> Contains property names of XamlFlipView. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames.ItemNames"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames.Items">
+      <summary> Gets the collection of child FlipView items of the FlipView. Data-Type: Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames.SelectedIndex">
+      <summary> Gets or sets the index of the selected item of the FlipView. Data-Type: System.Int32 </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipView.PropertyNames.SelectedItem">
+      <summary> Gets the selected item of the FlipView. Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem">
+      <summary> Represents a Xaml FlipViewItem control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.DisplayText">
+      <summary> Gets the display text of the FlipViewItem. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.Select">
+      <summary> Selects the FlipView item in the FlipView. </summary>
+      <exception cref="T:System.InvalidOperationException">The FlipViewItem is not part of a FlipView Control</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.Selected">
+      <summary> Gets the value indicating whether the FlipViewItem is selected. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.PropertyNames">
+      <summary> Contains property names of XamlFlipViewItem. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.PropertyNames.DisplayText">
+      <summary> Gets the display text of the flipViewitem. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlFlipViewItem.PropertyNames.Selected">
+      <summary> Gets the value indicating whether the flipViewitem is selected. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.SectionNames"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.Sections"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.PropertyNames.SectionNames"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHub.PropertyNames.Sections"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.DisplayText"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.IsHeaderInteractable"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.PropertyNames.DisplayText"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHubSection.PropertyNames.IsHeaderInteractable"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.DisplayText"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlHyperlink.PropertyNames.DisplayText"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList">
+      <summary> Represents a Xaml List control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.GetContent">
+      <summary> Gets the content of the control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.IsMultipleSelection"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.Items">
+      <summary> Gets the collection of child list items of the list. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.SelectedIndices">
+      <summary> Gets or sets the indices of the selected items of the list. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.SelectedItems">
+      <summary> Gets or sets the list of selected items of the list. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.SelectedItemsAsString">
+      <summary> Gets or sets the selected items of the list in a comma separated format. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames">
+      <summary> Contains property names of XamlList. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.IsMultipleSelection">
+      <summary> Gets a value indicating whether the list supports multi-selection Data-Type: System.Boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.Items">
+      <summary> Gets the collection of child list items of the list. Data-Type: Microsoft.VisualStudio.TestTools.UITesting.UITestControlCollection </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.SelectedIndices">
+      <summary> Gets or sets the indices of the selected items of the list. Data-Type: System.Int32[] </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.SelectedItems">
+      <summary> Gets or sets the list of selected items of the list. Data-Type: System.String[] </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlList.PropertyNames.SelectedItemsAsString">
+      <summary> Gets or sets the selected items of the list in a comma seperated format. Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem">
+      <summary> Represents a Xaml list item control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.DisplayText">
+      <summary> Gets the display text of the list item. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.Select">
+      <summary> Selects the list item in the list or combobox. </summary>
+      <exception cref="T:System.InvalidOperationException">The list item is not part of a list or a combo box control.</exception>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.Selected">
+      <summary> Gets the value indicating whether the list item is selected. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.PropertyNames">
+      <summary> Contains property names of XamlListItem. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.PropertyNames.DisplayText">
+      <summary> Gets the display text of the list item. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlListItem.PropertyNames.Selected">
+      <summary> Gets the value indicating whether the list item is selected. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.Items"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenu.PropertyNames.Items"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.#ctor"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.CanToggle"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.Checked"></member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.DisplayText"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.PropertyNames.#ctor"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.PropertyNames.CanToggle"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.PropertyNames.Checked"></member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlMenuItem.PropertyNames.DisplayText"></member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar">
+      <summary> Represents a Xaml Progress bar control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.MaximumPosition">
+      <summary> Gets the maximum value of the progress bar. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.MinimumPosition">
+      <summary> Gets the minimum value of the progress bar. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.Position">
+      <summary> Gets the current position of the progress bar. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames">
+      <summary> Contains property names of XamlProgressBar. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames.MaximumPosition">
+      <summary> Gets the maximum value of the progress bar. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames.MinimumPosition">
+      <summary> Gets the minimum value of the progress bar. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlProgressBar.PropertyNames.Position">
+      <summary> Gets or sets the current position of the progress bar. Data-Type: System.Double </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton">
+      <summary> Represents a Xaml radio button control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.Group">
+      <summary> Gets the group under which the  radio button is present. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.Selected">
+      <summary> Gets or sets the selected state of the radio button. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.PropertyNames">
+      <summary> Contains property names of XamlRadioButton. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.PropertyNames.Group">
+      <summary> Gets the group under which the  radio button is present. Data-Type: Microsoft.VisualStudio.TestTools.UITesting.UITestControl </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlRadioButton.PropertyNames.Selected">
+      <summary> Gets or sets the selected state of the radio button. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom">
+      <summary> Represents a Xaml SemanticZoom control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.ToggleActiveView">
+      <summary> Toggles the Active View of a Semantic Zoom control. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.ZoomedIn">
+      <summary> Gets or Sets the current view state of a Semantic Zoom control. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSemanticZoom.PropertyNames.ZoomedIn">
+      <summary> Gets or Sets the current view state of a SemanticZoom control. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider">
+      <summary> Represents a Xaml Slider. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.LargeChange">
+      <summary> Gets the position change when the slider is moved by a large distance. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.MaximumPosition">
+      <summary> Gets the maximum position allowed on the slider. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.MinimumPosition">
+      <summary> Gets the minimum position allowed on the slider. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.Position">
+      <summary> Gets or sets the position on the slider. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PositionAsString">
+      <summary> Gets or sets the position on the slider as a string. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.SmallChange">
+      <summary> Gets the position change when the slider is moved by a small distance. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames">
+      <summary> Contains property names common to all Xaml controls. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.LargeChange">
+      <summary> Gets the position change when the slider is moved by a large distance. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.MaximumPosition">
+      <summary> Gets the maximum position allowed on the slider. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.MinimumPosition">
+      <summary> Gets the minimum position allowed on the slider. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.Position">
+      <summary> Gets or sets the position on the slider. Data-Type: System.Double </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.PositionAsString">
+      <summary> Gets or sets the position on the slider as a string. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlSlider.PropertyNames.SmallChange">
+      <summary> Gets the position change when the slider is moved by a small distance. Data-Type: System.Double </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText">
+      <summary> Represents a Xaml Text control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.DisplayText">
+      <summary> Gets the display text for text control </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.PropertyNames"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlText.PropertyNames.DisplayText">
+      <summary> Gets the display text for text control Data-Type: System.String </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton">
+      <summary> Represents a Xaml toggle button control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.DisplayText">
+      <summary> Gets the display text of the toggle-button. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.Indeterminate">
+      <summary> Gets or sets the indeterminate state of the toggle-button. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.Pressed">
+      <summary> Gets or sets the pressed state of the toggle-button. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames">
+      <summary> Contains property names of XamlToggleButton. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames.DisplayText">
+      <summary> Gets the display text of the toggle-button. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames.Indeterminate">
+      <summary> Gets or sets the indeterminate state of the toggle-button. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleButton.PropertyNames.Pressed">
+      <summary> Gets or sets the pressed state of the toggle-button. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch">
+      <summary> Represents a Xaml toggle switch control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch" /> class.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.DisplayText">
+      <summary> Gets the display text of the toggle-switch. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.IsOn">
+      <summary> Gets or sets the pressed state of the toggle-switch. </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.PropertyNames">
+      <summary> Contains property names of XamlToggleSwitch. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.PropertyNames" /> class.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.PropertyNames.DisplayText">
+      <summary> Gets the display text of the toggle-switch. Data-Type: System.String </summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlToggleSwitch.PropertyNames.IsOn">
+      <summary> Gets or sets the On state of the toggle-switch. Data-Type: System.Boolean </summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView">
+      <summary> Represents a XamlWebView control. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView.#ctor(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView" /> class.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView.PropertyNames">
+      <summary> Contains the property names of XamlWebView </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView.PropertyNames.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWebView.PropertyNames" /> class.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.#ctor(Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlControl)">
+      <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow" /> class.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.Close">
+      <summary> Closes the associated window. </summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.CloseOnPlaybackCleanup">
+      <summary> Gets or Sets whether to close the ApplicationControl automatically at playback cleanup. </summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.CopyFrom(Microsoft.VisualStudio.TestTools.UITesting.UITestControl)"></member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.Find">
+      <summary> Find the XamlWindow. </summary>
+      <exception cref="T:Microsoft.VisualStudio.TestTools.UITest.Extension.UITestControlNotAvailableException"> If the window is not available or invalid </exception>
+      <exception cref="T:Microsoft.VisualStudio.TestTools.UITest.Extension.UITestControlNotFoundException"> If the window is not found with the given search properties </exception>
+    </member>
+    <member name="M:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.Launch(System.String)">
+      <summary> Launches the XAML application using given Package Family Name as if the app is not in running/suspended state even if it is. </summary>
+      <returns>XamlWindow corresponding to the XAML application</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.TestTools.UITesting.WindowsRuntimeControls.XamlWindow.Title">
+      <summary> Gets the title of the window. </summary>
+    </member>
+  </members>
+</doc>

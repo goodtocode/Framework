@@ -1,0 +1,475 @@
+﻿/* 
+* Responsive snaps
+*/
+@media (min-width: 1200px) {
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+}
+
+@media (max-width: 479px) {
+}
+
+/* 
+* Standard
+*/
+body {
+    background: #F7F9FA;
+    font-family: 'Segoe UI';
+}
+
+footer {
+    margin: 0.625em 1.25em 0.625em 1.25em;
+}
+
+input,
+select,
+textarea {
+    max-width: 20.6em;
+}
+
+img {
+    max-width: 100%;
+}
+
+p, li {
+    font-size: 1.1em;
+}
+
+a {
+    font-size: 1.05em;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/*
+* Bootstrap extensions
+*/
+.body-content {
+    background-color: #FFFFFF;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.jumbotron {
+    background: #FFFFFF;
+}
+
+.carousel-inner {
+    overflow: hidden;
+}
+
+.carousel-indicators {
+    bottom: -0.75em;
+}
+
+    .carousel-indicators li {
+        background-color: #A8B3BD;
+        border: 1px solid #A8B3BD;
+    }
+
+    .carousel-indicators .active {
+        background-color: #0c60c6;
+        border: 1px solid #0c60c6;
+    }
+
+.btn {
+    min-width: 8em;
+}
+
+.form-inline .btn {
+    min-width: 0;
+}
+
+.caret-off::before {
+    display: none;
+}
+
+.caret-off::after {
+    display: none;
+}
+
+/*
+* Navbar
+*/
+.navbar {
+    background-color: #F7F9FA;
+    border-color: #F7F9FA;
+}
+
+    .navbar > .container {
+        padding-right: 2.2em;
+    }
+
+    .navbar a {
+        text-decoration: none;
+    }
+
+.nav li:hover a {
+    color: lightgray !important;
+}
+
+.navbar-toggle {
+    border-color: #F7F9FA !important;
+    background-color: #A8B3BD;
+}
+
+.navbar-collapse {
+    border: none;
+}
+
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus,
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    background-color: transparent;
+}
+
+/*
+* Misc
+*/
+.text-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 40%;
+}
+
+.grid-header {
+    background-color: #F7F9FA;
+}
+
+.border-none {
+    border: 0 !important;
+}
+
+.border-strong {
+    border: 3px solid #0c60c6 !important;
+}
+
+.margin-none {
+    margin: 0em !important;
+}
+
+.padding-none {
+    padding: 0em !important;
+}
+
+.padding-xs {
+    padding: .15em !important;
+}
+
+.padding-sm {
+    padding: 1em !important;
+}
+
+.padding-md {
+    padding: 2em !important;
+}
+
+/* 
+* Genesys Logo
+*/
+.genesys-logo-container {
+    height: 4.5em;
+    width: 24em;
+    text-align: center;
+}
+
+.genesys-logo-text {
+    font-family: 'Segoe UI';
+    font-variant: small-caps;
+    font-size: 1.25em;
+    margin-top: -0.75em;
+    color: #0c60c6;
+}
+
+.genesys-logo-image, .genesys-logo-image-sm {
+    text-align: center;
+}
+
+.genesys-logo-image-sm {
+    max-width: 14em;
+}
+
+/* 
+* Glyphicon
+*/
+.glyphicon-framework, .glyphicon-environments {
+    color: #FFFFFF;
+    font-size: 4.5em;
+    line-height: 0.35;
+}
+
+    .glyphicon-framework:before {
+        content: "\2302";
+    }
+
+    .glyphicon-environments:before {
+        content: "\2601";
+        color: red !important;
+    }
+
+/*
+* Typography
+*/
+.smallcaps {
+    font-variant: small-caps;
+}
+
+/*
+* Genesys Tiles
+*/
+.genesys-tile {
+    font-family: 'Segoe UI';
+    width: 5.3em;
+    height: 5.3em;
+    text-align: center;
+}
+
+    .genesys-tile a {
+        text-decoration: none;
+        padding: 5px 0px 0px 0px !important;
+    }
+
+    .genesys-tile .glyphicon {
+        color: #FFFFFF;
+        font-size: 3.5em;
+    }
+
+    .genesys-tile p {
+        color: #FFFFFF;
+        font-weight: 400;
+        font-size: 0.8em;
+        line-height: 0.85em;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+/* 
+* Genesys Logo Color Palette
+*/
+.genesys-blue {
+    color: #0c60c6 !important;
+}
+
+.genesys-gray {
+    color: #5a5a5a !important;
+}
+
+.genesys-green {
+    color: #73BE3D !important;
+}
+
+.genesys-purple {
+    color: #7030A0 !important;
+}
+
+.genesys-red {
+    color: #B22222 !important;
+}
+
+.genesys-orange {
+    color: #de6a1d !important;
+}
+
+.genesys-white {
+    color: #ffffff !important;
+}
+
+.genesys-blue-background {
+    background-color: #0c60c6 !important;
+}
+
+.genesys-gray-background {
+    background-color: #5a5a5a !important;
+}
+
+.genesys-green-background {
+    background-color: #73BE3D !important;
+}
+
+.genesys-purple-background {
+    background-color: #7030A0 !important;
+}
+
+.genesys-orange-background {
+    background-color: #de6a1d !important;
+}
+
+.genesys-offwhite-background {
+    background-color: #f5eeee !important;
+}
+/* 
+* Genesys Site Color Palette
+*/
+.genesys-site-slate {
+    background-color: #778899;
+}
+
+.genesys-site-medium {
+    background-color: #A8B3BD;
+}
+
+.genesys-site-offwhite {
+    background-color: #F7F9FA;
+}
+
+.genesys-site-blue {
+    background-color: #408AD1;
+}
+
+.genesys-site-royal {
+    background-color: #032bad;
+}
+
+/* 
+* Common
+*/
+.hr-sm {
+    border-color: #A8B3BD;
+    width: 30%;
+}
+
+.text-xs {
+    font-size: 9pt;
+}
+
+.text-sm {
+    font-size: 14pt;
+}
+
+.text-md {
+    font-size: 22pt;
+}
+
+.text-lg {
+    font-size: 36pt;
+}
+
+.text-xl {
+    font-size: 62pt;
+}
+
+.glyphicon-link {
+    font-size: 1.1em;
+}
+
+/*
+* Form
+*/
+.form-horizontal {
+    display: table;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: auto;
+}
+
+.control-label {
+    color: #778899;
+}
+
+/* 
+* Header Logo
+*/
+.logo-container {
+    height: 4.5em;
+    width: 24em;
+    text-align: center;
+}
+
+.logo-company {
+    font-family: 'Segoe UI';
+    font-variant: small-caps;
+    font-size: 2em;
+    color: firebrick;
+    font-weight: 400;
+}
+
+.logo-product {
+    font-family: 'Segoe UI';
+    font-variant: small-caps;
+    font-size: 1.25em !important;
+    color: gray;
+    font-weight: 400;
+    margin-top: -0.75em;
+}
+
+/*
+* Section contents
+*/
+.section-header {
+    color: #778899;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.section-buttons {
+    text-align: right;
+    padding-right: 1.1em;
+}
+
+.section-contents {
+    padding: 2.5em;
+    min-height: 15em;
+}
+
+    .section-contents > table {
+        border-left: hidden;
+        border-right: hidden;
+        border-color: blue;
+    }
+
+    .section-contents ul {
+        list-style: none;
+    }
+
+    .section-contents li:before {
+        content: "\21D2";
+        margin-left: -1.2em;
+        margin-right: 0.3em;
+    }
+
+    .section-contents li {
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+    }
+
+    .section-contents .form-horizontal {
+        text-align: center;
+    }
+
+/*
+* Contact
+*/
+.section-contact {
+    background-color: #A8B3BD;
+    color: #FFFFFF;
+}
+
+    .section-contact .section-header {
+        color: #FFFFFF;
+    }
+
+    .section-contact a {
+        color: #FFFFFF;
+        font-size: 1em;
+        font-weight: 500;
+        text-decoration: none;
+    }

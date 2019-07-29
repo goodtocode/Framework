@@ -1,0 +1,182 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Genesys.Framework</RootNamespace>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>GenesysFramework.snk</AssemblyOriginatorKeyFile>
+    <PackageId>Framework.Test.Core</PackageId>
+    <Version>4.18.9</Version>
+    <Authors>Genesys Source</Authors>
+    <Company>Genesys Source</Company>
+    <Product>Genesys Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
+    <Description>Genesys Source Framework Web foundation classes for your app, controllers, views and model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.genesyssource.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.genesyssource.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/genesyssource/framework</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>DEBUG;NETCOREAPP2_0</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Activity\" />
+    <Folder Include="Application\" />
+    <Folder Include="Data\" />
+    <Folder Include="Endpoints\" />
+    <Folder Include="Entity\" />
+    <Folder Include="Model\" />
+    <Folder Include="Serialization\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Worker\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Framework.Test.Core.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Framework.Test.Shared\Activity\ActivityLoggerTests.cs">
+      <Link>Activity\ActivityLoggerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Activity\ExceptionLoggerTests.cs">
+      <Link>Activity\ExceptionLoggerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Application\ITestApplication.cs">
+      <Link>Application\ITestApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Application\TestApplication.cs">
+      <Link>Application\TestApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\ConnectionStringNameAttributeTests.cs">
+      <Link>Data\ConnectionStringNameAttributeTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\DataAccessBehaviorAttributeTests.cs">
+      <Link>Data\DataAccessBehaviorAttributeTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\DatabaseSchemaNameAttributeTests.cs">
+      <Link>Data\DatabaseSchemaNameAttributeTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\ReadOnlyDatabaseTests.cs">
+      <Link>Data\ReadOnlyDatabaseTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\SaveableDatabaseTests.cs">
+      <Link>Data\SaveableDatabaseTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\TakeRowsAttributeTests.cs">
+      <Link>Data\TakeRowsAttributeTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Data\Test.Data.Tables.cs">
+      <Link>Data\Test.Data.Tables.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Endpoints\Framework-for-WebApi-Tests.cs">
+      <Link>Endpoints\Framework-for-WebApi-Tests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Entity\CrudEntityTests.cs">
+      <Link>Entity\CrudEntityTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Entity\CustomerEntityTests.cs">
+      <Link>Entity\CustomerEntityTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Model\CustomerModelTests.cs">
+      <Link>Model\CustomerModelTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Model\CustomerSearchModelTests.cs">
+      <Link>Model\CustomerSearchModelTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Model\TestViewModel.cs">
+      <Link>Model\TestViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Model\ViewModelTests.cs">
+      <Link>Model\ViewModelTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Serialization\JsonSerializerGenericTests.cs">
+      <Link>Serialization\JsonSerializerGenericTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Serialization\JsonSerializerTests.cs">
+      <Link>Serialization\JsonSerializerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Serialization\SerializerGenericTests.cs">
+      <Link>Serialization\SerializerGenericTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Serialization\SerializerTests.cs">
+      <Link>Serialization\SerializerTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Validation\ValidationRuleTests.cs">
+      <Link>Validation\ValidationRuleTests.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Test.Shared\Worker\WorkerTests.cs">
+      <Link>Worker\WorkerTests.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="appsettings.Development.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Include="appsettings.json" />
+    <None Include="appsettings.Local.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Include="appsettings.Production.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Include="appsettings.Staging.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </None>
+    <None Include="ConfigurationManagerLocal.cs" />
+    <None Include="App.json" />
+    <None Include="App_Data\AppSettings.Debug.json" />
+    <None Include="App_Data\AppSettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App_Data\AppSettings.Release.json" />
+    <None Include="App_Data\ConnectionStrings.Debug.json" />
+    <None Include="App_Data\ConnectionStrings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="App_Data\ConnectionStrings.Release.json" />
+    <None Include="App_Data\FrameworkData_Primary.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Genesys.Extensions.Core" Version="4.18.19050.2" />
+    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="Genesys.Framework.DataAccess.Core" Version="4.18.19060.2" />
+    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="Genesys.Framework.Models.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.DataAccess.Core\Framework.DataAccess.Core.csproj" />
+    <ProjectReference Include="..\Framework.Interop.Standard\Framework.Interop.Standard.csproj" />
+    <ProjectReference Include="..\Framework.Models.Standard\Framework.Models.Standard.csproj" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+</Project>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Genesys.Extensions.Portable</id>
+    <version>4.18.10.352281</version>
+    <title>Genesys Source .NET Extensions for Core, Universal (UWP), Xamarin Forms and Portable Class Libraries (PCL).</title>
+    <description>Genesys Source Extension cross-platform common-library .NET Core extension methods and extra classes. Genesys Source Framework is a open-source, cross-platform, full-stack .NET solution that centralizes your business objects in one reusable solution.</description>
+    <authors>Genesys Source</authors>
+    <owners>Genesys Source</owners>
+    <licenseUrl>http://www.genesyssource.com/policy/nuget/license.html</licenseUrl>
+    <projectUrl>http://www.genesyssource.com</projectUrl>
+    <iconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes>Monthly sprint release. See full release notes at GenesysSource.com.</releaseNotes>
+    <copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</copyright>
+    <tags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
+  </metadata>
+  <files>
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.dll" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.xml" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.pdb" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.dll" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.xml" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.pdb" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.dll" target="lib\net46" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.xml" target="lib\net46" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extensions.Portable.pdb" target="lib\net46" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.dll" target="lib\net46" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.xml" target="lib\net46" />
+    <file src="\lib\Genesys-Extensions\Genesys.Extras.Portable.pdb" target="lib\net46" />
+  </files>
+</package>

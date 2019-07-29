@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="818770a1-011c-460a-8854-0ac0ebb37397" visible="True" isDefault="true" title="Genesys Source Framework API Reference">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="6f95f9a8-e6e0-4d3f-9651-500a8d277f30" visible="True" isExpanded="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history" />
+    </HelpKeywords>
+    <Topic id="c6269aba-4920-44e0-8787-dc68f5311dc3" visible="True" isSelected="true" title="Version 4.00.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 4.00.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+</Topics>

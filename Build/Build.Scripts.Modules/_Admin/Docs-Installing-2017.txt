@@ -1,0 +1,34 @@
+Configure your account
+Configure your account by following the steps outlined here.
+
+#1 Download the agent
+https://github.com/Microsoft/vsts-agent/releases/download/v2.119.1/vsts-agent-win7-x64-2.119.1.zip
+* Extract to \builds\dev-build-01-agent-01
+* Only .zip and .txt files should be present. No .cmd, no sub-folders
+
+#2 Create the agent
+PS C:\> md \builds\dev-build-01-agent-01
+PS C:\> cd \builds\dev-build-01-agent-01
+PS C:\dev-build-01-agent-01> Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("c:\Builds\dev-build-01-agent-01\vsts-agent-win7-x64-2.119.1.zip", "$PWD")
+
+#3 Configure the agentDetailed instructions
+(Admin required)
+PS C:\dev-build-01-agent-01> .\config.cmd
+* To Remove, .\config.cmd remove
+---
+a. Url: https://genesyssource.visualstudio.com
+b. PAT (PAT, Integrated, ) PAT
+c. Get PAT: genesyssource.visualstudio.com -> Profile (upper-right) -> Security -> PAT)
+ - Enter PAT: 
+d. Agent Pool: Default
+e. Agent Name: dev-build-01-agent-01
+f. Work folder: _work
+g. Run as service? Y
+h. Dev\GenesysBuildAgent
+i. V**dd1
+
+#4 Optionally run the agent interactively
+If you didn't run as a service above:
+PS C:\agent> .\run.cmd
+
+#5 That's it!

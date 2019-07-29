@@ -1,0 +1,65 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework Test Project</Name>
+    <Description>Genesys Source Framework Test project containing unit tests for items in the templated projects. </Description>
+    <ProjectType>Code Sharing Projects</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.Test.Shared</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.Test.Shared.shproj" File="Framework.Test.Shared.shproj" ReplaceParameters="true">
+      <ProjectItem TargetFileName="$safeprojectname$.projitems" ReplaceParameters="true">Framework.Test.Shared.projitems</ProjectItem>
+      <Folder Name="Activity" TargetFolderName="Activity">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ActivityLoggerTests.cs">ActivityLoggerTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionLoggerTests.cs">ExceptionLoggerTests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Application" TargetFolderName="Application">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ITestApplication.cs">ITestApplication.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestApplication.cs">TestApplication.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Data" TargetFolderName="Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStringNameAttributeTests.cs">ConnectionStringNameAttributeTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAccessBehaviorAttributeTests.cs">DataAccessBehaviorAttributeTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseSchemaNameAttributeTests.cs">DatabaseSchemaNameAttributeTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ReadOnlyDatabaseTests.cs">ReadOnlyDatabaseTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SaveableDatabaseTests.cs">SaveableDatabaseTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TakeRowsAttributeTests.cs">TakeRowsAttributeTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Test.Data.Tables.cs">Test.Data.Tables.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Endpoints" TargetFolderName="Endpoints">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Framework-for-WebApi-Tests.cs">Framework-for-WebApi-Tests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Entity" TargetFolderName="Entity">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CrudEntityTests.cs">CrudEntityTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerEntityTests.cs">CustomerEntityTests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Model" TargetFolderName="Model">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerModelTests.cs">CustomerModelTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearchModelTests.cs">CustomerSearchModelTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestViewModel.cs">TestViewModel.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ViewModelTests.cs">ViewModelTests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Serialization" TargetFolderName="Serialization">
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonSerializerGenericTests.cs">JsonSerializerGenericTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="JsonSerializerTests.cs">JsonSerializerTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SerializerGenericTests.cs">SerializerGenericTests.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SerializerTests.cs">SerializerTests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Validation" TargetFolderName="Validation">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ValidationRuleTests.cs">ValidationRuleTests.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Worker" TargetFolderName="Worker">
+        <ProjectItem ReplaceParameters="true" TargetFileName="WorkerTests.cs">WorkerTests.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

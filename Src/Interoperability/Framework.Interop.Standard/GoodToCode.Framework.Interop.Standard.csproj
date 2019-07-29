@@ -1,0 +1,251 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
+    <PackageId>GoodToCode.Framework.Interop.Standard</PackageId>
+    <Version>4.18.9</Version>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Framework Interop for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</Product>
+    <Description>GoodToCode Framework Interop for your business entities and models. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.goodtocode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.goodtocode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.goodtocode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/goodtocode/framework</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Interop.Standard.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="GoodToCode.Framework.Interop.Standard.csproj.vspscc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Framework.Interop.Shared\Activity\IContext.cs">
+      <Link>Activity\IContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Activity\IActivityContext.cs">
+      <Link>Activity\IActivityContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Activity\IActivityContextId.cs">
+      <Link>Activity\IActivityContextId.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Activity\IActivityContextKey.cs">
+      <Link>Activity\IActivityContextKey.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Activity\IExceptionLog.cs">
+      <Link>Activity\IExceptionLog.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\IApplication.cs">
+      <Link>Application\IApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\IFrame.cs">
+      <Link>Application\IFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\INavigateType.cs">
+      <Link>Application\INavigateType.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\INavigateUri.cs">
+      <Link>Application\INavigateUri.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\IPage.cs">
+      <Link>Application\IPage.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Application\IViewModel.cs">
+      <Link>Application\IViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Device\IApplicationUUId.cs">
+      <Link>Device\IApplicationUUId.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Device\IdeviceUUId.cs">
+      <Link>Device\IdeviceUUId.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\CodeProperty.cs">
+      <Link>Data\CodeProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IBytesKey.cs">
+      <Link>Data\IBytesKey.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\ICode.cs">
+      <Link>Data\ICode.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\ICreatedDate.cs">
+      <Link>Data\ICreatedDate.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IdProperty.cs">
+      <Link>Data\IdProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IEntity.cs">
+      <Link>Data\IEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IEntityKey.cs">
+      <Link>Data\IEntityKey.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IId.cs">
+      <Link>Data\IId.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IKey.cs">
+      <Link>Data\IKey.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IValue.cs">
+      <Link>Data\IValue.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IModifiedDate.cs">
+      <Link>Data\IModifiedDate.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\IRecordState.cs">
+      <Link>Data\IRecordState.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\KeyProperty.cs">
+      <Link>Data\KeyProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Data\RecordStates.cs">
+      <Link>Data\RecordStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\IDescription.cs">
+      <Link>Name\IDescription.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\IName.cs">
+      <Link>Name\IName.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\INameCode.cs">
+      <Link>Name\INameCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\INameDescription.cs">
+      <Link>Name\INameDescription.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\INameId.cs">
+      <Link>Name\INameId.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Name\INameKey.cs">
+      <Link>Name\INameKey.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ICreateOperation.cs">
+      <Link>Operation\ICreateOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ICreateOperationAsync.cs">
+      <Link>Operation\ICreateOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ICrudOperation.cs">
+      <Link>Operation\ICrudOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ICrudOperationAsync.cs">
+      <Link>Operation\ICrudOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IDeleteOperation.cs">
+      <Link>Operation\IDeleteOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IDeleteOperationAsync.cs">
+      <Link>Operation\IDeleteOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IGetOperation.cs">
+      <Link>Operation\IGetOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IGetOperationAsync.cs">
+      <Link>Operation\IGetOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IReadOperation.cs">
+      <Link>Operation\IReadOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IReadOperationAsync.cs">
+      <Link>Operation\IReadOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ISaveOperation.cs">
+      <Link>Operation\ISaveOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\ISaveOperationAsync.cs">
+      <Link>Operation\ISaveOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IUpdateOperation.cs">
+      <Link>Operation\IUpdateOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Operation\IUpdateOperationAsync.cs">
+      <Link>Operation\IUpdateOperationAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Security\IIdentityUserName.cs">
+      <Link>Security\IIdentityUserName.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Security\IUserPrincipal.cs">
+      <Link>Security\IUserPrincipal.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Security\UserIdentity.cs">
+      <Link>Security\UserIdentity.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Security\UserPrincipal.cs">
+      <Link>Security\UserPrincipal.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Session\ISessionContext.cs">
+      <Link>Session\ISessionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Session\SessionContext.cs">
+      <Link>Session\SessionContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Text\TextMessage.cs">
+      <Link>Text\TextMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Text\ITextMessage.cs">
+      <Link>Text\ITextMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\IValidatable.cs">
+      <Link>Validation\IValidatable.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\IValidationRule.cs">
+      <Link>Validation\IValidationRule.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\IEntityValidator.cs">
+      <Link>Validation\IEntityValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\ValidationResult.cs">
+      <Link>Validation\ValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\ValidationRule.cs">
+      <Link>Validation\ValidationRule.cs</Link>
+    </Compile>
+        <Compile Include="..\Framework.Interop.Shared\Validation\ValidationRuleTypes.cs">
+      <Link>Validation\ValidationRuleTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Validation\EntityValidator.cs">
+      <Link>Validation\EntityValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Worker\IWorkerParameter.cs">
+      <Link>Worker\IWorkerParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Worker\IWorkerResult.cs">
+      <Link>Worker\IWorkerResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Worker\WorkerParameter.cs">
+      <Link>Worker\WorkerParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Worker\WorkerResult.cs">
+      <Link>Worker\WorkerResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Interop.Shared\Worker\WorkerStates.cs">
+      <Link>Worker\WorkerStates.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19186.1" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+</Project>

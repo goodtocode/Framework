@@ -1,0 +1,208 @@
+//-----------------------------------------------------------------------
+// <copyright file="EntityReader.cs" company="GoodToCode">
+//      Copyright (c) GoodToCode. All rights reserved.
+//      Licensed to the Apache Software Foundation (ASF) under one or more 
+//      contributor license agreements.  See the NOTICE file distributed with 
+//      this work for additional information regarding copyright ownership.
+//      The ASF licenses this file to You under the Apache License, Version 2.0 
+//      (the 'License'); you may not use this file except in compliance with 
+//      the License.  You may obtain a copy of the License at 
+//       
+//        http://www.apache.org/licenses/LICENSE-2.0 
+//       
+//       Unless required by applicable law or agreed to in writing, software  
+//       distributed under the License is distributed on an 'AS IS' BASIS, 
+//       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
+//       See the License for the specific language governing permissions and  
+//       limitations under the License. 
+// </copyright>
+//-----------------------------------------------------------------------
+using GoodToCode.Extensions;
+using GoodToCode.Framework.Activity;
+using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Operation;
+using System;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace GoodToCode.Framework.Repository
+{
+    /// <summary>
+    /// EF DbContext for read-only GetBy* operations
+    /// </summary>
+    public partial class EntityReader<TEntity> : IGetOperation<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    {
+        /// <summary>
+        /// Configuration class for dbContext options
+        /// </summary>
+        public IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>();
+
+        /// <summary>
+        /// Results from any query operation
+        /// </summary>
+        public IQueryable<TEntity> Results { get; protected set; } = default(IQueryable<TEntity>);
+
+        /// <summary>
+        /// Can connect to database?
+        /// </summary>
+        public bool CanConnect
+        {
+            get
+            {
+                var returnValue = Defaults.Boolean;
+                using (var connection = new SqlConnection(ConfigOptions.ConnectionString))
+                {
+                    returnValue = connection.CanOpen();
+                }
+                return returnValue;
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public EntityReader(IEntityConfiguration<TEntity> databaseConfig) : this()
+        {
+            ConfigOptions = databaseConfig;
+            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+        }
+
+        /// <summary>
+        /// Retrieves data with purpose of displaying results over multiple pages (i.e. in Grid/table)
+        /// </summary>
+        /// <param name="whereClause">Expression for where clause</param>
+        /// <returns></returns>
+        public IQueryable<TEntity> Read(Expression<Func<TEntity, Boolean>> whereClause)
+        {
+            return GetByWhere(whereClause);
+        }
+
+        /// <summary>
+        /// All data in this datastore subset
+        ///  Can add clauses, such as GetAll().Take(1), GetAll().Where(), etc.
+        /// </summary>
+        public IQueryable<TEntity> GetAll()
+        {
+            try
+            {
+                Results = Data;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetAll()");
+                throw;
+            }
+
+            return Results;
+        }
+
+        /// <summary>
+        /// All data in this datastore subset, except records with default Id/Key
+        ///  Criteria: Where Id != Defaults.Integer And Also Key != Defaults.Guid
+        ///  Goal: To exclude "Not Selected" records from lookup tables
+        /// </summary>
+        public IQueryable<TEntity> GetAllExcludeDefault()
+        {
+            try
+            {
+                Results = Data.Where(x => x.Id != Defaults.Integer && x.Key != Defaults.Guid);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetAllExcludeDefault()");
+                throw;
+            }
+
+            return Results;
+        }
+
+        /// <summary>
+        /// Gets database record with exact Id match
+        /// </summary>
+        /// <param name="id">Database Id of the record to pull</param>
+        /// <returns>Single entity that matches by id, or an empty entity for not found</returns>
+        public TEntity GetById(int id)
+        {
+            try
+            {
+                Results = Data.Where(x => x.Id == id);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetById()");
+                throw;
+            }
+
+            return Results.FirstOrDefaultSafe();
+        }
+
+        /// <summary>
+        /// Gets database record with exact Key match
+        /// </summary>
+        /// <param name="key">Database Key of the record to pull</param>
+        /// <returns>Single entity that matches by Key, or an empty entity for not found</returns>
+        public TEntity GetByKey(Guid key)
+        {
+            try
+            {
+                Results = Data.Where(x => x.Key == key);
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByKey()");
+                throw;
+            }
+
+            return Results.FirstOrDefaultSafe(); ;
+        }
+
+        /// <summary>
+        /// Retrieves data with purpose of displaying results over multiple pages (i.e. in Grid/table)
+        /// </summary>
+        /// <param name="whereClause">Expression for where clause</param>
+        /// <returns></returns>
+        public IQueryable<TEntity> GetByWhere(Expression<Func<TEntity, Boolean>> whereClause)
+        {
+            try
+            {
+                Results = (whereClause != null) ? Data.Where<TEntity>(whereClause) : Data;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByWhere()");
+                throw;
+            }
+
+            return Results;
+        }
+
+        /// <summary>
+        /// Retrieves data with purpose of displaying results over multiple pages (i.e. in Grid/table)
+        /// </summary>
+        /// <param name="whereClause">Expression for where clause</param>
+        /// <param name="orderByClause">Expression for order by clause</param>
+        /// <param name="pageSize">Size of each result</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <returns>Page of data, based on passed clauses and page parameters</returns>
+        public IQueryable<TEntity> GetByPage(Expression<Func<TEntity, bool>> whereClause, Expression<Func<TEntity, object>> orderByClause, int pageSize, int pageNumber)
+        {
+            var returnValue = default(IQueryable<TEntity>);
+
+            try
+            {
+                returnValue = (Data).AsQueryable();
+                returnValue = (whereClause != null) ? returnValue.Where<TEntity>(whereClause).AsQueryable() : returnValue;
+                returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
+                returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip(((pageNumber - 1) * pageSize)).Take(pageSize).AsQueryable() : returnValue;
+            }
+            catch (Exception ex)
+            {
+                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByPage()");
+                throw;
+            }
+
+            return returnValue;
+        }        
+    }
+}

@@ -1,0 +1,14 @@
+﻿<uc:ReadOnlyControl
+    x:Class="Framework.UserControls.HeaderBar"
+    xmlns:uc="using:Framework.UserControls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel x:Name="StackHeaderBar" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{StaticResource HeaderBackgroundBrush}">
+        <Button x:Name="ButtonGoBack" Click="GoBack" AutomationProperties.Name="" Visibility="Collapsed" IsEnabled="{Binding Frame.CanGoBack, ElementName=RootPage}" Style="{StaticResource GlyphiconGoBack}" />
+        <TextBlock x:Name="TextPageHeader" Text="{Binding Title}" Style="{StaticResource HeaderBarTextStyle}" />
+    </StackPanel>
+</uc:ReadOnlyControl>

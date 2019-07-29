@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
+    <PackageId>GoodToCode.Framework.Models.Standard</PackageId>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
+    <Version>4.18.9</Version>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Framework Models for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</Product>
+    <Description>GoodToCode Framework Models for your views and view-model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.goodtocode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.goodtocode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.goodtocode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/goodtocode/framework</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Models.Standard.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GoodToCode.Framework.Models.Standard.csproj.vspscc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Framework.Models.Shared\Activity\ActivityModel.cs">
+      <Link>Activity\ActivityModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Activity\ExceptionModel.cs">
+      <Link>Activity\ExceptionModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Application\ViewModel.cs">
+      <Link>Application\ViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Data\EntityModel.cs">
+      <Link>Data\EntityModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Data\ValueModel.cs">
+      <Link>Data\ValueModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Data\BytesKeyModel.cs">
+      <Link>Data\BytesKeyModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Data\ImageModel.cs">
+      <Link>Data\ImageModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Name\NameDescriptionModel.cs">
+      <Link>Name\NameDescriptionModel.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.Models.Shared\Name\NameIDModel.cs">
+      <Link>Name\NameIDModel.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19186.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+</Project>

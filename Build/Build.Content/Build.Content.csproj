@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Genesys.Build.Content</RootNamespace>
+    <AssemblyName>Genesys.Build.Content</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Build.Framework.15.7.179\lib\net46\Microsoft.Build.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.6\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.6\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.6\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\app_offline.htm" />
+    <Content Include="Dashboard\Links-Genesys-Source.md" />
+    <Content Include="GitHub\Extensions\.gitattributes" />
+    <Content Include="GitHub\Extensions\.gitignore" />
+    <Content Include="GitHub\Extensions\coding-style.md" />
+    <Content Include="GitHub\Extensions\contributing.md" />
+    <Content Include="GitHub\Extensions\LICENSE" />
+    <Content Include="GitHub\Extensions\README.md" />
+    <Content Include="GitHub\Framework-for-MVC\.gitattributes" />
+    <Content Include="GitHub\Framework-for-MVC\.gitignore" />
+    <Content Include="GitHub\Framework-for-MVC\coding-style.md" />
+    <Content Include="GitHub\Framework-for-MVC\contributing.md" />
+    <Content Include="GitHub\Framework-for-MVC\LICENSE" />
+    <Content Include="GitHub\Framework-for-MVC\README.md" />
+    <Content Include="GitHub\Framework-for-Universal\.gitattributes" />
+    <Content Include="GitHub\Framework-for-Universal\.gitignore" />
+    <Content Include="GitHub\Framework-for-Universal\coding-style.md" />
+    <Content Include="GitHub\Framework-for-Universal\contributing.md" />
+    <Content Include="GitHub\Framework-for-Universal\LICENSE" />
+    <Content Include="GitHub\Framework-for-Universal\README.md" />
+    <Content Include="GitHub\Framework-for-WebAPI\.gitattributes" />
+    <Content Include="GitHub\Framework-for-WebAPI\.gitignore" />
+    <Content Include="GitHub\Framework-for-WebAPI\coding-style.md" />
+    <Content Include="GitHub\Framework-for-WebAPI\contributing.md" />
+    <Content Include="GitHub\Framework-for-WebAPI\LICENSE" />
+    <Content Include="GitHub\Framework-for-WebAPI\README.md" />
+    <Content Include="GitHub\Framework-for-WPF\.gitattributes" />
+    <Content Include="GitHub\Framework-for-WPF\.gitignore" />
+    <Content Include="GitHub\Framework-for-WPF\coding-style.md" />
+    <Content Include="GitHub\Framework-for-WPF\contributing.md" />
+    <Content Include="GitHub\Framework-for-WPF\LICENSE" />
+    <Content Include="GitHub\Framework-for-WPF\README.md" />
+    <Content Include="GitHub\Framework\.gitattributes" />
+    <Content Include="GitHub\Framework\.gitignore" />
+    <Content Include="GitHub\Framework\coding-style.md" />
+    <Content Include="GitHub\Framework\contributing.md" />
+    <Content Include="GitHub\Framework\LICENSE" />
+    <Content Include="GitHub\Framework\README.md" />
+    <Content Include="Keys\GenesysFramework.snk" />
+    <Content Include="Keys\GenesysFramework_2016.snk" />
+    <Content Include="NuGet\Extensions.Standard.nuspec" />
+    <Content Include="NuGet\Extensions.Core.nuspec" />
+    <Content Include="NuGet\Framework.DataAccess.Full.nuspec" />
+    <Content Include="NuGet\Framework.Interop.Portable.nuspec" />
+    <Content Include="NuGet\Framework.Models.Portable.nuspec" />
+    <Content Include="NuGet\Framework.Universal.nuspec" />
+    <Content Include="NuGet\Framework.Web.Full.nuspec" />
+    <Content Include="NuGet\Framework.Windows.nuspec" />
+    <Content Include="Global.asax" />
+    <Content Include="GitHub\Framework-for-Core\.gitattributes" />
+    <Content Include="GitHub\Framework-for-Core\.gitignore" />
+    <Content Include="GitHub\Framework-for-Core\coding-style.md" />
+    <Content Include="GitHub\Framework-for-Core\contributing.md" />
+    <Content Include="GitHub\Framework-for-Core\LICENSE" />
+    <Content Include="GitHub\Framework-for-Core\README.md" />
+    <Content Include="NuGet\Entity.DataAccess.Core.nuspec" />
+    <Content Include="NuGet\Entity.Interop.Standard.nuspec" />
+    <Content Include="NuGet\Entity.Models.Standard.nuspec" />
+    <Content Include="NuGet\Entity.Web.Core.nuspec" />
+    <Content Include="Keys\GenesysEntity.snk" />
+    <Content Include="Utility\GacUtil\gacutil.exe" />
+    <Content Include="Utility\MsTest\assemblies\Interop.UIAutomationClient.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.xml" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.LoadTestFramework.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.WebTestFramework.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITest.Common.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITest.Common.xml" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITest.Extension.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITest.Extension.xml" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITesting.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.UITesting.xml" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.WindowsStore.UITesting.dll" />
+    <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.TestTools.WindowsStore.UITesting.xml" />
+    <Content Include="Utility\MsTest\assemblies\UIAComWrapper.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.xml" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.QualityTools.LoadTestFramework.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.QualityTools.WebTestFramework.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITest.Common.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITest.Common.xml" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITest.Extension.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITest.Extension.xml" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITesting.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.UITesting.xml" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.WindowsStore.UITesting.dll" />
+    <Content Include="Utility\MsTest\Microsoft.VisualStudio.TestTools.WindowsStore.UITesting.xml" />
+    <Content Include="Utility\MsTest\MSTest.exe" />
+    <Content Include="Utility\NuGet\nuget.exe" />
+    <Content Include="Utility\SNK\sn.exe" />
+    <Content Include="Utility\SNK\SNK Instructions.txt" />
+    <Content Include="VSIX\Framework.DataAccess.Core\DataAccess.Core.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.DataAccess.Core\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.DataAccess.Core\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.DataAccess.Full\DataAccess.Full.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.DataAccess.Full\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.DataAccess.Full\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.DataAccess.Shared\DataAccess.Shared.vstemplate" />
+    <Content Include="VSIX\Framework.DataAccess.Shared\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.DataAccess.Shared\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Database\Database.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Database\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Database\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.DesktopApp\DesktopApp.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.DesktopApp\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.DesktopApp\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Interop.Portable\Interop.Portable.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Interop.Shared\Interop.Shared.vstemplate" />
+    <Content Include="VSIX\Framework.Interop.Shared\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Interop.Shared\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Interop.Standard\Interop.Standard.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Interop.Standard\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Interop.Standard\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Interop.Portable\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Interop.Portable\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Models.Shared\Models.Shared.vstemplate" />
+    <Content Include="VSIX\Framework.Models.Shared\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Models.Shared\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Models.Standard\Models.Standard.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Models.Standard\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Models.Standard\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Models.Portable\Models.Portable.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Models.Portable\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Models.Portable\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Test.Core\Test.Core.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Test.Core\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Test.Core\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.Test.Shared\Test.Shared.vstemplate" />
+    <Content Include="VSIX\Framework.Test.Shared\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Test.Shared\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.UniversalApp.Core\UniversalApp.Core.vstemplate" />
+    <Content Include="VSIX\Framework.UniversalApp.Core\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.UniversalApp.Core\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.WebApp.Core\WebApp.Core.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.WebApp.Core\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.WebApp.Core\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.WebServices.Core\WebServices.Core.vstemplate" />
+    <Content Include="VSIX\Framework.WebServices.Core\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.WebServices.Core\__TemplateIcon.png" />
+    <Content Include="VSIX\Mvc.vstemplate" />
+    <Content Include="VSIX\Uwp.vstemplate" />
+    <Content Include="VSIX\Core.vstemplate" />
+    <Content Include="VSIX\WebApi.vstemplate" />
+    <Content Include="VSIX\Wpf.vstemplate" />
+    <Content Include="VSIX\Framework.Test.Full\Test.Full.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.Test.Full\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.Test.Full\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.UniversalApp.Full\UniversalApp.Full.vstemplate">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="VSIX\Framework.UniversalApp.Full\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.UniversalApp.Full\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.WebApp.Full\WebApp.Full.vstemplate" />
+    <Content Include="VSIX\Framework.WebApp.Full\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.WebApp.Full\__TemplateIcon.png" />
+    <Content Include="VSIX\Framework.WebServices.Full\WebServices.Full.vstemplate" />
+    <Content Include="VSIX\Framework.WebServices.Full\__PreviewImage.PNG" />
+    <Content Include="VSIX\Framework.WebServices.Full\__TemplateIcon.png" />
+    <Content Include="VSIX\__PreviewImage.png" />
+    <Content Include="VSIX\__TemplateIconCore.png" />
+    <Content Include="VSIX\__TemplateIconMvc.png" />
+    <Content Include="VSIX\__TemplateIconUwp.png" />
+    <Content Include="VSIX\__TemplateIconWebApi.png" />
+    <Content Include="VSIX\__TemplateIconWpf.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dashboard\Links-Genesys-AppKit.md" />
+    <Content Include="Dashboard\Links-Genesys-Environments.md" />
+    <Content Include="Dashboard\Links-Genesys-Framework.md" />
+    <Content Include="Dashboard\Links-Genesys-Entities.md" />
+    <Content Include="NuGet\Extensions.Portable.nuspec" />
+    <Content Include="NuGet\Extensions.Full.nuspec" />
+    <Content Include="NuGet\Framework.DataAccess.Core.nuspec" />
+    <Content Include="NuGet\Framework.Interop.Standard.nuspec" />
+    <Content Include="NuGet\Framework.Models.Standard.nuspec" />
+    <Content Include="NuGet\Framework.Web.Core.nuspec" />
+    <Content Include="Utility\GacUtil\gacutil.exe.config" />
+    <Content Include="Utility\MsTest\MSTest.exe.config" />
+    <Content Include="Utility\NuGet\NuGetCacheClear.bat" />
+    <Content Include="Utility\SNK\sn.exe.config" />
+    <Content Include="Utility\SNK\SNKCreate-RunManually.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\.gitattributes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\coding-style.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\contributing.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GitHub\Entities\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuGet\Entity.All.MiddleTier.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuGet\Entity.All.PresentationTier.nuspec" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1872</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1872/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

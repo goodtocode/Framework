@@ -1,0 +1,107 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
+    <PackageId>GoodToCode.Framework.DataAccess.Core</PackageId>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
+    <Version>4.18.9</Version>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</Product>
+    <Description>GoodToCode Framework CRUD Data Access Object classes for ASP.NET Core MVC, Web API Core, Xamarin iOS, Xamarin Android and .NET Standard libraries.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.goodtocode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.goodtocode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.goodtocode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/goodtocode/framework</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\GoodToCode.Framework.DataAccess.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GoodToCode.Framework.DataAccess.Core.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19186.1" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19186.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Framework.DataAccess.Shared\Activity\ActivityContext.cs">
+      <Link>Activity\ActivityContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\ActiveRecordEntity.cs">
+      <Link>Data\ActiveRecordEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\ActiveRecordValue.cs">
+      <Link>Data\ActiveRecordValue.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\EntityConfiguration.cs">
+      <Link>Data\EntityConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\ValueConfiguration.cs">
+      <Link>Data\ValueConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Activity\ExceptionLog.cs">
+      <Link>Activity\ExceptionLog.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\IValueConfiguration.cs">
+      <Link>Data\IValueConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\StoredProcedure.cs">
+      <Link>Data\StoredProcedure.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\EntityInfo.cs">
+      <Link>Data\EntityInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\IEntityConfiguration.cs">
+      <Link>Data\IEntityConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\ImageEntity.cs">
+      <Link>Data\ImageEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\ValueInfo.cs">
+      <Link>Data\ValueInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Data\StoredProcedureEntity.cs">
+      <Link>Data\StoredProcedureEntity.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Repository\EntityReader.cs">
+      <Link>Repository\EntityReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Repository\EntityWriter.cs">
+      <Link>Repository\EntityWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Repository\StoredProcedureWriter.cs">
+      <Link>Repository\StoredProcedureWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\Framework.DataAccess.Shared\Repository\ValueReader.cs">
+      <Link>Repository\ValueReader.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
+  </Target>
+
+</Project>

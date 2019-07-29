@@ -1,0 +1,7 @@
+﻿{
+  "DefaultConnection": "data source=DatabaseServer.test.GenesysSource.com;initial catalog=FrameworkData;user id=TestUser;password=57595709-9E9C-47EA-ABBF-4F3BAA1B0D37;Multipleactiveresultsets=True;Application Name=GenesysFramework;",
+  "Example-LocalFile": "Data Source=(LocalDb)\\MSSQLLocalDB;Database=App_Data\\FrameworkData_Primary.mdf;Trusted_Connection=True;MultipleActiveResultSets=true;Application Name=GenesysFramework;",
+  "Example-LocalSQL": "data source=.\\;initial catalog=FrameworkData;Integrated Security=True;Multipleactiveresultsets=True;Application Name=GenesysFramework;",
+  "Example-SQLServer": "data source=DatabaseServer.test.GenesysSource.com;initial catalog=FrameworkData;user id=TestUser; password=57595709-9E9C-47EA-ABBF-4F3BAA1B0D37;Multipleactiveresultsets=True;Application Name=GenesysFramework;",
+  "Example-EDMX": "metadata=res://*/Genesys.Framework.Test.csdl|res://*/Genesys.Framework.Test.ssdl|res://*/Genesys.Framework.Test.msl;provider=System.Data.SqlClient;provider connection string='data source=DatabaseServer.dev.GenesysFramework.com;initial catalog=FrameworkData;integrated security=True;MultipleActiveResultSets=True;App=GenesysExtensions'"
+}

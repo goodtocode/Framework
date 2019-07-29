@@ -1,0 +1,31 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework Interop Project</Name>
+    <Description>Genesys Source Framework Interop to enforce consistency and interop between tiers. Data naturally can flow from object to another based on interface.</Description>
+    <ProjectType>Code Sharing Projects</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.Interop.Shared</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.Interop.Shared.shproj" File="Framework.Interop.Shared.shproj" ReplaceParameters="true">
+      <ProjectItem TargetFileName="Framework.Interfaces.Shared.projitems" ReplaceParameters="true">Framework.Interfaces.Shared.projitems</ProjectItem>
+      <Folder Name="Customer" TargetFolderName="Customer">
+        <ProjectItem ReplaceParameters="true" TargetFileName="GenderList.cs">GenderList.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICustomer.cs">ICustomer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICustomerEdit.cs">ICustomerEdit.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICustomerSearch.cs">ICustomerSearch.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICustomerType.cs">ICustomerType.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IGenderList.cs">IGenderList.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

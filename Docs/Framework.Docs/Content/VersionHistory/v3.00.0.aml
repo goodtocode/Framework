@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="c6269aba-4920-44e0-8787-dc68f5311dc3" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>
+        Genesys Source Framework releases every month with new features, fixes and improvements.
+      </para>
+    </introduction>
+    <section>
+      <title>Changes in This Release</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>New data access attributes, ConnectionString, DatabaseSchema, DataConcurrency and DataAccessBenavhior.</para>
+          </listItem>
+          <listItem>
+            <para>Connection strings can be either ADO.Net style or Entity Framework style, both will work with the Genesys Source Framework.</para>
+          </listItem>
+          <listItem>
+            <para>Added default routes to Mvc and WebAPI projects.</para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    <relatedTopics>
+			<link xlink:href="6f95f9a8-e6e0-4d3f-9651-500a8d277f30" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

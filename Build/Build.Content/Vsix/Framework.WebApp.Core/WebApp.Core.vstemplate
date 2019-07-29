@@ -1,0 +1,222 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework MVC Project</Name>
+    <Description>Genesys Quick-Start Framework for ASP.NET MVC web apps project includes Customer and Customer Search functionality using the Genesys Source Framework.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.WebApp.Core</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.WebApp.Core.csproj" File="Framework.WebApp.Core.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
+          <ProjectItem ReplaceParameters="false" TargetFileName="FolderProfile.pubxml">FolderProfile.pubxml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
+      <Folder Name="wwwroot" TargetFolderName="wwwroot">
+        <Folder Name="css" TargetFolderName="css">
+          <ProjectItem ReplaceParameters="true" TargetFileName="genesys-source.css">genesys-source.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="genesys-source.min.css">genesys-source.min.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="site.css">site.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="site.min.css">site.min.css</ProjectItem>
+        </Folder>
+        <Folder Name="images" TargetFolderName="images">
+          <Folder Name="Genesys-Source" TargetFolderName="Genesys-Source">
+            <ProjectItem ReplaceParameters="false" TargetFileName="favicon.ico">favicon.ico</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo.png">Genesys-Source-Logo.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-Square.png">Genesys-Source-Logo-Square.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-Transparent.png">Genesys-Source-Logo-Transparent.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-White.png">Genesys-Source-Logo-White.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-Genesys-Source-Framework.png">Map-of-the-Genesys-Source-Framework.png</ProjectItem>
+          </Folder>
+          <Folder Name="Social" TargetFolderName="Social">
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-blog.png">social-blog.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-facebook.png">social-facebook.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-rss.png">social-rss.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-twitter.png">social-twitter.png</ProjectItem>
+          </Folder>
+          <Folder Name="Welcome" TargetFolderName="Welcome">
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-71x71-Transparent.png">Genesys-Source-Logo-71x71-Transparent.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Stack-Logical-Tiers-Full.png">Genesys-Stack-Logical-Tiers-Full.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-blog.png">social-blog.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-facebook.png">social-facebook.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-rss.png">social-rss.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="social-twitter.png">social-twitter.png</ProjectItem>
+          </Folder>
+        </Folder>
+        <Folder Name="js" TargetFolderName="js">
+          <ProjectItem ReplaceParameters="true" TargetFileName="site.js">site.js</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="site.min.js">site.min.js</ProjectItem>
+        </Folder>
+        <Folder Name="lib" TargetFolderName="lib">
+          <Folder Name="bootstrap" TargetFolderName="bootstrap">
+            <Folder Name="dist" TargetFolderName="dist">
+              <Folder Name="css" TargetFolderName="css">
+                <Folder Name="themes" TargetFolderName="themes">
+                  <Folder Name="base" TargetFolderName="base">
+                    <Folder Name="images" TargetFolderName="images">
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_0_aaaaaa_40x100.png">ui-bg_flat_0_aaaaaa_40x100.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_flat_75_ffffff_40x100.png">ui-bg_flat_75_ffffff_40x100.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_55_fbf9ee_1x400.png">ui-bg_glass_55_fbf9ee_1x400.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_65_ffffff_1x400.png">ui-bg_glass_65_ffffff_1x400.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_75_dadada_1x400.png">ui-bg_glass_75_dadada_1x400.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_75_e6e6e6_1x400.png">ui-bg_glass_75_e6e6e6_1x400.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_glass_95_fef1ec_1x400.png">ui-bg_glass_95_fef1ec_1x400.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-bg_highlight-soft_75_cccccc_1x100.png">ui-bg_highlight-soft_75_cccccc_1x100.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_222222_256x240.png">ui-icons_222222_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_2e83ff_256x240.png">ui-icons_2e83ff_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_444444_256x240.png">ui-icons_444444_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_454545_256x240.png">ui-icons_454545_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_555555_256x240.png">ui-icons_555555_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_777620_256x240.png">ui-icons_777620_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_777777_256x240.png">ui-icons_777777_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_888888_256x240.png">ui-icons_888888_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_cc0000_256x240.png">ui-icons_cc0000_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_cd0a0a_256x240.png">ui-icons_cd0a0a_256x240.png</ProjectItem>
+                      <ProjectItem ReplaceParameters="false" TargetFileName="ui-icons_ffffff_256x240.png">ui-icons_ffffff_256x240.png</ProjectItem>
+                    </Folder>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="accordion.css">accordion.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="all.css">all.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="autocomplete.css">autocomplete.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="base.css">base.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="button.css">button.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="core.css">core.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="datepicker.css">datepicker.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="dialog.css">dialog.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="draggable.css">draggable.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui.css">jquery-ui.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="jquery-ui.min.css">jquery-ui.min.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="menu.css">menu.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="progressbar.css">progressbar.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="resizable.css">resizable.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="selectable.css">selectable.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="selectmenu.css">selectmenu.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="slider.css">slider.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="sortable.css">sortable.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="spinner.css">spinner.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="tabs.css">tabs.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="theme.css">theme.css</ProjectItem>
+                    <ProjectItem ReplaceParameters="true" TargetFileName="tooltip.css">tooltip.css</ProjectItem>
+                  </Folder>
+                </Folder>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css">bootstrap.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css.map">bootstrap.min.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.css">bootstrap-grid.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.css.map">bootstrap-grid.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.min.css">bootstrap-grid.min.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-grid.min.css.map">bootstrap-grid.min.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.css">bootstrap-reboot.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.css.map">bootstrap-reboot.css.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.min.css">bootstrap-reboot.min.css</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap-reboot.min.css.map">bootstrap-reboot.min.css.map</ProjectItem>
+              </Folder>
+              <Folder Name="js" TargetFolderName="js">
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js">bootstrap.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.js">bootstrap.bundle.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.js.map">bootstrap.bundle.js.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.min.js">bootstrap.bundle.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.bundle.min.js.map">bootstrap.bundle.min.js.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.js.map">bootstrap.js.map</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js">bootstrap.min.js</ProjectItem>
+                <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.js.map">bootstrap.min.js.map</ProjectItem>
+              </Folder>
+            </Folder>
+          </Folder>
+          <Folder Name="jquery" TargetFolderName="jquery">
+            <Folder Name="dist" TargetFolderName="dist">
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.js">jquery.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.js">jquery.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.min.map">jquery.min.map</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="jquery-validation" TargetFolderName="jquery-validation">
+            <Folder Name="dist" TargetFolderName="dist">
+              <ProjectItem ReplaceParameters="true" TargetFileName="additional-methods.js">additional-methods.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="additional-methods.min.js">additional-methods.min.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.js">jquery.validate.js</ProjectItem>
+              <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.min.js">jquery.validate.min.js</ProjectItem>
+            </Folder>
+          </Folder>
+          <Folder Name="jquery-validation-unobtrusive" TargetFolderName="jquery-validation-unobtrusive">
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.js">jquery.validate.unobtrusive.js</ProjectItem>
+            <ProjectItem ReplaceParameters="true" TargetFileName="jquery.validate.unobtrusive.min.js">jquery.validate.unobtrusive.min.js</ProjectItem>
+          </Folder>
+        </Folder>
+        <ProjectItem ReplaceParameters="false" TargetFileName="favicon.ico">favicon.ico</ProjectItem>
+      </Folder>
+      <Folder Name="App_Data" TargetFolderName="App_Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.json">AppSettings.json</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Debug.json">AppSettings.Debug.json</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Release.json">AppSettings.Release.json</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.json">ConnectionStrings.json</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Debug.json">ConnectionStrings.Debug.json</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Release.json">ConnectionStrings.Release.json</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="FrameworkData_Primary.mdf">FrameworkData_Primary.mdf</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Debug.bat">PostBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Release.bat">PostBuild.Release.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Debug.bat">PreBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Release.bat">PreBuild.Release.bat</ProjectItem>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerController.cs">CustomerController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearchController.cs">CustomerSearchController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="HomeController.cs">HomeController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Models" TargetFolderName="Models">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ErrorViewModel.cs">ErrorViewModel.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Partials" TargetFolderName="Partials">
+        <Folder Name="Genesys-Source" TargetFolderName="Genesys-Source">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Genesys-Contact.cshtml">Genesys-Contact.cshtml</ProjectItem>
+        </Folder>
+        <Folder Name="Shared" TargetFolderName="Shared">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Footer.cshtml">Footer.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Header.cshtml">Header.cshtml</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Views" TargetFolderName="Views">
+        <Folder Name="Customer" TargetFolderName="Customer">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerCreate.cshtml">CustomerCreate.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerDelete.cshtml">CustomerDelete.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerEdit.cshtml">CustomerEdit.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSummary.cshtml">CustomerSummary.cshtml</ProjectItem>
+        </Folder>
+        <Folder Name="CustomerSearch" TargetFolderName="CustomerSearch">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearch.cshtml">CustomerSearch.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerSearchResults.cshtml">CustomerSearchResults.cshtml</ProjectItem>
+        </Folder>
+        <Folder Name="Home" TargetFolderName="Home">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Index.cshtml">Index.cshtml</ProjectItem>
+        </Folder>
+        <Folder Name="Shared" TargetFolderName="Shared">
+          <ProjectItem ReplaceParameters="true" TargetFileName="_Layout.cshtml">_Layout.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="_ValidationScriptsPartial.cshtml">_ValidationScriptsPartial.cshtml</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Error.cshtml">Error.cshtml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewImports.cshtml">_ViewImports.cshtml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="_ViewStart.cshtml">_ViewStart.cshtml</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Local.json">appsettings.Local.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Production.json">appsettings.Production.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Staging.json">appsettings.Staging.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="bundleconfig.json">bundleconfig.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Welcome.html">Welcome.html</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

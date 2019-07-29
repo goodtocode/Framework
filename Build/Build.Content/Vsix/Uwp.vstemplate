@@ -1,0 +1,79 @@
+<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+    <Name>Genesys Quick-Start for UWP</Name>
+    <Description>Genesys Quick-Start Framework for UWP, pre-setup full-stack solution to house your reusable business objects, such as CustomerInfo. Works with your existing SQL tables, and allows you to incrementally upgrade your custom software app...one page at a time.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>MyCo.Framework</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIconUwp.png</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+      <SolutionFolder Name="DataTier">
+        <ProjectTemplateLink ProjectName="Framework.Database" CopyParameters="true">
+          Framework.Database\Database.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.DataAccess.Core" CopyParameters="true">
+          Framework.DataAccess.Core\DataAccess.Core.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.DataAccess.Full" CopyParameters="true">
+          Framework.DataAccess.Full\DataAccess.Full.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.DataAccess.Shared" CopyParameters="true">
+          Framework.DataAccess.Shared\DataAccess.Shared.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+      <SolutionFolder Name="Interoperability">
+        <ProjectTemplateLink ProjectName="Framework.Interop.Portable" CopyParameters="true">
+          Framework.Interop.Portable\Interop.Portable.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Interop.Standard" CopyParameters="true">
+          Framework.Interop.Standard\Interop.Standard.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Interop.Shared" CopyParameters="true">
+          Framework.Interop.Shared\Interop.Shared.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+      <SolutionFolder Name="MiddleTier">
+        <ProjectTemplateLink ProjectName="Framework.Models.Portable" CopyParameters="true">
+          Framework.Models.Portable\Models.Portable.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Models.Standard" CopyParameters="true">
+          Framework.Models.Standard\Models.Standard.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Models.Shared" CopyParameters="true">
+          Framework.Models.Shared\Models.Shared.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+      <SolutionFolder Name="PresentationTier">
+        <ProjectTemplateLink ProjectName="Framework.UniversalApp.Core" CopyParameters="true">
+          Framework.UniversalApp.Core\UniversalApp.Core.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.UniversalApp.Full" CopyParameters="true">
+          Framework.UniversalApp.Full\UniversalApp.Full.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.WebServices.Core" CopyParameters="true">
+          Framework.WebServices.Core\WebServices.Core.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.WebServices.Full" CopyParameters="true">
+          Framework.WebServices.Full\WebServices.Full.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+      <SolutionFolder Name="Test">
+        <ProjectTemplateLink ProjectName="Framework.Test.Full" CopyParameters="true">
+          Framework.Test.Full\Test.Full.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Test.Core" CopyParameters="true">
+          Framework.Test.Core\Test.Core.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="Framework.Test.Shared" CopyParameters="true">
+          Framework.Test.Shared\Test.Shared.vstemplate
+        </ProjectTemplateLink>
+      </SolutionFolder>
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

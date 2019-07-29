@@ -1,0 +1,50 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework Test Project</Name>
+    <Description>Genesys Source Framework Test project containing unit tests for items in the templated projects. </Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.Test.Full</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.Test.Full.csproj" File="Framework.Test.Full.csproj" ReplaceParameters="true">
+      <Folder Name="Activity" TargetFolderName="Activity" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.config">App.config</ProjectItem>
+      <Folder Name="App_Data" TargetFolderName="App_Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.config">AppSettings.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Debug.config">AppSettings.Debug.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="AppSettings.Release.config">AppSettings.Release.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.config">ConnectionStrings.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Debug.config">ConnectionStrings.Debug.config</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ConnectionStrings.Release.config">ConnectionStrings.Release.config</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="FrameworkData_Primary.mdf">FrameworkData_Primary.mdf</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Debug.bat">PostBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Release.bat">PostBuild.Release.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Debug.bat">PreBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Release.bat">PreBuild.Release.bat</ProjectItem>
+      </Folder>
+      <Folder Name="Application" TargetFolderName="Application" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="ConfigurationManagerLocal.cs">ConfigurationManagerLocal.cs</ProjectItem>
+      <Folder Name="Data" TargetFolderName="Data" />
+      <Folder Name="Endpoints" TargetFolderName="Endpoints" />
+      <Folder Name="Entity" TargetFolderName="Entity" />
+      <Folder Name="Model" TargetFolderName="Model" />
+      <ProjectItem ReplaceParameters="true" TargetFileName="packages.config">packages.config</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Serialization" TargetFolderName="Serialization" />
+      <Folder Name="Validation" TargetFolderName="Validation" />
+      <Folder Name="Worker" TargetFolderName="Worker" />
+    </Project>
+  </TemplateContent>
+</VSTemplate>

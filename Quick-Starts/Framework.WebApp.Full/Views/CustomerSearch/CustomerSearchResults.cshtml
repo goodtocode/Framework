@@ -1,0 +1,59 @@
+﻿@model System.Collections.Generic.IEnumerable<Framework.Customer.CustomerModel>
+
+@using Framework.Customer
+
+@if (Model.Count() > 0)
+{
+    <div class="table-respoinsive padding-md">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CustomerModel item in Model)
+                {
+                    var url = Url.Action(CustomerController.SummaryAction, CustomerController.ControllerName, new { id = item.Id });
+                    <tr>
+                        <td>
+                            <a href="@url">
+                                @item.Id
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@url">
+                                @item.FirstName
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@url">
+                                @item.LastName
+                            </a>
+                        </td>
+                        <td>
+                            <a href="@url">
+                                @item.BirthDate.ToShortDateString()
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="text-info">@TempData[CustomerSearchController.ResultMessage]</p>
+}
+<div class="row">
+    <div class="col-xs-offset-1 col-xs-10 ">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false, "Action resulted in...", new { @class = "text-danger" })
+        }
+    </div>
+</div>

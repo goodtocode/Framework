@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="6f95f9a8-e6e0-4d3f-9651-500a8d277f30" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>The topics in this section describe the various changes made to the Genesys Source Framework over the life of the project.</para>
+		</introduction>
+		<section>
+			<title>Version History</title>
+			<content>
+				<para>Select a version below to see a description of its changes.</para>
+				<list class="bullet">
+					<listItem>
+						<para><link xlink:href="c6269aba-4920-44e0-8787-dc68f5311dc3" /></para>
+					</listItem>
+				</list>
+			</content>
+		</section>
+		<relatedTopics>
+			<link xlink:href="818770a1-011c-460a-8854-0ac0ebb37397" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

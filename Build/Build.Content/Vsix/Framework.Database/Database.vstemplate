@@ -1,0 +1,107 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework SSDT Database Project</Name>
+    <Description>Genesys Source Framework Database (SSDT) with customer schema and tables for example, and EntityCode schema to contain all views/SPs that support the Framework.DataAccess project.</Description>
+    <ProjectType>SQLDB</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.Database</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.Database.sqlproj" File="Framework.Database.sqlproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Activity" TargetFolderName="Activity">
+        <Folder Name="Stored Procedures" TargetFolderName="Stored Procedures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionLogInsertByActivity.sql">ExceptionLogInsertByActivity.sql</ProjectItem>
+        </Folder>
+        <Folder Name="Tables" TargetFolderName="Tables">
+          <ProjectItem ReplaceParameters="true" TargetFileName="ActivityContext.sql">ActivityContext.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionLog.sql">ExceptionLog.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="App_Data" TargetFolderName="App_Data">
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Debug.bat">PostBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PostBuild.Release.bat">PostBuild.Release.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Debug.bat">PreBuild.Debug.bat</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="PreBuild.Release.bat">PreBuild.Release.bat</ProjectItem>
+      </Folder>
+      <Folder Name="Customer" TargetFolderName="Customer">
+        <Folder Name="Tables" TargetFolderName="Tables">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Customer.sql">Customer.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerType.sql">CustomerType.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="CustomerCode" TargetFolderName="CustomerCode">
+        <Folder Name="Stored Procedures" TargetFolderName="Stored Procedures">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerInfoDelete.sql">CustomerInfoDelete.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerInfoInsert.sql">CustomerInfoInsert.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerInfoUpdate.sql">CustomerInfoUpdate.sql</ProjectItem>
+        </Folder>
+        <Folder Name="Views" TargetFolderName="Views">
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerInfo.sql">CustomerInfo.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="CustomerType.sql">CustomerType.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Identity" TargetFolderName="Identity">
+        <Folder Name="Tables" TargetFolderName="Tables">
+          <ProjectItem ReplaceParameters="true" TargetFileName="__MigrationHistory.sql">__MigrationHistory.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetRoles.sql">AspNetRoles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetUserClaims.sql">AspNetUserClaims.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetUserLogins.sql">AspNetUserLogins.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetUserRoles.sql">AspNetUserRoles.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="AspNetUsers.sql">AspNetUsers.sql</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Publish" TargetFolderName="Publish">
+        <Folder Name="Dev" TargetFolderName="Dev">
+          <ProjectItem ReplaceParameters="true" TargetFileName="PublishToDev.publish.xml">PublishToDev.publish.xml</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="PublishToDev-Compare.scmp">PublishToDev-Compare.scmp</ProjectItem>
+        </Folder>
+        <Folder Name="Production" TargetFolderName="Production">
+          <ProjectItem ReplaceParameters="true" TargetFileName="PublishToProd.publish.xml">PublishToProd.publish.xml</ProjectItem>
+        </Folder>
+        <Folder Name="Test" TargetFolderName="Test">
+          <ProjectItem ReplaceParameters="true" TargetFileName="PublishToTest.publish.xml">PublishToTest.publish.xml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PublishToFile.publish.xml">PublishToFile.publish.xml</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PublishToLocal.publish.xml">PublishToLocal.publish.xml</ProjectItem>
+      </Folder>
+      <Folder Name="Scripts" TargetFolderName="Scripts">
+        <Folder Name="Data" TargetFolderName="Data">
+          <Folder Name="Master" TargetFolderName="Master">
+            <ProjectItem ReplaceParameters="true" TargetFileName="CustomerType.sql">CustomerType.sql</ProjectItem>
+          </Folder>
+          <Folder Name="Shared" TargetFolderName="Shared" />
+        </Folder>
+        <Folder Name="Environment" TargetFolderName="Environment">
+          <ProjectItem ReplaceParameters="true" TargetFileName="Dev.sql">Dev.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Production.sql">Production.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="SQA.sql">SQA.sql</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="Staging.sql">Staging.sql</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Script.PostDeployment.sql">Script.PostDeployment.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Script.PreDeployment.sql">Script.PreDeployment.sql</ProjectItem>
+      </Folder>
+      <Folder Name="Security" TargetFolderName="Security">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Activity.sql">Activity.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Customer.sql">Customer.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerCode.sql">CustomerCode.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Identity.sql">Identity.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Role_db_executor.sql">Role_db_executor.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RoleMemberships.sql">RoleMemberships.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestUser-Login.sql">TestUser-Login.sql</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="TestUser-User.sql">TestUser-User.sql</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

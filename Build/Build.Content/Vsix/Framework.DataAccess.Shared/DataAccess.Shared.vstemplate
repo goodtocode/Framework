@@ -1,0 +1,27 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Genesys Source Framework EF Shared Project</Name>
+    <Description>Genesys Source Framework data access objects (EF) to encapsulate data access into a single, easy to use set of classes. Supports methods like .GetByID(), .GetByKey(), .GetAll(), .Validate(), .Save() and .Delete().</Description>
+    <ProjectType>Code Sharing Projects</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <CreateInPlace>true</CreateInPlace>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.DataAccess.Shared</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.png</Icon>
+    <PreviewImage>__PreviewImage.PNG</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.DataAccess.Shared.shproj" File="Framework.DataAccess.Shared.shproj" ReplaceParameters="true">
+      <ProjectItem TargetFileName="$safeprojectname$.projitems" ReplaceParameters="true">Framework.DataAccess.Shared.projitems</ProjectItem>
+      <Folder Name="Customer" TargetFolderName="Customer">
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerInfo.cs">CustomerInfo.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="CustomerType.cs">CustomerType.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

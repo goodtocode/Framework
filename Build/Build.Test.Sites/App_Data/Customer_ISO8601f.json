@@ -1,0 +1,16 @@
+{
+    "BusinessRules": [],
+    "FailedRules": [],
+    "ActivityContextID": -1,
+    "CreatedDate": "1900-01-01T00:00:00",
+    "ID": -1,
+    "Key": "00000000-0000-0000-0000-000000000000",
+    "ModifiedDate": "1900-01-01T00:00:00",
+    "Status": 0,
+    "BirthDate": "1900-01-01T00:00:00",
+    "CustomerTypeKey": "bf3797ee-06a5-47f2-9016-369beb21d944",
+    "FirstName": "i",
+    "GenderID": -1,
+    "LastName": "i",
+    "MiddleName": ""
+}
