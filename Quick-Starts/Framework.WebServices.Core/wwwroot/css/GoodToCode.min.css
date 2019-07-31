@@ -181,15 +181,15 @@ a {
 }
 
 /* 
-* Genesys Logo
+* GoodToCode Logo
 */
-.genesys-logo-container {
+.GoodToCode-logo-container {
     height: 4.5em;
     width: 24em;
     text-align: center;
 }
 
-.genesys-logo-text {
+.GoodToCode-logo-text {
     font-family: 'Segoe UI';
     font-variant: small-caps;
     font-size: 1.25em;
@@ -197,11 +197,11 @@ a {
     color: #0c60c6;
 }
 
-.genesys-logo-image, .genesys-logo-image-sm {
+.GoodToCode-logo-image, .GoodToCode-logo-image-sm {
     text-align: center;
 }
 
-.genesys-logo-image-sm {
+.GoodToCode-logo-image-sm {
     max-width: 14em;
 }
 
@@ -231,26 +231,26 @@ a {
 }
 
 /*
-* Genesys Tiles
+* GoodToCode Tiles
 */
-.genesys-tile {
+.GoodToCode-tile {
     font-family: 'Segoe UI';
     width: 5.3em;
     height: 5.3em;
     text-align: center;
 }
 
-    .genesys-tile a {
+    .GoodToCode-tile a {
         text-decoration: none;
         padding: 5px 0px 0px 0px !important;
     }
 
-    .genesys-tile .glyphicon {
+    .GoodToCode-tile .glyphicon {
         color: #FFFFFF;
         font-size: 3.5em;
     }
 
-    .genesys-tile p {
+    .GoodToCode-tile p {
         color: #FFFFFF;
         font-weight: 400;
         font-size: 0.8em;
@@ -261,79 +261,79 @@ a {
     }
 
 /* 
-* Genesys Logo Color Palette
+* GoodToCode Logo Color Palette
 */
-.genesys-blue {
+.GoodToCode-blue {
     color: #0c60c6 !important;
 }
 
-.genesys-gray {
+.GoodToCode-gray {
     color: #5a5a5a !important;
 }
 
-.genesys-green {
+.GoodToCode-green {
     color: #73BE3D !important;
 }
 
-.genesys-purple {
+.GoodToCode-purple {
     color: #7030A0 !important;
 }
 
-.genesys-red {
+.GoodToCode-red {
     color: #B22222 !important;
 }
 
-.genesys-orange {
+.GoodToCode-orange {
     color: #de6a1d !important;
 }
 
-.genesys-white {
+.GoodToCode-white {
     color: #ffffff !important;
 }
 
-.genesys-blue-background {
+.GoodToCode-blue-background {
     background-color: #0c60c6 !important;
 }
 
-.genesys-gray-background {
+.GoodToCode-gray-background {
     background-color: #5a5a5a !important;
 }
 
-.genesys-green-background {
+.GoodToCode-green-background {
     background-color: #73BE3D !important;
 }
 
-.genesys-purple-background {
+.GoodToCode-purple-background {
     background-color: #7030A0 !important;
 }
 
-.genesys-orange-background {
+.GoodToCode-orange-background {
     background-color: #de6a1d !important;
 }
 
-.genesys-offwhite-background {
+.GoodToCode-offwhite-background {
     background-color: #f5eeee !important;
 }
 /* 
-* Genesys Site Color Palette
+* GoodToCode Site Color Palette
 */
-.genesys-site-slate {
+.GoodToCode-site-slate {
     background-color: #778899;
 }
 
-.genesys-site-medium {
+.GoodToCode-site-medium {
     background-color: #A8B3BD;
 }
 
-.genesys-site-offwhite {
+.GoodToCode-site-offwhite {
     background-color: #F7F9FA;
 }
 
-.genesys-site-blue {
+.GoodToCode-site-blue {
     background-color: #408AD1;
 }
 
-.genesys-site-royal {
+.GoodToCode-site-royal {
     background-color: #032bad;
 }
 

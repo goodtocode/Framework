@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CustomerViewModelTests.cs" company="Genesys Source">
+// <copyright file="CustomerViewModelTests.cs" company="GoodToCode">
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
 //      this work for additional information regarding copyright ownership.
@@ -32,7 +32,7 @@ using System.Threading.Tasks;
 namespace Framework.Test
 {
     /// <summary>
-    /// Test Genesys Framework for Web API endpoints
+    /// Test GoodToCode Framework for Web API endpoints
     /// </summary>
     /// <remarks></remarks>
     [TestClass()]

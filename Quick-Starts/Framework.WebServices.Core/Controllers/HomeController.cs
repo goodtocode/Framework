@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="HomeController.cs" company="Genesys Source">
-//      Copyright (c) 2017-2018 Genesys Source. All rights reserved.
+// <copyright file="HomeController.cs" company="GoodToCode">
+//      Copyright (c) 2017-2018 GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
 //      this work for additional information regarding copyright ownership.
@@ -29,7 +29,7 @@ namespace Framework.WebServices
     public class HomeController : Controller
     {
         public const string ControllerName = "Home";
-        public const string ContactUsView = "~/Views/Genesys-Source/Genesys-Contact.cshtml";
+        public const string ContactUsView = "~/Views/GoodToCode-Source/GoodToCode-Contact.cshtml";
         public const string IndexGetView = "~/Views/Home/Index.cshtml";
         public const string IndexGetAction = "Index";
         public const string IndexPostAction = "PostIndex";

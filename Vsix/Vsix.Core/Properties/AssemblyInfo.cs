@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Genesys Quick-Start for Core")]
-[assembly: AssemblyDescription("Genesys Source Framework jump-starts your resuable framework for your MVC apps, WPF desktop apps, Web API web services, Universal x-platform mobile apps, on both .NET Core and .NET Framework Full.")]
+[assembly: AssemblyTitle("GoodToCode Quick-Start for Core")]
+[assembly: AssemblyDescription("GoodToCode Framework jump-starts your resuable framework for your MVC apps, WPF desktop apps, Web API web services, Universal x-platform mobile apps, on both .NET Core and .NET Framework Full.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Genesys Source")]
-[assembly: AssemblyProduct("Genesys Quick-Start for Core")]
-[assembly: AssemblyCopyright("Copyright © 2017 Genesys Source")]
+[assembly: AssemblyCompany("GoodToCode")]
+[assembly: AssemblyProduct("GoodToCode Quick-Start for Core")]
+[assembly: AssemblyCopyright("Copyright © 2017 GoodToCode")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

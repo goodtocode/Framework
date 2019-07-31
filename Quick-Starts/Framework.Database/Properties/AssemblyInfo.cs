@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Genesys Source">
-//      Copyright (c) 2017-2018 Genesys Source. All rights reserved.
+// <copyright file="AssemblyInfo.cs" company="GoodToCode">
+//      Copyright (c) 2017-2018 GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
 //      this work for additional information regarding copyright ownership.
@@ -22,13 +22,13 @@ using System.Reflection;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with the SQLCLR assembly.
-[assembly: AssemblyTitle("Genesys Source Framework Database")]
-[assembly: AssemblyDescription("Genesys Source Framework powers your resuable framework for your .NET Core PCL/libraries, Universal x-platform mobile apps and all .NET Full libraries and apps.")]
+[assembly: AssemblyTitle("GoodToCode Framework Database")]
+[assembly: AssemblyDescription("GoodToCode Framework powers your resuable framework for your .NET Core PCL/libraries, Universal x-platform mobile apps and all .NET Full libraries and apps.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Genesys Source")]
-[assembly: AssemblyProduct("Genesys Source Framework Database")]
-[assembly: AssemblyCopyright("Copyright © 2017-2018 Genesys Source. All rights reserved.")]
-[assembly: AssemblyTrademark("Genesys Source is a registered trademark of Genesys Source. Genesys Source Framework and Genesys Cloud Dev Environment are trademarks of Genesys Source.")]
+[assembly: AssemblyCompany("GoodToCode")]
+[assembly: AssemblyProduct("GoodToCode Framework Database")]
+[assembly: AssemblyCopyright("Copyright © 2017-2018 GoodToCode. All rights reserved.")]
+[assembly: AssemblyTrademark("GoodToCode is a registered trademark of GoodToCode. GoodToCode Framework and GoodToCode Cloud Dev Environment are trademarks of GoodToCode.")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:

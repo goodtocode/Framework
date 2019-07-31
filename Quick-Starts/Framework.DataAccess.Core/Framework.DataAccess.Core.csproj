@@ -16,10 +16,10 @@
     <Product>Genesys Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
     <Description>Genesys Source Framework Web foundation classes for your app, controllers, views and model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
     <Copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</Copyright>
-    <PackageLicenseUrl>http://www.genesyssource.com/policy/nuget/license.html</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.genesyssource.com</PackageProjectUrl>
-    <PackageIconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
-    <RepositoryUrl>http://www.github.com/genesyssource/framework-for-core</RepositoryUrl>
+    <PackageLicenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.GoodToCode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/GoodToCode/framework-for-core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
   </PropertyGroup>

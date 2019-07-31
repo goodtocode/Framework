@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="GoodToCode.Framework.Universal" Version="4.19.01" Language="en-US" Publisher="Genesys Source" />
+    <Identity Id="GoodToCode.Framework.Universal" Version="4.19.01" Language="en-US" Publisher="GoodToCode" />
     <DisplayName>Quick-Start for UWP</DisplayName>
-    <Description xml:space="preserve">Genesys Quick-Start for Universal, pre-setup full-stack solution for reusable business objects, such as CustomerInfo. Works with existing SQL tables, allows you to incrementally upgrade your custom software app...one page at a time. Data Tier: Framework.Database (SSDT), Middle Tier: Framework.Interfaces (cross-platform), Framework.Entity Data Access Objects (EF 6/Core), Presentation Tier: Framework.UniversalApp (UWP), Framework.WebAPI (Web API), Framework.Models (cross-platform)</Description>
-    <MoreInfo>https://www.genesyssource.com</MoreInfo>
+    <Description xml:space="preserve">GoodToCode Quick-Start for Universal, pre-setup full-stack solution for reusable business objects, such as CustomerInfo. Works with existing SQL tables, allows you to incrementally upgrade your custom software app...one page at a time. Data Tier: Framework.Database (SSDT), Middle Tier: Framework.Interfaces (cross-platform), Framework.Entity Data Access Objects (EF 6/Core), Presentation Tier: Framework.UniversalApp (UWP), Framework.WebAPI (Web API), Framework.Models (cross-platform)</Description>
+    <MoreInfo>https://www.GoodToCode.com</MoreInfo>
     <License>License.txt</License>
-    <GettingStartedGuide>https://www.genesyssource.com/genesys-framework/welcome.html</GettingStartedGuide>
-    <ReleaseNotes>https://cloud.genesyssource.com/news</ReleaseNotes>
+    <GettingStartedGuide>https://www.github.com/GoodToCode.com/Framework</GettingStartedGuide>
+    <ReleaseNotes>https://www.github.com/GoodToCode.com/Framework</ReleaseNotes>
     <Icon>__TemplateIcon.png</Icon>
     <PreviewImage>__PreviewImage.PNG</PreviewImage>
-    <Tags>Genesys Source Framework cross-platform open-source full-stack entity Web API Universal core</Tags>
+    <Tags>GoodToCode Framework cross-platform open-source full-stack entity Web API Universal core</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0, 17.0)" />
