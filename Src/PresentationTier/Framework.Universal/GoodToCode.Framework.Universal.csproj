@@ -122,8 +122,6 @@
     <Compile Include="UserControls\Progress\ProgressProcessingRing.xaml.cs">
       <DependentUpon>ProgressProcessingRing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ReadOnlyControl.cs" />
-    <Compile Include="UserControls\SaveableControl.cs" />
     <Compile Include="UserControls\Toolbox\ClipboardCopy.xaml.cs">
       <DependentUpon>ClipboardCopy.xaml</DependentUpon>
     </Compile>
