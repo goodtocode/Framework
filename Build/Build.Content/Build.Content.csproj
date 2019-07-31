@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Genesys.Build.Content</RootNamespace>
-    <AssemblyName>Genesys.Build.Content</AssemblyName>
+    <RootNamespace>GoodToCode.Build.Content</RootNamespace>
+    <AssemblyName>GoodToCode.Build.Content</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -130,13 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\app_offline.htm" />
-    <Content Include="Dashboard\Links-Genesys-Source.md" />
-    <Content Include="GitHub\Extensions\.gitattributes" />
-    <Content Include="GitHub\Extensions\.gitignore" />
-    <Content Include="GitHub\Extensions\coding-style.md" />
-    <Content Include="GitHub\Extensions\contributing.md" />
-    <Content Include="GitHub\Extensions\LICENSE" />
-    <Content Include="GitHub\Extensions\README.md" />
     <Content Include="GitHub\Framework-for-MVC\.gitattributes" />
     <Content Include="GitHub\Framework-for-MVC\.gitignore" />
     <Content Include="GitHub\Framework-for-MVC\coding-style.md" />
@@ -167,10 +160,6 @@
     <Content Include="GitHub\Framework\contributing.md" />
     <Content Include="GitHub\Framework\LICENSE" />
     <Content Include="GitHub\Framework\README.md" />
-    <Content Include="Keys\GenesysFramework.snk" />
-    <Content Include="Keys\GenesysFramework_2016.snk" />
-    <Content Include="NuGet\Extensions.Standard.nuspec" />
-    <Content Include="NuGet\Extensions.Core.nuspec" />
     <Content Include="NuGet\Framework.DataAccess.Full.nuspec" />
     <Content Include="NuGet\Framework.Interop.Portable.nuspec" />
     <Content Include="NuGet\Framework.Models.Portable.nuspec" />
@@ -184,11 +173,6 @@
     <Content Include="GitHub\Framework-for-Core\contributing.md" />
     <Content Include="GitHub\Framework-for-Core\LICENSE" />
     <Content Include="GitHub\Framework-for-Core\README.md" />
-    <Content Include="NuGet\Entity.DataAccess.Core.nuspec" />
-    <Content Include="NuGet\Entity.Interop.Standard.nuspec" />
-    <Content Include="NuGet\Entity.Models.Standard.nuspec" />
-    <Content Include="NuGet\Entity.Web.Core.nuspec" />
-    <Content Include="Keys\GenesysEntity.snk" />
     <Content Include="Utility\GacUtil\gacutil.exe" />
     <Content Include="Utility\MsTest\assemblies\Interop.UIAutomationClient.dll" />
     <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll" />
@@ -331,12 +315,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dashboard\Links-Genesys-AppKit.md" />
-    <Content Include="Dashboard\Links-Genesys-Environments.md" />
-    <Content Include="Dashboard\Links-Genesys-Framework.md" />
-    <Content Include="Dashboard\Links-Genesys-Entities.md" />
-    <Content Include="NuGet\Extensions.Portable.nuspec" />
-    <Content Include="NuGet\Extensions.Full.nuspec" />
+    <Content Include="Dashboard\Links-GoodToCode-Framework.md" />
     <Content Include="NuGet\Framework.DataAccess.Core.nuspec" />
     <Content Include="NuGet\Framework.Interop.Standard.nuspec" />
     <Content Include="NuGet\Framework.Models.Standard.nuspec" />
@@ -351,28 +330,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GitHub\Entities\.gitattributes" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GitHub\Entities\.gitignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GitHub\Entities\coding-style.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GitHub\Entities\contributing.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GitHub\Entities\LICENSE" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GitHub\Entities\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="NuGet\Entity.All.MiddleTier.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="NuGet\Entity.All.PresentationTier.nuspec" />
+    <Content Include="Keys\GoodToCodeFramework.snk" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

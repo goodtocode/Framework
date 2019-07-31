@@ -324,13 +324,13 @@
     <PreBuildEvent>Call "$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat" "$(MSBuildProjectDirectory)" "$(Configuration)" "$(ProjectName)"</PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Standard">
+    <PackageReference Include="GoodToCode.Extensions.Standard">
       <Version>4.18.19050.2</Version>
     </PackageReference>
-    <PackageReference Include="Genesys.Framework.Interop.Standard">
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard">
       <Version>4.18.19060.2</Version>
     </PackageReference>
-    <PackageReference Include="Genesys.Framework.Models.Standard">
+    <PackageReference Include="GoodToCode.Framework.Models.Standard">
       <Version>4.18.19060.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration">

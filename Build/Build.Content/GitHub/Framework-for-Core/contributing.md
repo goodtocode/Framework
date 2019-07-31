@@ -1,12 +1,12 @@
-Contributing to Genesys Source Open-Source Projects
+Contributing to GoodToCode Source Open-Source Projects
 ======================
 
-This document describes contribution guidelines that are specific to the Genesys Source Open-Source Projects. Please read [C# Programming Guide](https://msdn.microsoft.com/en-us/library/ff926074.aspx) for more general C# .NET contribution guidelines.
+This document describes contribution guidelines that are specific to the GoodToCode Source Open-Source Projects. Please read [C# Programming Guide](https://msdn.microsoft.com/en-us/library/ff926074.aspx) for more general C# .NET contribution guidelines.
 
 Coding Style Changes
 --------------------
 
-Genesys Source Open-Source projects are in conformance with the style guidelines described in [Coding Style](../coding-style.md). 
+GoodToCode Source Open-Source projects are in conformance with the style guidelines described in [Coding Style](../coding-style.md). 
 
 We plan to do that with tooling, in a holistic way. In the meantime, please:
 * **DO NOT** send PRs for style changes.
@@ -15,4 +15,4 @@ We plan to do that with tooling, in a holistic way. In the meantime, please:
 API Changes
 -----------
 
-* **DON'T** submit API additions to any type that has shipped in the Genesys Source open-source project to the *master* branch. Instead, use the *future* branch.
+* **DON'T** submit API additions to any type that has shipped in the GoodToCode Source open-source project to the *master* branch. Instead, use the *future* branch.

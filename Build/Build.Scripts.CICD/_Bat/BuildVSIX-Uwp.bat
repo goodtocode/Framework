@@ -1,7 +1,7 @@
 ECHO OFF
 REM -----------------------------------------------------------------------
-REM <copyright file="BuildVSIX.bat" company="Genesys Source">
-REM      Copyright (c) Genesys Source. All rights reserved.
+REM <copyright file="BuildVSIX.bat" company="GoodToCode Source">
+REM      Copyright (c) GoodToCode Source. All rights reserved.
 REM      All rights are reserved. Reproduction or transmission in whole or in part, in
 REM      any form or by any means, electronic, mechanical or otherwise, is prohibited
 REM      without the prior written consent of the copyright owner.

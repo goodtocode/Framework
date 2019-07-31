@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework Interop Project</Name>
-    <Description>Genesys Source Framework Interop to enforce consistency and interop between tiers. Data naturally can flow from object to another based on interface.</Description>
+    <Name>GoodToCode Source Framework Interop Project</Name>
+    <Description>GoodToCode Source Framework Interop to enforce consistency and interop between tiers. Data naturally can flow from object to another based on interface.</Description>
     <ProjectType>Code Sharing Projects</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

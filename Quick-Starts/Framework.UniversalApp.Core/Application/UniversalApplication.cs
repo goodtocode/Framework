@@ -17,9 +17,9 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extensions;
-using Genesys.Extras.Configuration;
-using Genesys.Extras.Net;
+using GoodToCode.Extensions;
+using GoodToCode.Extras.Configuration;
+using GoodToCode.Extras.Net;
 using Framework.Themes;
 using System;
 using System.IO;

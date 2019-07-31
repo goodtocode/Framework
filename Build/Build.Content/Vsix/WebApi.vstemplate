@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
   <TemplateData>
-    <Name>Genesys Quick-Start for Web API</Name>
-    <Description>Genesys Quick-Start Framework for Web API, pre-setup full-stack solution to house your reusable business objects, such as CustomerInfo. Works with your existing SQL tables, and allows you to incrementally upgrade your custom software app...one page at a time.</Description>
+    <Name>GoodToCode Quick-Start for Web API</Name>
+    <Description>GoodToCode Quick-Start Framework for Web API, pre-setup full-stack solution to house your reusable business objects, such as CustomerInfo. Works with your existing SQL tables, and allows you to incrementally upgrade your custom software app...one page at a time.</Description>
     <ProjectType>CSharp</ProjectType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>

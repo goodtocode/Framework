@@ -26,33 +26,17 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Genesys.Framework.Models.Standard.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Models.Standard.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Customer\" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Framework.Models.Standard.csproj.vspscc" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\Framework.Models.Shared\Customer\CustomerModel.cs">
-      <Link>Customer\CustomerModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Customer\CustomerSearchModel.cs">
-      <Link>Customer\CustomerSearchModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Customer\CustomerTypeModel.cs">
-      <Link>Customer\CustomerTypeModel.cs</Link>
-    </Compile>    
-  </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Models.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19060.2" />
   </ItemGroup>
 
   <ItemGroup>

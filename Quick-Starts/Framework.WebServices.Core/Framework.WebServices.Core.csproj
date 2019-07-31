@@ -171,11 +171,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Core" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Framework.DataAccess.Core" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Models.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19060.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
   </ItemGroup>
 

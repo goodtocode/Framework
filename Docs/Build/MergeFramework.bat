@@ -20,37 +20,37 @@ REM ***
 REM *** Source DLLs
 REM ***
 REM *** Extensions ***
-SET ExtensionsUniversal=%BuildLocationBin%\Genesys.Framework.Extensions.Core.dll
-SET ExtensionsFull=%BuildLocationBin%\Genesys.Framework.Extensions.Standard.dll
-SET ExtrasUniversal=%BuildLocationBin%\Genesys.Framework.Extras.Core.dll
-SET ExtrasFull=%BuildLocationBin%\Genesys.Framework.Extras.Standard.dll
-SET ExtensionsUniversalLib=%BuildLocationLib%\Genesys.Framework.Extensions.Core.dll
-SET ExtensionFullsLib=%BuildLocationLib%\Genesys.Framework.Extensions.Standard.dll
+SET ExtensionsUniversal=%BuildLocationBin%\GoodToCode.Framework.Extensions.Core.dll
+SET ExtensionsFull=%BuildLocationBin%\GoodToCode.Framework.Extensions.Standard.dll
+SET ExtrasUniversal=%BuildLocationBin%\GoodToCode.Framework.Extras.Core.dll
+SET ExtrasFull=%BuildLocationBin%\GoodToCode.Framework.Extras.Standard.dll
+SET ExtensionsUniversalLib=%BuildLocationLib%\GoodToCode.Framework.Extensions.Core.dll
+SET ExtensionFullsLib=%BuildLocationLib%\GoodToCode.Framework.Extensions.Standard.dll
 
 REM *** Infrastructure ***
-SET Interfaces=%BuildLocationBin%\Genesys.Infrastructure.Interfaces.dll
-SET Interop=%BuildLocationBin%\Genesys.Infrastructure.Interoperability.dll
-SET DataAccess=%BuildLocationBin%\Genesys.Infrastructure.DataAccess.dll
-SET Workflows=%BuildLocationBin%\Genesys.Infrastructure.Workflows.dll
-SET MidServices=%BuildLocationBin%\Genesys.Infrastructure.MidServices.dll
-SET Models=%BuildLocationBin%\Genesys.Infrastructure.Models.dll
-SET AppServices=%BuildLocationBin%\Genesys.Infrastructure.AppServices.dll
-SET ResUniversal=%BuildLocationBin%\Genesys.Infrastructure.Resources.Core.dll
-SET ResMvc=%BuildLocationBin%\Genesys.Infrastructure.Resources.dll
+SET Interfaces=%BuildLocationBin%\GoodToCode.Infrastructure.Interfaces.dll
+SET Interop=%BuildLocationBin%\GoodToCode.Infrastructure.Interoperability.dll
+SET DataAccess=%BuildLocationBin%\GoodToCode.Infrastructure.DataAccess.dll
+SET Workflows=%BuildLocationBin%\GoodToCode.Infrastructure.Workflows.dll
+SET MidServices=%BuildLocationBin%\GoodToCode.Infrastructure.MidServices.dll
+SET Models=%BuildLocationBin%\GoodToCode.Infrastructure.Models.dll
+SET AppServices=%BuildLocationBin%\GoodToCode.Infrastructure.AppServices.dll
+SET ResUniversal=%BuildLocationBin%\GoodToCode.Infrastructure.Resources.Core.dll
+SET ResMvc=%BuildLocationBin%\GoodToCode.Infrastructure.Resources.dll
 
 REM ***
 REM *** Destination DLLs
 REM ***
 REM *** Runtimes ***
-SET AppUniversal=%BuildLocationLib%\Genesys.Framework.Application.Core.dll
-SET AppMvc=%BuildLocationLib%\Genesys.Framework.Application.Mvc.dll
-SET AppWebServices=%BuildLocationLib%\Genesys.Framework.AppServices.dll
-SET MidWebServices=%BuildLocationLib%\Genesys.Framework.MidServices.dll
+SET AppUniversal=%BuildLocationLib%\GoodToCode.Framework.Application.Core.dll
+SET AppMvc=%BuildLocationLib%\GoodToCode.Framework.Application.Mvc.dll
+SET AppWebServices=%BuildLocationLib%\GoodToCode.Framework.AppServices.dll
+SET MidWebServices=%BuildLocationLib%\GoodToCode.Framework.MidServices.dll
 REM *** Docs ***
-SET DocsUniversalApp=%BuildLocationDocs%\Genesys.Framework.Application.Core.dll
-SET DocsFullApp=%BuildLocationDocs%\Genesys.Framework.Application.Mvc.dll
-SET DocsAppServices=%BuildLocationDocs%\Genesys.Framework.AppServices.dll
-SET DocsMidServices=%BuildLocationDocs%\Genesys.Framework.MidServices.dll
+SET DocsUniversalApp=%BuildLocationDocs%\GoodToCode.Framework.Application.Core.dll
+SET DocsFullApp=%BuildLocationDocs%\GoodToCode.Framework.Application.Mvc.dll
+SET DocsAppServices=%BuildLocationDocs%\GoodToCode.Framework.AppServices.dll
+SET DocsMidServices=%BuildLocationDocs%\GoodToCode.Framework.MidServices.dll
 
 REM ***
 ECHO *** Create and init build location

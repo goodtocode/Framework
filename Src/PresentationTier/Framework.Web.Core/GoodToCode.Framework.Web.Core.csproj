@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
     <PackageId>GoodToCode.Framework.Web.Core</PackageId>
@@ -40,8 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19186.1" />
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19186.1" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19211.23" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>

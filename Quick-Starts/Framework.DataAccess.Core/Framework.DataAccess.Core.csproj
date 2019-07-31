@@ -23,29 +23,16 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Customer\" />
-  </ItemGroup>
   
   <ItemGroup>
     <None Remove="Framework.DataAccess.Core.csproj.vspscc" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\Framework.DataAccess.Shared\Customer\CustomerInfo.cs">
-      <Link>Customer\CustomerInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.DataAccess.Shared\Customer\CustomerType.cs">
-      <Link>Customer\CustomerType.cs</Link>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Core" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Framework.DataAccess.Core" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />

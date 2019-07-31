@@ -21,9 +21,9 @@ using Framework.Themes;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Genesys.Framework.Operation;
-using Genesys.Framework.Data;
-using Genesys.Framework.Application;
+using GoodToCode.Framework.Operation;
+using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Application;
 
 namespace Framework.Application
 {

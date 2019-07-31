@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extras.Web.Http;
+using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Framework.WebServices

@@ -18,10 +18,10 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Framework.Customer;
-using Genesys.Extensions;
-using Genesys.Extras.Configuration;
-using Genesys.Extras.Web.Http;
-using Genesys.Framework.Repository;
+using GoodToCode.Extensions;
+using GoodToCode.Extras.Configuration;
+using GoodToCode.Extras.Web.Http;
+using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;

@@ -7,11 +7,11 @@
     <ProjectGuid>{65AF542F-AC5D-43FF-B066-E2453D676FA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Genesys.Framework</RootNamespace>
-    <AssemblyName>Genesys.Framework.Universal</AssemblyName>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
+    <AssemblyName>GoodToCode.Framework.Universal</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -80,7 +80,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>bin\x86\Debug\Genesys.Framework.Universal.XML</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\GoodToCode.Framework.Universal.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -104,7 +104,6 @@
   <ItemGroup>
     <Compile Include="Application\IUniversalApplication.cs" />
     <Compile Include="Application\UniversalApplication.cs" />
-    <Compile Include="Application\UniversalViewModel.cs" />
     <Compile Include="Pages\ReadOnlyPage.cs" />
     <Compile Include="Pages\SaveablePage.cs" />
     <Compile Include="Pages\Shared\Error.xaml.cs">
@@ -184,13 +183,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Core">
-      <Version>4.18.19186.1</Version>
+    <PackageReference Include="GoodToCode.Extensions.Core">
+      <Version>4.18.19211.23</Version>
     </PackageReference>
-    <PackageReference Include="Genesys.Extensions.Standard">
-      <Version>4.18.19186.1</Version>
+    <PackageReference Include="GoodToCode.Extensions.Standard">
+      <Version>4.18.19211.23</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj">

@@ -4,12 +4,12 @@
 <tr>
 <td>
 
-<img alt="Your Genesys Source Framework" src="https://www.genesyssource.com/images/welcome/Genesys-Source-Logo-71x71-Transparent.png">
+<img alt="Your GoodToCode Source Framework" src="https://www.GoodToCode.com/images/welcome/GoodToCode-Logo-71x71-Transparent.png">
 
 </td>
 <td>
 
-<h2> Genesys Source Framework </h2>
+<h2> GoodToCode Source Framework </h2>
 
 <h4>One Framework - Your Data - Any Platform</h4>
 
@@ -20,7 +20,7 @@
 
 ### Features & Benefits
 
-Genesys Source Framework helps you create your business-object framework with standard C# knowledge and minimal plumbing. Your objects can migrate full-stack, and be consumed in MVC, Web API, WPF, UWP and Xamarin iOS/Android. Works with your existing SQL tables, and allows you to incrementally build your reusable Framework one object, one page at a time.
+GoodToCode Source Framework helps you create your business-object framework with standard C# knowledge and minimal plumbing. Your objects can migrate full-stack, and be consumed in MVC, Web API, WPF, UWP and Xamarin iOS/Android. Works with your existing SQL tables, and allows you to incrementally build your reusable Framework one object, one page at a time.
 
 </td>
 </tr>
@@ -32,7 +32,7 @@ Genesys Source Framework helps you create your business-object framework with st
 
 <td style="vertical-align: top; border-left-color: rgb(213, 213, 213); border-left-width: 1px; border-left-style: solid;">
 
-### Projects included in the Genesys Source Framework
+### Projects included in the GoodToCode Source Framework
 
 <div>
 
@@ -60,24 +60,24 @@ Genesys Source Framework helps you create your business-object framework with st
 <div>
     <table>
         <tr>
-            <td><a href="https://docs.genesyssource.com/products/genesys-framework/genesys-framework-ebook.pdf" target="_blank">[PDF]</a></td>
-            <td><a href="https://docs.genesyssource.com/products/genesys-framework/genesys-framework-ebook.pdf" target="_blank">Genesys Framework eBook</a></td>
+            <td><a href="https://docs.GoodToCode.com/products/GoodToCode-framework/GoodToCode-framework-ebook.pdf" target="_blank">[PDF]</a></td>
+            <td><a href="https://docs.GoodToCode.com/products/GoodToCode-framework/GoodToCode-framework-ebook.pdf" target="_blank">GoodToCode Framework eBook</a></td>
         </tr>
         <tr>
-            <td><a href="https://docs.genesyssource.com/reference/genesys-framework" target="_blank">[API]</a></td>
-            <td><a href="https://docs.genesyssource.com/reference/genesys-framework" target="_blank">Genesys Framework Reference</a></td>
+            <td><a href="https://docs.GoodToCode.com/reference/GoodToCode-framework" target="_blank">[API]</a></td>
+            <td><a href="https://docs.GoodToCode.com/reference/GoodToCode-framework" target="_blank">GoodToCode Framework Reference</a></td>
         </tr>
         <tr>
-            <td><a href="https://docs.genesyssource.com" target="_blank">[Docs]</a></td>
-            <td><a href="https://docs.genesyssource.com" target="_blank">docs.genesyssource.com</a></td>
+            <td><a href="https://docs.GoodToCode.com" target="_blank">[Docs]</a></td>
+            <td><a href="https://docs.GoodToCode.com" target="_blank">docs.GoodToCode.com</a></td>
         </tr>
         <tr>
-            <td><a href="https://github.com/GenesysSource/Framework/issues/new" target="_blank">[+/-]</a></td>
-            <td><a href="https://github.com/GenesysSource/Framework/issues/new" target="_blank">Report an Issue</a></td>
+            <td><a href="https://github.com/GoodToCode/Framework/issues/new" target="_blank">[+/-]</a></td>
+            <td><a href="https://github.com/GoodToCode/Framework/issues/new" target="_blank">Report an Issue</a></td>
         </tr>
         <tr>
-            <td><a href="https://cloud.genesyssource.com/genesys-framework" target="_blank">[Zip]</a></td>
-            <td><a href="https://cloud.genesyssource.com/genesys-framework" target="_blank">Download Genesys Framework</a></td>
+            <td><a href="https://cloud.GoodToCode.com/GoodToCode-framework" target="_blank">[Zip]</a></td>
+            <td><a href="https://cloud.GoodToCode.com/GoodToCode-framework" target="_blank">Download GoodToCode Framework</a></td>
         </tr>
         <tr>
             <td><a href="https://www.microsoft.com/net/download" target="_blank">[Azure]</a></td>
@@ -165,7 +165,7 @@ Genesys Source Framework helps you create your business-object framework with st
 <div style="padding: 15px 40px 15px 15px; text-align: center; vertical-align: top;">
 
 <div style="text-align:center;font-size: 1.6em; font-weight: bold;">
-<strong>GENESYSSOURCE</strong>
+<strong>GoodToCode</strong>
 
 22431 Antonio, Suite B160-843
 <br />
@@ -174,7 +174,7 @@ Rancho Santa Margarita, CA 92688
 +1 949.544.1900
 <br />
 
-[genesyssource.com](http://www.genesyssource.com) | [@genesyssource](http://www.twitter.com/genesyssource)
+[GoodToCode.com](http://www.GoodToCode.com) | [@GoodToCode](http://www.twitter.com/GoodToCode)
 
 
 </div>

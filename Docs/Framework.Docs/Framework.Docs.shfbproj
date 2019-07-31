@@ -9,13 +9,13 @@
     <ProjectGuid>{21ff05bc-effe-4f32-9a03-b67b5f438703}</ProjectGuid>
     <SHFBSchemaVersion>2017.9.26.0</SHFBSchemaVersion>
     <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual Studio adds them anyway -->
-    <AssemblyName>Genesys.Framework.Docs</AssemblyName>
-    <RootNamespace>Genesys.Framework.Docs</RootNamespace>
+    <AssemblyName>GoodToCode.Framework.Docs</AssemblyName>
+    <RootNamespace>GoodToCode.Framework.Docs</RootNamespace>
     <Name>Framework.Docs</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.6</FrameworkVersion>
     <OutputPath>Genesys-Framework\</OutputPath>
-    <HtmlHelpName>Genesys.Framework.Docs</HtmlHelpName>
+    <HtmlHelpName>GoodToCode.Framework.Docs</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
       <Argument Key="logoFile" Value="genesys-help.png" xmlns="" />
@@ -31,22 +31,22 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extensions.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extensions.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extensions.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extensions.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extras.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extras.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extras.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\Genesys.Extras.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.DataAccess.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.DataAccess.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Interop.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Interop.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Models.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Models.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Web.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\Genesys.Framework.Web.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.DataAccess.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.DataAccess.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Interop.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Interop.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Models.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Models.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Web.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Web.Core.xml" />
     </DocumentationSources>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>

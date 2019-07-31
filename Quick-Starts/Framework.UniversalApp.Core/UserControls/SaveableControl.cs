@@ -17,10 +17,10 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extensions;
-using Genesys.Extras.Collections;
-using Genesys.Framework.Worker;
-using Genesys.Framework.Validation;
+using GoodToCode.Extensions;
+using GoodToCode.Extras.Collections;
+using GoodToCode.Framework.Worker;
+using GoodToCode.Framework.Validation;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -19,20 +19,20 @@ SET ILMerge=C:\Projects\Build\Tools\ILMerge\ILMerge.exe
 REM ***
 REM *** Source DLLs
 REM ***
-SET ExtensionsUniversal=%BuildLocationBin%\Genesys.Framework.Extensions.Core.dll
-SET ExtensionsFull=%BuildLocationBin%\Genesys.Framework.Extensions.Standard.dll
-SET ExtrasUniversal=%BuildLocationBin%\Genesys.Framework.Extras.Core.dll
-SET ExtrasFull=%BuildLocationBin%\Genesys.Framework.Extras.Standard.dll
+SET ExtensionsUniversal=%BuildLocationBin%\GoodToCode.Framework.Extensions.Core.dll
+SET ExtensionsFull=%BuildLocationBin%\GoodToCode.Framework.Extensions.Standard.dll
+SET ExtrasUniversal=%BuildLocationBin%\GoodToCode.Framework.Extras.Core.dll
+SET ExtrasFull=%BuildLocationBin%\GoodToCode.Framework.Extras.Standard.dll
 
 REM ***
 REM *** Destination DLLs
 REM ***
 REM *** Runtimes
-SET DestinationUniversal=%BuildLocationLib%\Genesys.Framework.Extensions.Core.dll
-SET DestinationFull=%BuildLocationLib%\Genesys.Framework.Extensions.Standard.dll
+SET DestinationUniversal=%BuildLocationLib%\GoodToCode.Framework.Extensions.Core.dll
+SET DestinationFull=%BuildLocationLib%\GoodToCode.Framework.Extensions.Standard.dll
 REM *** Docs ***
-SET DocsUniversal=%BuildLocationDocs%\Genesys.Framework.Extensions.Core.dll
-SET DocsFull=%BuildLocationDocs%\Genesys.Framework.Extensions.Standard.dll
+SET DocsUniversal=%BuildLocationDocs%\GoodToCode.Framework.Extensions.Core.dll
+SET DocsFull=%BuildLocationDocs%\GoodToCode.Framework.Extensions.Standard.dll
 
 REM ***
 ECHO *** Create and init build location

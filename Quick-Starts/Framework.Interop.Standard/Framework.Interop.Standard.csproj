@@ -26,41 +26,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\Genesys.Framework.Interop.Standard.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Interop.Standard.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Framework.Interop.Standard.csproj.vspscc" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\Framework.Interop.Shared\Customer\GenderList.cs">
-      <Link>Customer\GenderList.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Interop.Shared\Customer\ICustomer.cs">
-      <Link>Customer\ICustomer.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Interop.Shared\Customer\ICustomerEdit.cs">
-      <Link>Customer\ICustomerEdit.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Interop.Shared\Customer\ICustomerSearch.cs">
-      <Link>Customer\ICustomerSearch.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Interop.Shared\Customer\ICustomerType.cs">
-      <Link>Customer\ICustomerType.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Interop.Shared\Customer\IGenderList.cs">
-      <Link>Customer\IGenderList.cs</Link>
-    </Compile>
-  </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Customer\" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

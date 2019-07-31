@@ -17,8 +17,8 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extensions;
-using Genesys.Framework.Worker;
+using GoodToCode.Extensions;
+using GoodToCode.Framework.Worker;
 using Windows.UI.Xaml;
 
 namespace Framework.UserControls

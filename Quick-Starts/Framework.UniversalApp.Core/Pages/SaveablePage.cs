@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Framework.UserControls;
-using Genesys.Framework.Worker;
+using GoodToCode.Framework.Worker;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 

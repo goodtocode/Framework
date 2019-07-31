@@ -3,12 +3,12 @@
 1. powershell as admin
 2. config.cmd
 ---
-a. Url: https://genesyssource.visualstudio.com
+a. Url: https://GoodToCode.visualstudio.com
 b. PAT (PAT, Integrated, )
 c. Enter PAT: Copy/paste pat (VSTS, Robert (upper-right), Security, PAT)
 d. Agent Pool: Default
 e. Agent Name: dev-build-01-agent-01
 f. Work folder: _work
 g. Run as service? Y
-h. Dev\GenesysBuildAgent
+h. Dev\GoodToCodeBuildAgent
 i. V**dd1

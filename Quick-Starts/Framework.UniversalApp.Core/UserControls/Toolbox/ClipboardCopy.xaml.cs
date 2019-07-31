@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extensions;
+using GoodToCode.Extensions;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;

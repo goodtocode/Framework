@@ -16,15 +16,15 @@ PS C:\dev-build-01-agent-01> Add-Type -AssemblyName System.IO.Compression.FileSy
 PS C:\dev-build-01-agent-01> .\config.cmd
 * To Remove, .\config.cmd remove
 ---
-a. Url: https://genesyssource.visualstudio.com
+a. Url: https://GoodToCode.visualstudio.com
 b. PAT (PAT, Integrated, ) PAT
-c. Get PAT: genesyssource.visualstudio.com -> Profile (upper-right) -> Security -> PAT)
+c. Get PAT: GoodToCode.visualstudio.com -> Profile (upper-right) -> Security -> PAT)
  - Enter PAT: 
 d. Agent Pool: Default
 e. Agent Name: dev-build-01-agent-01
 f. Work folder: _work
 g. Run as service? Y
-h. Dev\GenesysBuildAgent
+h. Dev\GoodToCodeBuildAgent
 i. V**dd1
 
 #4 Optionally run the agent interactively

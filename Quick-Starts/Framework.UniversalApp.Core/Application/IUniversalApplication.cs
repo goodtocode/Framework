@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Framework.Application;
+using GoodToCode.Framework.Application;
 using System;
 
 namespace Framework.Application

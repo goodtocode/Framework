@@ -1,32 +1,32 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>Genesys.Framework.Models.Portable</id>
+    <id>GoodToCode.Framework.Models.Portable</id>
     <version>4.18.10.352281</version>
-    <title>Genesys Source Framework Models for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</title>
-    <description>Genesys Source Framework Models for your views and view-model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile..</description>
-    <authors>Genesys Source</authors>
-    <owners>Genesys Source</owners>
-    <licenseUrl>http://www.genesyssource.com/policy/nuget/license.html</licenseUrl>
-    <projectUrl>http://www.genesyssource.com</projectUrl>
-    <iconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</iconUrl>
+    <title>GoodToCode Source Framework Models for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</title>
+    <description>GoodToCode Source Framework Models for your views and view-model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile..</description>
+    <authors>GoodToCode Source</authors>
+    <owners>GoodToCode Source</owners>
+    <licenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</licenseUrl>
+    <projectUrl>http://www.GoodToCode.com</projectUrl>
+    <iconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Monthly sprint release. See full release notes at GenesysSource.com.</releaseNotes>
-    <copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</copyright>
-    <tags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
+    <releaseNotes>Monthly sprint release. See full release notes at GoodToCode.com.</releaseNotes>
+    <copyright>Copyright (c) 2017-2018 GoodToCode Source. All Rights Reserved.</copyright>
+    <tags>GoodToCode Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
     <dependencies>
       <group>
-        <dependency id="Genesys.Extensions.Portable" version="4.0.0" />
-        <dependency id="Genesys.Framework.Interop.Portable" version="4.0.0" />
+        <dependency id="GoodToCode.Extensions.Portable" version="4.0.0" />
+        <dependency id="GoodToCode.Framework.Interop.Portable" version="4.0.0" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.dll" target="lib\portable-net451+win81+wpa81" />
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.xml" target="lib\portable-net451+win81+wpa81" />
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.pdb" target="lib\portable-net451+win81+wpa81" />
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.dll" target="lib\net46" />
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.xml" target="lib\net46" />
-    <file src="\lib\Genesys-Framework\Genesys.Framework.Models.Portable.pdb" target="lib\net46" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.dll" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.xml" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.pdb" target="lib\portable-net451+win81+wpa81" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.dll" target="lib\net46" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.xml" target="lib\net46" />
+    <file src="\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Portable.pdb" target="lib\net46" />
   </files>
 </package>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Genesys.Framework.MVC" Version="4.19.01" Language="en-US" Publisher="Genesys Source" />
+    <Identity Id="GoodToCode.Framework.MVC" Version="4.19.01" Language="en-US" Publisher="Genesys Source" />
     <DisplayName>Quick-Start for MVC</DisplayName>
     <Description xml:space="preserve">Genesys MVC reusability framework, pre-setup full-stack solution to house your reusable business objects, such as CustomerInfo. Works with your existing SQL tables, and allows you to incrementally upgrade your custom software app...one page at a time. Data Tier: Framework.Database (SSDT), Middle Tier: Framework.Interfaces (cross-platform), Framework.Entity Data Access Objects (EF 6), Presentation Tier: Framework.WebApp (MVC 5), Framework.Models (cross-platform)</Description>
     <MoreInfo>https://www.genesyssource.com</MoreInfo>

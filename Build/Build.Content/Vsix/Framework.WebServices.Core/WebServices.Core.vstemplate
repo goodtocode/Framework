@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework Web API Project</Name>
-    <Description>Genesys Quick-Start Framework for ASP.NET Web API web services project includes Customer and Customer Search functionality using the Genesys Source Framework.</Description>
+    <Name>GoodToCode Source Framework Web API Project</Name>
+    <Description>GoodToCode Quick-Start Framework for ASP.NET Web API web services project includes Customer and Customer Search functionality using the GoodToCode Source Framework.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -25,17 +25,17 @@
       </Folder>
       <Folder Name="wwwroot" TargetFolderName="wwwroot">
         <Folder Name="css" TargetFolderName="css">
-          <ProjectItem ReplaceParameters="true" TargetFileName="genesys-source.css">genesys-source.css</ProjectItem>
-          <ProjectItem ReplaceParameters="true" TargetFileName="genesys-source.min.css">genesys-source.min.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode.css">GoodToCode.css</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode.min.css">GoodToCode.min.css</ProjectItem>
         </Folder>
         <Folder Name="images" TargetFolderName="images">
-          <Folder Name="Genesys-Source" TargetFolderName="Genesys-Source">
+          <Folder Name="GoodToCode" TargetFolderName="GoodToCode">
             <ProjectItem ReplaceParameters="false" TargetFileName="favicon.ico">favicon.ico</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo.png">Genesys-Source-Logo.png</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-Square.png">Genesys-Source-Logo-Square.png</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-Transparent.png">Genesys-Source-Logo-Transparent.png</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-White.png">Genesys-Source-Logo-White.png</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-Genesys-Source-Framework.png">Map-of-the-Genesys-Source-Framework.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo.png">GoodToCode-Logo.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo-Square.png">GoodToCode-Logo-Square.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo-Transparent.png">GoodToCode-Logo-Transparent.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo-White.png">GoodToCode-Logo-White.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-GoodToCode-Framework.png">Map-of-the-GoodToCode-Framework.png</ProjectItem>
           </Folder>
           <Folder Name="Social" TargetFolderName="Social">
             <ProjectItem ReplaceParameters="false" TargetFileName="social-blog.png">social-blog.png</ProjectItem>
@@ -44,8 +44,8 @@
             <ProjectItem ReplaceParameters="false" TargetFileName="social-twitter.png">social-twitter.png</ProjectItem>
           </Folder>
           <Folder Name="Welcome" TargetFolderName="Welcome">
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-71x71-Transparent.png">Genesys-Source-Logo-71x71-Transparent.png</ProjectItem>
-            <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Stack-Logical-Tiers-Full.png">Genesys-Stack-Logical-Tiers-Full.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo-71x71-Transparent.png">GoodToCode-Logo-71x71-Transparent.png</ProjectItem>
+            <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Stack-Logical-Tiers-Full.png">GoodToCode-Stack-Logical-Tiers-Full.png</ProjectItem>
             <ProjectItem ReplaceParameters="false" TargetFileName="social-blog.png">social-blog.png</ProjectItem>
             <ProjectItem ReplaceParameters="false" TargetFileName="social-facebook.png">social-facebook.png</ProjectItem>
             <ProjectItem ReplaceParameters="false" TargetFileName="social-rss.png">social-rss.png</ProjectItem>
@@ -179,8 +179,8 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="ErrorViewModel.cs">ErrorViewModel.cs</ProjectItem>
       </Folder>
       <Folder Name="Partials" TargetFolderName="Partials">
-        <Folder Name="Genesys-Source" TargetFolderName="Genesys-Source">
-          <ProjectItem ReplaceParameters="true" TargetFileName="Genesys-Contact.cshtml">Genesys-Contact.cshtml</ProjectItem>
+        <Folder Name="GoodToCode" TargetFolderName="GoodToCode">
+          <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode-Contact.cshtml">GoodToCode-Contact.cshtml</ProjectItem>
         </Folder>
         <Folder Name="Shared" TargetFolderName="Shared">
           <ProjectItem ReplaceParameters="true" TargetFileName="Footer.cshtml">Footer.cshtml</ProjectItem>

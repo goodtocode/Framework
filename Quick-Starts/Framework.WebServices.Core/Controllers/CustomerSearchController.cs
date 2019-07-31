@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Framework.Customer;
-using Genesys.Extensions;
-using Genesys.Extras.Web.Http;
+using GoodToCode.Extensions;
+using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

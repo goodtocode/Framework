@@ -6,7 +6,7 @@
 -- Activity required for any insert, update and delete
 Declare @ActivityContextId_Dev As Uniqueidentifier
 Select	@ActivityContextId_Dev = newid()
-Insert INTO [Activity].[ActivityContext] ([ActivityContextKey], [IdentityUserName]) Select @ActivityContextId_Dev as [ActivityContextKey], N'SQLScript@Genesys.com' As [IdentityUserName]
+Insert INTO [Activity].[ActivityContext] ([ActivityContextKey], [IdentityUserName]) Select @ActivityContextId_Dev as [ActivityContextKey], N'SQLScript@GoodToCode.com' As [IdentityUserName]
 
 MERGE INTO [Customer].[Customer] AS Target
 USING (VALUES 

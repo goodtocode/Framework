@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework Test Project</Name>
-    <Description>Genesys Source Framework Test project containing unit tests for items in the templated projects. </Description>
+    <Name>GoodToCode Source Framework Test Project</Name>
+    <Description>GoodToCode Source Framework Test project containing unit tests for items in the templated projects. </Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

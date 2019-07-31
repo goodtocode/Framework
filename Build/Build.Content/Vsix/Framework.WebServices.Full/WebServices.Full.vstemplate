@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework Web API Project</Name>
-    <Description>Genesys Quick-Start Framework for ASP.NET Web API web services project includes Customer and Customer Search functionality using the Genesys Source Framework.</Description>
+    <Name>GoodToCode Source Framework Web API Project</Name>
+    <Description>GoodToCode Quick-Start Framework for ASP.NET Web API web services project includes Customer and Customer Search functionality using the GoodToCode Source Framework.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -60,8 +60,8 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.css.map">bootstrap.css.map</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css">bootstrap.min.css</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="bootstrap.min.css.map">bootstrap.min.css.map</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="genesys-framework.css">genesys-framework.css</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="genesys-source.css">genesys-source.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode-framework.css">GoodToCode-framework.css</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode.css">GoodToCode.css</ProjectItem>
         <Folder Name="themes" TargetFolderName="themes">
           <Folder Name="base" TargetFolderName="base">
             <ProjectItem ReplaceParameters="true" TargetFileName="accordion.css">accordion.css</ProjectItem>
@@ -122,8 +122,8 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
       <Folder Name="images" TargetFolderName="images">
-        <Folder Name="genesys" TargetFolderName="genesys">
-          <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-Genesys-Source-Framework.png">Map-of-the-Genesys-Source-Framework.png</ProjectItem>
+        <Folder Name="GoodToCode" TargetFolderName="GoodToCode">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-GoodToCode-Framework.png">Map-of-the-GoodToCode-Framework.png</ProjectItem>
         </Folder>
         <Folder Name="social" TargetFolderName="social">
           <ProjectItem ReplaceParameters="false" TargetFileName="social-facebook.png">social-facebook.png</ProjectItem>
@@ -131,8 +131,8 @@
           <ProjectItem ReplaceParameters="false" TargetFileName="social-twitter.png">social-twitter.png</ProjectItem>
         </Folder>
         <Folder Name="Welcome" TargetFolderName="Welcome">
-          <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Source-Logo-71x71-Transparent.png">Genesys-Source-Logo-71x71-Transparent.png</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Genesys-Stack-Logical-Tiers-Full.png">Genesys-Stack-Logical-Tiers-Full.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Logo-71x71-Transparent.png">GoodToCode-Logo-71x71-Transparent.png</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="GoodToCode-Stack-Logical-Tiers-Full.png">GoodToCode-Stack-Logical-Tiers-Full.png</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="social-blog.png">social-blog.png</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="social-facebook.png">social-facebook.png</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="social-rss.png">social-rss.png</ProjectItem>
@@ -166,7 +166,7 @@
           <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js">popper.min.js</ProjectItem>
           <ProjectItem ReplaceParameters="true" TargetFileName="popper.min.js.map">popper.min.js.map</ProjectItem>
         </Folder>
-        <ProjectItem ReplaceParameters="true" TargetFileName="genesys-framework.js">genesys-framework.js</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="GoodToCode-framework.js">GoodToCode-framework.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="index.d.ts">index.d.ts</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.intellisense.js">jquery-3.3.1.intellisense.js</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="jquery-3.3.1.js">jquery-3.3.1.js</ProjectItem>

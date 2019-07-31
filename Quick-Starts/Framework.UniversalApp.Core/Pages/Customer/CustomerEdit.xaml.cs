@@ -20,8 +20,8 @@
 using Framework.Application;
 using Framework.Customer;
 using Framework.UserControls;
-using Genesys.Extensions;
-using Genesys.Framework.Worker;
+using GoodToCode.Extensions;
+using GoodToCode.Framework.Worker;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;

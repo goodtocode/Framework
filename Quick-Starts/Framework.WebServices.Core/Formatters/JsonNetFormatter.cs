@@ -27,7 +27,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Diagnostics.CodeAnalysis;
-using Genesys.Extensions;
+using GoodToCode.Extensions;
 using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace Framework.WebServices

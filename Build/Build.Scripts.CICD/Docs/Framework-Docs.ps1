@@ -1,6 +1,6 @@
 ﻿#-----------------------------------------------------------------------
-# <copyright file="Framework-Docs.ps1" company="Genesys Source">
-#      Copyright (c) Genesys Source. All rights reserved.
+# <copyright file="Framework-Docs.ps1" company="GoodToCode Source">
+#      Copyright (c) GoodToCode Source. All rights reserved.
 #      All rights are reserved. Reproduction or transmission in whole or in part, in
 #      any form or by any means, electronic, mechanical or otherwise, is prohibited
 #      without the prior written consent of the copyright owner.
@@ -11,9 +11,9 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Web-01.dev.genesyssource.com', 
-	[String]$Domain = 'docs.genesyssource.com',
-	[String]$Database = 'DatabaseServer.dev.genesyssource.com'
+	[String]$Path = '\\Dev-Web-01.dev.GoodToCode.com', 
+	[String]$Domain = 'docs.GoodToCode.com',
+	[String]$Database = 'DatabaseServer.dev.GoodToCode.com'
 )
 
 # ***
@@ -28,8 +28,8 @@ Write-Host "*****************************"
 Write-Host "*** Starting: $ThisScript On: $(Get-Date)"
 Write-Host "*****************************"
 # Imports
-Import-Module "..\..\Build.Scripts.Modules\Code\Genesys.Code.psm1"
-Import-Module "..\..\Build.Scripts.Modules\System\Genesys.System.psm1"
+Import-Module "..\..\Build.Scripts.Modules\Code\GoodToCode.Code.psm1"
+Import-Module "..\..\Build.Scripts.Modules\System\GoodToCode.System.psm1"
 
 # ***
 # *** Validate and cleanse
@@ -42,8 +42,8 @@ $Path = Set-Unc -Path $Path
 # ***
 $Path = Set-Unc -Path $Path
 [String]$Solution="..\..\..\Docs\Framework.Docs.sln"
-[String]$Source="..\..\..\Docs\Framework.Docs\Genesys-Framework"
-$Path=[String]::Format("{0}\{1}", $Path, "\Sites\docs.GenesysSource.com\Reference\Genesys-Framework")
+[String]$Source="..\..\..\Docs\Framework.Docs\GoodToCode-Framework"
+$Path=[String]::Format("{0}\{1}", $Path, "\Sites\docs.GoodToCode.com\Reference\GoodToCode-Framework")
 
 # ***
 # *** Execute

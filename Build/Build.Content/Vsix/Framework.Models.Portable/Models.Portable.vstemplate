@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework Models Project</Name>
-    <Description>Genesys Source Framework View Models (Cross-platform library) for screens, web services and http transport. Thin signature and minimal functionality for portability. Supports methods like .Serialize() and .Deserialize().</Description>
+    <Name>GoodToCode Source Framework Models Project</Name>
+    <Description>GoodToCode Source Framework View Models (Cross-platform library) for screens, web services and http transport. Thin signature and minimal functionality for portability. Supports methods like .Serialize() and .Deserialize().</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

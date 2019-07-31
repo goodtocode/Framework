@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Content", "Build.Content\Build.Content.csproj", "{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Test.Sites", "Build.Test.Sites\Build.Test.Sites.csproj", "{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build.Test.Framework", "Build.Test.Framework\Build.Test.Framework.csproj", "{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Build.Scripts.CICD", "Build.Scripts.CICD\Build.Scripts.CICD.csproj", "{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}"
 EndProject
@@ -35,30 +31,6 @@ Global
 		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|x86.ActiveCfg = Release|Any CPU
 		{E7C8E952-B023-4CAC-B88A-8B9CD58B3B90}.Release|x86.Build.0 = Release|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Debug|x86.Build.0 = Debug|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|Any CPU.ActiveCfg = QA|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|Any CPU.Build.0 = QA|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|x86.ActiveCfg = QA|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.QA|x86.Build.0 = QA|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|x86.ActiveCfg = Release|Any CPU
-		{16E0C88B-97FA-44DC-804E-F09DBEA55BAE}.Release|x86.Build.0 = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Debug|x86.Build.0 = Debug|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|Any CPU.ActiveCfg = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|Any CPU.Build.0 = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|x86.ActiveCfg = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.QA|x86.Build.0 = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|x86.ActiveCfg = Release|Any CPU
-		{8A7EE67B-7CCC-4421-A156-017C0EE0D8CD}.Release|x86.Build.0 = Release|Any CPU
 		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{290FFFBB-78C2-46F1-81D2-D2E46F0726E7}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -89,27 +61,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CBF64749-A809-435C-8025-E247589EAE9B}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://genesyssource.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Build.Content\\Build.Content.csproj
-		SccProjectName1 = Build.Content
-		SccLocalPath1 = Build.Content
-		SccProjectUniqueName2 = Build.Test.Framework\\Build.Test.Framework.csproj
-		SccProjectName2 = Build.Test.Framework
-		SccLocalPath2 = Build.Test.Framework
-		SccProjectUniqueName3 = Build.Test.Sites\\Build.Test.Sites.csproj
-		SccProjectName3 = Build.Test.Sites
-		SccLocalPath3 = Build.Test.Sites
-		SccProjectUniqueName4 = Build.Scripts.CICD\\Build.Scripts.CICD.csproj
-		SccProjectName4 = Build.Scripts.CICD
-		SccLocalPath4 = Build.Scripts.CICD
-		SccProjectUniqueName5 = Build.Scripts.Modules\\Build.Scripts.Modules.csproj
-		SccProjectName5 = Build.Scripts.Modules
-		SccLocalPath5 = Build.Scripts.Modules
 	EndGlobalSection
 	GlobalSection(TeamFrameworkVersionControl) = preSolution
 		SccNumberOfProjects = 12

@@ -16,7 +16,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using Genesys.Extras.Configuration;
+using GoodToCode.Extras.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;

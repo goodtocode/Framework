@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Genesys Source Framework WPF Project</Name>
-    <Description>Genesys Quick-Start Framework for WPF desktop apps project includes Customer and Customer Search functionality using the Genesys Source Framework.</Description>
+    <Name>GoodToCode Source Framework WPF Project</Name>
+    <Description>GoodToCode Quick-Start Framework for WPF desktop apps project includes Customer and Customer Search functionality using the GoodToCode Source Framework.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -75,7 +75,7 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="Settings.Designer.cs">Settings.Designer.cs</ProjectItem>
       </Folder>
       <Folder Name="Resources" TargetFolderName="Resources">
-        <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-Genesys-Source-Framework.png">Map-of-the-Genesys-Source-Framework.png</ProjectItem>
+        <ProjectItem ReplaceParameters="false" TargetFileName="Map-of-the-GoodToCode-Framework.png">Map-of-the-GoodToCode-Framework.png</ProjectItem>
       </Folder>
       <Folder Name="Themes" TargetFolderName="Themes">
         <ProjectItem ReplaceParameters="true" TargetFileName="Generic.xaml">Generic.xaml</ProjectItem>

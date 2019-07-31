@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Genesys Source")]
-[assembly: AssemblyDescription("Genesys Source - Reusability Simplified")]
+[assembly: AssemblyTitle("GoodToCode Source")]
+[assembly: AssemblyDescription("GoodToCode Source - Reusability Simplified")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Genesys Source")]
-[assembly: AssemblyProduct("Genesys Source")]
-[assembly: AssemblyCopyright("Copyright © 2018 Genesys Source. All rights reserved.")]
-[assembly: AssemblyTrademark("Genesys Source is a registered trademark of Genesys Source. Genesys Source Framework and Genesys Cloud Dev Environment are trademarks of Genesys Source.")]
+[assembly: AssemblyCompany("GoodToCode Source")]
+[assembly: AssemblyProduct("GoodToCode Source")]
+[assembly: AssemblyCopyright("Copyright © 2018 GoodToCode Source. All rights reserved.")]
+[assembly: AssemblyTrademark("GoodToCode Source is a registered trademark of GoodToCode Source. GoodToCode Source Framework and GoodToCode Cloud Dev Environment are trademarks of GoodToCode Source.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

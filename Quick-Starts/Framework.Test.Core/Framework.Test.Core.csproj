@@ -7,7 +7,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <RootNamespace>Genesys.Framework</RootNamespace>
+    <RootNamespace>GoodToCode.Framework</RootNamespace>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>GenesysFramework.snk</AssemblyOriginatorKeyFile>
     <PackageId>Framework.Test.Core</PackageId>
@@ -32,94 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Activity\" />
-    <Folder Include="Application\" />
-    <Folder Include="Data\" />
-    <Folder Include="Endpoints\" />
-    <Folder Include="Entity\" />
-    <Folder Include="Model\" />
-    <Folder Include="Serialization\" />
-    <Folder Include="Validation\" />
-    <Folder Include="Worker\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Framework.Test.Core.csproj.vspscc" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="..\Framework.Test.Shared\Activity\ActivityLoggerTests.cs">
-      <Link>Activity\ActivityLoggerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Activity\ExceptionLoggerTests.cs">
-      <Link>Activity\ExceptionLoggerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Application\ITestApplication.cs">
-      <Link>Application\ITestApplication.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Application\TestApplication.cs">
-      <Link>Application\TestApplication.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\ConnectionStringNameAttributeTests.cs">
-      <Link>Data\ConnectionStringNameAttributeTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\DataAccessBehaviorAttributeTests.cs">
-      <Link>Data\DataAccessBehaviorAttributeTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\DatabaseSchemaNameAttributeTests.cs">
-      <Link>Data\DatabaseSchemaNameAttributeTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\ReadOnlyDatabaseTests.cs">
-      <Link>Data\ReadOnlyDatabaseTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\SaveableDatabaseTests.cs">
-      <Link>Data\SaveableDatabaseTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\TakeRowsAttributeTests.cs">
-      <Link>Data\TakeRowsAttributeTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Data\Test.Data.Tables.cs">
-      <Link>Data\Test.Data.Tables.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Endpoints\Framework-for-WebApi-Tests.cs">
-      <Link>Endpoints\Framework-for-WebApi-Tests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Entity\CrudEntityTests.cs">
-      <Link>Entity\CrudEntityTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Entity\CustomerEntityTests.cs">
-      <Link>Entity\CustomerEntityTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Model\CustomerModelTests.cs">
-      <Link>Model\CustomerModelTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Model\CustomerSearchModelTests.cs">
-      <Link>Model\CustomerSearchModelTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Model\TestViewModel.cs">
-      <Link>Model\TestViewModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Model\ViewModelTests.cs">
-      <Link>Model\ViewModelTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Serialization\JsonSerializerGenericTests.cs">
-      <Link>Serialization\JsonSerializerGenericTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Serialization\JsonSerializerTests.cs">
-      <Link>Serialization\JsonSerializerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Serialization\SerializerGenericTests.cs">
-      <Link>Serialization\SerializerGenericTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Serialization\SerializerTests.cs">
-      <Link>Serialization\SerializerTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Validation\ValidationRuleTests.cs">
-      <Link>Validation\ValidationRuleTests.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Test.Shared\Worker\WorkerTests.cs">
-      <Link>Worker\WorkerTests.cs</Link>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -154,11 +67,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Genesys.Extensions.Core" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="Genesys.Framework.DataAccess.Core" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Interop.Standard" Version="4.18.19060.2" />
-    <PackageReference Include="Genesys.Framework.Models.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
+    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
+    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19060.2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.2" />

@@ -35,39 +35,7 @@
     <None Remove="GoodToCode.Framework.Models.Standard.csproj.vspscc" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Framework.Models.Shared\Activity\ActivityModel.cs">
-      <Link>Activity\ActivityModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Activity\ExceptionModel.cs">
-      <Link>Activity\ExceptionModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Application\ViewModel.cs">
-      <Link>Application\ViewModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Data\EntityModel.cs">
-      <Link>Data\EntityModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Data\ValueModel.cs">
-      <Link>Data\ValueModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Data\BytesKeyModel.cs">
-      <Link>Data\BytesKeyModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Data\ImageModel.cs">
-      <Link>Data\ImageModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Name\NameDescriptionModel.cs">
-      <Link>Name\NameDescriptionModel.cs</Link>
-    </Compile>
-    <Compile Include="..\Framework.Models.Shared\Name\NameIDModel.cs">
-      <Link>Name\NameIDModel.cs</Link>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19186.1" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />

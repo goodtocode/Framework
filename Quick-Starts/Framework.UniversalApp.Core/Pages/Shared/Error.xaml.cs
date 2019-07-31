@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Windows.UI.Xaml.Navigation;
-using Genesys.Extensions;
+using GoodToCode.Extensions;
 using System;
 using Windows.UI.Xaml;
 

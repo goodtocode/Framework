@@ -1,6 +1,6 @@
 ﻿#-----------------------------------------------------------------------
-# <copyright file="Framework-eBook.ps1" company="Genesys Source">
-#      Copyright (c) Genesys Source. All rights reserved.
+# <copyright file="Framework-eBook.ps1" company="GoodToCode Source">
+#      Copyright (c) GoodToCode Source. All rights reserved.
 #      All rights are reserved. Reproduction or transmission in whole or in part, in
 #      any form or by any means, electronic, mechanical or otherwise, is prohibited
 #      without the prior written consent of the copyright owner.
@@ -10,12 +10,12 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.genesyssource.com\Vault\Drops', 
-	[String]$Destination = '\\Dev-Web-01.dev.genesyssource.com', 
-	[String]$Domain = 'docs.genesyssource.com',
-	[String]$Database = 'DatabaseServer.dev.genesyssource.com',
-	[String]$Build = '\\Dev-Vm-01.dev.genesyssource.com\Vault\builds\sprints',	
-	[String]$ProductName = 'Genesys-Framework',
+	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops', 
+	[String]$Destination = '\\Dev-Web-01.dev.GoodToCode.com', 
+	[String]$Domain = 'docs.GoodToCode.com',
+	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',
+	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\builds\sprints',	
+	[String]$ProductName = 'GoodToCode-Framework',
 	[String]$Relative = "..\..\"
 )
 
@@ -31,8 +31,8 @@ Write-Host "*****************************"
 Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 # Imports
-Import-Module ($Relative + "Build.Scripts.Modules\Code\Genesys.Code.psm1")
-Import-Module ($Relative + "Build.Scripts.Modules\System\Genesys.System.psm1")
+Import-Module ($Relative + "Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($Relative + "Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse

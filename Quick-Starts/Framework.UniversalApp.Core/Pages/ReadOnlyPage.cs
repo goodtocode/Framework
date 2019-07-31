@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using Framework.Application;
-using Genesys.Extensions;
-using Genesys.Extras.Collections;
+using GoodToCode.Extensions;
+using GoodToCode.Extras.Collections;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
