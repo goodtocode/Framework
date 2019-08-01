@@ -11,17 +11,17 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <PackageId>Framework.WebApp.Core</PackageId>
     <Version>4.18.9</Version>
-    <Authors>Genesys Source</Authors>
-    <Company>Genesys Source</Company>
-    <Product>Genesys Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
-    <Description>Genesys Source Framework Web foundation classes for your app, controllers, views and model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
-    <Copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</Copyright>
-    <PackageLicenseUrl>http://www.genesyssource.com/policy/nuget/license.html</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.genesyssource.com</PackageProjectUrl>
-    <PackageIconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
-    <RepositoryUrl>http://www.github.com/genesyssource/framework-for-mvc</RepositoryUrl>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
+    <Description>GoodToCode Framework Web foundation classes for your app, controllers, views and model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.GoodToCode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/GoodToCode/framework-for-mvc</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -31,7 +31,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Partials\Genesys-Source\" />
+    <Folder Include="Partials\GoodToCode\" />
     <Folder Include="Partials\Shared\" />
     <Folder Include="Properties\" />
     <Folder Include="Properties\PublishProfiles\" />
@@ -41,7 +41,7 @@
     <Folder Include="Views\Home\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\images\Genesys-Source\" />
+    <Folder Include="wwwroot\images\GoodToCode\" />
     <Folder Include="wwwroot\images\Social\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
@@ -76,7 +76,7 @@
     <None Include="App_Data\ConnectionStrings.json" />
     <None Include="App_Data\ConnectionStrings.Release.json" />
     <None Include="bundleconfig.json" />
-    <None Include="Partials\Genesys-Source\Genesys-Contact.cshtml" />
+    <None Include="Partials\GoodToCode\GoodToCode-Contact.cshtml" />
     <None Include="Partials\Shared\Footer.cshtml" />
     <None Include="Partials\Shared\Header.cshtml" />
     <None Include="Properties\launchSettings.json" />
@@ -92,17 +92,17 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
-    <None Include="wwwroot\css\genesys-source.css" />
-    <None Include="wwwroot\css\genesys-source.min.css" />
+    <None Include="wwwroot\css\GoodToCode.css" />
+    <None Include="wwwroot\css\GoodToCode.min.css" />
     <None Include="wwwroot\css\site.css" />
     <None Include="wwwroot\css\site.min.css" />
     <None Include="wwwroot\favicon.ico" />
-    <None Include="wwwroot\images\Genesys-Source\favicon.ico" />
-    <None Include="wwwroot\images\Genesys-Source\Genesys-Source-Logo-Square.png" />
-    <None Include="wwwroot\images\Genesys-Source\Genesys-Source-Logo-Transparent.png" />
-    <None Include="wwwroot\images\Genesys-Source\Genesys-Source-Logo-White.png" />
-    <None Include="wwwroot\images\Genesys-Source\Genesys-Source-Logo.png" />
-    <None Include="wwwroot\images\Genesys-Source\Map-of-the-Genesys-Source-Framework.png" />
+    <None Include="wwwroot\images\GoodToCode\favicon.ico" />
+    <None Include="wwwroot\images\GoodToCode\GoodToCode-Logo-Square.png" />
+    <None Include="wwwroot\images\GoodToCode\GoodToCode-Logo-Transparent.png" />
+    <None Include="wwwroot\images\GoodToCode\GoodToCode-Logo-White.png" />
+    <None Include="wwwroot\images\GoodToCode\GoodToCode-Logo.png" />
+    <None Include="wwwroot\images\GoodToCode\Map-of-the-GoodToCode-Framework.png" />
     <None Include="wwwroot\images\Social\social-blog.png" />
     <None Include="wwwroot\images\Social\social-facebook.png" />
     <None Include="wwwroot\images\Social\social-rss.png" />

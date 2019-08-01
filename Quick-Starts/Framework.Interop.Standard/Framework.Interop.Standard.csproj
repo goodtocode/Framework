@@ -12,17 +12,17 @@
     <RootNamespace>Framework.Interop</RootNamespace>
     <PackageId>Framework.Interop.Standard</PackageId>
     <Version>4.18.9</Version>
-    <Authors>Genesys Source</Authors>
-    <Company>Genesys Source</Company>
-    <Product>Genesys Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
-    <Description>Genesys Source Framework Web foundation classes for your app, controllers, views and model classes. Genesys Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
-    <Copyright>Copyright (c) 2017-2018 Genesys Source. All Rights Reserved.</Copyright>
-    <PackageLicenseUrl>http://www.genesyssource.com/policy/nuget/license.html</PackageLicenseUrl>
-    <PackageProjectUrl>http://www.genesyssource.com</PackageProjectUrl>
-    <PackageIconUrl>http://www.genesyssource.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
-    <RepositoryUrl>http://www.github.com/genesyssource/framework-for-core</RepositoryUrl>
+    <Authors>GoodToCode</Authors>
+    <Company>GoodToCode</Company>
+    <Product>GoodToCode Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</Product>
+    <Description>GoodToCode Framework Web foundation classes for your app, controllers, views and model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</PackageLicenseUrl>
+    <PackageProjectUrl>http://www.GoodToCode.com</PackageProjectUrl>
+    <PackageIconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</PackageIconUrl>
+    <RepositoryUrl>http://www.github.com/GoodToCode/framework-for-core</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>Genesys Source Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
+    <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
