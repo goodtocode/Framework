@@ -9,7 +9,7 @@
 
     <StackPanel x:Name="PanelRoot" Visibility="Collapsed" Orientation="Vertical" Margin="0,5,0,0">
         <StackPanel x:Name="PanelProcessing" Orientation="Horizontal">
-            <ProgressRing x:Name="ProgressRingIndeterminate" IsActive="True" Style="{StaticResource GenesysProgressRing}" Margin="0,0,0,5"/>
+            <ProgressRing x:Name="ProgressRingIndeterminate" IsActive="True" Style="{StaticResource GoodToCodeProgressRing}" Margin="0,0,0,5"/>
             <TextBlock x:Name="TextProcessing" TextWrapping="Wrap" Style="{StaticResource ProgressMessageStyle}" />
         </StackPanel>
         <TextBlock x:Name="TextResult" Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource ProgressMessageStyle}" />

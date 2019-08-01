@@ -3,30 +3,30 @@
   <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
     <introduction>
       <para>
-        The Genesys Source Framework brings full-stack, cross-platform, open-source reusability to your products without the cost and uncertainty of building a reusable framework from scratch.
-        The goal of the Genesys Source Framework is to get you up and running today, reading/writing to your existing database and using those entities in your Web Apps, Web Services and your Mobile Apps.
+        The GoodToCode Framework brings full-stack, cross-platform, open-source reusability to your products without the cost and uncertainty of building a reusable framework from scratch.
+        The goal of the GoodToCode Framework is to get you up and running today, reading/writing to your existing database and using those entities in your Web Apps, Web Services and your Mobile Apps.
       </para>
     </introduction>
     <section>
       <title>Getting Started</title>
       <content>
         <para>
-          Genesys Framework is an open-source .NET Solution of foundation classes that make your objects consumable in Web, Mobile, Desktop and Services. Download as Zip, or directly in Visual Studio from Tools -> Extensions and Updates, Keyword: GoodToCode.
+          GoodToCode Framework is an open-source .NET Solution of foundation classes that make your objects consumable in Web, Mobile, Desktop and Services. Download as Zip, or directly in Visual Studio from Tools -> Extensions and Updates, Keyword: GoodToCode.
         </para>
         <list class="bullet">
           <listItem>            
             <alert class="note">
               <para>
-                Download the Genesys Framework (Zip): <externalLink><linkText>GenesysStack.com/Genesys-Framework</linkText><linkUri>http://www.GenesysStack.com/Genesys-Framework</linkUri></externalLink>                
+                Download the GoodToCode Framework (Zip): <externalLink><linkText>GoodToCode.com/GoodToCode-Framework</linkText><linkUri>http://www.github.com/goodtocode</linkUri></externalLink>                
               </para>
               <para>
                 Visual Studio Marketplace (Vsix): <externalLink><linkText>marketplace.VisualStudio.com</linkText><linkUri>https://marketplace.visualstudio.com</linkUri></externalLink>
               </para>
               <para>
                 Quick-Guide and Requirements: 
-                  <externalLink><linkText>Quick-Guide (PDF)</linkText><linkUri>http://docs.genesyssource.com/library/Genesys-Framework/Genesys-Framework-Quick-Guide.pdf</linkUri></externalLink>
+                  <externalLink><linkText>Quick-Guide (PDF)</linkText><linkUri>http://www.github.com/goodtocode</linkUri></externalLink>
                   -
-                  <externalLink><linkText>Requirements (PDF)</linkText><linkUri>http://docs.genesyssource.com/library/Genesys-Framework/Genesys-Framework-Requirements.pdf</linkUri></externalLink>
+                  <externalLink><linkText>Requirements (PDF)</linkText><linkUri>http://www.github.com/goodtocode</linkUri></externalLink>
               </para>
             </alert>
           </listItem>
@@ -34,10 +34,10 @@
       </content>
     </section>
     <section>
-      <title>What is in the Genesys Source Framework?</title>
+      <title>What is in the GoodToCode Framework?</title>
       <content>
       <para>
-        Genesys Source Framework .NET Solution contains the following projects:
+        GoodToCode Framework .NET Solution contains the following projects:
       </para>
       <list class="bullet">
         <listItem>

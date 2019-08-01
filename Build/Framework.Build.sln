@@ -65,7 +65,7 @@ Global
 	GlobalSection(TeamFrameworkVersionControl) = preSolution
 		SccNumberOfProjects = 12
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFrameworkServer = https://genesyssource.visualstudio.com/
+		SccTeamFrameworkServer = https://GoodToCode.visualstudio.com/
 		SccLocalPath0 = .
 		SccProjectUniqueName1 = Build.Scripts.CICD\\Build.Scripts.CICD.pssproj
 		SccProjectName1 = Build.Scripts.CICD

@@ -621,7 +621,7 @@ export-modulemember -function Remove-TFSBinding
 #-----------------------------------------------------------------------
 # Update-AppSetting [-Path [<String>]]
 #
-# Example: .\Update-AppSetting -Path \\source\path -Key "MyWebService" -Value "http://sampler.GoodToCode.com/GoodToCode-framework-for-webapi/v1"
+# Example: .\Update-AppSetting -Path \\source\path -Key "MyWebService" -Value "https://goodtocode-framework-for-mvc.azurewebsites.net/v1"
 #-----------------------------------------------------------------------
 function Update-AppSetting
 {

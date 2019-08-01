@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Genesys Source Framework for Universal")]
-[assembly: AssemblyDescription("Genesys Source Framework foundation classes for classes power your resuable framework for your .NET Core PCL/libraries, Universal x-platform mobile apps and all .NET Full libraries and apps.")]
+[assembly: AssemblyTitle("GoodToCode Framework for Universal")]
+[assembly: AssemblyDescription("GoodToCode Framework foundation classes for classes power your resuable framework for your .NET Core PCL/libraries, Universal x-platform mobile apps and all .NET Full libraries and apps.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Genesys Source")]
-[assembly: AssemblyProduct("Genesys Source Framework for Universal")]
-[assembly: AssemblyCopyright("Copyright © 2017-2018 Genesys Source")]
-[assembly: AssemblyTrademark("Genesys Source is a registered trademark of Genesys Source")]
+[assembly: AssemblyCompany("GoodToCode")]
+[assembly: AssemblyProduct("GoodToCode Framework for Universal")]
+[assembly: AssemblyCopyright("Copyright © 2017-2018 GoodToCode")]
+[assembly: AssemblyTrademark("GoodToCode is a registered trademark of GoodToCode")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
