@@ -184,12 +184,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19050.2" />
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19050.2" />
-    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19060.2" />
-    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19060.2" />
-    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19060.2" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19211.23" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
+    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19212.8" />
+    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19212.8" />
+    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19212.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.6" />
   </ItemGroup>
 
   <ItemGroup>
