@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="818770a1-011c-460a-8854-0ac0ebb37397" visible="True" isDefault="true" title="Genesys Source Framework API Reference">
+  <Topic id="818770a1-011c-460a-8854-0ac0ebb37397" visible="True" isDefault="true" title="GoodToCode Framework API Reference">
     <HelpKeywords>
       <HelpKeyword index="K" term="Welcome" />
     </HelpKeywords>

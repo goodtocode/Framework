@@ -21,7 +21,7 @@
             <RowDefinition Height="0.75*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Image x:Name="HeroImage" Source="Assets/Map-of-the-Genesys-Source-Framework.png" MaxHeight="400" MaxWidth="600" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
+        <Image x:Name="HeroImage" Source="Assets/Map-of-the-GoodToCode-Framework.png" MaxHeight="400" MaxWidth="600" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
         <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionSubtitleTextBlockStyle}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">Your new Universal App projects are ready...</TextBlock>
         <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionBodyTextBlockStyle}" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
                 - Framework.UniversalApp: Universal (UWP) project containing CRUD functionality for the Customer entity.
@@ -36,9 +36,9 @@
                     - \App_Data\AppSettings.config
                     <LineBreak/>- \App_Data\ConnectionStrings.config
         </TextBlock>
-        <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionSubtitleTextBlockStyle}" Grid.Column="0" Grid.Row="5">What is the Genesys Framework?</TextBlock>
+        <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionSubtitleTextBlockStyle}" Grid.Column="0" Grid.Row="5">What is the GoodToCode Framework?</TextBlock>
         <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionBodyTextBlockStyle}" Grid.Column="0" Grid.Row="6">
-                    Genesys Framework is a business object reusability .NET project, quick-start w/ ready-to-run plumbing.
+                    GoodToCode Framework is a business object reusability .NET project, quick-start w/ ready-to-run plumbing.
                     <LineBreak/>Eliminates plumbing time on your .NET projects
                     <LineBreak/>Adds CRUD-to-SQL, CRUD-to-Services
                     <LineBreak/>Self-serializes, self-validates, self-tracks
@@ -46,11 +46,11 @@
         </TextBlock>
         <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionSubtitleTextBlockStyle}" Grid.Column="1" Grid.Row="5">Other areas of interest:</TextBlock>
         <TextBlock TextWrapping="Wrap" Style="{StaticResource SectionBodyTextBlockStyle}" Grid.Column="1" Grid.Row="6">
-                    Home: http://www.GenesysSource.com
-                    <LineBreak/>Docs: http://docs.GenesysSource.com
-                    <LineBreak/>Help: http://help.GenesysSource.com
+                    Home: http://www.GoodToCode.com
+                    <LineBreak/>Docs: http://docs.GoodToCode.com
+                    <LineBreak/>Help: http://help.GoodToCode.com
                     <LineBreak/>In Visual Studio: http://marketplace.visualstudio.com
-                    <LineBreak/>On GitHub: http://www.github.com/genesyssource
+                    <LineBreak/>On GitHub: http://www.github.com/GoodToCode
         </TextBlock>
     </Grid>
 </Page>

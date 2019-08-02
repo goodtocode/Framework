@@ -14,11 +14,11 @@
     <Name>Framework.Docs</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 4.6</FrameworkVersion>
-    <OutputPath>Genesys-Framework\</OutputPath>
+    <OutputPath>GoodToCode-Framework\</OutputPath>
     <HtmlHelpName>GoodToCode.Framework.Docs</HtmlHelpName>
     <Language>en-US</Language>
     <TransformComponentArguments>
-      <Argument Key="logoFile" Value="genesys-help.png" xmlns="" />
+      <Argument Key="logoFile" Value="GoodToCode-help.png" xmlns="" />
       <Argument Key="logoHeight" Value="" xmlns="" />
       <Argument Key="logoWidth" Value="" xmlns="" />
       <Argument Key="logoAltText" Value="" xmlns="" />
@@ -31,22 +31,22 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccLocalPath>SAK</SccLocalPath>
     <DocumentationSources>
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extensions.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Extensions\GoodToCode.Extras.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.DataAccess.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.DataAccess.Core.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Interop.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Interop.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Models.Standard.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Models.Standard.xml" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Web.Core.dll" />
-      <DocumentationSource sourceFile="..\..\..\..\..\lib\Genesys-Framework\GoodToCode.Framework.Web.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extensions.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extensions.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extensions.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extensions.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extras.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extras.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extras.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Extensions\GoodToCode.Extras.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.DataAccess.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.DataAccess.Core.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Interop.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Interop.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Standard.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Models.Standard.xml" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Web.Core.dll" />
+      <DocumentationSource sourceFile="..\..\..\..\..\lib\GoodToCode-Framework\GoodToCode.Framework.Web.Core.xml" />
     </DocumentationSources>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1, Website</HelpFileFormat>
@@ -63,12 +63,12 @@
     <PresentationStyle>VS2013</PresentationStyle>
     <Preliminary>False</Preliminary>
     <NamingMethod>Guid</NamingMethod>
-    <HelpTitle>Genesys Source Framework</HelpTitle>
-    <CopyrightText>Copyright %28c%29 Genesys Source. All rights reserved.</CopyrightText>
-    <CopyrightHref>http://www.genesyssource.com</CopyrightHref>
+    <HelpTitle>GoodToCode Framework</HelpTitle>
+    <CopyrightText>Copyright %28c%29 GoodToCode. All rights reserved.</CopyrightText>
+    <CopyrightHref>http://www.GoodToCode.com</CopyrightHref>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
-    <FeedbackEMailAddress>developers%40genesyssource.com</FeedbackEMailAddress>
+    <FeedbackEMailAddress>developers%40GoodToCode.com</FeedbackEMailAddress>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->
@@ -134,13 +134,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icons\genesys-help.png">
-      <ImageId>genesys-help</ImageId>
-      <AlternateText>genesys-help</AlternateText>
+    <Image Include="icons\GoodToCode-help.png">
+      <ImageId>GoodToCode-help</ImageId>
+      <AlternateText>GoodToCode-help</AlternateText>
     </Image>
-    <Image Include="icons\genesys-source.png">
-      <ImageId>genesys-source</ImageId>
-      <AlternateText>genesys-source</AlternateText>
+    <Image Include="icons\GoodToCode.png">
+      <ImageId>GoodToCode</ImageId>
+      <AlternateText>GoodToCode</AlternateText>
     </Image>
   </ItemGroup>
   <!-- Import the SHFB build targets -->

@@ -18,7 +18,7 @@ mc:Ignorable="d">
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="9*" />
         </Grid.ColumnDefinitions>
-        <uc:HeaderBar Text="Genesys Framework for Universal and Xamarin" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+        <uc:HeaderBar Text="GoodToCode Framework for Universal and Xamarin" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
         <uc:HamburgerMenu Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" />
         <Frame x:Name="Title" FontSize="22" Margin="50,10,0,0" Grid.Row="1" Grid.Column="1" />
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" >

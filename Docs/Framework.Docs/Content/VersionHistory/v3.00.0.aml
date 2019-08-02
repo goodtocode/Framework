@@ -3,7 +3,7 @@
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
     <introduction>
       <para>
-        Genesys Source Framework releases every month with new features, fixes and improvements.
+        GoodToCode Framework releases every month with new features, fixes and improvements.
       </para>
     </introduction>
     <section>
@@ -14,7 +14,7 @@
             <para>New data access attributes, ConnectionString, DatabaseSchema, DataConcurrency and DataAccessBenavhior.</para>
           </listItem>
           <listItem>
-            <para>Connection strings can be either ADO.Net style or Entity Framework style, both will work with the Genesys Source Framework.</para>
+            <para>Connection strings can be either ADO.Net style or Entity Framework style, both will work with the GoodToCode Framework.</para>
           </listItem>
           <listItem>
             <para>Added default routes to Mvc and WebAPI projects.</para>

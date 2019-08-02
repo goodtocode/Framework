@@ -11,7 +11,7 @@ SET Configuration=%2
 ECHO Configuration: %Configuration%
 SET ProjectName=%3
 ECHO ProjectName: %ProjectName%
-SET LibFolder="\lib\Genesys-Framework"
+SET LibFolder="\lib\GoodToCode-Framework"
 ECHO LibFolder: %LibFolder%
 
 REM Copying project output to build location
