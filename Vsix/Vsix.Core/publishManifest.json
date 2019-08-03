@@ -1,8 +1,8 @@
 {
   "$schema": "http://json.schemastore.org/vsix-publish",
-  "categories": [ "ASP.NET", "Visual Studio Extensions", "Database" ], // The categories of the extension. Between 1 and 3 categories are required.
+  "categories": [ "coding", "scaffolding", "web" ], // The categories of the extension. Between 1 and 3 categories are required.
   "identity": {
-    "internalName": "Quick-Start for Core" // If not specified, we try to generate the name from the display name of the extension in the vsixmanifest file.
+    "internalName": "Quick-Start-for-Core" // If not specified, we try to generate the name from the display name of the extension in the vsixmanifest file.
     // Required if the display name is not the actual name of the extension.
   },
   "overview": "ReadMe.md", // Path to the "readme" file that gets uploaded to the Marketplace. Required.

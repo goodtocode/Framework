@@ -3,14 +3,14 @@
   <Metadata>
     <Identity Id="GoodToCode.Framework.MVC" Version="4.19.01" Language="en-US" Publisher="GoodToCode" />
     <DisplayName>Quick-Start for MVC</DisplayName>
-    <Description xml:space="preserve">GoodToCode MVC reusability framework, pre-setup full-stack solution to house your reusable business objects, such as CustomerInfo. Works with your existing SQL tables, and allows you to incrementally upgrade your custom software app...one page at a time. Data Tier: Framework.Database (SSDT), Middle Tier: Framework.Interfaces (cross-platform), Framework.Entity Data Access Objects (EF 6), Presentation Tier: Framework.WebApp (MVC 5), Framework.Models (cross-platform)</Description>
+    <Description xml:space="preserve">GoodToCode Framework is pre-setup full-stack solution for your domain objects, persistence layer, models and shared kernel. SSDT DataTier integrates with your existing SQL tables, loosely-coupling to your LoB Apps.</Description>
     <MoreInfo>https://www.GoodToCode.com</MoreInfo>
     <License>License.txt</License>
     <GettingStartedGuide>https://www.github.com/GoodToCode.com/Framework</GettingStartedGuide>
     <ReleaseNotes>https://www.github.com/GoodToCode.com/Framework</ReleaseNotes>
     <Icon>__TemplateIcon.png</Icon>
     <PreviewImage>__PreviewImage.PNG</PreviewImage>
-    <Tags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</Tags>
+    <Tags>.NET Core C# Open-Source</Tags>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0, 17.0)" />
