@@ -1,5 +1,11 @@
 PAT: ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega
 
-\Source-GTC\Stack\Framework\Vsix\packages\Microsoft.VSSDK.BuildTools.16.3.1066\tools\vssdk\bin\VsixPublisher.exe publish -payload "D:\Source-GTC\Stack\Framework\Vsix\Vsix.Core\bin\Debug\Core.vsix" -publishManifest "D:\Source-GTC\Stack\Framework\Vsix\Vsix.Core\bin\Debug\extension.vsixmanifest" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02 -personalAccessToken ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega
+C:
+CD \Users\rober\Source\Repos\Framework\Vsix\Vsix.Core
 
-VSSDK: error VsixPub0003 : Encountered an exception when reading the publisher manifest: Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+
+VsixPublisher.exe createPublisher -publisherName "GoodToCode" -displayName "GoodToCode" -personalAccessToken ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega
+
+VsixPublisher.exe login -personalAccessToken ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega -publisherName "GoodToCode"
+
+VsixPublisher.exe publish -payload "\Users\rober\Source\Repos\Framework\Vsix\Vsix.Core\bin\Debug\Core.vsix" -publishManifest "\Users\rober\Source\Repos\Framework\Vsix\Vsix.Core\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02 
