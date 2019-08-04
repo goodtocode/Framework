@@ -12,9 +12,9 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$Path = $(throw '-Path is a required parameter. $(build.stagingDirectory)'),
+ 	[string]$ArtifactDir = $(throw '-Path is a required parameter. $(build.stagingDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+ 	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$Database = $(throw '-Database is a required parameter. $(config.databaseServer)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
@@ -37,24 +37,24 @@ Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 
 # Imports
-Import-Module ($Build + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
-Import-Module ($Build + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
+Import-Module ($SourceDir + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($SourceDir + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse
 # *** 
-$Path = Set-Unc -Path $Path
-$Build = Set-Unc -Path $Build
+$ArtifactDir = Set-Unc -Path $ArtifactDir
+$SourceDir = Set-Unc -Path $SourceDir
 
 # ***
 # *** Locals
 # ***
 $ProductName = 'Vsix-for-' + $ProductFlavor
-$PathFull = [String]::Format("{0}\{1}\{2}", $Path, $SubFolder, $ProductName)
-$BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
+$ArtifactDirFull = [String]::Format("{0}\{1}\{2}", $ArtifactDir, $SubFolder, $ProductName)
+$SourceDirFull = [String]::Format("{0}\{1}\{2}\{3}", $SourceDir, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
 
 # ***
 # *** Execute
 # ***
 # Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor $ProductFlavor -Build $BuildFull
+Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $ArtifactDirFull -Database $Database -FamilyName "Framework" -ProductFlavor $ProductFlavor -Build $SourceDirFull

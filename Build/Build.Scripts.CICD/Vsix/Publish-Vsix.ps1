@@ -12,9 +12,9 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$Path = $(throw '-Path is a required parameter.'),
+ 	[string]$ArtifactDir = $(throw '-Path is a required parameter.'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+ 	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$PublisherToken = $(throw '-PublisherToken is a required parameter.'),
 	[String]$PublisherName = 'GoodToCode',
@@ -34,30 +34,30 @@ Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 
 # Imports
-Import-Module ($Build + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
-Import-Module ($Build + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
+Import-Module ($SourceDir + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($SourceDir + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse
 # *** 
-$Path = Set-Unc -Path $Path
-$Build = Set-Unc -Path $Build
+$ArtifactDir = Set-Unc -Path $ArtifactDir
+$SourceDir = Set-Unc -Path $SourceDir
 
 # ***
 # *** Locals
 # ***
 # VSIX Files
-[String]$ProjectFolder = Set-Unc ($Build + '\Vsix\Vsix.' + $ProductFlavor)
-[String]$VsixPublisherExe = (Set-Unc ($Build + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
+[String]$ProjectFolder = Set-Unc ($SourceDir + '\Vsix\Vsix.' + $ProductFlavor)
+[String]$VsixPublisherExe = (Set-Unc ($SourceDir + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
 
 # ***
 # *** Execute
 # ***
 # Rebuild
-$SolutionFile = Set-Unc ("$Build\Vsix\Vsix.$ProductFlavor.sln")
+$SolutionFile = Set-Unc ("$SourceDir\Vsix\Vsix.$ProductFlavor.sln")
 [String]$MsBuildExe = Find-MsBuild
 Write-Host "$MsBuildExe $SolutionFile"
-& $MsBuildExe $SolutionFile /p:OutDir=$Build
+& $MsBuildExe $SolutionFile /p:OutDir=$ArtifactDir
 # Publish VSIX
 & $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName -personalAccessToken $PublisherToken;
-& $VsixPublisherExe publish -payload "$Path\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
+& $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
