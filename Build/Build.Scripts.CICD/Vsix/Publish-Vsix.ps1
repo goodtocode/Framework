@@ -18,7 +18,6 @@ param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$PublisherToken = $(throw '-PublisherToken is a required parameter.'),
 	[String]$PublisherName = 'GoodToCode',
-	[String]$Relative='..\..\',
 	[String]$ProductFlavor = 'Core'
 )
 
@@ -35,8 +34,8 @@ Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 
 # Imports
-Import-Module ($Relative + "Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
-Import-Module ($Relative + "Build.Scripts.Modules\System\GoodToCode.System.psm1")
+Import-Module ($Build + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($Build + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse
@@ -48,8 +47,8 @@ $Build = Set-Unc -Path $Build
 # *** Locals
 # ***
 # VSIX Files
-[String]$VsixBuildFolder = Set-Unc ($Relative + 'Vsix\Vsix' + $ProductFlavor)
-[String]$VsixPublisherExe = (Set-Unc ($Relative + 'Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
+[String]$VsixBuildFolder = Set-Unc ($Build + '\Vsix\Vsix' + $ProductFlavor)
+[String]$VsixPublisherExe = (Set-Unc ($Build + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
 $PublishManifestFile = $VsixBuildFolder + '\publishManifest.json'
 $VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
 
