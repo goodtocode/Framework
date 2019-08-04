@@ -22,7 +22,7 @@ param(
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'Vsix',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start',
+	[String]$SolutionFolder = 'Quick-Start'
 )
 
 # ***
