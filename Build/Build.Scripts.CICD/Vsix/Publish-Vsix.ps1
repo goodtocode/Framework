@@ -54,10 +54,10 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Execute
 # ***
 # Rebuild
-$SolutionFile = Set-Unc ("$SourceDir\Vsix\Vsix.$ProductFlavor.sln")
+#$SolutionFile = Set-Unc ("$SourceDir\Vsix\Vsix.$ProductFlavor.sln")
 [String]$MsBuildExe = Find-MsBuild
-Write-Host "$MsBuildExe $SolutionFile"
-& $MsBuildExe $SolutionFile /p:OutDir=$ArtifactDir
+#Write-Host "$MsBuildExe $SolutionFile"
+#& $MsBuildExe $SolutionFile /p:OutDir=$ArtifactDir
 # Publish VSIX
 & $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName -personalAccessToken $PublisherToken;
-& $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
+& $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -overwrite -personalAccessToken $PublisherToken;

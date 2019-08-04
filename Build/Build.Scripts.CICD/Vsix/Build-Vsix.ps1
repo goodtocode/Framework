@@ -50,11 +50,10 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Locals
 # ***
 $ProductName = 'Vsix-for-' + $ProductFlavor
-$ArtifactDirFull = [String]::Format("{0}\{1}\{2}", $ArtifactDir, $SubFolder, $ProductName)
 $SourceDirFull = [String]::Format("{0}\{1}\{2}\{3}", $SourceDir, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
 
 # ***
 # *** Execute
 # ***
 # Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $ArtifactDirFull -Database $Database -FamilyName "Framework" -ProductFlavor $ProductFlavor -Build $SourceDirFull
+Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $ArtifactDir -Database $Database -FamilyName "Framework" -ProductFlavor $ProductFlavor -Build $SourceDirFull
