@@ -47,14 +47,14 @@ $Build = Set-Unc -Path $Build
 # *** Locals
 # ***
 # VSIX Files
-[String]$VsixBuildFolder = Set-Unc ($Build + '\Vsix\Vsix.' + $ProductFlavor)
+[String]$ProjectFolder = Set-Unc ($Build + '\Vsix\Vsix.' + $ProductFlavor)
 [String]$VsixPublisherExe = (Set-Unc ($Build + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
-$PublishManifestFile = $VsixBuildFolder + '\publishManifest.json'
-$VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
+$PublishManifestFile = $ProjectFolder + '\publishManifest.json'
+$VsixArtifact = "$Path\$SubFolder\Vsix-for-$ProductFlavor\$ProductFlavor.vsix"
 
 # ***
 # *** Execute
 # ***
 # Publish VSIX
 & $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName -personalAccessToken $PublisherToken;
-& $VsixPublisherExe publish -payload $VsixFile -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
+& $VsixPublisherExe publish -payload $VsixArtifact -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
