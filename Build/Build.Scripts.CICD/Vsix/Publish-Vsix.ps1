@@ -17,7 +17,7 @@ param(
  	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[String]$PublisherName = 'GoodToCode',
 	[String]$Relative='..\..\',
-	[String]$ProductFlavor = 'Core',
+	[String]$ProductFlavor = 'Core'
 )
 
 # ***
