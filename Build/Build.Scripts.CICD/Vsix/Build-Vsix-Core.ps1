@@ -11,9 +11,12 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
-	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',	
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Path = $(throw '-Path is a required parameter. $(build.stagingDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Database = $(throw '-Database is a required parameter. $(config.databaseServer)'),
 	[String]$ProductName = 'Vsix-for-Core',
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'Vsix',

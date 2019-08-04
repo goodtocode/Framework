@@ -173,6 +173,33 @@
     <Content Include="GitHub\Framework-for-Core\contributing.md" />
     <Content Include="GitHub\Framework-for-Core\LICENSE" />
     <Content Include="GitHub\Framework-for-Core\README.md" />
+    <Content Include="Utility\BuildTools\CreatePkgDef.exe" />
+    <Content Include="Utility\BuildTools\DebugSamples.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.Diagnostics.Tracing.EventSource.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.TeamFoundation.Common.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.RemoteControl.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Services.Common.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Services.WebApi.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Setup.Common.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Shell.Framework.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Shell.Immutable.10.0.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Telemetry.dll" />
+    <Content Include="Utility\BuildTools\lib\Microsoft.VisualStudio.Utilities.Internal.dll" />
+    <Content Include="Utility\BuildTools\lib\Newtonsoft.Json.dll" />
+    <Content Include="Utility\BuildTools\lib\System.Net.Http.Formatting.dll" />
+    <Content Include="Utility\BuildTools\lib\System.ValueTuple.dll" />
+    <Content Include="Utility\BuildTools\lib\VsixCommandLine.dll" />
+    <Content Include="Utility\BuildTools\Microsoft.VisualStudio.Setup.Common.dll" />
+    <Content Include="Utility\BuildTools\Newtonsoft.Json.dll" />
+    <Content Include="Utility\BuildTools\RegPkg.exe" />
+    <Content Include="Utility\BuildTools\RegRiched20.exe" />
+    <Content Include="Utility\BuildTools\System.ValueTuple.dll" />
+    <Content Include="Utility\BuildTools\VSCT.exe" />
+    <Content Include="Utility\BuildTools\VSCTCompress.dll" />
+    <Content Include="Utility\BuildTools\VSCTLibrary.dll" />
+    <Content Include="Utility\BuildTools\VsixCommandLine.dll" />
+    <Content Include="Utility\BuildTools\VsixPublisher.exe" />
+    <Content Include="Utility\BuildTools\VsixUtil.exe" />
     <Content Include="Utility\GacUtil\gacutil.exe" />
     <Content Include="Utility\MsTest\assemblies\Interop.UIAutomationClient.dll" />
     <Content Include="Utility\MsTest\assemblies\Microsoft.VisualStudio.QualityTools.CodedUITestFramework.dll" />
@@ -331,6 +358,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Keys\GoodToCodeFramework.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Utility\BuildTools\ConvertCTCToVSCT.pl" />
+    <Content Include="Utility\BuildTools\CreatePkgDef.exe.config" />
+    <Content Include="Utility\BuildTools\RegPkg.exe.config" />
+    <Content Include="Utility\BuildTools\VsixPublisher.exe.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

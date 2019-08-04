@@ -11,10 +11,13 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
-	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',	
-	[String]$ProductName = 'Vsix-for-WebAPI',
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Path = $(throw '-Path is a required parameter.'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Database = $(throw '-Database is a required parameter. $(config.databaseServer)'),
+	[String]$ProductName = 'Vsix-for-WPF',
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'Vsix',
 	[String]$Relative='..\..\',
@@ -53,4 +56,4 @@ $BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yy
 # *** Execute
 # ***
 # Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "WebAPI" -Build $BuildFull
+Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "Wpf" -Build $BuildFull

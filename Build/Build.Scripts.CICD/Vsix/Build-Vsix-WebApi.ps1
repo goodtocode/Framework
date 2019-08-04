@@ -11,22 +11,24 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
-	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',	
-	[String]$ProductName = 'Vsix-for-MVC',
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Path = $(throw '-Path is a required parameter.'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Database = $(throw '-Database is a required parameter. $(config.databaseServer)'),
+	[String]$ProductName = 'Vsix-for-WebAPI',
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'Vsix',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start',
-	[String]$Verbose = 'SilentlyContinue' # 'Continue'
+	[String]$SolutionFolder = 'Quick-Start'
 )
 
 # ***
 # *** Initialize
 # ***
 Set-ExecutionPolicy Unrestricted -Scope Process -Force
-$VerbosePreference = $Verbose
+$VerbosePreference = 'SilentlyContinue' # 'Continue'
 [String]$ThisScript = $MyInvocation.MyCommand.Path
 [String]$ThisDir = Split-Path $ThisScript
 Set-Location $ThisDir # Ensure our location is correct, so we can use relative paths
@@ -54,4 +56,4 @@ $BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yy
 # *** Execute
 # ***
 # Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "Mvc" -Build $BuildFull
+Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "WebAPI" -Build $BuildFull

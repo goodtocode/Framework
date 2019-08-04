@@ -11,14 +11,13 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
-	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',	
-	[String]$ProductName = 'Vsix-for-Universal',
-	[String]$RepoName = 'GoodToCode-Framework',
-	[String]$SubFolder = 'Vsix',
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Path = $(throw '-Path is a required parameter.'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+	[String]$PublisherName = 'GoodToCode',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$ProductFlavor = 'Core',
 )
 
 # ***
@@ -46,11 +45,15 @@ $Build = Set-Unc -Path $Build
 # ***
 # *** Locals
 # ***
-$PathFull = [String]::Format("{0}\{1}\{2}", $Path, $SubFolder, $ProductName)
-$BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
+# VSIX Files
+[String]$VsixBuildFolder = Set-Unc ($Relative + 'Vsix\Vsix' + $ProductFlavor)
+[String]$VsixPublisherExe = (Set-Unc ($Relative + 'Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
+$PublishManifestFile = $VsixBuildFolder + '\publishManifest.json'
+$VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
 
 # ***
 # *** Execute
 # ***
-# Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "Uwp" -Build $BuildFull
+# Publish VSIX
+& $VsixPublisherExe login -personalAccessToken $(PublishToken) -publisherName $PublisherName;
+& $VsixPublisherExe publish -payload $VsixFile -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublishToken;
