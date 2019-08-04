@@ -454,37 +454,59 @@ export-modulemember -function  Find-DevEnv
 
 #-----------------------------------------------------------------------
 # Find-MsBuild [-Path [<String>]]
-#
+# 2017, 15.0
+# 2019, 15.0
 # Example: .\Find-MsBuild
 #	Result: 
 #-----------------------------------------------------------------------
 function Find-MsBuild
 {
 	param (
-		[int]$Year = 2017,
-		[string]$Version = '15.0'
+		[int]$LatestRelease = 2019
 	)
-	Write-Host "Find-MsBuild -Year $Year - Version $Version"
+	Write-Host "Find-MsBuild -Year $LatestRelease - Version $Version"
 	$ExeName = 'MsBuild.exe'
-	[int] $FolderYear = 2017;
-	if($Year -gt 2016) {$FolderYear = $Year}
-    $agentPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\BuildTools\MSBuild\$Version\Bin\$ExeName"
-    $devPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Enterprise\MSBuild\$Version\Bin\$ExeName"
-    $proPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Professional\MSBuild\$Version\Bin\$ExeName"
-    $communityPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Community\MSBuild\$Version\Bin\$ExeName"
-    $fallback2015Path = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\$ExeName"
-    $fallback2013Path = "${Env:ProgramFiles(x86)}\MSBuild\12.0\Bin\$ExeName"
-    $fallbackPath = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\$ExeName"
-		
-    If ((2017 -le $Year) -And (Test-Path $agentPath)) { return $agentPath } 
-    If ((2017 -le $Year) -And (Test-Path $devPath)) { return $devPath } 
-    If ((2017 -le $Year) -And (Test-Path $proPath)) { return $proPath } 
-    If ((2017 -le $Year) -And (Test-Path $communityPath)) { return $communityPath } 
-    If ((2015 -le $Year) -And (Test-Path $fallback2015Path)) { return $fallback2015Path } 
-    If ((2013 -le $Year) -And (Test-Path $fallback2013Path)) { return $fallback2013Path } 
-    If (Test-Path $fallbackPath) { return $fallbackPath } 
+	$LatestVersion = '15.0'
+	$VSFlavors = ('Community', 'Professional', 'Enterprise')
+	$VSReleases = (2019, 2017, 2015, 2013)
+	# Keep log of each years versions
+
+	foreach($releaseYear in $VSReleases)
+	{
+		switch ($LatestRelease) {
+		2019 {$Version = '15.0'; break}
+		2017 {$Version = '15.0'; break}
+		2015 {$Version = '14.0'; break}
+		2013 {$Version = '12.0'; break}
+		default {$Version = $LatestVersion; break}
+		}
+		If($releaseYear -gt 2015)
+		{
+			foreach($flavor in $VSFlavors){
+				$pathCurrent = "$Env:programfiles (x86)\Microsoft Visual Studio\$releaseYear\$flavor\MSBuild\Current\Bin\$ExeName"
+				$pathVersion = "$Env:programfiles (x86)\Microsoft Visual Studio\$releaseYear\$flavor\MSBuild\$Version\Bin\$ExeName"
+				If (Test-File $pathCurrent) { $returnValue = $pathCurrent; break; }
+				If (Test-File $pathVersion) { $returnValue = $pathVersion; break; }
+			}
+			If (Test-File $returnValue) { break; }
+		}
+		else
+		{
+			$fallback2015Path = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\$ExeName"
+			$fallback2013Path = "${Env:ProgramFiles(x86)}\MSBuild\12.0\Bin\$ExeName"
+			If (Test-File $fallback2015Path) { $returnValue = $fallback2015Path; break; }
+			If (Test-File $fallback2013Path) { $returnValue = $fallback2013Path; break; }	
+		}
+	}
+	If (-Not (Test-File $returnValue)) { 	
+	    $fallbackPath = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\$ExeName"
+		If (Test-File $fallbackPath) { $returnValue = $fallbackPath } 
+	}
+	Write-Host "Find-MsBuild: $returnValue"
+
+	return $returnValue
 }
-export-modulemember -function  Find-MsBuild
+export-modulemember -function Find-MsBuild
 
 #-----------------------------------------------------------------------
 # Copy-SourceCode [-Path [<String>]] [-Destination [<String>]]

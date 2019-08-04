@@ -7,18 +7,25 @@ REM      any form or by any means, electronic, mechanical or otherwise, is prohi
 REM      without the prior written consent of the copyright owner.
 REM </copyright>
 REM -----------------------------------------------------------------------
-
+ECHO Starting ExecuteTests.bat
 REM ***
 REM Initialize
 REM ***
-ECHO Starting ExecuteTests.bat
-CD \Source\Framework\3.00-Alpha\Build\Build.Scripts.CICD\_Bat
+REM CD to BAT file directory
+D:
+Set SourceDir = \Source-GTC\Stack\Framework
+Set ArtifactDir = \Artifacts
+Set PublisherToken = ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega
+Set PublisherName = GoodToCode
+
+REM Set Script Security
 %WINDIR%\SysWOW64\WindowsPowerShell\v1.0\Powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force
 
+REM ***
 REM Test
-%WINDIR%\SysWOW64\WindowsPowerShell\v1.0\Powershell.exe -File ..\Shopping-Cart\Framework-for-MVC-Shopping-Cart.ps1 -Path \\Dev-Web-01.dev.GoodToCode.com -Database DatabaseServer.dev.GoodToCode.com -Domain www.GoodToCode.com
+REM ***
+REM Publish-Vsix
+%WINDIR%\SysWOW64\WindowsPowerShell\v1.0\Powershell.exe -File %SourceDir%\Vsix\Publish-Vsix.ps1 -SourceDir %SourceDir% -ArtifactDir %ArtifactDir% -PublisherToken %PublisherToken% -PublisherName %PublisherName%
 pause
 
-REM Test
-REM %WINDIR%\SysWOW64\WindowsPowerShell\v1.0\Powershell.exe -File ..\_Tests\GoodToCode.Code.Test.ps1
 
