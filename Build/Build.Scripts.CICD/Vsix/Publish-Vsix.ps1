@@ -53,13 +53,6 @@ $SourceDir = Set-Unc -Path $SourceDir
 # ***
 # *** Execute
 # ***
-$SolutionFile = Set-Unc ("$SourceDir\Vsix\Vsix.$ProductFlavor.sln")
-$MsBuildExe = Find-MsBuild
-# Restore Nuget
-Restore-NuGet -Path $SolutionFile -ConfigFile "$SourceDir\Build\.Nuget\Nuget.config" -NuGetExe "$SourceDir\Build\Build.Content\Utility\NuGet\NuGet.exe"
-# Rebuild
-Write-Host "$MsBuildExe $SolutionFile"
-& $MsBuildExe $SolutionFile /p:OutDir=$ArtifactDir
 # Publish VSIX
 & $VsixPublisherExe login -publisherName $PublisherName -personalAccessToken $PublisherToken;
 & $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
