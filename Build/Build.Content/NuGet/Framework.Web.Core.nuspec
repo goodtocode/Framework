@@ -4,16 +4,16 @@
     <id>GoodToCode.Framework.Web.Core</id>
     <version>4.18.10.352281</version>
     <title>GoodToCode Quick-Start Framework for MVC, Web Forms, Web API, WCF and XML Web Services</title>
-    <description>GoodToCode Source Framework Web foundation classes for your app, controllers, views and model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile..</description>
-    <authors>GoodToCode Source</authors>
-    <owners>GoodToCode Source</owners>
+    <description>GoodToCode Framework Web foundation classes for your app, controllers, views and model classes. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile..</description>
+    <authors>GoodToCode</authors>
+    <owners>GoodToCode</owners>
     <licenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</licenseUrl>
     <projectUrl>http://www.GoodToCode.com</projectUrl>
     <iconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>Monthly sprint release. See full release notes at GoodToCode.com.</releaseNotes>
-    <copyright>Copyright (c) 2017-2018 GoodToCode Source. All Rights Reserved.</copyright>
-    <tags>GoodToCode Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
+    <copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</copyright>
+    <tags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
     <dependencies>
       <group>
         <dependency id="GoodToCode.Extensions.Core" version="4.0.0" />

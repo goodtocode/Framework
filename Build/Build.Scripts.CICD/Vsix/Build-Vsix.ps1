@@ -1,6 +1,6 @@
 ﻿#-----------------------------------------------------------------------
-# <copyright file="Framework-Vsix-Quick-Start.ps1" company="GoodToCode Source">
-#      Copyright (c) GoodToCode Source. All rights reserved.
+# <copyright file="Build-Vsix-Core.ps1" company="GoodToCode">
+#      Copyright (c) GoodToCode. All rights reserved.
 #      All rights are reserved. Reproduction or transmission in whole or in part, in
 #      any form or by any means, electronic, mechanical or otherwise, is prohibited
 #      without the prior written consent of the copyright owner.
@@ -12,16 +12,17 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$Path = $(throw '-Path is a required parameter.'),
+ 	[string]$Path = $(throw '-Path is a required parameter. $(build.stagingDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$Database = $(throw '-Database is a required parameter. $(config.databaseServer)'),
-	[String]$ProductName = 'Vsix-for-WPF',
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'Vsix',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$SolutionFolder = 'Quick-Start',
 )
 
 # ***
@@ -49,6 +50,7 @@ $Build = Set-Unc -Path $Build
 # ***
 # *** Locals
 # ***
+$ProductName = 'Vsix-for-' + $ProductFlavor
 $PathFull = [String]::Format("{0}\{1}\{2}", $Path, $SubFolder, $ProductName)
 $BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
 
@@ -56,4 +58,4 @@ $BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yy
 # *** Execute
 # ***
 # Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor "Wpf" -Build $BuildFull
+Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $PathFull -Database $Database -FamilyName "Framework" -ProductFlavor $ProductFlavor -Build $BuildFull

@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GoodToCode Source")]
-[assembly: AssemblyDescription("GoodToCode Source - Reusability Simplified")]
+[assembly: AssemblyTitle("GoodToCode")]
+[assembly: AssemblyDescription("GoodToCode - Reusability Simplified")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("GoodToCode Source")]
-[assembly: AssemblyProduct("GoodToCode Source")]
-[assembly: AssemblyCopyright("Copyright © 2018 GoodToCode Source. All rights reserved.")]
-[assembly: AssemblyTrademark("GoodToCode Source is a registered trademark of GoodToCode Source. GoodToCode Source Framework and GoodToCode Cloud Dev Environment are trademarks of GoodToCode Source.")]
+[assembly: AssemblyCompany("GoodToCode")]
+[assembly: AssemblyProduct("GoodToCode")]
+[assembly: AssemblyCopyright("Copyright © 2018 GoodToCode. All rights reserved.")]
+[assembly: AssemblyTrademark("GoodToCode is a registered trademark of GoodToCode. GoodToCode Framework and GoodToCode Cloud Dev Environment are trademarks of GoodToCode.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

@@ -1,6 +1,6 @@
 #-----------------------------------------------------------------------
-# <copyright file="GoodToCode.Code.psm1" company="GoodToCode Source">
-#      Copyright (c) GoodToCode Source. All rights reserved.
+# <copyright file="GoodToCode.Code.psm1" company="GoodToCode">
+#      Copyright (c) GoodToCode. All rights reserved.
 #      All rights are reserved. Reproduction or transmission in whole or in part, in
 #      any form or by any means, electronic, mechanical or otherwise, is prohibited
 #      without the prior written consent of the copyright owner.
@@ -24,7 +24,7 @@ function Add-CopyrightApache
 		)
 	$Path = Set-Unc -Path $Path
 	# *** Change Destination code Headers
-	[String]$OldLicense1 = '//      Copyright (c) GoodToCode Source. All rights reserved.'
+	[String]$OldLicense1 = '//      Copyright (c) GoodToCode. All rights reserved.'
 	[String]$OldLicense2 = '//      All rights are reserved. Reproduction or transmission in whole or in part, in'
 	[String]$OldLicense3 = '//      any form or by any means, electronic, mechanical or otherwise, is prohibited'
 	[String]$OldLicense4 = '//      without the prior written consent of the copyright owner.'
@@ -717,7 +717,7 @@ function Restore-Brochure
 		[string]$RepoName = $(throw '-RepoName is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$BrochureName = $(throw '-BrochureName is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode Source\GoodToCode - Docs',		
+ 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
 		[String]$Destination = '\\Dev-Web-01.dev.GoodToCode.com\Sites',
 		[string]$AdditionalFile = ''
 	)
@@ -749,7 +749,7 @@ function Restore-ProductDoc
 		[string]$RepoName = $(throw '-RepoName is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$DocName = $(throw '-BrochureName is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode Source\GoodToCode - Docs',		
+ 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
 		[String]$Destination = '\\Dev-Web-01.dev.GoodToCode.com\Sites',
 		[string]$AdditionalFile = ''
 	)
@@ -801,7 +801,7 @@ function Restore-VMDocs
 	param (
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$RepoName = $(throw '-Path is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode Source\GoodToCode - Docs',
+ 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',
 		[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
 		[string]$Folder = 'docs.GoodToCode.com'
 	)

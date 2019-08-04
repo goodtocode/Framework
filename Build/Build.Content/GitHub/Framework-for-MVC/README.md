@@ -4,12 +4,12 @@
 <tr>
 <td>
 
-<img alt="Your GoodToCode Source Framework" src="https://www.GoodToCode.com/images/welcome/GoodToCode-Logo-71x71-Transparent.png">
+<img alt="Your GoodToCode Framework" src="https://www.GoodToCode.com/images/welcome/GoodToCode-Logo-71x71-Transparent.png">
 
 </td>
 <td>
 
-<h2> GoodToCode Source Framework </h2>
+<h2> GoodToCode Framework </h2>
 
 <h4>One Framework - Your Data - Any Platform</h4>
 
@@ -20,7 +20,7 @@
 
 ### Features & Benefits
 
-GoodToCode Source Framework helps you create your business-object framework with standard C# knowledge and minimal plumbing. Your objects can migrate full-stack, and be consumed in MVC, Web API, WPF, UWP and Xamarin iOS/Android. Works with your existing SQL tables, and allows you to incrementally build your reusable Framework one object, one page at a time.
+GoodToCode Framework helps you create your business-object framework with standard C# knowledge and minimal plumbing. Your objects can migrate full-stack, and be consumed in MVC, Web API, WPF, UWP and Xamarin iOS/Android. Works with your existing SQL tables, and allows you to incrementally build your reusable Framework one object, one page at a time.
 
 </td>
 </tr>
@@ -32,7 +32,7 @@ GoodToCode Source Framework helps you create your business-object framework with
 
 <td style="vertical-align: top; border-left-color: rgb(213, 213, 213); border-left-width: 1px; border-left-style: solid;">
 
-### Projects included in the GoodToCode Source Framework
+### Projects included in the GoodToCode Framework
 
 <div>
 

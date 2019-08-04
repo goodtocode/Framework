@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>GoodToCode Source Framework MVC Project</Name>
-    <Description>GoodToCode Quick-Start Framework for ASP.NET MVC web apps project includes Customer and Customer Search functionality using the GoodToCode Source Framework.</Description>
+    <Name>GoodToCode Framework MVC Project</Name>
+    <Description>GoodToCode Quick-Start Framework for ASP.NET MVC web apps project includes Customer and Customer Search functionality using the GoodToCode Framework.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

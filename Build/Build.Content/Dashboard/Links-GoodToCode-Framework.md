@@ -1,4 +1,4 @@
-##### GoodToCode Source Framework [Dashboard](https://GoodToCode.visualstudio.com/Framework/_dashboards)
+##### GoodToCode Framework [Dashboard](https://GoodToCode.visualstudio.com/Framework/_dashboards)
 ** What is it **
 - [GoodToCode.com](http://www.GoodToCode.com)
 - [Quick-Guide](http://docs.GoodToCode.com/reference/GoodToCode-Framework/GoodToCode-Framework-Quick-Guide.pdf)

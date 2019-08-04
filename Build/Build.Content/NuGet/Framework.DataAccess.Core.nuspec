@@ -3,17 +3,17 @@
   <metadata>
     <id>GoodToCode.Framework.DataAccess.Core</id>
     <version>4.18.10.352281</version>
-    <title>GoodToCode Source Framework CRUD Data Access Object classes for NET Core and .NET Standard</title>
-    <description>GoodToCode Source Framework CRUD Data Access Object classes for ASP.NET Core MVC, Web API Core, Xamarin iOS, Xamarin Android and .NET Standard libraries.</description>
-    <authors>GoodToCode Source</authors>
-    <owners>GoodToCode Source</owners>
+    <title>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</title>
+    <description>GoodToCode Framework CRUD Data Access Object classes for ASP.NET Core MVC, Web API Core, Xamarin iOS, Xamarin Android and .NET Standard libraries.</description>
+    <authors>GoodToCode</authors>
+    <owners>GoodToCode</owners>
     <licenseUrl>http://www.GoodToCode.com/policy/nuget/license.html</licenseUrl>
     <projectUrl>http://www.GoodToCode.com</projectUrl>
     <iconUrl>http://www.GoodToCode.com/images/marketplace/__TemplateIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>    
     <releaseNotes>Monthly sprint release. See full release notes at GoodToCode.com.</releaseNotes>
-    <copyright>Copyright (c) 2017-2018 GoodToCode Source. All Rights Reserved.</copyright>
-    <tags>GoodToCode Source Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
+    <copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</copyright>
+    <tags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
     <dependencies>
       <group>
         <dependency id="GoodToCode.Extensions.Core" version="4.0.0" />

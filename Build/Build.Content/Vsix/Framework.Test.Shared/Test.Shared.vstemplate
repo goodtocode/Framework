@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>GoodToCode Source Framework Test Project</Name>
-    <Description>GoodToCode Source Framework Test project containing unit tests for items in the templated projects. </Description>
+    <Name>GoodToCode Framework Test Project</Name>
+    <Description>GoodToCode Framework Test project containing unit tests for items in the templated projects. </Description>
     <ProjectType>Code Sharing Projects</ProjectType>
     <ProjectSubType>
     </ProjectSubType>

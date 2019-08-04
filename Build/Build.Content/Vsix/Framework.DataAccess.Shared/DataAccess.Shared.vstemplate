@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>GoodToCode Source Framework EF Shared Project</Name>
-    <Description>GoodToCode Source Framework data access objects (EF) to encapsulate data access into a single, easy to use set of classes. Supports methods like .GetByID(), .GetByKey(), .GetAll(), .Validate(), .Save() and .Delete().</Description>
+    <Name>GoodToCode Framework EF Shared Project</Name>
+    <Description>GoodToCode Framework data access objects (EF) to encapsulate data access into a single, easy to use set of classes. Supports methods like .GetByID(), .GetByKey(), .GetAll(), .Validate(), .Save() and .Delete().</Description>
     <ProjectType>Code Sharing Projects</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
