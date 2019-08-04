@@ -1008,7 +1008,6 @@ function Restore-VsixTemplate
 	#
 	Set-ItemProperty $VsixProjectTemplateZip -name IsReadOnly -value $false
 	Copy-File -Path $BuildZipFile -Destination $VsixProjectTemplateZip
-	Restore-Solution -Path $VsixSolutionFile -DevEnv $False
 
 	#
 	# Publish
