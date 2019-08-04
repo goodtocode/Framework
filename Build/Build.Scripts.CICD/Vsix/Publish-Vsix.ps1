@@ -55,6 +55,11 @@ $VsixArtifact = "$Path\Vsix-for-$ProductFlavor\$ProductFlavor.vsix"
 # ***
 # *** Execute
 # ***
+# Rebuild
+$SolutionFile = Set-Unc ("$Build\Vsix\Vsix.$ProductFlavor")
+[String]$MsBuildExe = Find-MsBuild
+Write-Host "$MsBuildExe $SolutionFile"
+& $MsBuildExe $SolutionFile /p:OutDir=$Build
 # Publish VSIX
 & $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName -personalAccessToken $PublisherToken;
 & $VsixPublisherExe publish -payload $VsixArtifact -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
