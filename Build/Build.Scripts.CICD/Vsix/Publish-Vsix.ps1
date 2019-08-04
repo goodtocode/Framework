@@ -47,7 +47,7 @@ $Build = Set-Unc -Path $Build
 # *** Locals
 # ***
 # VSIX Files
-[String]$VsixBuildFolder = Set-Unc ($Build + '\Vsix\Vsix' + $ProductFlavor)
+[String]$VsixBuildFolder = Set-Unc ($Build + '\Vsix\Vsix.' + $ProductFlavor)
 [String]$VsixPublisherExe = (Set-Unc ($Build + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
 $PublishManifestFile = $VsixBuildFolder + '\publishManifest.json'
 $VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
