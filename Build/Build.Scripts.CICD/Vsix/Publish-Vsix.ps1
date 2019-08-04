@@ -54,7 +54,7 @@ $Build = Set-Unc -Path $Build
 # *** Execute
 # ***
 # Rebuild
-$SolutionFile = Set-Unc ("$Build\Vsix\Vsix.$ProductFlavor")
+$SolutionFile = Set-Unc ("$Build\Vsix\Vsix.$ProductFlavor.sln")
 [String]$MsBuildExe = Find-MsBuild
 Write-Host "$MsBuildExe $SolutionFile"
 & $MsBuildExe $SolutionFile /p:OutDir=$Build
