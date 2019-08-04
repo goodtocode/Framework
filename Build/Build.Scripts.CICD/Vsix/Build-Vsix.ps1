@@ -37,8 +37,8 @@ Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 
 # Imports
-Import-Module ($Build + "\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
-Import-Module ($Build + "\Build.Scripts.Modules\System\GoodToCode.System.psm1")
+Import-Module ($Build + "\Build\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($Build + "\Build\Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse
