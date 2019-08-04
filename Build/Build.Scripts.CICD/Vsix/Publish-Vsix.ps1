@@ -56,5 +56,5 @@ $VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
 # *** Execute
 # ***
 # Publish VSIX
-& $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName;
+& $VsixPublisherExe login -personalAccessToken $PublishToken -publisherName $PublisherName -personalAccessToken $PublisherToken;
 & $VsixPublisherExe publish -payload $VsixFile -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
