@@ -15,6 +15,8 @@ param(
  	[string]$Path = $(throw '-Path is a required parameter.'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$Build = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	[string]$PublisherToken = $(throw '-PublisherToken is a required parameter.'),
 	[String]$PublisherName = 'GoodToCode',
 	[String]$Relative='..\..\',
 	[String]$ProductFlavor = 'Core'
@@ -56,4 +58,4 @@ $VsixFile = $VsixBuildFolder + '\bin\Debug\' + $ProductFlavor + '.vsix'
 # ***
 # Publish VSIX
 & $VsixPublisherExe login -personalAccessToken $(PublishToken) -publisherName $PublisherName;
-& $VsixPublisherExe publish -payload $VsixFile -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublishToken;
+& $VsixPublisherExe publish -payload $VsixFile -publishManifest $PublishManifestFile -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
