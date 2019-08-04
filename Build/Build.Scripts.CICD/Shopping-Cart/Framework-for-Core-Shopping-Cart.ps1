@@ -18,7 +18,7 @@ param(
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'docs.GoodToCode.com',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$SolutionFolder = 'Quick-Starts'
 )
 
 # ***

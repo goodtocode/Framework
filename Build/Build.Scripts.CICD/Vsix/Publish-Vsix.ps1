@@ -50,7 +50,7 @@ $Build = Set-Unc -Path $Build
 [String]$ProjectFolder = Set-Unc ($Build + '\Vsix\Vsix.' + $ProductFlavor)
 [String]$VsixPublisherExe = (Set-Unc ($Build + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
 $PublishManifestFile = $ProjectFolder + '\publishManifest.json'
-$VsixArtifact = "$Path\$SubFolder\Vsix-for-$ProductFlavor\$ProductFlavor.vsix"
+$VsixArtifact = "$Path\Vsix-for-$ProductFlavor\$ProductFlavor.vsix"
 
 # ***
 # *** Execute

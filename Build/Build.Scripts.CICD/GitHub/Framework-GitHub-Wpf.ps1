@@ -19,7 +19,7 @@ param(
 	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\builds\sprints',
 	[String]$Lib='\lib',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$SolutionFolder = 'Quick-Starts'
 )
 
 # ***

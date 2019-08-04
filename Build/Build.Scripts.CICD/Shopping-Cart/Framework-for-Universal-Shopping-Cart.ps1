@@ -18,7 +18,7 @@ param(
 	[String]$RepoName = 'GoodToCode-Framework',
 	[String]$SubFolder = 'docs.GoodToCode.com',
 	[String]$Relative='..\..\',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$SolutionFolder = 'Quick-Starts'
 )
 
 # ***
@@ -33,8 +33,8 @@ Write-Host "*****************************"
 Write-Host "*** Starting: $ThisScript on $(Get-Date -format 'u')"
 Write-Host "*****************************"
 # Imports
-Import-Module ($Relative + "Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
-Import-Module ($Relative + "Build.Scripts.Modules\System\GoodToCode.System.psm1")
+Import-Module ($Build + "\Build.Scripts.Modules\Code\GoodToCode.Code.psm1")
+Import-Module ($Build + "\Build.Scripts.Modules\System\GoodToCode.System.psm1")
 
 # ***
 # *** Validate and cleanse

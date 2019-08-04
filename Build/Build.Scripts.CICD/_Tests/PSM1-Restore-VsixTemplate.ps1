@@ -15,7 +15,7 @@ param(
 	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\SprintsTest',
 	[String]$Domain = 'code.GoodToCode.com',
 	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',
-	[String]$SolutionFolder = 'Quick-Start'
+	[String]$SolutionFolder = 'Quick-Starts'
 )
 
 # ***
