@@ -548,6 +548,32 @@ param(
 export-modulemember -function Copy-SourceCode
 
 #-----------------------------------------------------------------------
+# Create-GitHubRepo [-Path [<String>]] [-Destination [<String>]]
+#
+# Example: .\Create-GitHubRepo -Path \\Build\Site -Destination \\Drops\Site
+#-----------------------------------------------------------------------
+function Create-GitHubRepo
+{
+param(
+	[String]$SourceDir = '',	
+	[String]$RepoDir = ''
+)
+	Write-Host "Create-GitHubRepo -Path $SourceDir -RepoName $RepoDir"
+	# Cleanse Variables
+	$SourceDir = Set-Unc -Path $SourceDir
+	$RepoDir = Set-Unc -Path $RepoDir
+
+
+	# Copy source files
+	Copy-Recurse -Path $SourceDir -Destination $RepoDir -Exclude __*.png, *.vstemplate, *.sln, *.snk, *.log, *.txt, *.bak, *.tmp, *.vspscc, *.vssscc, *.csproj.vspscc, *.sqlproj.vspscc, *.cache
+	# Cleanup
+	Clear-Solution -Path $RepoDir
+	Remove-TFSBinding -Path $RepoDir
+	Remove-StrongNameKey -Path $RepoDir -File $Snk
+}
+export-modulemember -function Create-GitHubRepo
+
+#-----------------------------------------------------------------------
 # Remove-StrongNameKey [-Path [<String>]]
 #
 # Example: .\Remove-StrongNameKey -Path "C:\Source\My Clones\Extensions-master\Extensions-master\src\Extensions\Extensions.Full"

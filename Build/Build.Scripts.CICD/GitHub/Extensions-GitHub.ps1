@@ -11,8 +11,7 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',
+	[String]$ArtifactDir = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Drops',
 	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\builds\sprints',
 	[String]$RepoName = 'GoodToCode-Extensions',
 	[String]$ProductName = 'Extensions',
@@ -40,13 +39,13 @@ Import-Module ($Relative + "Build.Scripts.Modules\System\GoodToCode.System.psm1"
 # ***
 # *** Validate and cleanse
 # ***
-$Path = Set-Unc -Path $Path
+$ArtifactDir = Set-Unc -Path $ArtifactDir
 $Build = Set-Unc -Path $Build
 
 # ***
 # *** Locals
 # ***
-$PathFull = [String]::Format("{0}\{1}\{2}", $Path, $SubFolder, $ProductName)
+$ArtifactDirFull = [String]::Format("{0}\{1}\{2}", $ArtifactDir, $SubFolder, $ProductName)
 $BuildFull = [String]::Format("{0}\{1}\{2}\{3}", $Build, (Get-Date).ToString("yyyy.MM"), $SubFolder, $ProductName)
 $GitHub = [string]::Format("{0}..\Build\Build.Content\GitHub\{1}", $Relative, $ProductName)
 
@@ -60,6 +59,6 @@ Copy-Recurse -Path $GitHub -Destination $BuildFull
 # ***
 Write-Verbose "Publish"
 # ***
-New-Path -Path ($PathFull + "\src") -Clean $True
-New-Path -Path ($PathFull + "\lib") -Clean $True
-Copy-Recurse -Path $BuildFull -Destination $PathFull
+New-Path -Path ($ArtifactDirFull + "\src") -Clean $True
+New-Path -Path ($ArtifactDirFull + "\lib") -Clean $True
+Copy-Recurse -Path $BuildFull -Destination $ArtifactDirFull
