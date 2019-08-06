@@ -55,4 +55,4 @@ $SourceDir = Set-Unc -Path $SourceDir
 # ***
 # Publish VSIX
 & $VsixPublisherExe login -publisherName $PublisherName -personalAccessToken $PublisherToken;
-& $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02" -personalAccessToken $PublisherToken;
+& $VsixPublisherExe publish -payload "$ArtifactDir\$ProductFlavor.vsix" -publishManifest "$ProjectFolder\publishManifest.json" -ignoreWarnings "VSIXValidatorWarning01,VSIXValidatorWarning02,VSIXValidatorWarning08" -personalAccessToken $PublisherToken;
