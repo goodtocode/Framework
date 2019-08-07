@@ -1,5 +1,5 @@
 ﻿#-----------------------------------------------------------------------
-# <copyright file="Extensions-GitHub.ps1" company="GoodToCode">
+# <copyright file="Package-GitHub.ps1" company="GoodToCode">
 #      Copyright (c) GoodToCode. All rights reserved.
 #      All rights are reserved. Reproduction or transmission in whole or in part, in
 #      any form or by any means, electronic, mechanical or otherwise, is prohibited
@@ -14,9 +14,9 @@ param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 	[String]$SourceDir = $(throw '-SourceDir is a required parameter.'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter.'),
+	[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter. c:\github\repos\framework'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[String]$ProductName = $(throw '-ProductName is a required parameter.')
+	[String]$ProductName = $(throw '-ProductName is a required parameter. Framework')
 )
 
 # ***

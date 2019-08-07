@@ -115,7 +115,7 @@ if ($ProductFlavor -eq 'WPF') {
 		Remove-Path -Path "$TempDirZipPath\Framework.WebApp.Full"
 }
 # Fix: Dependencies won't load unless we change ..\packages to ..\..\packages. NuGet and VSIX want solution folder in different levels, so we compensate for VSIX
-Update-Text -Path $TempDir -Include *.csproj -Old '..\packages' -New '..\..\packages' 
+Update-Text -Path $TempDirZipPath -Include *.csproj -Old '..\packages' -New '..\..\packages' 
 
 #
 # Zip
