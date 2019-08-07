@@ -16,7 +16,7 @@ param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[Version] $Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)')
+	[Version]$Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
 	[String]$TempDir = "C:\Temp"

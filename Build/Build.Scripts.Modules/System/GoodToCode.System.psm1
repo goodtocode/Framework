@@ -1402,14 +1402,14 @@ function Update-TextByContains
 		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
 		[string]$Contains = $(throw '-Contains is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
-		[string]$Old = $(throw '-OldText is a required parameter.'),
+		[string]$Old = $(throw '-Old is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
-		[string]$New = $(throw '-NewText is a required parameter.'),
+		[string]$New = $(throw '-New is a required parameter.'),
 		[string[]]$Include = "*.*",
  		[string[]]$Exclude = "",
 		[Int32]$First = 100
 	)
-	Write-Host "Update-TextByContains -Path $Path -Contains $Contains -OldText $Old -NewText $New -Include $Include -Exclude $Exclude -First $First"
+	Write-Host "Update-TextByContains -Path $Path -Contains $Contains -Old $Old -New $New -Include $Include -Exclude $Exclude -First $First"
 	$Path = Remove-Suffix -String $Path -Remove "\"
 	if (Test-Path $Path)
 	{
