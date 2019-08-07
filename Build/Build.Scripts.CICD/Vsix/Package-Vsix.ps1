@@ -12,8 +12,6 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$ArtifactDir = $(throw '-ArtifactDir is a required parameter. $(build.stagingDirectory)'),
-	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$SourceDir = $(throw '-SourceDir is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
@@ -39,7 +37,6 @@ Import-Module ($SourceDir + "\Build\Build.Scripts.Modules\System\GoodToCode.Syst
 # ***
 # *** Validate and cleanse
 # *** 
-$ArtifactDir = Set-Unc -Path $ArtifactDir
 $SourceDir = Set-Unc -Path $SourceDir
 $TempDir = Set-Unc -Path $TempDir
 

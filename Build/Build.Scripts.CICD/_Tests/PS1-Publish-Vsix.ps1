@@ -39,6 +39,7 @@ Import-Module ($SourceDir + '\Build\Build.Scripts.Modules\System\GoodToCode.Syst
 $ArtifactDir = Set-Unc -Path $ArtifactDir
 $SourceDir = Set-Unc -Path $SourceDir
 
+
 # ***
 # *** Locals
 # ***
@@ -48,4 +49,4 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Execute
 # ***
 # Publish-Vsix
-& "$SourceDir\Build\Build.Scripts.CICD\Vsix\Publish-Vsix.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir -PublisherToken $PublisherToken -PublisherName $PublisherName
+& "$SourceDir\Build\Build.Scripts.CICD\Vsix\Publish-Vsix.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir -PublisherToken $PublisherToken -PublisherName $PublisherName -ProductFlavor Core -Version 4.19.2.1661

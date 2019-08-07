@@ -46,4 +46,4 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Execute
 # ***
 # Publish-Vsix
-& "$SourceDir\Build\Build.Scripts.CICD\Vsix\Package-Vsix.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir -Version 4.19.05.1661 -ProductFlavor Core
+& "$SourceDir\Build\Build.Scripts.CICD\Vsix\Package-Vsix.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir -ProductFlavor Core
