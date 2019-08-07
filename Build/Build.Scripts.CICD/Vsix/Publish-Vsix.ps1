@@ -18,11 +18,11 @@ param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$PublisherToken = $(throw '-PublisherToken is a required parameter.'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[Version]$PublisherName= $(throw '-PublisherName is a required parameter. GoodToCode'),
+	[string]$PublisherName= $(throw '-PublisherName is a required parameter. GoodToCode'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 	[Version]$Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[Version]$ProductFlavor= $(throw '-$ProductFlavor is a required parameter. Core')
+	[string]$ProductFlavor= $(throw '-$ProductFlavor is a required parameter. Core')
 )
 
 # ***
