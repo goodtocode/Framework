@@ -55,7 +55,7 @@ $PathFull = [String]::Format("{0}\Sites\{1}\{2}", $Path, $SubFolder, $RepoName)
 # ***
 Write-Verbose "Builds"
 # ***
-Copy-SourceCode -Path $BuildFull -RepoName $RepoName -ProductName $ProductName -Snk GoodToCode.snk
+Copy-GoodToCodeSource -Path $BuildFull -RepoName $RepoName -ProductName $ProductName -Snk GoodToCode.snk
 
 # ***
 Write-Verbose "Zip"

@@ -11,8 +11,8 @@
 # *** Parameters
 # ***
 param(
-	[String]$ArtifactDir = 'D:\Artifacts', 
-	[String]$SourceDir = 'D:\Source-GTC\Stack\Framework',
+	[String]$ArtifactDir = 'C:\Artifacts', 
+	[String]$SourceDir = 'C:\Users\rober\source\repos\Framework', # D:\Source-GTC\Stack\Framework',
 	[String]$PublisherToken = 'ub7dwhcn46oxeov7zyyhzfluomd3zdztqemhst4wbmk3lp4byega',
 	[String]$PublisherName = 'GoodToCode'
 )

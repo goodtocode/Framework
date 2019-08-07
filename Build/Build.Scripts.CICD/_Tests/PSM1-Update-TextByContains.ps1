@@ -11,11 +11,8 @@
 # *** Parameters
 # ***
 param(
-	[String]$Path = '\\Dev-Web-01.dev.GoodToCode.com', 
-	[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\SprintsTest',
-	[String]$Domain = 'code.GoodToCode.com',
-	[String]$Database = 'DatabaseServer.dev.GoodToCode.com',
-	[String]$SolutionFolder = 'Quick-Starts'
+	[String]$Path='c:\temp',
+	[Version]$Version = '4.19.05.1661'
 )
 
 # ***
@@ -37,5 +34,4 @@ Import-Module "..\..\Build.Scripts.Modules\System\GoodToCode.System.psm1"
 # ***
 # *** Execute
 # ***
-# Rebuild templates
-Restore-VsixTemplate -Path "..\..\..\$SolutionFolder" -Destination $Path -Domain $Domain -Database $Database -FamilyName "Framework" -ProductFlavor "Universal" -Build $Build
+Update-TextByContains -Path $Path -Contains "<Identity Id" -Old "4.19.01" -New $Version.ToString() -Include *.vsixmanifest

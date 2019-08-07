@@ -1396,14 +1396,10 @@ export-modulemember -function Update-Text
 #-----------------------------------------------------------------------
 function Update-TextByContains
 {
-	param (
-		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
+	param (		
  		[string]$Path = $(throw '-Path is a required parameter.'),
-		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
 		[string]$Contains = $(throw '-Contains is a required parameter.'),
-		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
 		[string]$Old = $(throw '-Old is a required parameter.'),
-		[Parameter(Mandatory=$true,ValueFromPipeTextByPropertyName=$true)]
 		[string]$New = $(throw '-New is a required parameter.'),
 		[string[]]$Include = "*.*",
  		[string[]]$Exclude = "",
@@ -1426,8 +1422,8 @@ function Update-TextByContains
 			For([Int32]$Count = 0; $Count -lt $Content.Length; $Count++)
 			{
 				$CurrentLine = $Content[$Count].Trim()
-				If(($FoundIndex -eq -1) -and ($CurrentLine -eq $Contains))
-				{					
+				If(($FoundIndex -eq -1) -and ($CurrentLine.ToLowerInvariant().Contains($Contains.ToLowerInvariant())))
+				{
 					$FoundIndex = $Count
 					$FoundLine = $CurrentLine
 					Break

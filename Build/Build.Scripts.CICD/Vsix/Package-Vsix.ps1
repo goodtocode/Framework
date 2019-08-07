@@ -12,11 +12,9 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$ArtifactDir = $(throw '-Path is a required parameter. $(build.stagingDirectory)'),
+ 	[string]$ArtifactDir = $(throw '-ArtifactDir is a required parameter. $(build.stagingDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
-	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[Version]$Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)'),
+ 	[string]$SourceDir = $(throw '-SourceDir is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
 	[String]$TempDir = "C:\Temp"
@@ -52,6 +50,7 @@ $TempDir = Set-Unc -Path $TempDir
 [String]$TempDirZipPath="$TempDir\ToZip"
 [String]$TempDirZipFile="$TempDir\$ProductFlavor.zip"
 # Vsix
+[String]$VsixProjectFolder="$SourceDir\Vsix\Vsix.$ProductFlavor"
 [String]$VsixProjectTemplateZip="$SourceDir\Vsix\Vsix.$ProductFlavor\ProjectTemplates\$ProductFlavor.zip"
 
 # ***
@@ -117,8 +116,6 @@ if ($ProductFlavor -eq 'WPF') {
 }
 # Fix: Dependencies won't load unless we change ..\packages to ..\..\packages. NuGet and VSIX want solution folder in different levels, so we compensate for VSIX
 Update-Text -Path $TempDir -Include *.csproj -Old '..\packages' -New '..\..\packages' 
-# Update version
-Update-TextByContains -Path $TempDir -Contains "<Identity Id" -Old "4.19.01" -New $Version -Include *.vsixmanifest
 
 #
 # Zip

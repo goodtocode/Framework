@@ -480,11 +480,42 @@ function Find-MsBuild
 export-modulemember -function Find-MsBuild
 
 #-----------------------------------------------------------------------
-# Copy-SourceCode [-Path [<String>]] [-Destination [<String>]]
+# Copy-SourceProject [-Path [<String>]] [-Destination [<String>]]
 #
-# Example: .\Copy-SourceCode -Path \\Build\Site -Destination \\Drops\Site
+# Example: .\Copy-GoodToCodeSource -Path \\Build\Site -Destination \\Drops\Site
 #-----------------------------------------------------------------------
-function Copy-SourceCode
+function Copy-SourceProject
+{
+	param(
+		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+		[String]$SourceDir = $(throw '-SourceDir is a required parameter.'),
+		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+		[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter.'),
+		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+		[String]$SolutionFile = $(throw '-SolutionFile is a required parameter.')
+	)
+	Write-Host "Copy-SourceProject -SourceDir $SourceDir -ArtifactDir $ArtifactDir -SolutionFile $SolutionFile"
+	# Cleanse Variables
+	$SourceDir = Set-Unc -Path $SourceDir
+	$ArtifactDir = Set-Unc -Path $ArtifactDir
+
+	# Copy
+	Copy-Recurse -Path $Sourcedir -Destination $ArtifactDir -Exclude __*.png, *.vstemplate, *.sln, *.snk, *.log, *.txt, *.bak, *.tmp, *.vspscc, *.vssscc, *.csproj.vspscc, *.sqlproj.vspscc, *.cache
+	Clear-Solution -Path $ArtifactDir
+	
+	# Solution File - Copy and cleanse
+	Copy-File -Path $SolutionFile -Destination $ArtifactDir
+	Remove-TFSBinding -Path $ArtifactDir
+	Remove-StrongNameKey -Path $ArtifactDir -File $Snk
+}
+export-modulemember -function Copy-SourceProject
+
+#-----------------------------------------------------------------------
+# Copy-GoodToCodeSource [-Path [<String>]] [-Destination [<String>]]
+#
+# Example: .\Copy-GoodToCodeSource -Path \\Build\Site -Destination \\Drops\Site
+#-----------------------------------------------------------------------
+function Copy-GoodToCodeSource
 {
 param(
 	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\builds\sprints',
@@ -495,7 +526,7 @@ param(
 	[String]$SolutionFolder = '',
 	[String]$Snk='GoodToCode.snk'
 )
-	Write-Host "Copy-SourceCode -Path $Path -RepoName $RepoName -ProductName $ProductName -Snk $Snk -Relative $Relative -Clean $Clean"
+	Write-Host "Copy-GoodToCodeSource -Path $Path -RepoName $RepoName -ProductName $ProductName -Snk $Snk -Relative $Relative -Clean $Clean"
 	# Cleanse Variables
 	$Path = Set-Unc -Path $Path
 	# Locals
@@ -516,7 +547,7 @@ param(
 	Remove-TFSBinding -Path $PathSrc
 	Remove-StrongNameKey -Path $PathSrc -File $Snk
 }
-export-modulemember -function Copy-SourceCode
+export-modulemember -function Copy-GoodToCodeSource
 
 #-----------------------------------------------------------------------
 # Create-GitHubRepo [-Path [<String>]] [-Destination [<String>]]
