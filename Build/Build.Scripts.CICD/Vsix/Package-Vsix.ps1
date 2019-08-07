@@ -16,6 +16,8 @@ param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+	[Version] $Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)')
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
 	[String]$TempDir = "C:\Temp"
 )
@@ -115,6 +117,12 @@ if ($ProductFlavor -eq 'WPF') {
 }
 # Fix: Dependencies won't load unless we change ..\packages to ..\..\packages. NuGet and VSIX want solution folder in different levels, so we compensate for VSIX
 Update-Text -Path $TempDir -Include *.csproj -Old '..\packages' -New '..\..\packages' 
+# Update version
+Update-TextByContains -Path $TempDir -Contains "<Identity Id" -Old "4.19.01" -New $Version -Include *.vsixmanifest
+
+#
+# Zip
+#
 Compress-Path -Path $TempDirZipPath -File $TempDirZipFile
 
 #

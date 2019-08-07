@@ -47,8 +47,8 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Locals
 # ***
 # VSIX Files
-[String]$ProjectFolder = Set-Unc ($SourceDir + '\Vsix\Vsix.' + $ProductFlavor)
-[String]$VsixPublisherExe = (Set-Unc ($SourceDir + '\Build\Build.Content\Utility\BuildTools')) + '\VsixPublisher.exe'
+[String]$ProjectFolder = Set-Unc "$SourceDir\Vsix\Vsix.$ProductFlavor"
+[String]$VsixPublisherExe = (Set-Unc "$SourceDir\Build\Build.Content\Utility\BuildTools") + '\VsixPublisher.exe'
 
 # ***
 # *** Execute

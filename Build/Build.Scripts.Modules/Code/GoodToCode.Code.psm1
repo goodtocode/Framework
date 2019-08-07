@@ -233,35 +233,6 @@ function Get-Version
 export-modulemember -function Get-Version
 
 #-----------------------------------------------------------------------
-# Set-Version [-Path [<String>]]
-#                  [-Contains [<String[]>] [-Close [<String[]>]]
-#
-# Example: .\Set-Version -Path \\source\path
-#-----------------------------------------------------------------------
-function Set-Version
-{
-	param (
-		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 		[string]$Path = $(throw '-Path is a required parameter.'),
-		[String]$Major = '4',
-		[String]$Minor = '19',
-		[String]$Revision = '',
-		[String]$Build = ''
-	)
-	Write-Host "Set-Version -Path $Path"
-	# .Net Projects
-	$Version = Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build $Build
-	Update-ContentsByTag -Path $Path -Value $Version -Open '<version>' -Close '</version>' -Include *.nuspec
-	Update-LineByContains -Path $Path -Contains "AssemblyVersion(" -Line "[assembly: AssemblyVersion(""$Version"")]" -Include AssemblyInfo.cs
-	# Vsix Templates
-	$OldVersion = Get-Version -Major $Major -Minor ($Now.Month - 1).ToString("00") -Format 'M.YY.MM'
-	$Version = Get-Version -Major $Major -Format 'M.YY.MM.HHH'
-	Update-Text -Path $Path -Old '4.19.01' -New $Version -Include *.vsixmanifest
-	# No NuGet Version Needed - handled by that individual process
-}
-export-modulemember -function Set-Version
-
-#-----------------------------------------------------------------------
 # Copy-FrameworkRepo [-String [<String>]]
 #
 # Example: .\Copy-FrameworkRepo -Path "\\Dev-Vm-01.dev.GoodToCode.com\Vault\GitHub\Extensions" -Repo "Extensions"
@@ -905,7 +876,6 @@ function Restore-Solution
 	Write-Host "Restore-Solution -Path $Path -Build $Build -Configuration $Configuration -Framework $Framework -Version $Version"		
 	[String]$NuGetExe = (Set-Unc ($Relative + 'Build\Build.Content\Utility\NuGet')) + '\NuGet.exe'
 	$Path = Set-Unc -Path $Path
-	Set-Version -Path $Path
 	Write-Verbose "$NuGetExe restore $Path -source https://api.nuget.org/v3/index.json;"
 	& $NuGetExe restore "$Path"
 

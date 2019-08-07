@@ -13,7 +13,9 @@
 param
 (
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-    [string] $Path=""
+    [string] $Path= $(throw '-Path is a required parameter. $(Build.SourcesDirectory)'),
+	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+	[Version] $Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)')
 )
 
 # ***
@@ -29,8 +31,8 @@ Write-Host "*****************************"
 Write-Host "*** Starting: $ThisScript on $Now"
 Write-Host "*****************************"
 # Imports
-Import-Module "..\..\Build.Scripts.Modules\Code\GoodToCode.Code.psm1"
-Import-Module "..\..\Build.Scripts.Modules\System\GoodToCode.System.psm1"
+Import-Module "..\Code\GoodToCode.Code.psm1"
+Import-Module "..\System\GoodToCode.System.psm1"
 
 # ***
 # *** Validate and cleanse
@@ -41,13 +43,19 @@ $Path = Set-Unc -Path $Path
 # *** Locals
 # ***
 
-
-# ***
-# *** Pre-Execute
-# ***
-
-
 # ***
 # *** Execute
 # ***
-Set-Version -Path $Path
+[Version]$DefaultVersion = "4.19.01"
+[String]$Major = $Version.Major
+[String]$Minor = $Version.Minor
+[String]$Revision = $Version.Revision
+[String]$Build = $Version.Build
+
+Write-Host "Set-Version -Path $Path -Version $Version"
+# .Net Projects
+$CsVersion = Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build $Build
+Update-ContentsByTag -Path $Path -Value $CsVersion -Open '<version>' -Close '</version>' -Include *.nuspec
+Update-LineByContains -Path $Path -Contains "AssemblyVersion(" -Line "[assembly: AssemblyVersion(""$CsVersion"")]" -Include AssemblyInfo.cs
+# Vsix Templates
+Update-TextByContains -Path $Path -Contains "<Identity Id" -Old $DefaultVersion -New $Version -Include *.vsixmanifest
