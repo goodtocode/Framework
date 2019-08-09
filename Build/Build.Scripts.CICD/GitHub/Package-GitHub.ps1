@@ -43,18 +43,17 @@ $ArtifactDir = Set-Unc -Path $ArtifactDir
 # ***
 # *** Locals
 # ***
-$GitHubContent = "$SolutionFolder\Build\Build.Content\GitHub\$ProductName"
+$GitHubContent = "$SourceDir\Build\Build.Content\GitHub\$ProductName"
 
 # ***
-Write-Verbose "Builds"
+# *** Execute
 # ***
 New-Path -Path $ArtifactDir -Clean $True
-Copy-SourceProject -SourceDir $Sourcedir -ArtifactDir $ArtifactDir -SolutionFile "$ProductName.sln"
 Copy-Recurse -Path $SourceDir -Destination $ArtifactDir
-
-# ***
-Write-Verbose "Publish"
-# ***
-New-Path -Path ($ArtifactDirFull + "\src") -Clean $True
-New-Path -Path ($ArtifactDirFull + "\lib") -Clean $True
-Copy-Recurse -Path $BuildFull -Destination $ArtifactDirFull
+Copy-Recurse -Path $GitHubContent -Destination $ArtifactDir
+Clear-Solution -Path "$ArtifactDir\Src" -SNKFile "GoodToCodeFramework.snk"
+Clear-Solution -Path "$ArtifactDir\Quick-Starts" -SNKFile "GoodToCodeFramework.snk"
+Remove-Path -Path "$ArtifactDir\.vs"
+Remove-Path -Path "$ArtifactDir\Build"
+Remove-Path -Path "$ArtifactDir\Docs"
+Remove-Path -Path "$ArtifactDir\Vsix"

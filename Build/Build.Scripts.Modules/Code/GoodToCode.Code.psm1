@@ -99,13 +99,14 @@ export-modulemember -function Add-NuGet
 function Clear-Solution
 {
 	param (
-	 [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	 [string]$Path = $(throw '-Path is a required parameter.'),
- 	 [string[]]$Include = ("*.snk", "*.zip", "*.log", "*.bak", "*.tmp,  *.vspscc", "*.vssscc", "*.csproj.vspscc", "*.sqlproj.vspscc", "*.cache"),
- 	 [string]$Exclude = ""
+		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 		[string]$Path = $(throw '-Path is a required parameter.'),
+		[string]$SNKFile = 'GoodToCodeFramework.snk',
+ 		[string[]]$Include = ("*.snk", "*.zip", "*.log", "*.bak", "*.tmp,  *.vspscc", "*.vssscc", "*.csproj.vspscc", "*.sqlproj.vspscc", "*.cache"),
+ 		[string]$Exclude = ""
 	)
 	Write-Host "Clear-Solution -Path $Path -Include $Include -Exclude $Exclude"
-	$Path = Set-Unc -Path $Path
+	$Path = Set-Unc -Path $Path	
 	# Cleanup Files
 	Remove-Recurse -Path $Path -Include $Include -Exclude $Exclude
 	# Cleanup Folders
@@ -114,6 +115,10 @@ function Clear-Solution
 	Remove-Subfolders -Path $Path -Subfolder "packages"
 	Remove-Subfolders -Path $Path -Subfolder "bin"
 	Remove-Subfolders -Path $Path -Subfolder "obj"
+	# Remove SCM and SNK binding
+	Remove-TFSBinding -Path $Path
+	Remove-StrongNameKey -Path $Path -File $SNKFile
+
 }
 export-modulemember -function Clear-Solution
 
@@ -480,35 +485,27 @@ function Find-MsBuild
 export-modulemember -function Find-MsBuild
 
 #-----------------------------------------------------------------------
-# Copy-SourceProject [-Path [<String>]] [-Destination [<String>]]
+# Copy-SourceCode [-Path [<String>]] [-Destination [<String>]]
 #
 # Example: .\Copy-GoodToCodeSource -Path \\Build\Site -Destination \\Drops\Site
 #-----------------------------------------------------------------------
-function Copy-SourceProject
+function Copy-SourceCode
 {
 	param(
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[String]$SourceDir = $(throw '-SourceDir is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-		[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter.'),
-		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-		[String]$SolutionFile = $(throw '-SolutionFile is a required parameter.')
+		[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter.')
 	)
-	Write-Host "Copy-SourceProject -SourceDir $SourceDir -ArtifactDir $ArtifactDir -SolutionFile $SolutionFile"
+	Write-Host "Copy-SourceCode -SourceDir $SourceDir -ArtifactDir $ArtifactDir"
 	# Cleanse Variables
 	$SourceDir = Set-Unc -Path $SourceDir
 	$ArtifactDir = Set-Unc -Path $ArtifactDir
 
 	# Copy
 	Copy-Recurse -Path $Sourcedir -Destination $ArtifactDir -Exclude __*.png, *.vstemplate, *.sln, *.snk, *.log, *.txt, *.bak, *.tmp, *.vspscc, *.vssscc, *.csproj.vspscc, *.sqlproj.vspscc, *.cache
-	Clear-Solution -Path $ArtifactDir
-	
-	# Solution File - Copy and cleanse
-	Copy-File -Path $SolutionFile -Destination $ArtifactDir
-	Remove-TFSBinding -Path $ArtifactDir
-	Remove-StrongNameKey -Path $ArtifactDir -File $Snk
 }
-export-modulemember -function Copy-SourceProject
+export-modulemember -function Copy-SourceCode
 
 #-----------------------------------------------------------------------
 # Copy-GoodToCodeSource [-Path [<String>]] [-Destination [<String>]]
@@ -558,7 +555,8 @@ function Create-GitHubRepo
 {
 param(
 	[String]$SourceDir = '',	
-	[String]$RepoDir = ''
+	[String]$RepoDir = '',
+	[String]$SNKFile = ''
 )
 	Write-Host "Create-GitHubRepo -Path $SourceDir -RepoName $RepoDir"
 	# Cleanse Variables
@@ -571,7 +569,7 @@ param(
 	# Cleanup
 	Clear-Solution -Path $RepoDir
 	Remove-TFSBinding -Path $RepoDir
-	Remove-StrongNameKey -Path $RepoDir -File $Snk
+	Remove-StrongNameKey -Path $RepoDir -File $SNKFile
 }
 export-modulemember -function Create-GitHubRepo
 

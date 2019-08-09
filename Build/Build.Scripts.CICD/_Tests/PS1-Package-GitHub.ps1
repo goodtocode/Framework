@@ -11,8 +11,9 @@
 # *** Parameters
 # ***
 param(
-	[String]$ArtifactDir = 'C:\Artifacts', 
-	[String]$SourceDir = 'C:\Users\rober\source\repos\Framework' # D:\Source-GTC\Stack\Framework'
+	[String]$SourceDir = 'C:\Users\rober\source\repos\Framework', # D:\Source-GTC\Stack\Framework',
+	[String]$ArtifactDir = 'C:\Artifacts\t', 	
+	[String]$ProductName = 'Framework'
 )
 
 # ***
@@ -46,4 +47,4 @@ $SourceDir = Set-Unc -Path $SourceDir
 # *** Execute
 # ***
 # Publish-Vsix
-& "$SourceDir\Build\Build.Scripts.CICD\Vsix\Package-GitHub.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir 
+& "$SourceDir\Build\Build.Scripts.CICD\GitHub\Package-GitHub.ps1" -SourceDir $SourceDir -ArtifactDir $ArtifactDir -ProductName $ProductName

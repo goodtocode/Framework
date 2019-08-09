@@ -12,9 +12,9 @@
 # ***
 param(
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$ArtifactDir = $(throw '-Path is a required parameter. $(Build.ArtifactStagingDirectory)'),
+ 	[string]$ArtifactDir = $(throw '-ArtifactDir is a required parameter. $(Build.ArtifactStagingDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 	[string]$SourceDir = $(throw '-Build is a required parameter. $(Build.SourcesDirectory)'),
+ 	[string]$SourceDir = $(throw '-SourceDir is a required parameter. $(Build.SourcesDirectory)'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
  	[string]$PublisherToken = $(throw '-PublisherToken is a required parameter.'),
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
