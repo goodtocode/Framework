@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -13,6 +13,12 @@
 
   <ItemGroup>
     <None Remove="Build.Scripts.CICD.csproj.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="GitHub\.ssh\github.framework" />
+    <None Include="GitHub\.ssh\github.framework.pub" />
+    <None Include="GitHub\.ssh\ssh-keygen.txt" />
   </ItemGroup>
 
 </Project>

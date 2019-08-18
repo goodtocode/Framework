@@ -11,8 +11,8 @@
 # *** Parameters
 # ***
 param(
-	[String]$SourceDir = 'C:\Users\rober\source\repos\Framework', # D:\Source-GTC\Stack\Framework',
-	[String]$ArtifactDir = 'C:\Artifacts\t', 	
+	[String]$SourceDir = 'D:\Source-GTC\Stack\Framework', #'C:\Users\rober\source\repos\Framework', # D:\Source-GTC\Stack\Framework',
+	[String]$ArtifactDir = 'C:\Artifacts\a', 	
 	[String]$ProductName = 'Framework'
 )
 

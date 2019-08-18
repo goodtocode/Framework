@@ -13,8 +13,8 @@
 param(
 	[String]$TempDir = 'C:\Artifacts\t',
 	[String]$ArtifactDir = 'C:\Artifacts\a',
-	[String]$RepoName = 'Framework',
-	[String]$Url = 'https://github.com/goodtocode/Framework.git'
+	[String]$OrgName = 'GoodToCode',
+	[String]$RepoName = 'Framework'	
 )
 
 # ***
@@ -43,4 +43,4 @@ Write-Host "*****************************"
 # *** Execute
 # ***
 # Publish-Vsix
-& "..\GitHub\Publish-GitHub.ps1" -ArtifactDir $ArtifactDir -TempDir $TempDir -Url $Url -RepoName $RepoName
+& "..\GitHub\Publish-GitHub.ps1" -ArtifactDir $ArtifactDir -TempDir $TempDir -OrgName $OrgName -RepoName $RepoName
