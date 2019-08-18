@@ -56,6 +56,7 @@ Write-Host "*****************************"
 # ***
 If(-not (Test-Path -PathType Container -Path $ArtifactDir)) {New-Item -Path $ArtifactDir -ItemType directory -Force}
 If(-not (Test-Path -PathType Container -Path $TempDir)) {New-Item -Path $TempDir -ItemType directory -Force}
+get-childitem $TempDir -recurse | foreach-object { del $_ -Force }
 Set-Location $TempDir
 
 #

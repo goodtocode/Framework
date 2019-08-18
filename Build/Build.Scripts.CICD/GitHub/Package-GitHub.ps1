@@ -51,8 +51,8 @@ $GitHubContent = "$SourceDir\Build\Build.Content\GitHub\$ProductName"
 New-Path -Path $ArtifactDir -Clean $True
 Copy-Recurse -Path $SourceDir -Destination $ArtifactDir
 Copy-Recurse -Path $GitHubContent -Destination $ArtifactDir
-Clear-Solution -Path "$ArtifactDir\Src" -SNKFile "GoodToCodeFramework.snk"
-Clear-Solution -Path "$ArtifactDir\Quick-Starts" -SNKFile "GoodToCodeFramework.snk"
+Clear-Solution -Path "$ArtifactDir\Src"
+Clear-Solution -Path "$ArtifactDir\Quick-Starts"
 Remove-Path -Path "$ArtifactDir\.vs"
 Remove-Path -Path "$ArtifactDir\Build"
 Remove-Path -Path "$ArtifactDir\Docs"
