@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataTier", "DataTier", "{A76F353B-9E1C-49A6-A6C4-D51ACB4C3D89}"
 EndProject
@@ -27,23 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework.Test.Core", "Fram
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interoperability", "Interoperability", "{69FF0A04-8C8D-4D4A-8607-13D4B2ABDCEF}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Framework.DataAccess.Shared", "Framework.DataAccess.Shared\Framework.DataAccess.Shared.shproj", "{5EF4AFD9-8D21-42AD-B564-5E668DAB8AE1}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Framework.Interop.Shared", "Framework.Interop.Shared\Framework.Interop.Shared.shproj", "{4FA34334-CE8D-497B-9AAE-632A271949C2}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Framework.Models.Shared", "Framework.Models.Shared\Framework.Models.Shared.shproj", "{ED91E71F-EEB0-4B8C-8396-0D9C55E5446D}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Framework.Test.Shared", "Framework.Test.Shared\Framework.Test.Shared.shproj", "{83F1E00B-1183-4499-ABD8-35E4776596B6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.UniversalApp.Core", "Framework.UniversalApp.Core\Framework.UniversalApp.Core.csproj", "{93384F71-C7C7-4424-8125-7044EF096A8E}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Framework.Interop.Shared\Framework.Interfaces.Shared.projitems*{4fa34334-ce8d-497b-9aae-632a271949c2}*SharedItemsImports = 13
-		Framework.DataAccess.Shared\Framework.DataAccess.Shared.projitems*{5ef4afd9-8d21-42ad-b564-5e668dab8ae1}*SharedItemsImports = 13
-		Framework.Test.Shared\Framework.Test.Shared.projitems*{83f1e00b-1183-4499-abd8-35e4776596b6}*SharedItemsImports = 13
-		Framework.Models.Shared\Framework.Models.Shared.projitems*{ed91e71f-eeb0-4b8c-8396-0d9c55e5446d}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
 		Ad-Hoc|ARM = Ad-Hoc|ARM
@@ -503,83 +489,9 @@ Global
 		{6066B0B7-D717-4939-914B-6E266B4E6CBD} = {629630FC-06D3-473D-AEA9-85B33A2C978C}
 		{C1435B7E-51A3-420E-A2C2-3903541BFE1E} = {629630FC-06D3-473D-AEA9-85B33A2C978C}
 		{73206AF7-3A50-4FD8-869F-4580190265B9} = {D4CE87E0-6051-4B59-9984-2A1736E18733}
-		{5EF4AFD9-8D21-42AD-B564-5E668DAB8AE1} = {A76F353B-9E1C-49A6-A6C4-D51ACB4C3D89}
-		{4FA34334-CE8D-497B-9AAE-632A271949C2} = {69FF0A04-8C8D-4D4A-8607-13D4B2ABDCEF}
-		{ED91E71F-EEB0-4B8C-8396-0D9C55E5446D} = {EED42522-B85C-4818-8297-C837E27DF33E}
-		{83F1E00B-1183-4499-ABD8-35E4776596B6} = {D4CE87E0-6051-4B59-9984-2A1736E18733}
 		{93384F71-C7C7-4424-8125-7044EF096A8E} = {629630FC-06D3-473D-AEA9-85B33A2C978C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B651014-0E29-4AC7-AC47-B88EA9094699}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 17
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://GoodToCode.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Framework.DataAccess.Core\\Framework.DataAccess.Core.csproj
-		SccProjectTopLevelParentUniqueName1 = Framework-for-Core.sln
-		SccProjectName1 = Framework.DataAccess.Core
-		SccLocalPath1 = Framework.DataAccess.Core
-		SccProjectUniqueName2 = Framework.Database\\Framework.Database.sqlproj
-		SccProjectTopLevelParentUniqueName2 = Framework-for-Core.sln
-		SccProjectName2 = Framework.Database
-		SccLocalPath2 = Framework.Database
-		SccProjectUniqueName3 = Framework.Interop.Standard\\Framework.Interop.Standard.csproj
-		SccProjectTopLevelParentUniqueName3 = Framework-for-Core.sln
-		SccProjectName3 = Framework.Interop.Standard
-		SccLocalPath3 = Framework.Interop.Standard
-		SccProjectUniqueName4 = Framework.Models.Standard\\Framework.Models.Standard.csproj
-		SccProjectTopLevelParentUniqueName4 = Framework-for-Core.sln
-		SccProjectName4 = Framework.Models.Standard
-		SccLocalPath4 = Framework.Models.Standard
-		SccProjectUniqueName5 = Framework.Test.Core\\Framework.Test.Core.csproj
-		SccProjectTopLevelParentUniqueName5 = Framework-for-Core.sln
-		SccProjectName5 = Framework.Test.Core
-		SccLocalPath5 = Framework.Test.Core
-		SccProjectUniqueName6 = Framework.WebApp.Core\\Framework.WebApp.Core.csproj
-		SccProjectTopLevelParentUniqueName6 = Framework-for-Core.sln
-		SccProjectName6 = Framework.WebApp.Core
-		SccLocalPath6 = Framework.WebApp.Core
-		SccProjectUniqueName7 = Framework.WebServices.Core\\Framework.WebServices.Core.csproj
-		SccProjectTopLevelParentUniqueName7 = Framework-for-Core.sln
-		SccProjectName7 = Framework.WebServices.Core
-		SccLocalPath7 = Framework.WebServices.Core
-		SccProjectUniqueName8 = Framework.DataAccess.Shared\\Framework.DataAccess.Shared.shproj
-		SccProjectTopLevelParentUniqueName8 = Framework-for-Core.sln
-		SccProjectName8 = Framework.DataAccess.Shared
-		SccLocalPath8 = Framework.DataAccess.Shared
-		SccProjectUniqueName9 = Framework.DataAccess.Shared\\Framework.DataAccess.Shared.projitems
-		SccProjectTopLevelParentUniqueName9 = Framework-for-Core.sln
-		SccProjectName9 = Framework.DataAccess.Shared
-		SccLocalPath9 = Framework.DataAccess.Shared
-		SccProjectUniqueName10 = Framework.Interop.Shared\\Framework.Interop.Shared.shproj
-		SccProjectTopLevelParentUniqueName10 = Framework-for-Core.sln
-		SccProjectName10 = Framework.Interop.Shared
-		SccLocalPath10 = Framework.Interop.Shared
-		SccProjectUniqueName11 = Framework.Interop.Shared\\Framework.Interfaces.Shared.projitems
-		SccProjectTopLevelParentUniqueName11 = Framework-for-Core.sln
-		SccProjectName11 = Framework.Interop.Shared
-		SccLocalPath11 = Framework.Interop.Shared
-		SccProjectUniqueName12 = Framework.Models.Shared\\Framework.Models.Shared.shproj
-		SccProjectTopLevelParentUniqueName12 = Framework-for-Core.sln
-		SccProjectName12 = Framework.Models.Shared
-		SccLocalPath12 = Framework.Models.Shared
-		SccProjectUniqueName13 = Framework.Models.Shared\\Framework.Models.Shared.projitems
-		SccProjectTopLevelParentUniqueName13 = Framework-for-Core.sln
-		SccProjectName13 = Framework.Models.Shared
-		SccLocalPath13 = Framework.Models.Shared
-		SccProjectUniqueName14 = Framework.Test.Shared\\Framework.Test.Shared.shproj
-		SccProjectTopLevelParentUniqueName14 = Framework-for-Core.sln
-		SccProjectName14 = Framework.Test.Shared
-		SccLocalPath14 = Framework.Test.Shared
-		SccProjectUniqueName15 = Framework.Test.Shared\\Framework.Test.Shared.projitems
-		SccProjectTopLevelParentUniqueName15 = Framework-for-Core.sln
-		SccProjectName15 = Framework.Test.Shared
-		SccLocalPath15 = Framework.Test.Shared
-		SccProjectUniqueName16 = Framework.UniversalApp.Core\\Framework.UniversalApp.Core.csproj
-		SccProjectTopLevelParentUniqueName16 = Framework-for-Core.sln
-		SccProjectName16 = Framework.UniversalApp.Core
-		SccLocalPath16 = Framework.UniversalApp.Core
 	EndGlobalSection
 EndGlobal
