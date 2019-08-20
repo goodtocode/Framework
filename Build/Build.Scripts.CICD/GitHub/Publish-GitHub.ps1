@@ -56,7 +56,6 @@ Write-Host "*****************************"
 # ***
 If(-not (Test-Path -PathType Container -Path $ArtifactDir)) {New-Item -Path $ArtifactDir -ItemType directory -Force}
 If(-not (Test-Path -PathType Container -Path $TempDir)) {New-Item -Path $TempDir -ItemType directory -Force}
-get-childitem $TempDir -recurse | foreach-object { del $_ -Force }
 Set-Location $TempDir
 
 #
@@ -78,17 +77,17 @@ Set-Location $TempDir
 # config
 & git config --global user.name $User
 & git config --global user.email $Email
-& git config remote.origin.url $RepoSsh
-& git remote set-url origin $RepoSsh
+#& git config remote.origin.url $RepoUrl #$RepoSsh
+#& git remote set-url origin $RepoUrl #$RepoSsh
 
 # clone
-& git clone "ssh://$RepoSsh"
+& git clone $RepoUrl #"ssh://$RepoSsh"
 If(-not (Test-Path -PathType Container -Path $RepoDir)) {New-Item -Path "$TempDir\$RepoName" -ItemType directory -Force}
 Set-Location $RepoDir
 # Init
-& git init
+#& git init
 
-# Update with latest files
+# Copy $ArtifactDir to $RepoDir
 Get-ChildItem -Path $ArtifactDir | % { 
   Copy-Item $_.fullname "$RepoDir" -Recurse -Force 
 }

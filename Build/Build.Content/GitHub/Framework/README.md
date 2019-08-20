@@ -4,14 +4,12 @@
 <tr>
 <td>
 
-<img alt="Your GoodToCode Framework" src="https://www.GoodToCode.com/images/welcome/GoodToCode-Logo-71x71-Transparent.png">
+<h2> GoodToCode Framework </h2>
 
 </td>
 <td>
 
-<h2> GoodToCode Framework </h2>
-
-<h4>One Framework - Your Data - Any Platform</h4>
+<h4>Data Access Framework</h4>
 
 </td>
 </tr>
