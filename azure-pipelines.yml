@@ -32,10 +32,10 @@ steps:
   displayName: 'Delete files from Quick-Starts'
   inputs:
     SourceFolder: Quick-Starts
-    Contents: '**/Framework-for-All.sln
-    **/Framework-for-Universal.sln
-    **/Framework-for-WPF.sln
-    **/Framework.UniversalApp.Core.csproj'
+    Contents: '**/*Framework-for-All.sln
+    **/*Framework-for-Universal.sln
+    **/*Framework-for-WPF.sln
+    **/*Framework.UniversalApp.Core.csproj'
 
 - task: DeleteFiles@1
   displayName: 'Delete files from Src'
