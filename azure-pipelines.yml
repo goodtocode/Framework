@@ -15,6 +15,36 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: DeleteFiles@1
+  displayName: 'Delete files from Build'
+  inputs:
+    SourceFolder: Build
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Docs'
+  inputs:
+    SourceFolder: Docs
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Quick-Starts'
+  inputs:
+    SourceFolder: 'Quick-Starts'
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Vsix'
+  inputs:
+    SourceFolder: Vsix
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Src'
+  inputs:
+    SourceFolder: Src
+    Contents: '**/GoodToCode.Framework.Universal.csproj'
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
