@@ -20,7 +20,12 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(solution)'
+    feedsToUse: 'select'
+    vstsFeed: '525a0dbd-3d6d-4f62-aba4-f4d004295d7d'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
