@@ -49,7 +49,6 @@ namespace GoodToCode.Framework.Data
             : this()
         {
             Bytes = bytes;
-        }
-		
+        }		
 	}
 }
