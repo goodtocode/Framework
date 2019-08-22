@@ -10,7 +10,7 @@ trigger:
     - master
   paths:
     include:
-    - /quick-starts/*
+    - Quick-Starts/*
 
 pool:
   vmImage: 'windows-latest'
