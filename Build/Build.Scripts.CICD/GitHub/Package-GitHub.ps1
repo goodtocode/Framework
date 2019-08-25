@@ -48,12 +48,16 @@ $GitHubContent = "$SourceDir\Build\Build.Content\GitHub\$ProductName"
 # ***
 # *** Execute
 # ***
+# Copy source to ArtifactDir
 New-Path -Path $ArtifactDir -Clean $True
 Copy-Recurse -Path $SourceDir -Destination $ArtifactDir
 Copy-Recurse -Path $GitHubContent -Destination $ArtifactDir
+# Clean up source of sensitive or cache files
 Clear-Solution -Path "$ArtifactDir\Src"
 Clear-Solution -Path "$ArtifactDir\Quick-Starts"
 Remove-Path -Path "$ArtifactDir\.vs"
 Remove-Path -Path "$ArtifactDir\Build"
 Remove-Path -Path "$ArtifactDir\Docs"
 Remove-Path -Path "$ArtifactDir\Vsix"
+# Add CD powershell Scripts
+Copy-File -Path "$SourceDir\Build\Build.Scripts.CICD\GitHub\Publish-GitHub.ps1" -Destination $ArtifactDir
