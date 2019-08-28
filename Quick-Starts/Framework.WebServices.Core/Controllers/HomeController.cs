@@ -29,7 +29,7 @@ namespace Framework.WebServices
     public class HomeController : Controller
     {
         public const string ControllerName = "Home";
-        public const string ContactUsView = "~/Views/GoodToCode-Source/GoodToCode-Contact.cshtml";
+        public const string ContactUsView = "~/Views/GoodToCode/GoodToCode-Contact.cshtml";
         public const string IndexGetView = "~/Views/Home/Index.cshtml";
         public const string IndexGetAction = "Index";
         public const string IndexPostAction = "PostIndex";

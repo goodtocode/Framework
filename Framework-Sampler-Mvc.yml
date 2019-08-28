@@ -4,12 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
+  batch: true
   branches:
     include:
     - master
   paths:
     include:
-    - quick-starts/*
+    - Quick-Starts/*
 
 pool:
   vmImage: 'windows-latest'

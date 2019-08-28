@@ -30,7 +30,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace GoodToCode.Extras.Test
+namespace Framework.Test
 {
     /// <summary>
     /// Test GoodToCode Framework for Web API endpoints
