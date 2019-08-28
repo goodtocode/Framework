@@ -14,8 +14,7 @@ param
 (
 	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
     [string] $Path= $(throw '-Path is a required parameter. $(Build.SourcesDirectory)'),
-	[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-	[Version] $Version= $(throw '-Version is a required parameter. $(Build.BuildNumber)')
+	[Version] $Version= "4.19"
 )
 
 # ***
@@ -46,7 +45,7 @@ $Path = Set-Unc -Path $Path
 # ***
 # *** Execute
 # ***
-[Version]$DefaultVersion = "4.19.01"
+[Version]$VersionToReplace = "4.19.01"
 [String]$Major = $Version.Major
 [String]$Minor = $Version.Minor
 [String]$Revision = $Version.Revision
@@ -58,4 +57,4 @@ $CsVersion = Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build 
 Update-ContentsByTag -Path $Path -Value $CsVersion -Open '<version>' -Close '</version>' -Include *.nuspec
 Update-LineByContains -Path $Path -Contains "AssemblyVersion(" -Line "[assembly: AssemblyVersion(""$CsVersion"")]" -Include AssemblyInfo.cs
 # Vsix Templates
-Update-TextByContains -Path $Path -Contains "<Identity Id" -Old $DefaultVersion -New $Version -Include *.vsixmanifest
+Update-TextByContains -Path $Path -Contains "<Identity Id" -Old $VersionToReplace -New $Version -Include *.vsixmanifest
