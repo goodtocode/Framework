@@ -18,6 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extras.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -27,7 +28,7 @@ namespace GoodToCode.Framework.Data
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
+    public partial interface IValueConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access

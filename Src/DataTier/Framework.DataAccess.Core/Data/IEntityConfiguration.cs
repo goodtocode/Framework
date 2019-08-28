@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extras.Data;
-using GoodToCode.Framework.Operation;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -28,7 +28,7 @@ namespace GoodToCode.Framework.Data
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IEntityConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public partial interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access
