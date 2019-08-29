@@ -45,11 +45,17 @@ $Path = Set-Unc -Path $Path
 # ***
 # *** Execute
 # ***
-[Version]$VersionToReplace = "4.19.01"
-[String]$Major = $Version.Major
-[String]$Minor = $Version.Minor
-[String]$Revision = $Version.Revision
-[String]$Build = $Version.Build
+$Year = get-date –format yy
+[String]$VersionToReplace = "4.19.01"
+[String]$Major = $Version.Major.ToString()
+[String]$Minor = $Version.Minor.ToString()
+[String]$Revision = $Version.Revision.ToString()
+[String]$Build = $Version.Build.ToString()
+
+$Major = $Major.ToString().Replace('-1', '1')
+$Minor = $Minor.ToString().Replace('-1', $Year)
+$Revision = $Revision.ToString().Replace('-1', '')
+$Build = $Build.ToString().Replace('-1', '')
 
 Write-Host "Set-Version -Path $Path -Version $Version"
 # .Net Projects
