@@ -922,7 +922,7 @@ function Remove-ContentsByTagContains
 		ForEach ($File in $Files)
 		{		
 			[Int32]$OpenIndex = -1
-			[Int32]$FoundIndex = -1
+			[Int32]$ContainsIndex = -1
 			[Int32]$CloseIndex = -1
 			$Content=Get-Content $File.PSPath
 			# Search for matches
@@ -934,7 +934,7 @@ function Remove-ContentsByTagContains
 					If($OpenIndex -gt -1)
 					{
 						# Fail: Block did not contain -Content and/or -Open was found before -Close. Reset for next open tag match.
-						$FoundIndex = -1
+						$ContainsIndex = -1
 						$CloseIndex = -1
 					}
 					$OpenIndex = $Count
@@ -942,8 +942,8 @@ function Remove-ContentsByTagContains
 				{
 					If($CurrentLine -like "*$Contains*")
 					{
-						$FoundIndex = $Count
-					}ElseIf(($FoundIndex -gt -1) -and ($CurrentLine -like "*$Close*"))
+						$ContainsIndex = $Count
+					}ElseIf(($ContainsIndex -gt -1) -and ($CurrentLine -like "*$Close*"))
 					{
 						# Success, block starts with -Open, ends with -Close and includes -Contains
 						$CloseIndex = $Count
@@ -952,7 +952,7 @@ function Remove-ContentsByTagContains
 				}
 			}
 			# Any matches?
-			If(($OpenIndex -gt -1) -and ($FoundIndex -gt $OpenIndex) -and ($CloseIndex -gt $FoundIndex))
+			If(($OpenIndex -gt -1) -and ($ContainsIndex -gt $OpenIndex) -and ($CloseIndex -gt $ContainsIndex))
 			{			
 				If($CloseIndex -eq ($OpenIndex + 2))
 				{
@@ -962,7 +962,7 @@ function Remove-ContentsByTagContains
 				Else
 				{			
 					# Match Found with multiple elements. Remove Line Only.
-					$NewContent = ($Content | Select -First $FoundIndex) + ($Content | select -Last ($Content.Length - $FoundIndex -1))
+					$NewContent = ($Content | Select -First $ContainsIndex) + ($Content | select -Last ($Content.Length - $ContainsIndex -1))
 				}					
 			}
 			else
@@ -1226,24 +1226,24 @@ function Update-LineByContains
 		$Files = Get-Childitem -Path $Path -Include $Include -Exclude $Exclude -Recurse -Force | select -First $First
 		ForEach ($File in $Files)
 		{
-			[Int32]$FoundIndex = -1
+			[Int32]$ContainsIndex = -1
 			$Affected = 0
 			$Content=Get-Content $File.PSPath
 			# Search for matches
 			For([Int32]$Count = 0; $Count -lt $Content.Length; $Count++)
 			{
 				$CurrentLine = $Content[$Count].Trim()
-				If(($FoundIndex -eq -1) -and ($CurrentLine -eq $Contains))
+				If(($ContainsIndex -eq -1) -and ($CurrentLine -eq $Contains))
 				{
-					$FoundIndex = $Count
+					$ContainsIndex = $Count
 					Break
 				}
 			}
 			# Evaluate search
-			If($FoundIndex -gt -1)
+			If($ContainsIndex -gt -1)
 			{			
 				# Select before line, add -Line, select after line
-				$NewContent = (($Content | Select -First $FoundIndex) + ($Line + [Environment]::NewLine) + ($Content | select -Last ($Content.Length - $FoundIndex -1)))
+				$NewContent = (($Content | Select -First $ContainsIndex) + ($Line + [Environment]::NewLine) + ($Content | select -Last ($Content.Length - $ContainsIndex -1)))
 			}
 			else
 			{

@@ -78,7 +78,7 @@ function Add-NuGet
  		[string]$Path = $(throw '-Path is a required parameter.'),
 		[string]$NuSpec = $(throw '-NuSpec is a required parameter.'),
 		[string]$Key = '2FA2DC63-0510-46A7-BFBF-0AA72F1EB453',
-		[string]$Url = '\\Dev-Web-01.dev.GoodToCode.com\Sites\nuget.GoodToCode.com\Packages'
+		[string]$Url = '\\Dev-Web-01.dev.goodtocode.com\Sites\nuget.goodtocode.com\Packages'
 	)
 	Write-Host "Add-NuGet -Path $Path -NuSpec $NuSpec"
 	[String]$NuGetExe = '..\..\..\Build\Build.Content\Utility\NuGet\NuGet.exe'
@@ -99,14 +99,13 @@ export-modulemember -function Add-NuGet
 function Clear-Solution
 {
 	param (
-		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
- 		[string]$Path = $(throw '-Path is a required parameter.'),
-		[string]$SNKFile = 'GoodToCodeFramework.snk',
- 		[string[]]$Include = ("*.snk", "*.zip", "*.log", "*.bak", "*.tmp,  *.vspscc", "*.vssscc", "*.csproj.vspscc", "*.sqlproj.vspscc", "*.cache"),
- 		[string]$Exclude = ""
+	 [Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 	 [string]$Path = $(throw '-Path is a required parameter.'),
+ 	 [string[]]$Include = ("*.snk", "*.zip", "*.log", "*.bak", "*.tmp,  *.vspscc", "*.vssscc", "*.csproj.vspscc", "*.sqlproj.vspscc", "*.cache"),
+ 	 [string]$Exclude = ""
 	)
 	Write-Host "Clear-Solution -Path $Path -Include $Include -Exclude $Exclude"
-	$Path = Set-Unc -Path $Path	
+	$Path = Set-Unc -Path $Path
 	# Cleanup Files
 	Remove-Recurse -Path $Path -Include $Include -Exclude $Exclude
 	# Cleanup Folders
@@ -115,10 +114,6 @@ function Clear-Solution
 	Remove-Subfolders -Path $Path -Subfolder "packages"
 	Remove-Subfolders -Path $Path -Subfolder "bin"
 	Remove-Subfolders -Path $Path -Subfolder "obj"
-	# Remove SCM and SNK binding
-	Remove-TFSBinding -Path $Path
-	Remove-StrongNameKey -Path $Path -File $SNKFile
-
 }
 export-modulemember -function Clear-Solution
 
@@ -136,7 +131,7 @@ function Clear-Lib
  	 [string[]]$Include = ("*.snk", "*.zip", "*.log", "*.bak", "*.tmp,  *.vspscc", "*.vssscc", "*.csproj.vspscc", "*.sqlproj.vspscc", "*.cache"),
  	 [string]$Exclude = ""
 	)
-	Write-Host "Clear-Solution -Path $Path -Include $Include -Exclude $Exclude"
+	Write-Host "Clear-Lib -Path $Path -Include $Include -Exclude $Exclude"
 	$Path = Set-Unc -Path $Path
 	$Path = Add-Prefix -String $Path -Add "\\"
 	# Cleanup Files
@@ -203,11 +198,14 @@ function Get-Version
 		[String]$Build = '',
 		[String]$Format = 'M.YY.MM.HHH'
 	)	
-	Write-Verbose "Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build $Build"
+	Write-Host "Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build $Build"
 	[DateTime]$Now = Get-Date
 	[DateTime]$BoM = Get-Date -Year $Now.Year -Month $Now.Month -Day 1 -Hour 0 -Minute 0 -Second 0
 	[String]$returnValue = ''
 
+	$Minor = $Minor.Replace('-1', '')
+	$Revision = $Revision.Replace('-1', '')
+	$Build = $Build.Replace('-1', '')
 	$TimeSpan = $Now - $Bom
 	$HoursSoFar = ($TimeSpan.Days * 24) + $TimeSpan.Hours;
 	[String] $YY = $Now.Year.ToString().Substring(2, 2).PadLeft(2, "0")
@@ -238,9 +236,38 @@ function Get-Version
 export-modulemember -function Get-Version
 
 #-----------------------------------------------------------------------
+# Set-Version [-Path [<String>]]
+#                  [-Contains [<String[]>] [-Close [<String[]>]]
+#
+# Example: .\Set-Version -Path \\source\path
+#-----------------------------------------------------------------------
+function Set-Version
+{
+	param (
+		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
+ 		[string]$Path = $(throw '-Path is a required parameter.'),
+		[String]$Major = '4',
+		[String]$Minor = '19',
+		[String]$Revision = '',
+		[String]$Build = ''
+	)
+	Write-Host "Set-Version -Path $Path"
+	# .Net Projects
+	$Version = Get-Version -Major $Major -Minor $Minor -Revision $Revision -Build $Build
+	Update-ContentsByTag -Path $Path -Value $Version -Open '<version>' -Close '</version>' -Include *.nuspec
+	Update-LineByContains -Path $Path -Contains "AssemblyVersion(" -Line "[assembly: AssemblyVersion(""$Version"")]" -Include AssemblyInfo.cs
+	# Vsix Templates
+	$OldVersion = Get-Version -Major $Major -Minor ($Now.Month - 1).ToString("00") -Format 'M.YY.MM'
+	$Version = Get-Version -Major $Major -Format 'M.YY.MM.HHH'
+	Update-Text -Path $Path -Old '4.19.01' -New $Version -Include *.vsixmanifest
+	# No NuGet Version Needed - handled by that individual process
+}
+export-modulemember -function Set-Version
+
+#-----------------------------------------------------------------------
 # Copy-FrameworkRepo [-String [<String>]]
 #
-# Example: .\Copy-FrameworkRepo -Path "\\Dev-Vm-01.dev.GoodToCode.com\Vault\GitHub\Extensions" -Repo "Extensions"
+# Example: .\Copy-FrameworkRepo -Path "\\Dev-Vm-01.dev.goodtocode.com\Vault\GitHub\Extensions" -Repo "Extensions"
 #	Result: false
 #-----------------------------------------------------------------------
 function Copy-FrameworkRepo
@@ -281,7 +308,7 @@ export-modulemember -function Copy-FrameworkRepo
 #-----------------------------------------------------------------------
 # Copy-FrameworkTemplate [-String [<String>]]
 #
-# Example: .\Copy-FrameworkTemplate -Path "\\Dev-Vm-01.dev.GoodToCode.com\Vault\GitHub\Extensions" -Repo "Extensions"
+# Example: .\Copy-FrameworkTemplate -Path "\\Dev-Vm-01.dev.goodtocode.com\Vault\GitHub\Extensions" -Repo "Extensions"
 #	Result: false
 #-----------------------------------------------------------------------
 function Copy-FrameworkTemplate
@@ -430,100 +457,55 @@ export-modulemember -function  Find-DevEnv
 
 #-----------------------------------------------------------------------
 # Find-MsBuild [-Path [<String>]]
-# 2017, 15.0
-# 2019, 15.0
+#
 # Example: .\Find-MsBuild
 #	Result: 
 #-----------------------------------------------------------------------
 function Find-MsBuild
 {
 	param (
-		[int]$LatestRelease = 2019
+		[int]$Year = 2017,
+		[string]$Version = '15.0'
 	)
-	Write-Host "Find-MsBuild -Year $LatestRelease - Version $Version"
+	Write-Host "Find-MsBuild -Year $Year - Version $Version"
 	$ExeName = 'MsBuild.exe'
-	$LatestVersion = '15.0'
-	$VSFlavors = ('Community', 'Professional', 'Enterprise')
-	$VSReleases = (2019, 2017, 2015, 2013)
-	# Keep log of each years versions
-
-	foreach($releaseYear in $VSReleases)
-	{
-		switch ($LatestRelease) {
-		2019 {$Version = '15.0'; break}
-		2017 {$Version = '15.0'; break}
-		2015 {$Version = '14.0'; break}
-		2013 {$Version = '12.0'; break}
-		default {$Version = $LatestVersion; break}
-		}
-		If($releaseYear -gt 2015)
-		{
-			foreach($flavor in $VSFlavors){
-				$pathCurrent = "$Env:programfiles (x86)\Microsoft Visual Studio\$releaseYear\$flavor\MSBuild\Current\Bin\$ExeName"
-				$pathVersion = "$Env:programfiles (x86)\Microsoft Visual Studio\$releaseYear\$flavor\MSBuild\$Version\Bin\$ExeName"
-				If (Test-File $pathCurrent) { $returnValue = $pathCurrent; break; }
-				If (Test-File $pathVersion) { $returnValue = $pathVersion; break; }
-			}
-			If (Test-File $returnValue) { break; }
-		}
-		else
-		{
-			$fallback2015Path = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\$ExeName"
-			$fallback2013Path = "${Env:ProgramFiles(x86)}\MSBuild\12.0\Bin\$ExeName"
-			If (Test-File $fallback2015Path) { $returnValue = $fallback2015Path; break; }
-			If (Test-File $fallback2013Path) { $returnValue = $fallback2013Path; break; }	
-		}
-	}
-	If (-Not (Test-File $returnValue)) { 	
-	    $fallbackPath = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\$ExeName"
-		If (Test-File $fallbackPath) { $returnValue = $fallbackPath } 
-	}
-	Write-Host "Find-MsBuild: $returnValue"
-
-	return $returnValue
+	[int] $FolderYear = 2017;
+	if($Year -gt 2016) {$FolderYear = $Year}
+    $agentPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\BuildTools\MSBuild\$Version\Bin\$ExeName"
+    $devPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Enterprise\MSBuild\$Version\Bin\$ExeName"
+    $proPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Professional\MSBuild\$Version\Bin\$ExeName"
+    $communityPath = "$Env:programfiles (x86)\Microsoft Visual Studio\$FolderYear\Community\MSBuild\$Version\Bin\$ExeName"
+    $fallback2015Path = "${Env:ProgramFiles(x86)}\MSBuild\14.0\Bin\$ExeName"
+    $fallback2013Path = "${Env:ProgramFiles(x86)}\MSBuild\12.0\Bin\$ExeName"
+    $fallbackPath = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\$ExeName"
+		
+    If ((2017 -le $Year) -And (Test-Path $agentPath)) { return $agentPath } 
+    If ((2017 -le $Year) -And (Test-Path $devPath)) { return $devPath } 
+    If ((2017 -le $Year) -And (Test-Path $proPath)) { return $proPath } 
+    If ((2017 -le $Year) -And (Test-Path $communityPath)) { return $communityPath } 
+    If ((2015 -le $Year) -And (Test-Path $fallback2015Path)) { return $fallback2015Path } 
+    If ((2013 -le $Year) -And (Test-Path $fallback2013Path)) { return $fallback2013Path } 
+    If (Test-Path $fallbackPath) { return $fallbackPath } 
 }
-export-modulemember -function Find-MsBuild
+export-modulemember -function  Find-MsBuild
 
 #-----------------------------------------------------------------------
 # Copy-SourceCode [-Path [<String>]] [-Destination [<String>]]
 #
-# Example: .\Copy-GoodToCodeSource -Path \\Build\Site -Destination \\Drops\Site
+# Example: .\Copy-SourceCode -Path \\Build\Site -Destination \\Drops\Site
 #-----------------------------------------------------------------------
 function Copy-SourceCode
 {
-	param(
-		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-		[String]$SourceDir = $(throw '-SourceDir is a required parameter.'),
-		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
-		[String]$ArtifactDir = $(throw '-ArtifactDir is a required parameter.')
-	)
-	Write-Host "Copy-SourceCode -SourceDir $SourceDir -ArtifactDir $ArtifactDir"
-	# Cleanse Variables
-	$SourceDir = Set-Unc -Path $SourceDir
-	$ArtifactDir = Set-Unc -Path $ArtifactDir
-
-	# Copy
-	Copy-Recurse -Path $Sourcedir -Destination $ArtifactDir -Exclude __*.png, *.vstemplate, *.sln, *.snk, *.log, *.txt, *.bak, *.tmp, *.vspscc, *.vssscc, *.csproj.vspscc, *.sqlproj.vspscc, *.cache
-}
-export-modulemember -function Copy-SourceCode
-
-#-----------------------------------------------------------------------
-# Copy-GoodToCodeSource [-Path [<String>]] [-Destination [<String>]]
-#
-# Example: .\Copy-GoodToCodeSource -Path \\Build\Site -Destination \\Drops\Site
-#-----------------------------------------------------------------------
-function Copy-GoodToCodeSource
-{
 param(
-	[String]$Path = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\builds\sprints',
+	[String]$Path = '\\Dev-Vm-01.dev.goodtocode.com\Vault\builds\sprints',
 	[String]$RepoName = 'GoodToCode-Extensions',
 	[String]$ProductName = 'Extensions',
 	[String]$Lib='',
 	[String]$Relative = '..\..\..\',
 	[String]$SolutionFolder = '',
-	[String]$Snk='GoodToCode.snk'
+	[String]$Snk='GoodToCodeFramework.snk'
 )
-	Write-Host "Copy-GoodToCodeSource -Path $Path -RepoName $RepoName -ProductName $ProductName -Snk $Snk -Relative $Relative -Clean $Clean"
+	Write-Host "Copy-SourceCode -Path $Path -RepoName $RepoName -ProductName $ProductName -Snk $Snk -Relative $Relative -Clean $Clean"
 	# Cleanse Variables
 	$Path = Set-Unc -Path $Path
 	# Locals
@@ -544,34 +526,7 @@ param(
 	Remove-TFSBinding -Path $PathSrc
 	Remove-StrongNameKey -Path $PathSrc -File $Snk
 }
-export-modulemember -function Copy-GoodToCodeSource
-
-#-----------------------------------------------------------------------
-# Create-GitHubRepo [-Path [<String>]] [-Destination [<String>]]
-#
-# Example: .\Create-GitHubRepo -Path \\Build\Site -Destination \\Drops\Site
-#-----------------------------------------------------------------------
-function Create-GitHubRepo
-{
-param(
-	[String]$SourceDir = '',	
-	[String]$RepoDir = '',
-	[String]$SNKFile = ''
-)
-	Write-Host "Create-GitHubRepo -Path $SourceDir -RepoName $RepoDir"
-	# Cleanse Variables
-	$SourceDir = Set-Unc -Path $SourceDir
-	$RepoDir = Set-Unc -Path $RepoDir
-
-
-	# Copy source files
-	Copy-Recurse -Path $SourceDir -Destination $RepoDir -Exclude __*.png, *.vstemplate, *.sln, *.snk, *.log, *.txt, *.bak, *.tmp, *.vspscc, *.vssscc, *.csproj.vspscc, *.sqlproj.vspscc, *.cache
-	# Cleanup
-	Clear-Solution -Path $RepoDir
-	Remove-TFSBinding -Path $RepoDir
-	Remove-StrongNameKey -Path $RepoDir -File $SNKFile
-}
-export-modulemember -function Create-GitHubRepo
+export-modulemember -function Copy-SourceCode
 
 #-----------------------------------------------------------------------
 # Remove-StrongNameKey [-Path [<String>]]
@@ -594,7 +549,7 @@ function Remove-StrongNameKey
 	
 	# Remove SNK originator reference
 	#  <PropertyGroup>
-	#		<AssemblyOriginatorKeyFile>GoodToCode.snk</AssemblyOriginatorKeyFile>
+	#		<AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
 	#  </PropertyGroup>	
 	Remove-ContentsByTagContains -Path $Path -Include *.csproj -Open "<PropertyGroup>" -Close "</PropertyGroup>" -Contains $File
 	
@@ -615,8 +570,8 @@ export-modulemember -function Remove-StrongNameKey
 #-----------------------------------------------------------------------
 # Remove-Subdomain [-Domain [<String>]]
 #
-# Example: .\Remove-Subdomain -Domain www.GoodToCode.com
-#	Result: GoodToCode.com
+# Example: .\Remove-Subdomain -Domain www.goodtocode.com
+#	Result: goodtocode.com
 #-----------------------------------------------------------------------
 function Remove-Subdomain
 {
@@ -669,7 +624,7 @@ export-modulemember -function Remove-TFSBinding
 #-----------------------------------------------------------------------
 # Update-AppSetting [-Path [<String>]]
 #
-# Example: .\Update-AppSetting -Path \\source\path -Key "MyWebService" -Value "https://goodtocode-framework-for-mvc.azurewebsites.net/v1"
+# Example: .\Update-AppSetting -Path \\source\path -Key "MyWebService" -Value "http://sampler.goodtocode.com/GoodToCode-framework-for-webapi/v1"
 #-----------------------------------------------------------------------
 function Update-AppSetting
 {
@@ -693,9 +648,9 @@ export-modulemember -function Update-AppSetting
 # Update-ConnectionString [-Path [<String>]]
 #
 # Example:
-#	SQL Express .mdf file: .\Update-ConnectionString -Path \\source\path -Key "DefaultConnection" -Value "Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\FrameworkData.mdf;Integrated Security=True;Application Name=GoodToCode;" -Provider "System.Data.SqlClient"
-#	SQL Server ADO.NET: .\Update-ConnectionString -Path $BuildFull -Key "DefaultConnection" -Value "data source=DatabaseServer.dev.GoodToCode.com;initial catalog=FrameworkData;integrated security=True;application name=GoodToCode;" -Provider "System.Data.SqlClient"
-#	SQL SErver EF: <add name="TestADOConnection" connectionString="Data Source=DatabaseServer.dev.GoodToCode.com;Initial Catalog=FrameworkData;Connect Timeout=180;Application Name=GoodToCode;" -Provider "System.Data.EntityClient"
+#	SQL Express .mdf file: .\Update-ConnectionString -Path \\source\path -Key "DefaultConnection" -Value "Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\App_Data\FrameworkData.mdf;Integrated Security=True;Application Name=GoodToCodeFramework;" -Provider "System.Data.SqlClient"
+#	SQL Server ADO.NET: .\Update-ConnectionString -Path $BuildFull -Key "DefaultConnection" -Value "data source=DatabaseServer.dev.goodtocode.com;initial catalog=FrameworkData;integrated security=True;application name=GoodToCodeFramework;" -Provider "System.Data.SqlClient"
+#	SQL SErver EF: <add name="TestADOConnection" connectionString="Data Source=DatabaseServer.dev.goodtocode.com;Initial Catalog=FrameworkData;Connect Timeout=180;Application Name=GoodToCodeFramework;" -Provider "System.Data.EntityClient"
 #-----------------------------------------------------------------------
 function Update-ConnectionString
 {
@@ -765,14 +720,14 @@ function Restore-Brochure
 		[string]$RepoName = $(throw '-RepoName is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$BrochureName = $(throw '-BrochureName is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
-		[String]$Destination = '\\Dev-Web-01.dev.GoodToCode.com\Sites',
+ 		[string]$Path = '\\dev-ro-xviii.dev.goodtocode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
+		[String]$Destination = '\\Dev-Web-01.dev.goodtocode.com\Sites',
 		[string]$AdditionalFile = ''
 	)
 	Write-Host "Restore-Brochure -RepoName $RepoName -BrochureName $BrochureName"
 	$Path = Set-Unc -Path $Path
 	$Source=[String]::Format("{0}\Brochures\{1}", $Path, $RepoName)
-	$Destination=[String]::Format("{0}\docs.GoodToCode.com\Brochures\{1}", $Destination, $RepoName)
+	$Destination=[String]::Format("{0}\docs.goodtocode.com\Brochures\{1}", $Destination, $RepoName)
 	Write-Verbose "Path: $Path, RepoName: $RepoName, Source: $Source, Destination: $Destination"
 	# Brochure
 	$DocPath = [String]::Format("{0}\{1}\{1}.pdf", $Source, $BrochureName)
@@ -797,14 +752,14 @@ function Restore-ProductDoc
 		[string]$RepoName = $(throw '-RepoName is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$DocName = $(throw '-BrochureName is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
-		[String]$Destination = '\\Dev-Web-01.dev.GoodToCode.com\Sites',
+ 		[string]$Path = '\\dev-ro-xviii.dev.goodtocode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',		
+		[String]$Destination = '\\Dev-Web-01.dev.goodtocode.com\Sites',
 		[string]$AdditionalFile = ''
 	)
 	Write-Host "Restore-ProductDoc -RepoName $RepoName -BrochureName $DocName"
 	$Path = Set-Unc -Path $Path
 	$Source=[String]::Format("{0}\Products\{1}", $Path, $RepoName)
-	$Destination=[String]::Format("{0}\docs.GoodToCode.com\Products\{1}", $Destination, $RepoName)
+	$Destination=[String]::Format("{0}\docs.goodtocode.com\Products\{1}", $Destination, $RepoName)
 	Write-Verbose "Path: $Path, RepoName: $RepoName, Source: $Source, Destination: $Destination"
 	# Brochure
 	$DocPath = [String]::Format("{0}\{1}\{1}.pdf", $Source, $DocName)
@@ -849,13 +804,13 @@ function Restore-VMDocs
 	param (
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[string]$RepoName = $(throw '-Path is a required parameter.'),
- 		[string]$Path = '\\dev-ro-xviii.dev.GoodToCode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',
-		[String]$Build = '\\Dev-Vm-01.dev.GoodToCode.com\Vault\Builds\Sprints',
-		[string]$Folder = 'docs.GoodToCode.com'
+ 		[string]$Path = '\\dev-ro-xviii.dev.goodtocode.com\c$\Users\rjgood\GoodToCode\GoodToCode - Docs',
+		[String]$Build = '\\Dev-Vm-01.dev.goodtocode.com\Vault\Builds\Sprints',
+		[string]$Folder = 'docs.goodtocode.com'
 	)
 	Write-Host "Restore-VMDocs -RepoName $RepoName -Path $Path -Build $Build -AdditionalFile $AdditionalFile"
 	$Path = Set-Unc -Path $Path
-	$Build = [String]::Format("{0}\{1}\docs.GoodToCode.com\{2}", $Build, (Get-Date).ToString("yyyy.MM"), $RepoName)	
+	$Build = [String]::Format("{0}\{1}\docs.goodtocode.com\{2}", $Build, (Get-Date).ToString("yyyy.MM"), $RepoName)	
 	$Path=[String]::Format("{0}\Products\{1}", $Path, $RepoName)
 	Write-Verbose "After Transformation - Path: $Path, Build: $Build"
 
@@ -905,6 +860,7 @@ function Restore-Solution
 	Write-Host "Restore-Solution -Path $Path -Build $Build -Configuration $Configuration -Framework $Framework -Version $Version"		
 	[String]$NuGetExe = (Set-Unc ($Relative + 'Build\Build.Content\Utility\NuGet')) + '\NuGet.exe'
 	$Path = Set-Unc -Path $Path
+	Set-Version -Path $Path
 	Write-Verbose "$NuGetExe restore $Path -source https://api.nuget.org/v3/index.json;"
 	& $NuGetExe restore "$Path"
 
@@ -925,7 +881,7 @@ export-modulemember -function Restore-Solution
 #-----------------------------------------------------------------------
 # Restore-VsixTemplate [-String [<String>]]
 #
-# Example: .\Restore-VsixTemplate -Path "\\Dev-Vm-01.dev.GoodToCode.com\Vault\GitHub\Extensions" -Repo "Extensions"
+# Example: .\Restore-VsixTemplate -Path "\\Dev-Vm-01.dev.goodtocode.com\Vault\GitHub\Extensions" -Repo "Extensions"
 #	Result: false
 #-----------------------------------------------------------------------
 function Restore-VsixTemplate
@@ -939,7 +895,7 @@ function Restore-VsixTemplate
 		[String]$Build = $(throw '-Build is a required parameter.'),
 		[Parameter(Mandatory=$true,ValueFromPipelineByPropertyName=$true)]
 		[String]$ProductFlavor = $(throw '-ProductFlavor is a required parameter.'),
-		[String]$Database = 'DatabaseServer.dev.GoodToCode.com',
+		[String]$Database = 'DatabaseServer.dev.goodtocode.com',
 		[String]$RepoName="GoodToCode-Framework",
 		[String]$FamilyName="Framework",
 		[String]$SolutionFolder="Quick-Start"
@@ -1033,6 +989,7 @@ function Restore-VsixTemplate
 	#
 	Set-ItemProperty $VsixProjectTemplateZip -name IsReadOnly -value $false
 	Copy-File -Path $BuildZipFile -Destination $VsixProjectTemplateZip
+	Restore-Solution -Path $VsixSolutionFile -DevEnv $False
 
 	#
 	# Publish
