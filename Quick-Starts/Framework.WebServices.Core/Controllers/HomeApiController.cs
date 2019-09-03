@@ -42,7 +42,7 @@ namespace Framework.WebServices
         [HttpGet()]        
         public string Get()
         {
-            return WebApiController.MessageUpAndRunning;
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Framework.WebServices
         [HttpPost()]
         public string Post()
         {
-            return WebApiController.MessageUpAndRunning;
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Framework.WebServices
         [HttpPut()]
         public string Put()
         {
-            return WebApiController.MessageUpAndRunning;
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Framework.WebServices
         [HttpDelete()]
         public string Delete()
         {
-            return WebApiController.MessageUpAndRunning;
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
         }
     }
 }
