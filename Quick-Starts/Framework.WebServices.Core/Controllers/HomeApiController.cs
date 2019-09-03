@@ -19,6 +19,7 @@
 //-----------------------------------------------------------------------
 using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Framework.WebServices
 {
