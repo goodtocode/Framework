@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Data;
+using GoodToCode.Extensions.Data;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;

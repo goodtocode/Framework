@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Net;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Net;
 using System;
 using System.Threading.Tasks;
 

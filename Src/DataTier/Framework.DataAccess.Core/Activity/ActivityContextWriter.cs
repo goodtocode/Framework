@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------
 using System;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
+using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoodToCode.Framework.Activity

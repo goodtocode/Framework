@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------
 using System;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Collections;
+using GoodToCode.Extensions.Collections;
 using GoodToCode.Framework.Validation;
 
 namespace GoodToCode.Framework.Worker

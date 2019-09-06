@@ -20,7 +20,7 @@
 using System;
 using System.Linq;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
+using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoodToCode.Framework.Activity

@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

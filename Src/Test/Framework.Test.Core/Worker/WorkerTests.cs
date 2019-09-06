@@ -20,7 +20,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Name;
 using GoodToCode.Framework.Session;
 using GoodToCode.Framework.Worker;

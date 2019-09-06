@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Serialization;
 using System;
 using System.Runtime.Serialization;
 

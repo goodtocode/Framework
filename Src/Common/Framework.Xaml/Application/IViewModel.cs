@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="IApplication.cs" company="GoodToCode">
+// <copyright file="IViewModel.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -17,25 +17,31 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Configuration;
-using System;
-using System.Threading.Tasks;
+using GoodToCode.Extensions.Net;
+using System.ComponentModel;
 
 namespace GoodToCode.Framework.Application
 {
     /// <summary>
-    /// Global application information
+    /// Interface to enforce ViewModel division of responsibilities
     /// </summary>
-    public interface IApplication : IFrame
+    /// <typeparam name="TModel"></typeparam>
+    public interface IViewModel<TModel> : INotifyPropertyChanged
     {
         /// <summary>
-        /// MyWebService
+        /// Configuration data
+        ///  Data must be constructed in the application tier
         /// </summary>
-        Uri MyWebService { get; }
+        IApplication MyApplication { get; }
 
         /// <summary>
-        /// Configuration data, XML .config style
+        /// Model data
         /// </summary>
-        IConfigurationManager ConfigurationManager { get; }
+        TModel MyModel { get; }
+
+        /// <summary>
+        /// Sender of main Http Verbs
+        /// </summary>
+        HttpVerbSender Sender { get; }
     }
 }

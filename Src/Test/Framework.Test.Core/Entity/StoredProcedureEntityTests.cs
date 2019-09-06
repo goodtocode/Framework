@@ -18,17 +18,17 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Data;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
-using GoodToCode.Extras.Configuration;
+using GoodToCode.Extensions.Configuration;
 using System.Data.SqlClient;
-using GoodToCode.Extras.Text;
+using GoodToCode.Extensions.Text;
 
 namespace GoodToCode.Framework.Test
 {

@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Net;
+using GoodToCode.Extensions.Net;
 using System;
 
 namespace GoodToCode.Framework.Application

@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Data;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Data;
+using GoodToCode.Extensions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

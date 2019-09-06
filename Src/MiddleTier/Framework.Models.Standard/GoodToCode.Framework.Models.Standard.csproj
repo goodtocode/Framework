@@ -34,10 +34,12 @@
   <ItemGroup>
     <None Remove="GoodToCode.Framework.Models.Standard.csproj.vspscc" />
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19241.8" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.3" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
     <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

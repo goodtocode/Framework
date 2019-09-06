@@ -18,9 +18,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;

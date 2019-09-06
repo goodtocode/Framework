@@ -17,8 +17,8 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

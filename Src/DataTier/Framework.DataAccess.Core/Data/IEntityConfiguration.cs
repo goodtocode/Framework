@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Data;
+using GoodToCode.Extensions.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

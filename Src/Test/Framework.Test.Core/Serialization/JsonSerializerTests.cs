@@ -20,8 +20,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
-using GoodToCode.Extras.Text;
+using GoodToCode.Extensions.Serialization;
+using GoodToCode.Extensions.Text;
 
 namespace GoodToCode.Framework.Test
 {

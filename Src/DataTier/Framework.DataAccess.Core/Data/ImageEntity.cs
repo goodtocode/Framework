@@ -21,7 +21,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Mathematics;
+using GoodToCode.Extensions.Mathematics;
 
 namespace GoodToCode.Framework.Data
 {

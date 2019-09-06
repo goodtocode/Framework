@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

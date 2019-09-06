@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
-using GoodToCode.Extras.Collections;
+using GoodToCode.Extensions.Collections;
 
 namespace GoodToCode.Framework.Validation
 {

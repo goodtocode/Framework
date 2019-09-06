@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Serialization;
 
 namespace GoodToCode.Framework.Data
 {
