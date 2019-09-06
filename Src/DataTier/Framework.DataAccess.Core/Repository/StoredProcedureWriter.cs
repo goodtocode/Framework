@@ -83,6 +83,12 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public StoredProcedureWriter(DbContextOptions<StoredProcedureWriter<TEntity>> options) : base(options) { }
+
+        /// <summary>
         /// Can connect to database?
         /// </summary>
         public bool CanConnect

@@ -35,7 +35,7 @@
     <None Remove="GoodToCode.Framework.Models.Standard.csproj.vspscc" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19241.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />

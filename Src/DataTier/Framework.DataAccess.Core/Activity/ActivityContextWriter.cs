@@ -44,6 +44,12 @@ namespace GoodToCode.Framework.Activity
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public ActivityContextWriter(DbContextOptions<ActivityContextWriter> options) : base(options) { }
+
+        /// <summary>
         /// Fills and saves an activity
         /// </summary>
         /// <remarks></remarks>

@@ -44,6 +44,12 @@ namespace GoodToCode.Framework.Activity
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public ExceptionLogWriter(DbContextOptions<ExceptionLogWriter> options) : base(options) { }
+
+        /// <summary>
         /// Hydrates object and saves the log record
         /// </summary>
         /// <param name="exception">System.Exception object to log</param>

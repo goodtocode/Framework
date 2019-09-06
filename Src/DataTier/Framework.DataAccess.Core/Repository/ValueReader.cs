@@ -75,6 +75,12 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public ValueReader(DbContextOptions<ValueReader<TValue>> options) : base(options) { }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public ValueReader(IValueConfiguration<TValue> databaseConfig) : this()

@@ -45,6 +45,12 @@ namespace GoodToCode.Framework.Activity
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public ActivityContextReader(DbContextOptions<ActivityContextReader> options) : base(options) { }
+
+        /// <summary>
         /// Loads an existing object based on Id.
         /// </summary>
         public IQueryable<ActivityContext> GetAll()

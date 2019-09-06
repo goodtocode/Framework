@@ -40,8 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19211.23" />
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
+    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19241.8" />
+    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19241.8" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>

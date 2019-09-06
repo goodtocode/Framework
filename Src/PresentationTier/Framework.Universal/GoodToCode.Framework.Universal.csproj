@@ -182,10 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoodToCode.Extensions.Core">
-      <Version>4.18.19211.23</Version>
+      <Version>4.18.19241.8</Version>
     </PackageReference>
     <PackageReference Include="GoodToCode.Extensions.Standard">
-      <Version>4.18.19211.23</Version>
+      <Version>4.18.19241.8</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
   </ItemGroup>

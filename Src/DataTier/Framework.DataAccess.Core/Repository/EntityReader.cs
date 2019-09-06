@@ -74,6 +74,12 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
+        /// Constuctor for options
+        /// </summary>
+        /// <param name="options"></param>
+        public EntityReader(DbContextOptions<EntityReader<TEntity>> options) : base(options) { }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EntityReader(IEntityConfiguration<TEntity> databaseConfig) : this()
