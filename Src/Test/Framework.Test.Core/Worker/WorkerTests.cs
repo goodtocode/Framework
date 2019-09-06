@@ -44,9 +44,9 @@ namespace GoodToCode.Framework.Test
         {
             String dataToSendSerialized2 = Defaults.String;
             SessionContext context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
-            NameIdModel dataIn = new NameIdModel() { Name = "NameField" };
-            WorkerParameter<NameIdModel> item2 = new WorkerParameter<NameIdModel>() { Context = context, DataIn = dataIn };
-            ISerializer<WorkerParameter<NameIdModel>> serializer2 = new JsonSerializer<WorkerParameter<NameIdModel>>();
+            NameIdDto dataIn = new NameIdDto() { Name = "NameField" };
+            WorkerParameter<NameIdDto> item2 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
+            ISerializer<WorkerParameter<NameIdDto>> serializer2 = new JsonSerializer<WorkerParameter<NameIdDto>>();
 
             // Test Serialization            
             dataToSendSerialized2 = serializer2.Serialize(item2);
@@ -63,9 +63,9 @@ namespace GoodToCode.Framework.Test
             // Initialize
             var dataToSendSerialized = Defaults.String;
             var context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
-            var dataIn = new NameIdModel() { Name = "NameField" };
-            var item1 = new WorkerParameter<NameIdModel>() { Context = context, DataIn = dataIn };
-            var serializer = new JsonSerializer<WorkerParameter<NameIdModel>>();
+            var dataIn = new NameIdDto() { Name = "NameField" };
+            var item1 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
+            var serializer = new JsonSerializer<WorkerParameter<NameIdDto>>();
 
             // Disable exceptions, we just want to look at results
             serializer.ThrowException = false;

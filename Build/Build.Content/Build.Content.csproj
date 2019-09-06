@@ -84,9 +84,6 @@
     <Content Include="GitHub\Framework\contributing.md" />
     <Content Include="GitHub\Framework\LICENSE" />
     <Content Include="GitHub\Framework\README.md" />
-    <Content Include="NuGet\Framework.DataAccess.Full.nuspec" />
-    <Content Include="NuGet\Framework.Interop.Portable.nuspec" />
-    <Content Include="NuGet\Framework.Models.Portable.nuspec" />
     <Content Include="NuGet\Framework.Universal.nuspec" />
     <Content Include="NuGet\Framework.Web.Full.nuspec" />
     <Content Include="NuGet\Framework.Windows.nuspec" />
@@ -254,9 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dashboard\Links-GoodToCode-Framework.md" />
-    <Content Include="NuGet\Framework.DataAccess.Core.nuspec" />
-    <Content Include="NuGet\Framework.Interop.Standard.nuspec" />
-    <Content Include="NuGet\Framework.Models.Standard.nuspec" />
+    <Content Include="NuGet\Framework.Data.nuspec" />
+    <Content Include="NuGet\Framework.Abstractions.nuspec" />
+    <Content Include="NuGet\Framework.Dto.nuspec" />
     <Content Include="NuGet\Framework.Web.Core.nuspec" />
     <Content Include="Utility\GacUtil\gacutil.exe.config" />
     <Content Include="Utility\MsTest\MSTest.exe.config" />
@@ -275,6 +272,12 @@
     <Content Include="Utility\BuildTools\CreatePkgDef.exe.config" />
     <Content Include="Utility\BuildTools\RegPkg.exe.config" />
     <Content Include="Utility\BuildTools\VsixPublisher.exe.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuGet\Framework.Messaging.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NuGet\Framework.Xaml.nuspec" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

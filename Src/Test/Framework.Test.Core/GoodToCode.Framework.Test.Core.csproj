@@ -35,19 +35,20 @@
     <None Remove="GoodToCode.Framework.Test.Core.csproj.vspscc" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.3" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataTier\Framework.DataAccess.Core\GoodToCode.Framework.DataAccess.Core.csproj" />
-    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
-    <ProjectReference Include="..\..\MiddleTier\Framework.Models.Standard\GoodToCode.Framework.Models.Standard.csproj" />
+    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Common\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
+    <ProjectReference Include="..\..\DataTier\Framework.DataAccess.Core\GoodToCode.Framework.Data.csproj" />
+    <ProjectReference Include="..\..\PresentationTier\Framework.Dto\GoodToCode.Framework.Dto.csproj" />
     <ProjectReference Include="..\..\PresentationTier\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj" />
   </ItemGroup>
 

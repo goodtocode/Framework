@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="KVPModel.cs" company="GoodToCode">
+// <copyright file="ImageDto.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -19,6 +19,7 @@
 //-----------------------------------------------------------------------
 using System;
 using GoodToCode.Extensions;
+using GoodToCode.Framework.Name;
 
 namespace GoodToCode.Framework.Data
 {
@@ -26,18 +27,23 @@ namespace GoodToCode.Framework.Data
 	/// Common object across models and business entity
 	/// </summary>
 	/// <remarks></remarks>
-	public class BytesKeyModel : EntityModel<BytesKeyModel>, IBytesKey
-	{
+	public class ImageDto : EntityDto<ImageDto>, IBytesKey, IName
+    {
         /// <summary>
-        /// Bytes of BLOB
+        /// Name of this image
+        /// </summary>
+        public string Name { get; set; } = Defaults.String;
+
+        /// <summary>
+        /// Bytes of BLOB image
         /// </summary>
         public byte[] Bytes { get; set; } = Defaults.Bytes;
-		
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <remarks></remarks>
-		public BytesKeyModel() : base()
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <remarks></remarks>
+        public ImageDto() : base()
 		{
 		}
 
@@ -45,10 +51,11 @@ namespace GoodToCode.Framework.Data
         /// Constructor
         /// </summary>
         /// <remarks></remarks>
-        public BytesKeyModel(byte[] bytes)
+        public ImageDto(byte[] bytes)
             : this()
         {
             Bytes = bytes;
-        }		
+        }
+		
 	}
 }

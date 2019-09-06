@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="NameDescriptionModel.cs" company="GoodToCode">
+// <copyright file="NameIdDto.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -27,23 +27,17 @@ namespace GoodToCode.Framework.Name
 	/// Common object across models and business entity
 	/// </summary>
 	/// <remarks></remarks>
-	public class NameDescriptionModel : EntityModel<NameDescriptionModel>, INameDescription
+	public class NameIdDto : EntityDto<NameIdDto>, INameId
 	{
         /// <summary>
         /// Name
         /// </summary>
-		public string Name { get; set; } = Defaults.String;
-
-        /// <summary>
-        /// Description
-        /// </summary>
-		public string Description { get; set; } = Defaults.String;
+        public string Name { get; set; } = Defaults.String;
 		
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		/// <remarks></remarks>
-		public NameDescriptionModel() : base()
+		public NameIdDto() : base()
 		{
 		}
 	}

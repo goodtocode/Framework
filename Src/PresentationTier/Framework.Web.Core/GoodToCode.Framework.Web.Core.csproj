@@ -40,14 +40,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.3" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj" />
-    <ProjectReference Include="..\..\MiddleTier\Framework.Models.Standard\GoodToCode.Framework.Models.Standard.csproj" />
+    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

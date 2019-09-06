@@ -63,13 +63,13 @@ namespace GoodToCode.Framework.Test
             }
         }
 
-        private List<CustomerModel> customerTestData = new List<CustomerModel>()
+        private List<CustomerDto> customerTestData = new List<CustomerDto>()
         {
-            new CustomerModel() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Xi", MiddleName = "", LastName = "Ling", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Juan", MiddleName = "", LastName = "Gomez", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Maki", MiddleName = "", LastName = "Ishii", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) }
+            new CustomerDto() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Xi", MiddleName = "", LastName = "Ling", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Juan", MiddleName = "", LastName = "Gomez", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Maki", MiddleName = "", LastName = "Ishii", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) }
         };
 
         /// <summary>
@@ -95,8 +95,8 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_ViewModel_CRUD_Read()
         {
-            var customer = new CustomerModel();
-            var viewModel = new TestViewModel<CustomerModel>("Customer");
+            var customer = new CustomerDto();
+            var viewModel = new TestViewModel<CustomerDto>("Customer");
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
@@ -124,11 +124,11 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_ViewModel_CRUD_Create()
         {
-            var customer = new CustomerModel();
+            var customer = new CustomerDto();
             var url = new Uri(new ConfigurationManagerCore(ApplicationTypes.Native).AppSettingValue("MyWebService").AddLast("/Customer"));
 
             customer.Fill(customerTestData[Arithmetic.Random(1, customerTestData.Count)]);
-            var request = new HttpRequestPut<CustomerModel>(url, customer);
+            var request = new HttpRequestPut<CustomerDto>(url, customer);
             try
             {
                 customer = await request.SendAsync();
@@ -148,8 +148,8 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_ViewModel_CRUD_Update()
         {
-            var customer = new CustomerModel();
-            var viewModel = new TestViewModel<CustomerModel>("Customer");
+            var customer = new CustomerDto();
+            var viewModel = new TestViewModel<CustomerDto>("Customer");
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
@@ -184,9 +184,9 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_ViewModel_CRUD_Delete()
         {
-            var customer = new CustomerModel();
-            var returnCustomer = new CustomerModel();
-            var viewModel = new TestViewModel<CustomerModel>("Customer");
+            var customer = new CustomerDto();
+            var returnCustomer = new CustomerDto();
+            var viewModel = new TestViewModel<CustomerDto>("Customer");
             var success = Defaults.Boolean;
 
             // Create test record

@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="EntityModel.cs" company="GoodToCode">
+// <copyright file="EntityDto.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -34,7 +34,7 @@ namespace GoodToCode.Framework.Data
 	/// ModelBase
 	/// </summary>
 	/// <remarks>ModelBase</remarks>
-	public abstract class EntityModel<TEntity> : IEntity, ISerializable<TEntity>, IValidatable<TEntity>, INotifyPropertyChanged where TEntity : EntityModel<TEntity>, new()
+	public abstract class EntityDto<TEntity> : IEntity, ISerializable<TEntity>, IValidatable<TEntity>, INotifyPropertyChanged where TEntity : EntityDto<TEntity>, new()
 	{
         private int id = Defaults.Integer;
         private Guid key = Defaults.Guid;
@@ -90,7 +90,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityModel() : base() { }
+        public EntityDto() : base() { }
 
         /// <summary>
         /// Property changed event handler for INotifyPropertyChanged

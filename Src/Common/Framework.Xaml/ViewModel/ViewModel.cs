@@ -35,7 +35,7 @@ namespace GoodToCode.Framework.Application
     /// <summary>
     /// ViewModel holds model and is responsible for server calls, navigation, etc.
     /// </summary>
-    public abstract class ViewModel<TModel> : IViewModel<TModel>, IGetOperationAsync<TModel>, ICreateOperationAsync<TModel>, IUpdateOperationAsync<TModel>, IDeleteOperationAsync<TModel> where TModel : EntityModel<TModel>, IEntity, ISerializable<TModel>, new()
+    public abstract class ViewModel<TDto> : IViewModel<TDto>, IGetOperationAsync<TDto>, ICreateOperationAsync<TDto>, IUpdateOperationAsync<TDto>, IDeleteOperationAsync<TDto> where TDto : IEntity, ISerializable<TDto>, new()
     {
         /// <summary>
         /// Name of the Web API controller, that will become the path in the Uri
@@ -57,7 +57,7 @@ namespace GoodToCode.Framework.Application
         /// <summary>
         /// Model data
         /// </summary>
-        public TModel MyModel { get; set; } = new TModel();
+        public TDto MyModel { get; set; } = new TDto();
 
         /// <summary>
         /// Sender of main Http Verbs
@@ -127,11 +127,11 @@ namespace GoodToCode.Framework.Application
         /// Pulls all records from a HttpGet request
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<TModel>> GetAllAsync()
+        public async Task<IEnumerable<TDto>> GetAllAsync()
         {
             var fullUrl = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/"), UriKind.RelativeOrAbsolute);
-            MyModel = new TModel();
-            var results = await Sender.SendGetAsync<List<TModel>>(fullUrl);
+            MyModel = new TDto();
+            var results = await Sender.SendGetAsync<List<TDto>>(fullUrl);
             return results;
         }
 
@@ -140,11 +140,11 @@ namespace GoodToCode.Framework.Application
         ///  Excludes any record that has an Id == -1 or Key == 00000000-0000-0000-0000-000000000000
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<TModel>> GetAllExcludeDefaultAsync()
+        public async Task<IEnumerable<TDto>> GetAllExcludeDefaultAsync()
         {
             var fullUrl = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/"), UriKind.RelativeOrAbsolute);
-            MyModel = new TModel();
-            var results = await Sender.SendGetAsync<List<TModel>>(fullUrl);
+            MyModel = new TDto();
+            var results = await Sender.SendGetAsync<List<TDto>>(fullUrl);
             return results.Where(x => x.Key != Defaults.Guid);
         }
 
@@ -153,10 +153,10 @@ namespace GoodToCode.Framework.Application
         /// </summary>
         /// <param name="id">Integer Id of the record to pull</param>
         /// <returns></returns>
-        public async Task<TModel> GetByIdAsync(int id)
+        public async Task<TDto> GetByIdAsync(int id)
         {
             var fullUrl = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/") + id.ToString(), UriKind.RelativeOrAbsolute);
-            MyModel = await Sender.SendGetAsync<TModel>(fullUrl);
+            MyModel = await Sender.SendGetAsync<TDto>(fullUrl);
             return MyModel;
         }
 
@@ -165,10 +165,10 @@ namespace GoodToCode.Framework.Application
         /// </summary>
         /// <param name="key">Guid Key of the record to pull</param>
         /// <returns></returns>
-        public async Task<TModel> GetByKeyAsync(Guid key)
+        public async Task<TDto> GetByKeyAsync(Guid key)
         {
             var fullUrl = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/") + key.ToString(), UriKind.RelativeOrAbsolute);
-            MyModel = await Sender.SendGetAsync<TModel>(fullUrl);
+            MyModel = await Sender.SendGetAsync<TDto>(fullUrl);
             return MyModel;
         }
 
@@ -176,9 +176,9 @@ namespace GoodToCode.Framework.Application
         /// Create a record
         /// </summary>
         /// <returns></returns>
-        public async Task<TModel> CreateAsync(TModel model)
+        public async Task<TDto> CreateAsync(TDto model)
         {
-            MyModel = await Sender.SendPostAsync<TModel>(MyViewModelWebService, model);
+            MyModel = await Sender.SendPostAsync<TDto>(MyViewModelWebService, model);
             return MyModel;
         }
 
@@ -186,9 +186,9 @@ namespace GoodToCode.Framework.Application
         /// Edits a record
         /// </summary>
         /// <returns></returns>
-        public async Task<TModel> UpdateAsync(TModel model)
+        public async Task<TDto> UpdateAsync(TDto model)
         {
-            MyModel = await Sender.SendPutAsync<TModel>(MyViewModelWebService, model);
+            MyModel = await Sender.SendPutAsync<TDto>(MyViewModelWebService, model);
             return MyModel;
         }
 
@@ -196,12 +196,12 @@ namespace GoodToCode.Framework.Application
         /// Deletes this object from the database via Http Delete
         /// </summary>
         /// <returns>True for success, false for failure</returns>
-        public async Task<TModel> DeleteAsync(TModel model)
+        public async Task<TDto> DeleteAsync(TDto model)
         {
             var success = Defaults.Boolean;
             var fullUrll = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/").AddLast(MyModel.Id.ToString()).AddLast("/"), UriKind.RelativeOrAbsolute);
             success = await Sender.SendDeleteAsync(fullUrll);
-            if (success) MyModel = new TModel();
+            if (success) MyModel = new TDto();
             return MyModel;
         }
     }

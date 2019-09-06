@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CustomerSearchModel.cs" company="GoodToCode">
+// <copyright file="CustomerSearchDto.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -27,7 +27,7 @@ namespace GoodToCode.Framework.Test
     /// <summary>
     /// Customer Search Results
     /// </summary>    
-    public class CustomerSearchModel : EntityModel<CustomerSearchModel>
+    public class CustomerSearchDto : EntityDto<CustomerSearchDto>
     {
         private int maxResults = 25;
 
@@ -64,7 +64,7 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Search results
         /// </summary>
-        public List<CustomerModel> Results { get; set; } = new List<CustomerModel>();
+        public List<CustomerDto> Results { get; set; } = new List<CustomerDto>();
 
         /// <summary>
         /// Maximum number of results to return
@@ -80,7 +80,7 @@ namespace GoodToCode.Framework.Test
         /// Constructor
         /// </summary>
         /// <remarks></remarks>
-        public CustomerSearchModel()
+        public CustomerSearchDto()
                 : base()
         {
         }

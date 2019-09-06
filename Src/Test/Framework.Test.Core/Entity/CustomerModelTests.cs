@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CustomerModelTests.cs" company="GoodToCode">
+// <copyright file="CustomerDtoTests.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -28,28 +28,28 @@ using System.Runtime.Serialization;
 namespace GoodToCode.Framework.Test
 {
     [TestClass()]
-    public class CustomerModelTests
+    public class CustomerDtoTests
     {
-        readonly List<CustomerModel> testEntities = new List<CustomerModel>()
+        readonly List<CustomerDto> testEntities = new List<CustomerDto>()
         {
-            new CustomerModel() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Xi", MiddleName = "", LastName = "Ling", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Juan", MiddleName = "", LastName = "Gomez", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
-            new CustomerModel() {FirstName = "Maki", MiddleName = "", LastName = "Ishii", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) }
+            new CustomerDto() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Xi", MiddleName = "", LastName = "Ling", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Juan", MiddleName = "", LastName = "Gomez", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
+            new CustomerDto() {FirstName = "Maki", MiddleName = "", LastName = "Ishii", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) }
         };
 
         /// <summary>
         /// Basic class tests
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_CustomerModel_Class()
+        public void Core_Entity_CustomerDto_Class()
         {
             var searchChar = "i";
-            var originalObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar };
-            var resultObject = new CustomerModel();
+            var originalObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar };
+            var resultObject = new CustomerDto();
             var resultString = Defaults.String;
-            var serializer = new JsonSerializer<CustomerModel>();
+            var serializer = new JsonSerializer<CustomerDto>();
 
             resultString = serializer.Serialize(originalObject);
             Assert.IsTrue(resultString != Defaults.String);
@@ -62,11 +62,11 @@ namespace GoodToCode.Framework.Test
         /// ISO8601 date tests
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_CustomerModel_ISO8601()
+        public void Core_Entity_CustomerDto_ISO8601()
         {
             var searchChar = "i";
-            var serializer = new JsonSerializer<CustomerModel>();
-            var resultObject = new CustomerModel();
+            var serializer = new JsonSerializer<CustomerDto>();
+            var resultObject = new CustomerDto();
             var resultString = Defaults.String;
             var zeroTime = Defaults.Date;
             var testMS = new DateTime(1983, 12, 9, 5, 10, 20, 3);
@@ -76,7 +76,7 @@ namespace GoodToCode.Framework.Test
             serializer.DateTimeFormatString = new DateTimeFormat(DateTimeExtension.Formats.ISO8601) { DateTimeStyles = System.Globalization.DateTimeStyles.RoundtripKind };
 
             // 1 digit millisecond
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
@@ -87,7 +87,7 @@ namespace GoodToCode.Framework.Test
             // 2 digit millisecond
             testMS.AddMilliseconds(-testMS.Millisecond);
             testMS.AddMilliseconds(30);
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
@@ -98,7 +98,7 @@ namespace GoodToCode.Framework.Test
             // 3 digit millisecond
             testMS.AddMilliseconds(-testMS.Millisecond);
             testMS.AddMilliseconds(300);
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
@@ -107,7 +107,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(resultObject.BirthDate == noMS && resultObject.CreatedDate == noMS && resultObject.ModifiedDate == noMS);
 
             // Mixed
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0), ModifiedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0) };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0), ModifiedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0) };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
@@ -120,11 +120,11 @@ namespace GoodToCode.Framework.Test
         /// ISO 8601F tests
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_CustomerModel_ISO8601F()
+        public void Core_Entity_CustomerDto_ISO8601F()
         {
             var searchChar = "i";
-            var serializer = new JsonSerializer<CustomerModel>();
-            var resultObject = new CustomerModel();
+            var serializer = new JsonSerializer<CustomerDto>();
+            var resultObject = new CustomerDto();
             var resultString = Defaults.String;
             var zeroTime = Defaults.Date;
             var testMS = new DateTime(1983, 12, 9, 5, 10, 20, 3);
@@ -133,7 +133,7 @@ namespace GoodToCode.Framework.Test
             serializer.DateTimeFormatString = new DateTimeFormat(DateTimeExtension.Formats.ISO8601F) { DateTimeStyles = System.Globalization.DateTimeStyles.RoundtripKind };
 
             // 1 digit millisecond
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
@@ -144,7 +144,7 @@ namespace GoodToCode.Framework.Test
 
             // 2 digit millisecond
             testMS = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(30);
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
@@ -155,7 +155,7 @@ namespace GoodToCode.Framework.Test
 
             // 3 digit millisecond
             testMS = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(300);
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
@@ -165,7 +165,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(resultObject.BirthDate.Millisecond.ToString().Length == 3);
 
             // Mixed
-            resultObject = new CustomerModel() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS.AddMilliseconds(-testMS.Millisecond), CreatedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(30), ModifiedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(300) };
+            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS.AddMilliseconds(-testMS.Millisecond), CreatedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(30), ModifiedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(300) };
             resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));

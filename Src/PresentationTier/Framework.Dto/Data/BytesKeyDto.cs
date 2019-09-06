@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="NameIdModel.cs" company="GoodToCode">
+// <copyright file="KVPModel.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -19,26 +19,36 @@
 //-----------------------------------------------------------------------
 using System;
 using GoodToCode.Extensions;
-using GoodToCode.Framework.Data;
 
-namespace GoodToCode.Framework.Name
+namespace GoodToCode.Framework.Data
 {
 	/// <summary>
 	/// Common object across models and business entity
 	/// </summary>
 	/// <remarks></remarks>
-	public class NameIdModel : EntityModel<NameIdModel>, INameId
+	public class BytesKeyDto : EntityDto<BytesKeyDto>, IBytesKey
 	{
         /// <summary>
-        /// Name
+        /// Bytes of BLOB
         /// </summary>
-        public string Name { get; set; } = Defaults.String;
+        public byte[] Bytes { get; set; } = Defaults.Bytes;
 		
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public NameIdModel() : base()
+		/// <remarks></remarks>
+		public BytesKeyDto() : base()
 		{
 		}
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <remarks></remarks>
+        public BytesKeyDto(byte[] bytes)
+            : this()
+        {
+            Bytes = bytes;
+        }		
 	}
 }

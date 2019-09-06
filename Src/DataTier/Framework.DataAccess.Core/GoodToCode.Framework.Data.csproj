@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
     <SccProvider>SAK</SccProvider>
@@ -8,16 +7,16 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
+    <PackageId>GoodToCode.Framework.DataAccess.Core</PackageId>
     <RootNamespace>GoodToCode.Framework</RootNamespace>
-    <PackageId>GoodToCode.Framework.Interop.Standard</PackageId>
     <Version>4.18.9</Version>
     <Authors>GoodToCode</Authors>
     <Company>GoodToCode</Company>
-    <Product>GoodToCode Framework Interop for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</Product>
-    <Description>GoodToCode Framework Interop for your business entities and models. GoodToCode Framework is a full-stack .NET solution that centralizes your business objects in one reusable solution that runs in Windows, Web and Mobile.</Description>
+    <Product>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</Product>
+    <Description>GoodToCode Framework CRUD Data Access Object classes for ASP.NET Core MVC, Web API Core, Xamarin iOS, Xamarin Android and .NET Standard libraries.</Description>
     <Copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</Copyright>
     <PackageLicenseUrl>http://www.goodtocode.com/policy/nuget/license.html</PackageLicenseUrl>
     <PackageProjectUrl>http://www.goodtocode.com</PackageProjectUrl>
@@ -26,22 +25,35 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</PackageTags>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Interop.Standard.xml</DocumentationFile>
+  <PropertyGroup>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
-  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\GoodToCode.Framework.DataAccess.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Remove="GoodToCode.Framework.Interop.Standard.csproj.vspscc" />
+    <None Remove="GoodToCode.Framework.DataAccess.Core.csproj.vspscc" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.3" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.4" />
+    <PackageReference Include="GoodToCode.Extensions.Configuration" Version="4.18.19249.4" />
+    <PackageReference Include="GoodToCode.Extensions.Data" Version="4.18.19249.4" />
+    <PackageReference Include="GoodToCode.Extensions.Drawing" Version="4.18.19249.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
   </Target>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)\$(OutDir)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />
   </Target>

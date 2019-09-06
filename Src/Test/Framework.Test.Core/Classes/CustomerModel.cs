@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="CustomerModel.cs" company="GoodToCode">
+// <copyright file="CustomerDto.cs" company="GoodToCode">
 //      Copyright (c) 2017-2018 GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -27,7 +27,7 @@ namespace GoodToCode.Framework.Test
     /// Customer screen model for binding and transport
     /// </summary>
     /// <remarks></remarks>
-    public class CustomerModel : EntityModel<CustomerModel>, IFormattable
+    public class CustomerDto : EntityDto<CustomerDto>, IFormattable
     {
         /// <summary>
         /// FirstName of customers
@@ -63,7 +63,7 @@ namespace GoodToCode.Framework.Test
         /// Constructor
         /// </summary>
         /// <remarks></remarks>
-        public CustomerModel()
+        public CustomerDto()
                 : base()
         {
         }

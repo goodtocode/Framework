@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ImageModel.cs" company="GoodToCode">
+// <copyright file="NameDescriptionDto.cs" company="GoodToCode">
 //      Copyright (c) GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -19,43 +19,32 @@
 //-----------------------------------------------------------------------
 using System;
 using GoodToCode.Extensions;
-using GoodToCode.Framework.Name;
+using GoodToCode.Framework.Data;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Name
 {
 	/// <summary>
 	/// Common object across models and business entity
 	/// </summary>
 	/// <remarks></remarks>
-	public class ImageModel : EntityModel<ImageModel>, IBytesKey, IName
-    {
+	public class NameDescriptionDto : EntityDto<NameDescriptionDto>, INameDescription
+	{
         /// <summary>
-        /// Name of this image
+        /// Name
         /// </summary>
-        public string Name { get; set; } = Defaults.String;
+		public string Name { get; set; } = Defaults.String;
 
         /// <summary>
-        /// Bytes of BLOB image
+        /// Description
         /// </summary>
-        public byte[] Bytes { get; set; } = Defaults.Bytes;
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <remarks></remarks>
-        public ImageModel() : base()
+		public string Description { get; set; } = Defaults.String;
+		
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <remarks></remarks>
+		public NameDescriptionDto() : base()
 		{
 		}
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <remarks></remarks>
-        public ImageModel(byte[] bytes)
-            : this()
-        {
-            Bytes = bytes;
-        }
-		
 	}
 }

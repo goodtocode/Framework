@@ -27,7 +27,7 @@ namespace GoodToCode.Framework.Test
     /// <summary>
     /// ViewModel holds model and is responsible for server calls, navigation, etc.
     /// </summary>
-    public class TestViewModel<TModel> : ViewModel<TModel> where TModel : EntityModel<TModel>, new()
+    public class TestViewModel<TDto> : ViewModel<TDto> where TDto : EntityDto<TDto>, new()
     {
         /// <summary>
         /// Currently running application
