@@ -15,15 +15,10 @@
     <copyright>Copyright (c) 2017-2018 GoodToCode. All Rights Reserved.</copyright>
     <tags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
     <dependencies>
-      <group targetFramework="portable-net451+win81+wpa81">
-        <dependency id="GoodToCode.Extensions.Portable" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Interop.Portable" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Models.Portable" version="4.0.0" />
-      </group>
       <group targetFramework="uap10.0">
-        <dependency id="GoodToCode.Extensions.Standard" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Interop.Standard" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Models.Standard" version="4.0.0" />
+        <dependency id="GoodToCode.Extensions" version="4.0.0" />
+        <dependency id="GoodToCode.Framework.Abstractions" version="4.0.0" />
+        <dependency id="GoodToCode.Framework.Dto" version="4.0.0" />
       </group>
   </dependencies>
   </metadata>

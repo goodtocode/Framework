@@ -181,23 +181,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Core">
-      <Version>4.18.19241.8</Version>
+    <PackageReference Include="GoodToCode.Extensions">
+      <Version>4.18.19249.4</Version>
     </PackageReference>
-    <PackageReference Include="GoodToCode.Extensions.Standard">
-      <Version>4.18.19241.8</Version>
+    <PackageReference Include="GoodToCode.Extensions.Configuration">
+      <Version>4.18.19249.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Interoperability\Framework.Interop.Standard\GoodToCode.Framework.Interop.Standard.csproj">
-      <Project>{1f7005fb-33eb-4b60-beff-eff68e14e12a}</Project>
-      <Name>GoodToCode.Framework.Interop.Standard</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MiddleTier\Framework.Models.Standard\GoodToCode.Framework.Models.Standard.csproj">
-      <Project>{87787b1e-b915-41d9-bf0c-6de14b437628}</Project>
-      <Name>GoodToCode.Framework.Models.Standard</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

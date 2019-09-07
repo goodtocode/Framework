@@ -17,6 +17,8 @@
     <dependencies>
       <group>
         <dependency id="GoodToCode.Extensions" version="4.0.0" />
+        <dependency id="GoodToCode.Extensions.Configuration" version="4.0.0" />
+        <dependency id="GoodToCode.Extensions.Data" version="4.0.0" />
       </group>
     </dependencies>
   </metadata>
