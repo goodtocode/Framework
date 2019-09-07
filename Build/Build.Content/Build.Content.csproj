@@ -85,7 +85,6 @@
     <Content Include="GitHub\Framework\LICENSE" />
     <Content Include="GitHub\Framework\README.md" />
     <Content Include="NuGet\Framework.Universal.nuspec" />
-    <Content Include="NuGet\Framework.Web.Full.nuspec" />
     <Content Include="NuGet\Framework.Windows.nuspec" />
     <Content Include="GitHub\Framework-for-Core\.gitattributes" />
     <Content Include="GitHub\Framework-for-Core\.gitignore" />

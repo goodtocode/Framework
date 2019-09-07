@@ -31,7 +31,7 @@ namespace GoodToCode.Framework.Data
 	/// ModelBase
 	/// </summary>
 	/// <remarks>ModelBase</remarks>
-	public abstract class ValueModel<TValue> : IValue, ISerializable<TValue>, INotifyPropertyChanged where TValue : ValueModel<TValue>, new()
+	public abstract class ValueDto<TValue> : IValue, ISerializable<TValue>, INotifyPropertyChanged where TValue : ValueDto<TValue>, new()
 	{
         private Guid key = Defaults.Guid;
         private DateTime createdDate = Defaults.Date;
@@ -65,7 +65,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Constructor
         /// </summary>
-        public ValueModel() : base() { }
+        public ValueDto() : base() { }
 
         /// <summary>
         /// Property changed event handler for INotifyPropertyChanged
