@@ -1,6 +1,6 @@
 ECHO OFF
 ECHO Starting PreBuild.bat %1 %2 %3
-REM Usage: Call "$(MSBuildProjectDirectory)\PreBuild.$(ConfigurationName).bat" "$(MSBuildProjectDirectory)" "$(ConfigurationName)" "$(ProjectName)"
+REM Usage: Call "$(MSBuildProjectDirectory)\App_Data\PreBuild.$(ConfigurationName).bat" "$(MSBuildProjectDirectory)" "$(ConfigurationName)" "$(ProjectName)"
 REM Vars:  $(ProjectName) = MyCo.Framework. Models, $(TargetPath) = output file, $(TargetDir) = full bin path , $(OutDir) = bin\debug, $(ConfigurationName) = "Debug"
 
 REM Locals

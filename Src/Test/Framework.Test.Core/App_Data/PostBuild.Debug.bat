@@ -1,6 +1,6 @@
 ECHO OFF
 ECHO Starting PostBuild.bat %1 %2 %3
-REM Usage: Call "$(MSBuildProjectDirectory)\PostBuild.$(Configuration).bat" "$(MSBuildProjectDirectory)\$(OutDir)" "$(Configuration)" "$(ProjectName)"
+REM Usage: Call "$(MSBuildProjectDirectory)\App_Data\PostBuild.$(Configuration).bat" "$(MSBuildProjectDirectory)\$(OutDir)" "$(Configuration)" "$(ProjectName)"
 REM Vars:  $(ProjectName) = MyCo.Framework. Models, $(TargetPath) = output file, $(TargetDir) = full bin path , $(OutDir) = bin\debug, $(Configuration) = "Debug"
 
 REM Locals
