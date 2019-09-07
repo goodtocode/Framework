@@ -29,7 +29,7 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\GoodToCode.Framework.DataAccess.Core.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Data.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
