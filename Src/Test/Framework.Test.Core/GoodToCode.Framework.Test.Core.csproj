@@ -35,7 +35,7 @@
     <None Remove="GoodToCode.Framework.Test.Core.csproj.vspscc" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19249.4" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19267.2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
