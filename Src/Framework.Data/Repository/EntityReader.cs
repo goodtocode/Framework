@@ -47,7 +47,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Results from any query operation
         /// </summary>
-        public IQueryable<TEntity> Results { get; protected set; } = default;
+        public IQueryable<TEntity> Results { get; protected set; } = default(IQueryable<TEntity>);
 
         /// <summary>
         /// Can connect to database?

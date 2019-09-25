@@ -3,31 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationTier", "PresentationTier", "{4121C2AA-ACD7-4403-90F3-4ECED0F284CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Web.Core", "Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj", "{34CADEDD-AFB9-4B0C-A6CE-36C25318D587}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3BD9F409-C1AA-4548-8210-E79D610C0977}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Test.Core", "Framework.Test.Core\GoodToCode.Framework.Test.Core.csproj", "{F3EE628E-132F-4AD4-A725-78C3C79E0718}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataTier", "DataTier", "{563C11FF-23CC-4DE8-B09E-C6DBD34D5EB0}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GoodToCode.Framework.Test.Database", "Framework.Test.Database\GoodToCode.Framework.Test.Database.sqlproj", "{0C3A9DE9-476B-4038-9258-1B066125A45B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Web.Core", "PresentationTier\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj", "{34CADEDD-AFB9-4B0C-A6CE-36C25318D587}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToCode.Framework.Universal", "Framework.Universal\GoodToCode.Framework.Universal.csproj", "{65AF542F-AC5D-43FF-B066-E2453D676FA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Test.Core", "Test\Framework.Test.Core\GoodToCode.Framework.Test.Core.csproj", "{F3EE628E-132F-4AD4-A725-78C3C79E0718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Data", "Framework.Data\GoodToCode.Framework.Data.csproj", "{116D30BC-1134-4C4E-96C4-9AAEAAA93B26}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GoodToCode.Framework.Test.Database", "Test\Framework.Test.Database\GoodToCode.Framework.Test.Database.sqlproj", "{0C3A9DE9-476B-4038-9258-1B066125A45B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Messaging", "Framework.Messaging\GoodToCode.Framework.Messaging.csproj", "{0CC3CE93-564B-4FDC-B75B-3BA90C513568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodToCode.Framework.Universal", "PresentationTier\Framework.Universal\GoodToCode.Framework.Universal.csproj", "{65AF542F-AC5D-43FF-B066-E2453D676FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Abstractions", "Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj", "{B3C98695-B5FA-43BC-920E-3B916C9D1D3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Data", "DataTier\Framework.DataAccess.Core\GoodToCode.Framework.Data.csproj", "{116D30BC-1134-4C4E-96C4-9AAEAAA93B26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Xaml", "Framework.Xaml\GoodToCode.Framework.Xaml.csproj", "{2768BCF0-C023-4A05-9B08-7111BD1CB5E5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3F003AA1-88B6-4E1A-A745-A6BCC4ABE155}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Messaging", "Common\Framework.Messaging\GoodToCode.Framework.Messaging.csproj", "{0CC3CE93-564B-4FDC-B75B-3BA90C513568}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Abstractions", "Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj", "{B3C98695-B5FA-43BC-920E-3B916C9D1D3D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Xaml", "Common\Framework.Xaml\GoodToCode.Framework.Xaml.csproj", "{2768BCF0-C023-4A05-9B08-7111BD1CB5E5}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Dto", "PresentationTier\Framework.Dto\GoodToCode.Framework.Dto.csproj", "{535B289C-A4DD-4CB6-BE6D-8DA00C8266F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodToCode.Framework.Dto", "Framework.Dto\GoodToCode.Framework.Dto.csproj", "{535B289C-A4DD-4CB6-BE6D-8DA00C8266F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
