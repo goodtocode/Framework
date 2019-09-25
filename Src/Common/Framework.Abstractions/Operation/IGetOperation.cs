@@ -61,6 +61,14 @@ namespace GoodToCode.Framework.Operation
         TEntity GetByKey(Guid key);
 
         /// <summary>
+        /// Gets one or no items based on exact ID or Key match
+        ///   Id used if value entered is of type int
+        ///   Key used if value passed is of type Guid
+        /// </summary>
+        /// <returns>One or no TEntity based on exact Key match</returns>
+        TEntity GetByIdOrKey(string idOrKey);
+
+        /// <summary>
         /// Get entities list by where clause
         /// </summary>
         /// <param name="whereClause">Where clause expression</param>

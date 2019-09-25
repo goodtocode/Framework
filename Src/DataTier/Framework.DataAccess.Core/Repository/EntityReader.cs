@@ -47,7 +47,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Results from any query operation
         /// </summary>
-        public IQueryable<TEntity> Results { get; protected set; } = default(IQueryable<TEntity>);
+        public IQueryable<TEntity> Results { get; protected set; } = default;
 
         /// <summary>
         /// Can connect to database?
@@ -138,6 +138,20 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
+        /// Gets one or no items based on exact ID or Key match
+        ///   Id used if value entered is of type int
+        ///   Key used if value passed is of type Guid
+        /// </summary>
+        /// <returns>One or no TEntity based on exact Key match</returns>
+        public TEntity GetByIdOrKey(string idOrKey)
+        {
+            if (idOrKey.IsInteger())
+                return GetById(idOrKey.TryParseInt32());
+            else
+                return GetByKey(idOrKey.TryParseGuid());
+        }
+
+        /// <summary>
         /// Gets database record with exact Id match
         /// </summary>
         /// <param name="id">Database Id of the record to pull</param>
@@ -207,8 +221,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>Page of data, based on passed clauses and page parameters</returns>
         public IQueryable<TEntity> GetByPage(Expression<Func<TEntity, bool>> whereClause, Expression<Func<TEntity, object>> orderByClause, int pageSize, int pageNumber)
         {
-            var returnValue = default(IQueryable<TEntity>);
-
+            IQueryable<TEntity> returnValue;
             try
             {
                 returnValue = (Data).AsQueryable();
