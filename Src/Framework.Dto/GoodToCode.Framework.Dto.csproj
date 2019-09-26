@@ -39,7 +39,7 @@
     <PackageReference Include="GoodToCode.Extensions" Version="4.18.19267.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+    <ProjectReference Include="..\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="Call &quot;$(MSBuildProjectDirectory)\App_Data\PreBuild.$(Configuration).bat&quot; &quot;$(MSBuildProjectDirectory)&quot; &quot;$(Configuration)&quot; &quot;$(ProjectName)&quot;" />

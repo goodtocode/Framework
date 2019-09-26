@@ -10,7 +10,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
-    <PackageId>GoodToCode.Framework.DataAccess.Core</PackageId>
+    <PackageId>GoodToCode.Framework.Data</PackageId>
     <RootNamespace>GoodToCode.Framework</RootNamespace>
     <Version>4.18.9</Version>
     <Authors>GoodToCode</Authors>
@@ -33,7 +33,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="GoodToCode.Framework.DataAccess.Core.csproj.vspscc" />
+    <None Remove="GoodToCode.Framework.Data.csproj.vspscc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,7 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+    <ProjectReference Include="..\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

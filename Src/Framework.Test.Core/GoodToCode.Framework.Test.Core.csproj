@@ -45,11 +45,11 @@
     <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Common\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
-    <ProjectReference Include="..\..\DataTier\Framework.DataAccess.Core\GoodToCode.Framework.Data.csproj" />
-    <ProjectReference Include="..\..\PresentationTier\Framework.Dto\GoodToCode.Framework.Dto.csproj" />
-    <ProjectReference Include="..\..\PresentationTier\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj" />
+    <ProjectReference Include="..\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+    <ProjectReference Include="..\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
+    <ProjectReference Include="..\Framework.Data\GoodToCode.Framework.Data.csproj" />
+    <ProjectReference Include="..\Framework.Dto\GoodToCode.Framework.Dto.csproj" />
+    <ProjectReference Include="..\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
