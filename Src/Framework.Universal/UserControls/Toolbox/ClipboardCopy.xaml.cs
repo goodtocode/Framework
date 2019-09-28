@@ -1,5 +1,5 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="ClipboardCopy.cs" company="GoodToCode">
+﻿
+"ClipboardCopy.cs" company="GoodToCode">
 //      Copyright (c) 2017-2018 GoodToCode. All rights reserved.
 //      Licensed to the Apache Software Foundation (ASF) under one or more 
 //      contributor license agreements.  See the NOTICE file distributed with 
@@ -16,7 +16,7 @@
 //       See the License for the specific language governing permissions and  
 //       limitations under the License. 
 // </copyright>
-//-----------------------------------------------------------------------
+
 using GoodToCode.Extensions;
 using System;
 using System.Threading.Tasks;

@@ -130,6 +130,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LICENSE.txt" />
     <Content Include="Properties\Default.rd.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
