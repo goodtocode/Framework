@@ -27,7 +27,7 @@ namespace Framework.Customer
     /// <summary>
     /// Customer Search Results
     /// </summary>    
-    public class CustomerSearchModel : EntityModel<CustomerSearchModel>, ICustomerSearch<CustomerModel>
+    public class CustomerSearchModel : EntityDto<CustomerSearchModel>, ICustomerSearch<CustomerModel>
     {
         private int maxResults = 25;
 

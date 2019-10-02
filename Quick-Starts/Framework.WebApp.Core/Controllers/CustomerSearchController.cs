@@ -17,15 +17,12 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
 
 namespace Framework.WebApp
 {
@@ -33,7 +30,7 @@ namespace Framework.WebApp
     /// Creates a Customer
     /// </summary>
     [Authorize]
-    public class CustomerSearchController : MvcController
+    public class CustomerSearchController : Controller
     {
         public const string ControllerName = "CustomerSearch";
         public const string SearchAction = "Search";

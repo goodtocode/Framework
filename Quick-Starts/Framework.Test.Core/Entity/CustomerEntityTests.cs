@@ -19,9 +19,9 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -73,7 +73,7 @@ namespace Framework.Test
         {
             // Database is required for these tests
             var databaseAccess = false;
-            var configuration = new ConfigurationManagerLocal();
+            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
             using (var connection = new SqlConnection(configuration.ConnectionStringValue("DefaultConnection")))
             {
                 databaseAccess = connection.CanOpen();

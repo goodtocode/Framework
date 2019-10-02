@@ -26,7 +26,7 @@ namespace Framework.Customer
     /// <summary>
     /// Customer Type view/http transport model, mainly for a key/value of Id/Name
     /// </summary>
-    public class CustomerTypeModel : NameIdModel, ICustomerType
+    public class CustomerTypeModel : NameIdDto, ICustomerType
     {
         /// <summary>
         /// Common customer type keys used as an Id for the table column CustomerType.CustomerTypeKey

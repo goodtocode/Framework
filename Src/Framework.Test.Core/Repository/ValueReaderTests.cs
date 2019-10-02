@@ -38,7 +38,7 @@ namespace GoodToCode.Framework.Test
             }
         }
 
-        /// <summary>s
+        /// <summary>
         /// Data_ValueReader_Select
         /// </summary>
         [TestMethod()]

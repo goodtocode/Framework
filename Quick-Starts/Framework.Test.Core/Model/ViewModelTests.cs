@@ -18,9 +18,10 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Net;
-using GoodToCode.Extras.Text;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Net;
+using GoodToCode.Extensions.Text;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -78,7 +79,7 @@ namespace Framework.Test
         {
             // Database is required for these tests
             var databaseAccess = false;
-            var configuration = new ConfigurationManagerLocal();
+            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
             using (var connection = new SqlConnection(configuration.ConnectionStringValue("DefaultConnection")))
             {
                 databaseAccess = connection.CanOpen();
@@ -122,7 +123,7 @@ namespace Framework.Test
         public async Task Full_ViewModel_CRUD_Create()
         {
             var customer = new CustomerModel();
-            var url = new Uri(new ConfigurationManagerLocal().AppSettingValue("MyWebService").AddLast("/Customer"));
+            var url = new Uri(new ConfigurationManagerCore(ApplicationTypes.Native).AppSettingValue("MyWebService").AddLast("/Customer"));
 
             try
             {

@@ -25,7 +25,7 @@ namespace Framework.Test
     /// <summary>
     /// ViewModel holds model and is responsible for server calls, navigation, etc.
     /// </summary>
-    public class TestViewModel<TModel> : ViewModel<TModel> where TModel : EntityModel<TModel>, new()
+    public class TestViewModel<TModel> : ViewModel<TModel> where TModel : EntityDto<TModel>, new()
     {
         /// <summary>
         /// Currently running application

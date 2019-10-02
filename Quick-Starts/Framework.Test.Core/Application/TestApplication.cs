@@ -18,8 +18,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Net;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Net;
 using System;
 using System.Threading.Tasks;
 
@@ -33,7 +33,7 @@ namespace Framework.Test
         /// <summary>
         /// Persistent ConfigurationManager class, automatically loaded with this project .config files
         /// </summary>
-        public IConfigurationManager ConfigurationManager { get; set; } = new ConfigurationManagerLocal();
+        public IConfigurationManager ConfigurationManager { get; set; } = new ConfigurationManagerCore(ApplicationTypes.Native);
 
         /// <summary>
         /// MyWebService
@@ -70,7 +70,7 @@ namespace Framework.Test
         public async Task LoadDataAsync()
         {
             await Task.Delay(1);
-            ConfigurationManager = new ConfigurationManagerLocal();
+            ConfigurationManager = new ConfigurationManagerCore(ApplicationTypes.Native);
         }
 
         /// <summary>

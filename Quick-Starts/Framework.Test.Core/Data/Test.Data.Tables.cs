@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Configuration;
+using GoodToCode.Extensions.Configuration;
 using System.Data.SqlClient;
 
 namespace Framework.Test.Data
@@ -35,7 +35,7 @@ namespace Framework.Test.Data
         public static void DropMigrationHistory(string database = "[FrameworkData]", string schema = "[Activity]")
         {
             // Must remove __MigrationHistory for EF Code First objects to auto-create their tables
-            var configuration = new ConfigurationManagerLocal();
+            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
 
             try
             {

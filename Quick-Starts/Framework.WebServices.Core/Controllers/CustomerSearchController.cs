@@ -19,7 +19,6 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -28,7 +27,7 @@ namespace Framework.WebServices
     /// <summary>
     /// Searches for customer records    
     /// </summary>
-    public class CustomerSearchController : WebApiController
+    public class CustomerSearchController : Controller
     {
         public const string ControllerName = "CustomerSearch";
         public const string ControllerRoute = "v4/CustomerSearch";

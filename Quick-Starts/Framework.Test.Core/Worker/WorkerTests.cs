@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
+using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Name;
 using GoodToCode.Framework.Session;
 using GoodToCode.Framework.Worker;
@@ -42,11 +42,11 @@ namespace Framework.Test
         [TestMethod()]
         public void Worker_SessionContextKnownType()
         {
-            String dataToSendSerialized2 = Defaults.String;
-            SessionContext context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
-            NameIdModel dataIn = new NameIdModel() { Name = "NameField" };
-            WorkerParameter<NameIdModel> item2 = new WorkerParameter<NameIdModel>() { Context = context, DataIn = dataIn };
-            ISerializer<WorkerParameter<NameIdModel>> serializer2 = new JsonSerializer<WorkerParameter<NameIdModel>>();
+            var dataToSendSerialized2 = Defaults.String;
+            var context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
+            var dataIn = new NameIdDto() { Name = "NameField" };
+            var item2 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
+            ISerializer<WorkerParameter<NameIdDto>> serializer2 = new JsonSerializer<WorkerParameter<NameIdDto>>();
 
             // Test Serialization            
             dataToSendSerialized2 = serializer2.Serialize(item2);
@@ -63,9 +63,9 @@ namespace Framework.Test
             // Initialize
             var dataToSendSerialized = Defaults.String;
             var context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
-            var dataIn = new NameIdModel() { Name = "NameField" };
-            var item1 = new WorkerParameter<NameIdModel>() { Context = context, DataIn = dataIn };
-            var serializer = new JsonSerializer<WorkerParameter<NameIdModel>>();
+            var dataIn = new NameIdDto() { Name = "NameField" };
+            var item1 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
+            var serializer = new JsonSerializer<WorkerParameter<NameIdDto>>();
 
             // Disable exceptions, we just want to look at results
             serializer.ThrowException = false;

@@ -19,14 +19,12 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Web.Http;
+using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 
 namespace Framework.WebApp
 {
@@ -34,7 +32,7 @@ namespace Framework.WebApp
     /// Creates a Customer
     /// </summary>
     [Authorize]
-    public class CustomerController : MvcController
+    public class CustomerController : Controller
     {
         public const string ControllerName = "Customer";
         public const string SummaryAction = "Summary";

@@ -18,14 +18,13 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Mathematics;
-using GoodToCode.Extras.Net;
-using GoodToCode.Extras.Text;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Extensions.Net;
+using GoodToCode.Extensions.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;

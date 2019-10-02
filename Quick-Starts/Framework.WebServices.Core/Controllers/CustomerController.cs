@@ -19,8 +19,7 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Web.Http;
+using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
@@ -30,7 +29,7 @@ namespace Framework.WebServices
     /// <summary>
     /// Accepts HttpGet, HttpPut, HttpPost and HttpDelete operations on a customer
     /// </summary>
-    public class CustomerController : WebApiController
+    public class CustomerController : Controller
     {
         public const string ControllerName = "Customer";
         public const string ControllerRoute = "v4/Customer";

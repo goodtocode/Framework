@@ -17,7 +17,6 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -27,7 +26,7 @@ namespace Framework.WebServices
     /// Default WebApi controller
     /// </summary>
     [Route(ControllerRoute)]
-    public class HomeApiController : WebApiController
+    public class HomeApiController : Controller
     {
         public const string ControllerName = "HomeApi";
         public const string ControllerRoute = "v4/HomeApi";
@@ -43,7 +42,7 @@ namespace Framework.WebServices
         [HttpGet()]        
         public string Get()
         {
-            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {"Services up and running..."}";
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace Framework.WebServices
         [HttpPost()]
         public string Post()
         {
-            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {"Services up and running..."}";
         }
 
         /// <summary>
@@ -63,7 +62,7 @@ namespace Framework.WebServices
         [HttpPut()]
         public string Put()
         {
-            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {"Services up and running..."}";
         }
 
         /// <summary>
@@ -73,7 +72,7 @@ namespace Framework.WebServices
         [HttpDelete()]
         public string Delete()
         {
-            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {WebApiController.MessageUpAndRunning}";
+            return $"[{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development"}] {"Services up and running..."}";
         }
     }
 }

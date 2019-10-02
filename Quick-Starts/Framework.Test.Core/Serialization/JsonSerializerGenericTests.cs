@@ -17,12 +17,12 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
+using GoodToCode.Extensions;
+using GoodToCode.Extensions.Serialization;
+using GoodToCode.Extensions.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using GoodToCode.Extensions;
-using GoodToCode.Extras.Serialization;
-using GoodToCode.Extras.Text;
 using System.Runtime.Serialization.Json;
 
 namespace Framework.Test

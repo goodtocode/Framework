@@ -16,18 +16,14 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extras.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using GoodToCode.Extensions.Configuration;
 
 namespace Framework.Test
 {
-	/// <summary>
-	/// Local platform-specific configuration manager wrapper
-	/// </summary>
+    /// <summary>
+    /// Local platform-specific configuration manager wrapper
+    /// </summary>
     public class ConfigurationManagerLocal : ConfigurationManagerCore
     {
 		/// <summary>

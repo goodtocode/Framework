@@ -171,11 +171,10 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions.Core" Version="4.18.19211.23" />
-    <PackageReference Include="GoodToCode.Extensions.Standard" Version="4.18.19211.23" />
-    <PackageReference Include="GoodToCode.Framework.DataAccess.Core" Version="4.18.19213.2" />
-    <PackageReference Include="GoodToCode.Framework.Interop.Standard" Version="4.18.19213.2" />
-    <PackageReference Include="GoodToCode.Framework.Models.Standard" Version="4.18.19213.2" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.18.19271.2" />
+    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.18.19271.1" />
+    <PackageReference Include="GoodToCode.Framework.Data" Version="4.18.19271.1" />
+    <PackageReference Include="GoodToCode.Framework.Dto" Version="4.18.19271.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.6" />
   </ItemGroup>
 

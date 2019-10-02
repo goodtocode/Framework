@@ -18,7 +18,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Data;
+using GoodToCode.Extensions.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Framework.Test

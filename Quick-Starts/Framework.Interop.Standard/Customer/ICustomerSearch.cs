@@ -17,8 +17,6 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Framework.Data;
-using System;
 using System.Collections.Generic;
 
 namespace Framework.Customer

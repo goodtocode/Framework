@@ -28,7 +28,7 @@ namespace Framework.Customer
     /// Customer screen model for binding and transport
     /// </summary>
     /// <remarks></remarks>
-    public class CustomerModel : EntityModel<CustomerModel>, ICustomer, IFormattable
+    public class CustomerModel : EntityDto<CustomerModel>, ICustomer, IFormattable
     {
         /// <summary>
         /// FirstName of customers

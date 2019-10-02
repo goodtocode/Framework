@@ -17,13 +17,13 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using System.Collections.Generic;
 using GoodToCode.Extensions;
-using GoodToCode.Extras.Configuration;
-using GoodToCode.Extras.Data;
+using GoodToCode.Extensions.Configuration;
+using GoodToCode.Extensions.Data;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Framework.Test
 {
@@ -51,7 +51,7 @@ namespace Framework.Test
         public void Data_ConnectionStringFromConfig()
         {
             var result = Defaults.String;
-            var configManager = new ConfigurationManagerLocal();
+            var configManager = new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = new ConnectionStringSafe();
             configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
             result = configConnectString.ToEF(typeof(ClassWithConnectString));
@@ -69,7 +69,7 @@ namespace Framework.Test
         public void Data_ConnectionStringEntity()
         {
             var result = Defaults.String;
-            var configManager = new ConfigurationManagerLocal();
+            var configManager = new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = new ConnectionStringSafe();
             configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
             result = configConnectString.ToEF(typeof(EntityWithConnectString));
@@ -87,7 +87,7 @@ namespace Framework.Test
         public void Data_ConnectionStringDatabase()
         {
             var result = Defaults.String;
-            var configManager = new ConfigurationManagerLocal();
+            var configManager = new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = new ConnectionStringSafe();
 
             configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
