@@ -32,6 +32,14 @@ steps:
     projects: '$(solution)'
     feedsToUse: 'select'
     vstsFeed: '525a0dbd-3d6d-4f62-aba4-f4d004295d7d'
+- task: MSBuild@1
+  displayName: 'Build solution **/*.sqlproj'
+  inputs:
+    solution: '**/*.sqlproj'
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory) /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true'
+    clean: true
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
