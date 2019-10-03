@@ -1,0 +1,80 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - Quick-Starts/*
+
+pool:
+  name: Hosted Windows 2019 with VS2019
+  demands: msbuild
+
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: DeleteFiles@1
+  displayName: 'Delete files from Build'
+  inputs:
+    SourceFolder: Build
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Src'
+  inputs:
+    SourceFolder: Src
+    Contents: '**/*.csproj'
+
+- task: PowerShell@2
+  displayName: 'PowerShell Script ApplyVersionToAssemblies.ps1'
+  inputs:
+    targetType: filePath
+    filePath: ./Build/Build.Scripts.Modules/CI/ApplyVersionToAssemblies.ps1
+
+- task: PowerShell@2
+  displayName: 'PowerShell Script Set-Version.ps1'
+  inputs:
+    targetType: filePath
+    filePath: './Build/Build.Scripts.Modules/CI/Set-Version.ps1'
+    arguments: '-Path $(Build.SourcesDirectory)'
+
+- task: MSBuild@1
+  displayName: 'Build solution **/*.sqlproj'
+  inputs:
+    solution: '**/*.sqlproj'
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory) /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true'
+    clean: true
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    feedsToUse: config
+    nugetConfigPath: Build/.nuget/NuGet.config
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/*.csproj'
+    arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: test
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: publish
+    arguments: '--output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
