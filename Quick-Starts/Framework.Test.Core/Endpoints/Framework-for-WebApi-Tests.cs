@@ -144,14 +144,14 @@ namespace Framework.Test
                 var url = new Uri(urlCustomer.AddLast("/") + keyToGet.ToStringSafe());
                 var requestGet = new HttpRequestGet<CustomerModel>(url);
                 responseData = await requestGet.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease || responseData != null);
+                Assert.IsTrue(interfaceBreakingRelease || responseData != null || (requestGet.Response.IsSuccessStatusCode || requestGet.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
 
                 var testKey = RandomString.Next();
                 responseData.FirstName = responseData.FirstName.AddLast(testKey);
                 var request = new HttpRequestPost<CustomerModel>(urlCustomer.TryParseUri(), responseData);
                 responseData = await request.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease || responseData != null);
-                Assert.IsTrue(interfaceBreakingRelease || responseData.FirstName.Contains(testKey));
+                Assert.IsTrue(interfaceBreakingRelease || responseData != null || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
+                Assert.IsTrue(interfaceBreakingRelease || responseData.FirstName.Contains(testKey) || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
             }
             catch (HttpRequestException ex)
             {
@@ -175,11 +175,11 @@ namespace Framework.Test
 
                 var requestDelete = new HttpRequestDelete(urlCustomer.AddLast("/") + keyToDelete.ToString());
                 await requestDelete.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease || requestDelete.Response.IsSuccessStatusCode);
+                Assert.IsTrue(interfaceBreakingRelease || (requestDelete.Response.IsSuccessStatusCode || requestDelete.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
 
                 var requestGet = new HttpRequestGet<CustomerModel>(urlCustomer);
                 responseData = await requestGet.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease || responseData != null);
+                Assert.IsTrue(interfaceBreakingRelease || responseData != null || (requestDelete.Response.IsSuccessStatusCode || requestDelete.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
             }
             catch (HttpRequestException ex)
             {

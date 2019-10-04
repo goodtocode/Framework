@@ -92,7 +92,7 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public async Task Full_ViewModel_CRUD_Read()
+        public async Task Core_ViewModel_CRUD_Read()
         {
             var customer = new CustomerModel();
             var viewModel = new TestViewModel<CustomerModel>("Customer");
@@ -100,7 +100,7 @@ namespace Framework.Test
             try
             {
                 // Create test record
-                await Full_ViewModel_CRUD_Create();
+                await Core_ViewModel_CRUD_Create();
                 var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
 
                 // Verify update success
@@ -120,7 +120,7 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public async Task Full_ViewModel_CRUD_Create()
+        public async Task Core_ViewModel_CRUD_Create()
         {
             var customer = new CustomerModel();
             var url = new Uri(new ConfigurationManagerCore(ApplicationTypes.Native).AppSettingValue("MyWebService").AddLast("/Customer"));
@@ -130,8 +130,8 @@ namespace Framework.Test
                 customer.Fill(customerTestData[Arithmetic.Random(1, customerTestData.Count)]);
                 var request = new HttpRequestPut<CustomerModel>(url, customer);
                 customer = await request.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
             }
             catch (HttpRequestException ex)
             {
@@ -146,7 +146,7 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public async Task Full_ViewModel_CRUD_Update()
+        public async Task Core_ViewModel_CRUD_Update()
         {
             var customer = new CustomerModel();
             var viewModel = new TestViewModel<CustomerModel>("Customer");
@@ -154,7 +154,7 @@ namespace Framework.Test
             try
             {
                 // Create test record
-                await Full_ViewModel_CRUD_Create();
+                await Core_ViewModel_CRUD_Create();
                 var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
                 // Read test record
                 customer = await viewModel.GetByKeyAsync(keyToTest);
@@ -181,7 +181,7 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public async Task Full_ViewModel_CRUD_Delete()
+        public async Task Core_ViewModel_CRUD_Delete()
         {
             var customer = new CustomerModel();
             var customerReturn = new CustomerModel();
@@ -190,7 +190,7 @@ namespace Framework.Test
             try
             {
                 // Create test record
-                await Full_ViewModel_CRUD_Create();
+                await Core_ViewModel_CRUD_Create();
                 var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
 
                 // Test
