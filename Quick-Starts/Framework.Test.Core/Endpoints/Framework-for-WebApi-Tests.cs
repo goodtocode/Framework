@@ -38,7 +38,7 @@ namespace Framework.Test
     [TestClass()]
     public class Endpoints_Framework_for_WebApi
     {
-        private readonly bool interfaceBreakingRelease = false; // Current release breaks the interface?
+        private readonly bool interfaceBreakingRelease = true; // Current release breaks the interface?
         private static readonly object LockObject = new object();
         private static volatile List<Guid> _recycleBin = null;
         /// <summary>

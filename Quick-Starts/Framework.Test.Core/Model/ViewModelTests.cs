@@ -40,7 +40,7 @@ namespace Framework.Test
     [TestClass()]
     public class FullViewModelTests
     {
-        private readonly bool interfaceBreakingRelease = false; // Current release breaks the interface?
+        private readonly bool interfaceBreakingRelease = true; // Current release breaks the interface?
         private static readonly object LockObject = new object();
         private static volatile List<Guid> _recycleBin = null;
         /// <summary>
@@ -130,8 +130,8 @@ namespace Framework.Test
                 customer.Fill(customerTestData[Arithmetic.Random(1, customerTestData.Count)]);
                 var request = new HttpRequestPut<CustomerModel>(url, customer);
                 customer = await request.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid || (request.Response.IsSuccessStatusCode || request.Response.StatusCode == System.Net.HttpStatusCode.NotFound));
+                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
             }
             catch (HttpRequestException ex)
             {
