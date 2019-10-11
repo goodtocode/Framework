@@ -1,0 +1,137 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - Src/*
+
+pool:
+  name: Hosted Windows 2019 with VS2019
+  demands: msbuild
+
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: DeleteFiles@1
+  displayName: 'Delete files from Build'
+  inputs:
+    SourceFolder: Build
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Docs'
+  inputs:
+    SourceFolder: Docs
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Quick-Starts'
+  inputs:
+    SourceFolder: 'Quick-Starts'
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Vsix'
+  inputs:
+    SourceFolder: Vsix
+    Contents: '**/*.csproj'
+
+- task: DeleteFiles@1
+  displayName: 'Delete files from Src'
+  inputs:
+    SourceFolder: Src
+    Contents: '**/GoodToCode.Framework.Universal.csproj'
+
+- task: PowerShell@2
+  displayName: 'PowerShell Script Set-Version.ps1'
+  inputs:
+    targetType: filePath
+    filePath: './Build/Build.Scripts.Modules/CI/Set-Version.ps1'
+    arguments: '-Path $(Build.SourcesDirectory)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    feedsToUse: config
+    nugetConfigPath: Build/.nuget/NuGet.config
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/*.csproj'
+    arguments: '--output \lib\goodtocode-framework --configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: test
+    projects: '**/*.csproj'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Abstractions.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Abstractions.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Data.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Data.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Dto.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Dto.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Messaging.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Messaging.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Xaml.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Xaml.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Universal.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Universal.nuspec
+    versioningScheme: byBuildNumber
+  enabled: false
+  continueOnError: true
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Web.Core.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Web.Core.nuspec
+    versioningScheme: byBuildNumber
+
+- task: CopyFiles@2
+  displayName: 'Copy Files Set-PackageQuality.ps1'
+  inputs:
+    SourceFolder: Build/Build.Scripts.Modules/CI
+    Contents: 'Set-PackageQuality.ps1'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    OverWrite: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+
