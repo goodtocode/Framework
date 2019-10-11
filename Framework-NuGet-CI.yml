@@ -13,7 +13,7 @@ pool:
 
 variables:
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
 
 name: 4.19.$(Year:yy)$(DayOfYear)$(Rev:.rr)
 
