@@ -1,6 +1,6 @@
 ﻿using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

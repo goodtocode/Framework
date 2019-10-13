@@ -1,4 +1,4 @@
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

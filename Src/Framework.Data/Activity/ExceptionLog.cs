@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using GoodToCode.Extensions;
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 
 namespace GoodToCode.Framework.Activity
 {

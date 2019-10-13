@@ -1,5 +1,5 @@
 using GoodToCode.Extensions;
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 using GoodToCode.Extensions.Serialization;
 using System;
 using System.Collections.Generic;

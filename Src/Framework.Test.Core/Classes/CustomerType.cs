@@ -1,4 +1,4 @@
-﻿using GoodToCode.Extensions.Data;
+﻿using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Data;
 
 namespace GoodToCode.Framework.Test

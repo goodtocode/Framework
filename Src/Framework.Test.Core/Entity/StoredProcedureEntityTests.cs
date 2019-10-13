@@ -1,6 +1,6 @@
 ﻿using GoodToCode.Extensions;
 using GoodToCode.Extensions.Mathematics;
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

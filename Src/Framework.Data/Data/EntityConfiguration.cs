@@ -1,7 +1,7 @@
 
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Collections;
-using GoodToCode.Extensions.Data;
+using GoodToCode.Framework.Data;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Validation;
 using System;
