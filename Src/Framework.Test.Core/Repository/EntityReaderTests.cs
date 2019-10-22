@@ -1,5 +1,6 @@
 ﻿using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.SqlClient;

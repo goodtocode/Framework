@@ -1,3 +1,4 @@
+using GoodToCode.Extensions;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -5,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoodToCode.Extensions
+namespace GoodToCode.Framework.Data
 {
     /// <summary>
     /// Extends System.Type
