@@ -1,15 +1,13 @@
 ﻿using GoodToCode.Extensions;
+using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
-using GoodToCode.Framework.Data;
+using GoodToCode.Extensions.Text;
+using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Repository;
-using GoodToCode.Extensions.Configuration;
 using System.Data.SqlClient;
-using GoodToCode.Extensions.Text;
+using System.Linq;
 
 namespace GoodToCode.Framework.Test
 {

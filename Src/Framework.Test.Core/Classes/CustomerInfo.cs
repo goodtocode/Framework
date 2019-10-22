@@ -1,6 +1,5 @@
 ﻿using GoodToCode.Extensions;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Validation;
 using System;
 using System.Collections.Generic;

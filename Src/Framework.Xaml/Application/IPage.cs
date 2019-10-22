@@ -1,4 +1,4 @@
-using GoodToCode.Extensions.Net;
+using GoodToCode.Framework.Net;
 using System;
 
 namespace GoodToCode.Framework.Application
