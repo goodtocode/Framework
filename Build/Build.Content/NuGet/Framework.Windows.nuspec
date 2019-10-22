@@ -16,9 +16,9 @@
     <tags>GoodToCode Framework cross-platform open-source full-stack entity Web API mvc universal core</tags>
     <dependencies>
       <group>
-        <dependency id="GoodToCode.Extensions.Full" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Interop.Portable" version="4.0.0" />
-        <dependency id="GoodToCode.Framework.Models.Portable" version="4.0.0" />
+        <dependency id="GoodToCode.Extensions.Full" version="[4,5)" />
+        <dependency id="GoodToCode.Framework.Interop.Portable" version="[4,5)" />
+        <dependency id="GoodToCode.Framework.Models.Portable" version="[4,5)" />
       </group>
     </dependencies>
   </metadata>
