@@ -97,6 +97,20 @@ steps:
     versioningScheme: byBuildNumber
 
 - task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Hosting.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Hosting.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
+  displayName: 'NuGet pack Framework.Hosting.Server.nuspec'
+  inputs:
+    command: pack
+    packagesToPack: Build/Build.Content/NuGet/Framework.Hosting.Server.nuspec
+    versioningScheme: byBuildNumber
+
+- task: NuGetCommand@2
   displayName: 'NuGet pack Framework.Messaging.nuspec'
   inputs:
     command: pack
