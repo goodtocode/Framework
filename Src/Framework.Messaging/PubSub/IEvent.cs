@@ -1,4 +1,4 @@
-﻿namespace GoodToCode.Entity.PubSub
+﻿namespace GoodToCode.Framework.PubSub
 {
     public interface IEvent
     {

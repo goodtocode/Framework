@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace GoodToCode.Entity.PubSub
+namespace GoodToCode.Framework.PubSub
 {
 
     public interface ILoggerListener : ISubscriberService

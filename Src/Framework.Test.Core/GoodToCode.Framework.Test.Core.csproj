@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />
+    <ProjectReference Include="..\Framework.Hosting.Server\GoodToCode.Framework.Hosting.Server.csproj" />
+    <ProjectReference Include="..\Framework.Hosting\GoodToCode.Framework.Hosting.csproj" />
+    <ProjectReference Include="..\Framework.Messaging\GoodToCode.Framework.Messaging.csproj" />
     <ProjectReference Include="..\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
     <ProjectReference Include="..\Framework.Data\GoodToCode.Framework.Data.csproj" />
     <ProjectReference Include="..\Framework.Dto\GoodToCode.Framework.Dto.csproj" />

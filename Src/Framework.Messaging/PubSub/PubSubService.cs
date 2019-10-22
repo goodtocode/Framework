@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace GoodToCode.Entity.PubSub
+namespace GoodToCode.Framework.PubSub
 {
     //Startup.cs
     //            services.AddScoped<IPubSubService>(sp => {
