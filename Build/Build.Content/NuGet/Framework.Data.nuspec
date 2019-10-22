@@ -18,7 +18,6 @@
       <group>
         <dependency id="GoodToCode.Extensions" version="[4,5)" />
         <dependency id="GoodToCode.Extensions.Configuration" version="[4,5)" />
-        <dependency id="GoodToCode.Extensions.Data" version="[4,5)" />
         <dependency id="GoodToCode.Extensions.Drawing" version="[4,5)" />
         <dependency id="GoodToCode.Framework.Abstractions" version="[4,5)" />
       </group>
