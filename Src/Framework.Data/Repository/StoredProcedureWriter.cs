@@ -14,7 +14,7 @@ namespace GoodToCode.Framework.Repository
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
     public partial class StoredProcedureWriter<TEntity> : DbContext,
-        ICreateOperation<TEntity>, IUpdateOperation<TEntity>, ISaveOperation<TEntity>, IDeleteOperation<TEntity> where TEntity : StoredProcedureEntity<TEntity>, new()
+        ICreateOperation<TEntity>, IUpdateOperation<TEntity>, ISaveOperation<TEntity>, IDeleteOperation<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Configures stored procedure for specific parameter behavior
@@ -38,6 +38,8 @@ namespace GoodToCode.Framework.Repository
             Ordinal = 0x2
         }
 
+        private IStoredProcedureConfiguration<TEntity> storedProcConfig;
+
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
         ///     Note: EF requires public get/set
@@ -57,9 +59,9 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Constructor
         /// </summary>
-        public StoredProcedureWriter() : base()
+        public StoredProcedureWriter(IStoredProcedureConfiguration<TEntity> config)
         {
-            
+            storedProcConfig = config;
         }
 
         /// <summary>
@@ -143,13 +145,13 @@ namespace GoodToCode.Framework.Repository
         {
             try
             {
-                if (entity.CreateStoredProcedure == null) throw new Exception("Create() requires CreateStoredProcedure to be initialized properly.");
+                if (storedProcConfig.CreateStoredProcedure == null) throw new Exception("Create() requires CreateStoredProcedure to be initialized properly.");
                 if (entity.IsValid() && CanInsert(entity))
                 {
-                    if (entity.CreateStoredProcedure.Parameters.Where(x => x.ParameterName == "@Key").Any())
+                    if (storedProcConfig.CreateStoredProcedure.Parameters.Where(x => x.ParameterName == "@Key").Any())
                         entity.Key = entity.Key == Defaults.Guid ? Guid.NewGuid() : entity.Key; // To re-pull data after save
                     entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(entity.CreateStoredProcedure);
+                    var rowsAffected = ExecuteSqlCommand(storedProcConfig.CreateStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == entity.Key) entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
                 }
@@ -170,12 +172,12 @@ namespace GoodToCode.Framework.Repository
         {
             try
             {
-                if (entity.UpdateStoredProcedure == null) throw new Exception("Update() requires UpdateStoredProcedure to be initialized properly.");
+                if (storedProcConfig.UpdateStoredProcedure == null) throw new Exception("Update() requires UpdateStoredProcedure to be initialized properly.");
                 if (entity.IsValid() && CanUpdate(entity))
                 {
                     entity.Key = entity.Key == Defaults.Guid ? Guid.NewGuid() : entity.Key;
                     entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(entity.UpdateStoredProcedure);
+                    var rowsAffected = ExecuteSqlCommand(storedProcConfig.UpdateStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == entity.Key) entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
                 }
@@ -208,11 +210,11 @@ namespace GoodToCode.Framework.Repository
         {
             try
             {
-                if (entity.DeleteStoredProcedure == null) throw new Exception("Delete() requires DeleteStoredProcedure to be initialized properly.");
+                if (storedProcConfig.DeleteStoredProcedure == null) throw new Exception("Delete() requires DeleteStoredProcedure to be initialized properly.");
                 if (CanDelete(entity))
                 {
                     entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(entity.DeleteStoredProcedure);
+                    var rowsAffected = ExecuteSqlCommand(storedProcConfig.DeleteStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
                 }

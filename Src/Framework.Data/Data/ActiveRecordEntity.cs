@@ -11,8 +11,13 @@ namespace GoodToCode.Framework.Data
     ///  ActiveRecord abstract class. Based on StoredProcedureEntity
     ///    Includes GetById(), GetByKey(), GetByWhere(), GetAll(), Save(), Delete()
     /// </summary>
-    public abstract class ActiveRecordEntity<TEntity> : StoredProcedureEntity<TEntity> where TEntity : StoredProcedureEntity<TEntity>, new()
+    public abstract class ActiveRecordEntity<TEntity> : StoredProcedureConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
+        /// <summary>
+        /// Activity record for this entities behavior
+        /// </summary>
+        public Guid ActivityContextKey { get; set; } = Defaults.Guid;
+
         /// <summary>
         /// Gets single record by Id
         /// </summary>
@@ -20,9 +25,11 @@ namespace GoodToCode.Framework.Data
         /// <returns></returns>
         public static TEntity GetById(int id)
         {
-            var reader = new EntityReader<TEntity>();
-            var returnValue = reader.GetById(id);
-            return returnValue;
+            using (var reader = new EntityReader<TEntity>())
+            {
+                var returnValue = reader.GetById(id);
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -32,9 +39,11 @@ namespace GoodToCode.Framework.Data
         /// <returns></returns>
         public static TEntity GetByKey(Guid key)
         {
-            var reader = new EntityReader<TEntity>();
-            var returnValue = reader.GetByKey(key);
-            return returnValue;
+            using (var reader = new EntityReader<TEntity>())
+            {
+                var returnValue = reader.GetByKey(key);
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -43,9 +52,11 @@ namespace GoodToCode.Framework.Data
         /// <returns></returns>
         public static IEnumerable<TEntity> GetAll()
         {
-            var reader = new EntityReader<TEntity>();
-            var returnValue = reader.GetAll();
-            return returnValue;
+            using (var reader = new EntityReader<TEntity>())
+            {
+                var returnValue = reader.GetAll();
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -55,9 +66,11 @@ namespace GoodToCode.Framework.Data
         /// <returns></returns>
         public static IEnumerable<TEntity> GetByWhere(Expression<Func<TEntity, bool>> expression)
         {
-            var reader = new EntityReader<TEntity>();
-            var returnValue = reader.GetByWhere(expression);
-            return returnValue;
+            using (var reader = new EntityReader<TEntity>())
+            {
+                var returnValue = reader.GetByWhere(expression);
+                return returnValue;
+            }
         }
 
         /// <summary>
@@ -66,8 +79,10 @@ namespace GoodToCode.Framework.Data
         /// <returns></returns>
         public TEntity Save()
         {
-            var writer = new StoredProcedureWriter<TEntity>();
-            return writer.Save(this.CastOrFill<TEntity>());
+            using (var writer = new StoredProcedureWriter<TEntity>(this))
+            {
+                return writer.Save(this.CastOrFill<TEntity>());
+            }
         }
 
         /// <summary>
@@ -85,8 +100,10 @@ namespace GoodToCode.Framework.Data
         /// </summary>
         public TEntity Delete()
         {
-            var writer = new StoredProcedureWriter<TEntity>();
-            return writer.Delete(this.CastOrFill<TEntity>());
+            using (var writer = new StoredProcedureWriter<TEntity>(this))
+            {
+                return writer.Delete(this.CastOrFill<TEntity>());
+            }
         }
 
         /// <summary>
