@@ -20,7 +20,7 @@ namespace GoodToCode.Framework.Hosting.Server
     /// </summary>
     public class CrudApiControllerRouteConvention : IControllerModelConvention
     {
-        private List<CrudApiInfo> typesAndRoutes = new List<CrudApiInfo>();
+        private List<CrudApiRoute> typesAndRoutes = new List<CrudApiRoute>();
 
         /// <summary>
         /// Constructor
@@ -34,14 +34,14 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <param name="routeToBind"></param>
         public CrudApiControllerRouteConvention(Type entityType, string routeToBind)
         {
-            typesAndRoutes.Add(new CrudApiInfo(entityType, routeToBind));
+            typesAndRoutes.Add(new CrudApiRoute(entityType, routeToBind));
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="controllerTypesAndRoutes"></param>
-        public CrudApiControllerRouteConvention(List<CrudApiInfo> controllerTypesAndRoutes)
+        public CrudApiControllerRouteConvention(List<CrudApiRoute> controllerTypesAndRoutes)
         {
             typesAndRoutes.AddRange(controllerTypesAndRoutes);
         }

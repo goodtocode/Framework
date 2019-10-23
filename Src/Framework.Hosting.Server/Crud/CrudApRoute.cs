@@ -1,15 +1,15 @@
-﻿using System;
+﻿using GoodToCode.Framework.Data;
+using System;
 
 namespace GoodToCode.Framework.Hosting.Server
 {
     /// <summary>
     /// Crud Controller and Route information
     /// </summary>
-    public class CrudApiInfo
+    public class CrudApiRoute
     {
         /// <summary>
         /// Type representing the CrudApiController
-        ///     
         /// </summary>
         public Type CrudType { get; set; }
 
@@ -21,14 +21,14 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <summary>
         /// Constructor
         /// </summary>
-        public CrudApiInfo() { }
+        public CrudApiRoute() { }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="entityType"></param>
         /// <param name="routeToBind"></param>
-        public CrudApiInfo(Type entityType, string routeToBind)
+        public CrudApiRoute(Type entityType, string routeToBind)
         {
             CrudType = entityType;
             CrudRoute = routeToBind;

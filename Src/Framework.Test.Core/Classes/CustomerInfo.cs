@@ -7,13 +7,23 @@ using System.Data.SqlClient;
 
 namespace GoodToCode.Framework.Test
 {
-    /// <summary>
-    /// Database-first entity, Code bound directly to View       
-    /// </summary>
-    [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"),
-        TableName("CustomerInfo")]
-    public partial class CustomerInfo : StoredProcedureEntity<CustomerInfo>
+    public class CustomerSPConfig : StoredProcedureConfiguration<CustomerInfo>
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public CustomerSPConfig()
+        {
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="entity"></param>
+        public CustomerSPConfig(CustomerInfo entity) : base(entity)
+        {
+        }
+
         /// <summary>
         /// Entity Create/Insert Stored Procedure
         /// </summary>
@@ -23,14 +33,14 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoInsert",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@FirstName", FirstName),
-                new SqlParameter("@MiddleName", MiddleName),
-                new SqlParameter("@LastName", LastName),
-                new SqlParameter("@BirthDate", BirthDate),
-                new SqlParameter("@GenderId", GenderId),
-                new SqlParameter("@CustomerTypeId", CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
+                new SqlParameter("@Key", Entity.Key),
+                new SqlParameter("@FirstName", Entity.FirstName),
+                new SqlParameter("@MiddleName", Entity.MiddleName),
+                new SqlParameter("@LastName", Entity.LastName),
+                new SqlParameter("@BirthDate", Entity.BirthDate),
+                new SqlParameter("@GenderId", Entity.GenderId),
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId),
+                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
             }
         };
 
@@ -43,15 +53,15 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoUpdate",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Id", Id),
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@FirstName", FirstName),
-                new SqlParameter("@MiddleName", MiddleName),
-                new SqlParameter("@LastName", LastName),
-                new SqlParameter("@BirthDate", BirthDate),
-                new SqlParameter("@GenderId", GenderId),
-                new SqlParameter("@CustomerTypeId", CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
+                new SqlParameter("@Id", Entity.Id),
+                new SqlParameter("@Key", Entity.Key),
+                new SqlParameter("@FirstName", Entity.FirstName),
+                new SqlParameter("@MiddleName", Entity.MiddleName),
+                new SqlParameter("@LastName", Entity.LastName),
+                new SqlParameter("@BirthDate", Entity.BirthDate),
+                new SqlParameter("@GenderId", Entity.GenderId),
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId),
+                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
             }
         };
 
@@ -64,12 +74,20 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoDelete",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Id", Id),
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
+                new SqlParameter("@Id", Entity.Id),
+                new SqlParameter("@Key", Entity.Key),
+                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
             }
         };
+    }
 
+    /// <summary>
+    /// Database-first entity, Code bound directly to View       
+    /// </summary>
+    [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"),
+        TableName("CustomerInfo")]
+    public class CustomerInfo : EntityInfo<CustomerInfo>
+    {        
         /// <summary>
         /// ValidationRules and BusinessRules that ensure no dirty data is committed
         /// </summary>

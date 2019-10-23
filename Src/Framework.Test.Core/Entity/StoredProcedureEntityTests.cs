@@ -74,7 +74,7 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            resultCustomer = new StoredProcedureWriter<CustomerInfo>().Save(newCustomer);
+            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Save(newCustomer);
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -102,7 +102,7 @@ namespace GoodToCode.Framework.Test
             
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            resultCustomer = new StoredProcedureWriter<CustomerInfo>().Create(newCustomer);
+            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Create(newCustomer);
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -160,7 +160,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
 
             dbCustomer.FirstName = uniqueValue;
-            resultCustomer = new StoredProcedureWriter<CustomerInfo>().Create(dbCustomer);
+            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Create(dbCustomer);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
             Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalID);
@@ -196,7 +196,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Defaults.Guid);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            var deleteResult = new StoredProcedureWriter<CustomerInfo>().Delete(testItem);
+            var deleteResult = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Delete(testItem);
             Assert.IsTrue(deleteResult.IsNew);
 
             testItem = db.GetById(originalID);
@@ -250,7 +250,7 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static void Cleanup()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
+            var writer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             var reader = new EntityReader<CustomerInfo>();
             foreach (Guid item in RecycleBin)
             {

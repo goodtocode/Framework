@@ -68,7 +68,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Entity_CustomerInfo_Insert()
         {
-            var customerWriter = new StoredProcedureWriter<CustomerInfo>();
+            var customerWriter = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -113,7 +113,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Entity_CustomerInfo_Insert_Id()
         {
-            var customerWriter = new StoredProcedureWriter<CustomerInfo>();
+            var customerWriter = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -160,7 +160,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Entity_CustomerInfo_Insert_Key()
         {
-            var customerWriter = new StoredProcedureWriter<CustomerInfo>();
+            var customerWriter = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -226,7 +226,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
-            var writer = new StoredProcedureWriter<CustomerInfo>();
+            var writer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             writer.Update(testEntity);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
@@ -263,7 +263,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
-            var writer = new StoredProcedureWriter<CustomerInfo>();
+            var writer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
             writer.Delete(testEntity);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
@@ -428,7 +428,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                var db = new StoredProcedureWriter<CustomerInfo>();
+                var db = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
                 db.Delete(toDelete);
             }
         }
