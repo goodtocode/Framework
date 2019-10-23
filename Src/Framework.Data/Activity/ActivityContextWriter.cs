@@ -21,7 +21,7 @@ namespace GoodToCode.Framework.Activity
         /// </summary>
         public ActivityContextWriter() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

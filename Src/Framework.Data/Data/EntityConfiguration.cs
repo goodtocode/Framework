@@ -7,13 +7,16 @@ using GoodToCode.Framework.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using GoodToCode.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodToCode.Framework.Data
 {
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public partial class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access
@@ -73,6 +76,11 @@ namespace GoodToCode.Framework.Data
             };
 
         /// <summary>
+        /// Connection string as read from the config file, or passed as a constructor parameter
+        /// </summary>
+        public string ConnectionString { get { return new ConfigurationManagerCore(ApplicationTypes.Native).ConnectionString(ConnectionName).ToADO(); } }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EntityConfiguration() : base()
@@ -108,6 +116,28 @@ namespace GoodToCode.Framework.Data
         public EntityConfiguration(IList<Expression<Func<TEntity, object>>> ignoredProperties) : this()
         {
             IgnoredProperties.AddRange(ignoredProperties);
+        }
+
+        /// <summary>
+        /// Configures the mapping
+        /// </summary>
+        /// <param name="builder"></param>
+        public void Configure(EntityTypeBuilder<TEntity> builder)
+        {
+            // Table
+            builder.ToTable(TableName, DatabaseSchema);
+            builder.HasKey(p => p.Key);
+            // Columns
+            builder.Property(x => x.Id)
+                .HasColumnName($"{ColumnPrefix}Id");
+            builder.Property(x => x.Key)
+                .HasColumnName($"{ColumnPrefix}Key");
+            // Ignored
+            foreach (var property in IgnoredProperties)
+            {
+                builder.Ignore(property);
+            }
+            builder.Ignore("ThrowException");
         }
 
         /// <summary>

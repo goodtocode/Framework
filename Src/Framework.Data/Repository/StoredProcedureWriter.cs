@@ -59,7 +59,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public StoredProcedureWriter() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

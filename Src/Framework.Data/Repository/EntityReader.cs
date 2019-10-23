@@ -51,7 +51,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public EntityReader() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace GoodToCode.Framework.Repository
         public EntityReader(IEntityConfiguration<TEntity> databaseConfig) : this()
         {
             ConfigOptions = databaseConfig;
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

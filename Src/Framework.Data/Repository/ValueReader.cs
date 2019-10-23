@@ -52,7 +52,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public ValueReader() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace GoodToCode.Framework.Repository
         public ValueReader(IValueConfiguration<TValue> databaseConfig) : this()
         {
             ConfigOptions = databaseConfig;
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

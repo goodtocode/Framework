@@ -22,7 +22,7 @@ namespace GoodToCode.Framework.Activity
         /// </summary>
         public ActivityContextReader() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

@@ -45,7 +45,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public EntityWriter() : base()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Directory.GetCurrentDirectory());
+            
         }
 
         /// <summary>

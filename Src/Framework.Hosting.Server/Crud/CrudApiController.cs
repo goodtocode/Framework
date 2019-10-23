@@ -14,7 +14,7 @@ namespace GoodToCode.Framework.Hosting.Server
     ///   D - HttpDelete(string idOrKey)
     /// </summary>
     [Route("api/[Controller]")]
-    public class CrudApiController<TEntity> : ControllerBase where TEntity : ActiveRecordEntity<TEntity>, new()
+    public class CrudApiController<TEntity> : ControllerBase where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Name of the controller and path part
@@ -67,9 +67,12 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpGet("{key}")]
         public IActionResult Get(string key)
         {
+            if (string.IsNullOrEmpty(key)) return BadRequest();
+
             using (var reader = new EntityReader<TEntity>())
             {
                 var entity = reader.GetByIdOrKey(key);
+                if (entity.IsNew) return NotFound();
                 return Ok(entity);
             }
         }
@@ -81,8 +84,12 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpPut]
         public IActionResult Put([FromBody]TEntity entity)
         {
-            entity = entity.Save();
-            return Ok(entity);
+            using (var writer = new EntityWriter<TEntity>())
+            {
+                var returnEntity = writer.Save(entity);
+                if (returnEntity.IsNew) return BadRequest();
+                return Ok(returnEntity);
+            }
         }
 
         /// <summary>
@@ -93,8 +100,12 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpPost]
         public IActionResult Post([FromBody]TEntity entity)
         {
-            entity = entity.Save();
-            return Ok(entity);
+            using (var writer = new EntityWriter<TEntity>())
+            {
+                var returnEntity = writer.Save(entity);
+                if (returnEntity.IsNew) return BadRequest();
+                return Ok(returnEntity);
+            }
         }
 
         /// <summary>
@@ -108,9 +119,14 @@ namespace GoodToCode.Framework.Hosting.Server
             using (var reader = new EntityReader<TEntity>())
             {
                 var entity = reader.GetByIdOrKey(key);
-                entity = entity.Delete();
+                TEntity returnEntity;
+                using (var writer = new EntityWriter<TEntity>())
+                {
+                    returnEntity = writer.Delete(entity);
+                    if (!returnEntity.IsNew) return BadRequest();
+                }                
 
-                return Ok(entity);
+                return Ok(returnEntity);
             }
         }
     }
