@@ -13,7 +13,7 @@ namespace GoodToCode.Framework.Repository
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
-    public partial class EntityReader<TEntity> : DbContext, IGetOperation<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class EntityReader<TEntity> : DbContext, IGetOperation<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.

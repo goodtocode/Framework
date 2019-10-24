@@ -156,9 +156,9 @@ namespace GoodToCode.Framework.Application
         /// Create a record
         /// </summary>
         /// <returns></returns>
-        public async Task<TDto> CreateAsync(TDto model)
+        public async Task<TDto> CreateAsync()
         {
-            MyModel = await Sender.SendPostAsync<TDto>(MyViewModelWebService, model);
+            MyModel = await Sender.SendPostAsync<TDto>(MyViewModelWebService, MyModel);
             return MyModel;
         }
 
@@ -166,9 +166,9 @@ namespace GoodToCode.Framework.Application
         /// Edits a record
         /// </summary>
         /// <returns></returns>
-        public async Task<TDto> UpdateAsync(TDto model)
+        public async Task<TDto> UpdateAsync()
         {
-            MyModel = await Sender.SendPutAsync<TDto>(MyViewModelWebService, model);
+            MyModel = await Sender.SendPutAsync<TDto>(MyViewModelWebService, MyModel);
             return MyModel;
         }
 
@@ -176,13 +176,28 @@ namespace GoodToCode.Framework.Application
         /// Deletes this object from the database via Http Delete
         /// </summary>
         /// <returns>True for success, false for failure</returns>
-        public async Task<TDto> DeleteAsync(TDto model)
+        public async Task<TDto> DeleteAsync()
         {
             var success = Defaults.Boolean;
             var fullUrll = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/").AddLast(MyModel.Id.ToString()).AddLast("/"), UriKind.RelativeOrAbsolute);
             success = await Sender.SendDeleteAsync(fullUrll);
             if (success) MyModel = new TDto();
             return MyModel;
+        }
+
+        public bool CanCreate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanUpdate()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanDelete()
+        {
+            throw new NotImplementedException();
         }
     }
 }

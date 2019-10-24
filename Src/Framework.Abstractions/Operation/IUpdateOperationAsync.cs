@@ -15,6 +15,12 @@ namespace GoodToCode.Framework.Operation
         /// Update the object
         /// </summary>
         /// <param name="entity">Entity to be saved to datastore</param>
-        Task<TEntity> UpdateAsync(TEntity entity);
+        Task<TEntity> UpdateAsync();
+
+        /// <summary>
+        /// Can the entity be updated in the database
+        /// </summary>
+        /// <returns>True if rules and setup allow for update, else false</returns>
+        bool CanUpdate();
     }
 }

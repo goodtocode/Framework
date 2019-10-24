@@ -13,6 +13,12 @@ namespace GoodToCode.Framework.Operation
         /// Deletes operation on this entity
         /// </summary>
         /// <param name="entity">Entity to be saved to datastore</param>
-        Task<TEntity> DeleteAsync(TEntity entity);
+        Task<TEntity> DeleteAsync();
+
+        /// <summary>
+        /// Can the entity deleted from the database
+        /// </summary>
+        /// <returns>True if rules and setup allow for delete, else false</returns>
+        bool CanDelete();
     }
 }

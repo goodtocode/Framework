@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Test
     /// Tests code first ExceptionLog object saving activity to the database 
     /// </summary>
     [TestClass()]
-    public partial class ExceptionLogTests
+    public class ExceptionLogTests
     {
         /// <summary>
         /// Tests code first ExceptionLog object saving activity to the database

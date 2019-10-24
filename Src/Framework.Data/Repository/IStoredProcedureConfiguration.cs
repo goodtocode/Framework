@@ -7,6 +7,11 @@ namespace GoodToCode.Framework.Data
     public interface IStoredProcedureConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
+        /// Entity to be applied to the stored procedure parameters
+        /// </summary>
+        TEntity Entity { get; }
+
+        /// <summary>
         /// Stored procedure that creates the entity
         /// </summary>
         StoredProcedure<TEntity> CreateStoredProcedure { get; }

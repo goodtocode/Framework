@@ -16,7 +16,7 @@ namespace GoodToCode.Framework.Activity
     /// </summary>
     /// <remarks></remarks>
     [DatabaseSchemaName(DatabaseSchemaName.DefaultActivitySchema), ConnectionStringName(ConnectionStringName.DefaultConnectionName)]
-    public partial class ActivityContext : IActivityContext
+    public class ActivityContext : IActivityContext
     {
         private string identityUserName = Defaults.String;
         private string principalIP4Address = Defaults.String;

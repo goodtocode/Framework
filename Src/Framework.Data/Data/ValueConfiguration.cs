@@ -10,7 +10,7 @@ namespace GoodToCode.Framework.Data
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public partial class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
+    public class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
     {
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access

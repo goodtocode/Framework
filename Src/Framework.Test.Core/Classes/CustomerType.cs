@@ -6,7 +6,7 @@ namespace GoodToCode.Framework.Test
     /// Tests attributes        
     /// </summary>
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode")]
-    public partial class CustomerType : ValueInfo<CustomerType>
+    public class CustomerType : ValueInfo<CustomerType>
     {
 
     }

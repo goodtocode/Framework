@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Data
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public partial class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
+    public class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
     {
         /// <summary>
         /// EF DbContext class so adapter can perform the read/write

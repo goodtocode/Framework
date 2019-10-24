@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Test
     /// Tests code first ActivityContext object saving activity to the database 
     /// </summary>
     [TestClass()]
-    public partial class ActivityContextTests
+    public class ActivityContextTests
     {
         /// <summary>
         /// Tests code first ActivityContext object saving activity to the database

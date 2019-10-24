@@ -8,7 +8,7 @@ namespace GoodToCode.Framework.Test
     /// <summary>
     /// Entity for direct table access
     /// </summary>    
-    public partial class Customer
+    public class Customer
     {
         /// <summary>
         /// ValidationRules and BusinessRules that ensure no dirty data is committed

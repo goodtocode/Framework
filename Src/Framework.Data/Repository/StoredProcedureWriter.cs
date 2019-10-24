@@ -7,16 +7,16 @@ using System;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Repository
 {
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
-    public class StoredProcedureWriter<TEntity, TConfig> : DbContext,
-        ICreateOperation<TEntity>, IUpdateOperation<TEntity>, ISaveOperation<TEntity>, IDeleteOperation<TEntity> 
+    public class StoredProcedureWriter<TEntity> : DbContext,
+        ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, ISaveOperationAsync<TEntity>, IDeleteOperationAsync<TEntity>
         where TEntity : EntityInfo<TEntity>, new()
-        where TConfig : IStoredProcedureConfiguration<TEntity>, new()
     {
         /// <summary>
         /// Configures stored procedure for specific parameter behavior
@@ -41,9 +41,9 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
-        /// Stored procedure that C-UDs the entity
+        /// Entity to be applied to the stored procedure parameters
         /// </summary>
-        public IStoredProcedureConfiguration<TEntity> StoredProcConfig { get; private set; }
+        public TEntity Entity { get; } = new TEntity();
 
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
@@ -60,6 +60,22 @@ namespace GoodToCode.Framework.Repository
         /// Configuration class for dbContext options
         /// </summary>
         public IEntityConfiguration<TEntity> DatabaseConfig { get; set; } = new EntityConfiguration<TEntity>();
+
+        /// <summary>
+        /// Stored procedure that C-UDs the entity
+        /// </summary>
+        public IStoredProcedureConfiguration<TEntity> StoredProcConfig { get; private set; }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public StoredProcedureWriter(TEntity entity, IStoredProcedureConfiguration<TEntity> storedProcConfig)
+        {
+            Entity = entity;
+            StoredProcConfig = storedProcConfig;
+            StoredProcConfig.Entity = Entity;
+
+        }
 
         /// <summary>
         /// Can connect to database?
@@ -80,12 +96,11 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Can the entity insert to the database
         /// </summary>
-        /// <param name="entity">Entity to be saved to datastore</param>
         /// <returns>True if rules and setup allow for insert, else false</returns>
-        public bool CanInsert(TEntity entity)
+        public bool CanCreate()
         {
             var returnValue = Defaults.Boolean;
-            if (entity.IsNew && DatabaseConfig.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
+            if (Entity.IsNew && DatabaseConfig.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
                 returnValue = true;
             return returnValue;
         }
@@ -93,12 +108,11 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Can the entity be updated in the database
         /// </summary>
-        /// <param name="entity">Entity to be updated in the datastore</param>
         /// <returns>True if rules and setup allow for update, else false</returns>
-        public bool CanUpdate(TEntity entity)
+        public bool CanUpdate()
         {
             var returnValue = Defaults.Boolean;
-            if (!entity.IsNew && DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess)
                 returnValue = true;
             return returnValue;
         }
@@ -106,12 +120,11 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Can the entity deleted from the database
         /// </summary>
-        /// <param name="entity">Entity to be deleted in the datastore</param>
         /// <returns>True if rules and setup allow for delete, else false</returns>
-        public bool CanDelete(TEntity entity)
+        public bool CanDelete()
         {
             var returnValue = Defaults.Boolean;
-            if (!entity.IsNew && (DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess || DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
+            if (!Entity.IsNew && (DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess || DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
                 returnValue = true;
             return returnValue;
         }
@@ -122,7 +135,7 @@ namespace GoodToCode.Framework.Repository
         ///  Reads directly from DbSet defined in repository class. 
         /// </summary>
         /// <param name="expression">Expression to query the datastore</param>
-        /// <returns>IQueryable of read operation</returns>
+        /// <returns>IQueryable of read OperationAsync</returns>
         public IQueryable<TEntity> Read(Expression<Func<TEntity, bool>> expression)
         {
             return Data.Where(expression);
@@ -131,22 +144,20 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Create operation on the object
         /// </summary>
-        /// <param name="entity">Entity to be saved to datastore</param>
         /// <returns>Object pulled from datastore</returns>
-        public TEntity Create(TEntity entity)
+        public async Task<TEntity> Create()
         {
             try
             {
-                StoredProcConfig = new StoredProcedureConfiguration<TEntity>(entity); // Regen SP parameter values based on new entity data
-                if (StoredProcConfig.CreateStoredProcedure == null) throw new Exception("Create() requires CreateStoredProcedure to be initialized properly.");
-                if (entity.IsValid() && CanInsert(entity))
+                if (StoredProcConfig.CreateStoredProcedure == null) throw new ArgumentNullException("Create() requires CreateStoredProcedure to be initialized properly.");
+                if (Entity.IsValid() && CanCreate())
                 {
                     if (StoredProcConfig.CreateStoredProcedure.Parameters.Where(x => x.ParameterName == "@Key").Any())
-                        entity.Key = entity.Key == Defaults.Guid ? Guid.NewGuid() : entity.Key; // To re-pull data after save
-                    entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(StoredProcConfig.CreateStoredProcedure);
-                    var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == entity.Key) entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
+                        Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key; // To re-pull data after save
+                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
+                    var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.CreateStoredProcedure);
+                    var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                    if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
                 }
             }
             catch (Exception ex)
@@ -155,25 +166,24 @@ namespace GoodToCode.Framework.Repository
                 throw;
             }
 
-            return entity;
+            return Entity;
         }
 
         /// <summary>
         /// Update the object
         /// </summary>
-        public TEntity Update(TEntity entity)
+        public async Task<TEntity> Update()
         {
             try
             {
-                StoredProcConfig = new StoredProcedureConfiguration<TEntity>(entity); // Regen SP parameter values based on new entity data
-                if (StoredProcConfig.UpdateStoredProcedure == null) throw new Exception("Update() requires UpdateStoredProcedure to be initialized properly.");
-                if (entity.IsValid() && CanUpdate(entity))
+                if (StoredProcConfig.UpdateStoredProcedure == null) throw new ArgumentNullException("Update() requires UpdateStoredProcedure to be initialized properly.");
+                if (Entity.IsValid() && CanUpdate())
                 {
-                    entity.Key = entity.Key == Defaults.Guid ? Guid.NewGuid() : entity.Key;
-                    entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(StoredProcConfig.UpdateStoredProcedure);
-                    var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == entity.Key) entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
+                    Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key;
+                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
+                    var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.UpdateStoredProcedure);
+                    var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                    if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
                 }
             }
             catch (Exception ex)
@@ -182,36 +192,35 @@ namespace GoodToCode.Framework.Repository
                 throw;
             }
 
-            return entity;
+            return Entity;
         }
 
         /// <summary>
         /// Worker that saves this object with automatic tracking.
         /// </summary>
-        public virtual TEntity Save(TEntity entity)
+        public virtual async Task<TEntity> Save()
         {
-            if (CanInsert(entity))
-                entity = Create(entity);
-            else if (CanUpdate(entity))
-                entity = Update(entity);
-            return entity;
+            if (CanCreate())
+                return await Create();
+            else if (CanUpdate())
+                return await Update();
+            else throw new System.InvalidOperationException("Save() requires an entity that has CanCreate() or CanUpdate() return true.");
         }
 
         /// <summary>
         /// Deletes operation on this entity
         /// </summary>
-        public TEntity Delete(TEntity entity)
+        public async Task<TEntity> Delete()
         {
             try
             {
-                StoredProcConfig = new StoredProcedureConfiguration<TEntity>(entity); // Regen SP parameter values based on new entity data
-                if (StoredProcConfig.DeleteStoredProcedure == null) throw new Exception("Delete() requires DeleteStoredProcedure to be initialized properly.");
-                if (CanDelete(entity))
+                if (StoredProcConfig.DeleteStoredProcedure == null) throw new ArgumentNullException("Delete() requires DeleteStoredProcedure to be initialized properly.");
+                if (CanDelete())
                 {
-                    entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                    var rowsAffected = ExecuteSqlCommand(StoredProcConfig.DeleteStoredProcedure);
-                    var refreshedEntity = Read(x => x.Key == entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
+                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
+                    var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.DeleteStoredProcedure);
+                    var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                    if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
                 }
             }
             catch (Exception ex)
@@ -220,7 +229,7 @@ namespace GoodToCode.Framework.Repository
                 throw;
             }
 
-            return entity;
+            return Entity;
         }
 
         /// <summary>
@@ -261,17 +270,17 @@ namespace GoodToCode.Framework.Repository
         /// Ordinal: @Param1, @Param2 are assigned in ordinal position
         ///   - Uses: Database.ExecuteSqlCommand(entity.CreateStoredProcedure.SqlPrefix, entity.CreateStoredProcedure.Parameters.ToArray());
         /// </summary>
-        public int ExecuteSqlCommand(StoredProcedure<TEntity> storedProc)
+        public async Task<int> ExecuteSqlCommandAsync(StoredProcedure<TEntity> storedProc)
         {
             var returnValue = Defaults.Integer;
             switch (ParameterBehavior)
             {
                 case ParameterBehaviors.Named:
-                    returnValue = Database.ExecuteSqlCommand(storedProc.ToString());
+                    returnValue = await Database.ExecuteSqlCommandAsync(storedProc.ToString());
                     break;
                 case ParameterBehaviors.Ordinal:
                 default:
-                    returnValue = Database.ExecuteSqlCommand(storedProc.SqlPrefix, storedProc.Parameters.ToArray());
+                    returnValue = await Database.ExecuteSqlCommandAsync(storedProc.SqlPrefix, storedProc.Parameters.ToArray());
                     break;
             }
             return returnValue;

@@ -11,7 +11,7 @@ namespace GoodToCode.Framework.Operation
     ///  Purpose is to encapsulate IQueryOperation and ISaveOperationAsync for syncronous datastore access
     /// </summary>
     /// <typeparam name="TEntity">Type of class supporting CRUD methods</typeparam>
-    public interface IReadOperation<TEntity> where TEntity : IEntity
+    public interface IReadOperationAsync<TEntity> where TEntity : IEntity
     {
         /// <summary>
         /// Retrieve TEntity objects operation

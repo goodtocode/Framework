@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Test
 {
@@ -49,7 +50,7 @@ namespace GoodToCode.Framework.Test
         /// Initializes class before tests are ran
         /// </summary>
         [ClassInitialize()]
-        public static void ClassInit(TestContext context)
+        public static async Task ClassInit(TestContext context)
         {
             // Database is required for these tests
             var databaseAccess = false;
@@ -65,7 +66,7 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_Save()
+        public async Task Core_Entity_StoredProcedureEntity_Save()
         {
             var db = new EntityReader<CustomerInfo>();
             var newCustomer = new CustomerInfo();
@@ -74,7 +75,7 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Save(newCustomer);
+            resultCustomer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig()).Save(newCustomer);
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -93,16 +94,19 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_Create()
+        public async Task Core_Entity_StoredProcedureEntity_Create()
         {
             var db = new EntityReader<CustomerInfo>();
             var newCustomer = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var dbCustomer = new CustomerInfo();
-            
+
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Create(newCustomer);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig()))
+            {
+                resultCustomer = await writer.Create();
+            }
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -121,7 +125,7 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_Read()
+        public async Task Core_Entity_StoredProcedureEntity_Read()
         {
             var db = new EntityReader<CustomerInfo>();
             var dbCustomer = new CustomerInfo();
@@ -140,7 +144,7 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_Update()
+        public async Task Core_Entity_StoredProcedureEntity_Update()
         {
             var db = new EntityReader<CustomerInfo>();
             var resultCustomer = new CustomerInfo();
@@ -160,7 +164,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
 
             dbCustomer.FirstName = uniqueValue;
-            resultCustomer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Create(dbCustomer);
+            resultCustomer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig()).Create(dbCustomer);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
             Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalID);
@@ -177,7 +181,7 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_Delete()
+        public async Task Core_Entity_StoredProcedureEntity_Delete()
         {
             var db = new EntityReader<CustomerInfo>();
             var testItem = new CustomerInfo();
@@ -186,7 +190,7 @@ namespace GoodToCode.Framework.Test
             var originalID = Defaults.Integer;
             var originalKey = Defaults.Guid;
 
-            Core_Entity_StoredProcedureEntity_Create();
+            await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
             testItem = db.GetByKey(lastKey);
@@ -196,8 +200,11 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Defaults.Guid);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            var deleteResult = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>().Delete(testItem);
-            Assert.IsTrue(deleteResult.IsNew);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testItem, new CustomerSPConfig()))
+            {
+                var deleteResult = writer.Delete();
+                Assert.IsTrue(deleteResult.IsNew);
+            }
 
             testItem = db.GetById(originalID);
             Assert.IsTrue(testItem.Id != originalID);
@@ -205,12 +212,12 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Id == Defaults.Integer);
             Assert.IsTrue(testItem.Key == Defaults.Guid);
         }
-        
+
         /// <summary>
         /// Entity_StoredProcedureEntity_GetById
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_GetById()
+        public async Task Core_Entity_StoredProcedureEntity_GetById()
         {
             var dbReader = new EntityReader<CustomerInfo>();
             var dbCustomer = new CustomerInfo();
@@ -229,7 +236,7 @@ namespace GoodToCode.Framework.Test
         /// Entity_StoredProcedureEntity_GetByKey
         /// </summary>
         [TestMethod()]
-        public void Core_Entity_StoredProcedureEntity_GetByKey()
+        public async Task Core_Entity_StoredProcedureEntity_GetByKey()
         {
             var dbCustomer = new CustomerInfo();
             var dbReader = new EntityReader<CustomerInfo>();
@@ -248,9 +255,9 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo, CustomerSPConfig>();
+            var writer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
             var reader = new EntityReader<CustomerInfo>();
             foreach (Guid item in RecycleBin)
             {

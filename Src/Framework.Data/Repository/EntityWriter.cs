@@ -5,14 +5,20 @@ using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Repository
 {
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
-    public partial class EntityWriter<TEntity> : DbContext, ISaveOperation<TEntity>, IDeleteOperation<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class EntityWriter<TEntity> : DbContext, ISaveOperationAsync<TEntity>, IDeleteOperationAsync<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
+        /// <summary>
+        /// Entity to be applied to the stored procedure parameters
+        /// </summary>
+        public TEntity Entity { get; } = new TEntity();
+
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
         ///     Note: EF requires public get/set
@@ -43,9 +49,9 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityWriter() : base()
+        public EntityWriter(TEntity entity) : base()
         {
-            
+            Entity = entity;
         }
 
         /// <summary>
@@ -57,7 +63,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityWriter(IEntityConfiguration<TEntity> databaseConfig) : this()
+        public EntityWriter(TEntity entity, IEntityConfiguration<TEntity> databaseConfig) : this(entity)
         {
             ConfigOptions = databaseConfig;
         }
@@ -65,71 +71,67 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Inserts this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="entity">TEntity entity to commit to data storage</param>
         /// <param name="activity">Activity record owning this process</param>
-        public virtual TEntity Create(TEntity entity, IActivityContext activity)
+        public virtual async Task<TEntity> CreateAsync(IActivityContext activity)
         {
-            entity.ActivityContextKey = activity.ActivityContextKey;
-            return Save(entity);
+            Entity.ActivityContextKey = activity.ActivityContextKey;
+            return await SaveAsync();
         }
 
         /// <summary>
         /// Updates this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="entity">TEntity entity to commit to data storage</param>
         /// <param name="activity">Activity record owning this process</param>
-        public virtual TEntity Update(TEntity entity, IActivityContext activity)
+        public virtual async Task<TEntity> UpdateAsync(IActivityContext activity)
         {
-            entity.ActivityContextKey = activity.ActivityContextKey;
-            return Save(entity);
+            Entity.ActivityContextKey = activity.ActivityContextKey;
+            return await SaveAsync();
         }
 
         /// <summary>
         /// Inserts or Updates this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="entity">TEntity entity to commit to data storage</param>
         /// <param name="activity">Activity record owning this process</param>
-        public virtual TEntity Delete(TEntity entity, IActivityContext activity)
+        public virtual async Task<TEntity> DeleteAsync(IActivityContext activity)
         {
-            entity.ActivityContextKey = activity.ActivityContextKey;
-            return Delete(entity);
+            Entity.ActivityContextKey = activity.ActivityContextKey;
+            return await DeleteAsync();
         }
 
         /// <summary>
         /// Inserts or Updates this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="entity">TEntity entity to commit to data storage</param>
         /// <param name="activity">Activity record owning this process</param>
-        public virtual TEntity Save(TEntity entity, IActivityContext activity)
+        public virtual async Task<TEntity> SaveAsync(IActivityContext activity)
         {
-            entity.ActivityContextKey = activity.ActivityContextKey;
-            return Save(entity);
+            Entity.ActivityContextKey = activity.ActivityContextKey;
+            return await SaveAsync();
         }
 
         /// <summary>
         /// Worker that saves this object with automatic tracking.
         /// </summary>
-        public virtual TEntity Save(TEntity entity)
+        public virtual async Task<TEntity> SaveAsync()
         {
             var activity = new ActivityContext();
             var trackingState = EntityState.Unchanged;
 
             try
             {
-                entity.ActivityContextKey = entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
-                if (CanInsert(entity))
+                Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
+                if (CanCreate())
                 {
                     trackingState = EntityState.Added;
-                    Data.Add(entity);
+                    Data.Add(Entity);
                 }
-                else if (CanUpdate(entity))
+                else if (CanUpdate())
                     trackingState = EntityState.Modified;
-                if (entity.IsValid() && trackingState != EntityState.Unchanged)
+                if (Entity.IsValid() && trackingState != EntityState.Unchanged)
                 {
-                    entity.Key = entity.Key == Defaults.Guid ? Guid.NewGuid() : entity.Key; // Required to re-pull data after save
-                    Entry(entity).State = trackingState;
-                    SaveChanges();
-                    entity.Fill(new EntityReader<TEntity>().GetByKey(entity.Key)); // Re-pull clean object, exactly as the DB has stored
+                    Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
+                    Entry(Entity).State = trackingState;
+                    await SaveChangesAsync();
+                    Entity.Fill(new EntityReader<TEntity>().GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
                 }
             }
             catch (Exception ex)
@@ -138,23 +140,23 @@ namespace GoodToCode.Framework.Repository
                 throw;
             }
 
-            return entity;
+            return Entity;
         }
 
         /// <summary>
         /// Worker that deletes this object with automatic tracking
         /// </summary>      
         /// <returns>True if record deleted, false if not</returns>
-        public virtual TEntity Delete(TEntity entity)
+        public virtual async Task<TEntity> DeleteAsync()
         {
             try
             {
-                if (CanDelete(entity))
+                if (CanDelete())
                 {
-                    Entry(entity).State = EntityState.Deleted;
-                    Data.Remove(entity);
-                    SaveChanges();
-                    entity = new EntityReader<TEntity>().GetByKey(entity.Key); // Re-pull clean object, exactly as the DB has stored
+                    Entry(Entity).State = EntityState.Deleted;
+                    Data.Remove(Entity);
+                    await SaveChangesAsync();
+                    Entity.Fill(new EntityReader<TEntity>().GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
                 }
             }
             catch (Exception ex)
@@ -163,18 +165,17 @@ namespace GoodToCode.Framework.Repository
                 throw;
             }
 
-            return entity;
+            return Entity;
         }
 
         /// <summary>
         /// Can the entity insert to the database
         /// </summary>
-        /// <param name="entity">Entity to be saved to datastore</param>
         /// <returns>True if rules and setup allow for insert, else false</returns>
-        public bool CanInsert(TEntity entity)
+        public bool CanCreate()
         {
             var returnValue = Defaults.Boolean;
-            if (entity.IsNew && ConfigOptions.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
+            if (Entity.IsNew && ConfigOptions.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
                 returnValue = true;
             return returnValue;
         }
@@ -182,12 +183,11 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Can the entity be updated in the database
         /// </summary>
-        /// <param name="entity">Entity to be updated in the datastore</param>
         /// <returns>True if rules and setup allow for update, else false</returns>
-        public bool CanUpdate(TEntity entity)
+        public bool CanUpdate()
         {
             var returnValue = Defaults.Boolean;
-            if (!entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
                 returnValue = true;
             return returnValue;
         }
@@ -195,12 +195,11 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Can the entity deleted from the database
         /// </summary>
-        /// <param name="entity">Entity to be deleted in the datastore</param>
         /// <returns>True if rules and setup allow for delete, else false</returns>
-        public bool CanDelete(TEntity entity)
+        public bool CanDelete()
         {
             var returnValue = Defaults.Boolean;
-            if (!entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
                 returnValue = true;
             return returnValue;
         }

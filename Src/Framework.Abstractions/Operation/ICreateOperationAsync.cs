@@ -14,8 +14,13 @@ namespace GoodToCode.Framework.Operation
         /// <summary>
         /// Create operation on the object
         /// </summary>
-        /// <param name="entity">Entity to be saved to datastore</param>
         /// <returns></returns>
-        Task<TEntity> CreateAsync(TEntity entity);
+        Task<TEntity> CreateAsync();
+
+        /// <summary>
+        /// Can the entity insert to the database
+        /// </summary>
+        /// <returns>True if rules and setup allow for insert, else false</returns>
+        bool CanCreate();
     }
 }
