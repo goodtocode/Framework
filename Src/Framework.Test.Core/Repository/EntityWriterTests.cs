@@ -86,15 +86,11 @@ namespace GoodToCode.Framework.Test
 
             // Do Insert and check passed entity and returned entity                        
             testEntity.ActivityContextKey = reader.GetAll().Take(1).FirstOrDefaultSafe().ActivityContextKey;
-            //using (var writer = new EntityWriter<CustomerEntity>(testEntity))
-            //{
-            //    writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
-            //    resultEntity = await writer.SaveAsync();
-            //}
-
-            var writer = new EntityWriter<CustomerEntity>(testEntity);
-            writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
-            resultEntity = await writer.SaveAsync();            
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            {
+                writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
+                resultEntity = await writer.SaveAsync();
+            }
 
             Assert.IsTrue(resultEntity.Id != Defaults.Integer);
             Assert.IsTrue(resultEntity.Key != Defaults.Guid);

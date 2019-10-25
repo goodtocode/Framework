@@ -7,7 +7,7 @@ namespace GoodToCode.Framework.Operation
     /// Write operation to a non-thread-safe datastore such as EF data context
     /// Includes all Save() and Delete() overloads, as well as Get..() methods
     /// </summary>
-    public interface ISaveOperationAsync<TEntity> : ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity> where TEntity : IEntity
+    public interface ISaveOperationAsync<TEntity> where TEntity : IEntity
     {
         /// <summary>
         /// Inserts or Updates this object in the database

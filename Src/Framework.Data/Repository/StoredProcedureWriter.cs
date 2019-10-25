@@ -15,7 +15,7 @@ namespace GoodToCode.Framework.Repository
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
     public class StoredProcedureWriter<TEntity> : DbContext,
-        ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, ISaveOperationAsync<TEntity>, IDeleteOperationAsync<TEntity>
+        ISaveOperationAsync<TEntity>, ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, IDeleteOperationAsync<TEntity>
         where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>

@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Repository
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
-    public class EntityWriter<TEntity> : DbContext, ISaveOperationAsync<TEntity>, IDeleteOperationAsync<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class EntityWriter<TEntity> : DbContext, ISaveOperationAsync<TEntity>, ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, IDeleteOperationAsync<TEntity> where TEntity : EntityInfo<TEntity>, new()
     {
         /// <summary>
         /// Entity to be applied to the stored procedure parameters
