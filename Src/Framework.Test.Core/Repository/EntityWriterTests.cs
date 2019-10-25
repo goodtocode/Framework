@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Test
 {
@@ -65,15 +66,15 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Data_EntityWriter_Insert()
+        public async Task Core_Data_EntityWriter_Insert()
         {
-            EntityWriter<CustomerEntity> customerWriter;
             var testEntity = new CustomerEntity();
             var resultEntity = new CustomerEntity();
             var oldId = Defaults.Integer;
             var oldKey = Defaults.Guid;
             var newId = Defaults.Integer;
             var newKey = Defaults.Guid;
+            var reader = new ActivityContextReader();
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
@@ -83,11 +84,18 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Id == Defaults.Integer);
             Assert.IsTrue(testEntity.Key == Defaults.Guid);
 
-            // Do Insert and check passed entity and returned entity
-            customerWriter = new EntityWriter<CustomerEntity>();
-            customerWriter.ConfigOptions.IgnoredProperties.Add(p => p.State );
-            testEntity.ActivityContextKey = new ActivityContextReader().GetAll().Take(1).FirstOrDefaultSafe().ActivityContextKey;
-            resultEntity = customerWriter.Save(testEntity);
+            // Do Insert and check passed entity and returned entity                        
+            testEntity.ActivityContextKey = reader.GetAll().Take(1).FirstOrDefaultSafe().ActivityContextKey;
+            //using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            //{
+            //    writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
+            //    resultEntity = await writer.SaveAsync();
+            //}
+
+            var writer = new EntityWriter<CustomerEntity>(testEntity);
+            writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
+            resultEntity = await writer.SaveAsync();            
+
             Assert.IsTrue(resultEntity.Id != Defaults.Integer);
             Assert.IsTrue(resultEntity.Key != Defaults.Guid);
         
@@ -108,7 +116,7 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Data_EntityWriter_Update()
+        public async Task Core_Data_EntityWriter_Update()
         {
             var testEntity = new CustomerEntity();
             var reader = new EntityReader<CustomerEntity>();
@@ -118,7 +126,7 @@ namespace GoodToCode.Framework.Test
             var entityKey = Defaults.Guid;
 
             // Create and capture original data
-            Core_Data_EntityWriter_Insert();
+            await Core_Data_EntityWriter_Insert();
             testEntity = reader.GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldFirstName = testEntity.FirstName;
             entityId = testEntity.Id;
@@ -129,8 +137,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
 
             // Do Update
-            var writer = new EntityWriter<CustomerEntity>();
-            writer.Save(testEntity);
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            {
+                testEntity = await writer.SaveAsync();
+            }
 
             // Pull from DB and retest
             testEntity = reader.GetById(entityId);
@@ -146,7 +156,7 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Data_EntityWriter_Delete()
+        public async Task Core_Data_EntityWriter_Delete()
         {
             var reader = new EntityReader<CustomerEntity>();
             var testEntity = new CustomerEntity();
@@ -154,7 +164,7 @@ namespace GoodToCode.Framework.Test
             var oldKey = Defaults.Guid;
 
             // Insert and baseline test
-            Core_Data_EntityWriter_Insert();
+            await Core_Data_EntityWriter_Insert();
             testEntity = reader.GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
@@ -163,8 +173,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
 
             // Do delete
-            var writer = new EntityWriter<CustomerEntity>();
-            writer.Delete(testEntity);
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            {
+                testEntity = await writer.DeleteAsync();
+            }
 
             // Pull from DB and retest
             testEntity = reader.GetAll().Where(x => x.Id == oldId).FirstOrDefaultSafe();
@@ -182,7 +194,7 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
             var reader = new EntityReader<CustomerEntity>();
             var toDelete = new CustomerEntity();
@@ -190,8 +202,10 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                var db = new EntityWriter<CustomerEntity>();
-                db.Delete(toDelete);
+                using (var db = new EntityWriter<CustomerEntity>(toDelete))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }    

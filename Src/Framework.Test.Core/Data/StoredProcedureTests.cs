@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Test
 {
@@ -137,13 +138,13 @@ namespace GoodToCode.Framework.Test
         /// Core_Data_CrudStoredProcedures_Update
         /// </summary>
         [TestMethod()]
-        public void Core_Data_StoredProcedure_Update()
+        public async Task Core_Data_StoredProcedure_Update()
         {
             var testItem = new CustomerInfo();
             var reader = new EntityReader<CustomerInfo>();
             var customerTests = new CustomerInfoTests();
 
-            customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
             testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefaultSafe());
 
             var updateProc = new StoredProcedure<CustomerInfo>()
@@ -169,13 +170,13 @@ namespace GoodToCode.Framework.Test
         /// Core_Data_CrudStoredProcedures_Delete
         /// </summary>
         [TestMethod()]
-        public void Core_Data_StoredProcedure_Delete()
+        public async Task Core_Data_StoredProcedure_Delete()
         {
             var testItem = new CustomerInfo();
             var reader = new EntityReader<CustomerInfo>();
             var customerTests = new CustomerInfoTests();
 
-            customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
             testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefaultSafe());
             var deleteProc = new StoredProcedure<CustomerInfo>()
             {
@@ -194,16 +195,18 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
-        {
-            var writer = new EntityWriter<CustomerInfo>();
+        public static async Task Cleanup()
+        {            
             var reader = new EntityReader<CustomerInfo>();
             var toDelete = new CustomerInfo();
 
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetByKey(item);
-                writer.Delete(toDelete);
+                using (var writer = new EntityWriter<CustomerInfo>(toDelete))
+                {
+                    await writer.DeleteAsync();
+                }
             }
         }
     }

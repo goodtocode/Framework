@@ -12,7 +12,6 @@ namespace GoodToCode.Framework.Operation
         /// <summary>
         /// Deletes operation on this entity
         /// </summary>
-        /// <param name="entity">Entity to be saved to datastore</param>
         Task<TEntity> DeleteAsync();
 
         /// <summary>

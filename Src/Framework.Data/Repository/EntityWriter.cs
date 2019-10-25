@@ -28,7 +28,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        public virtual IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>(prop => prop.Id);
+        public IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>(prop => prop.Id);
 
         /// <summary>
         /// Can connect to database?
@@ -57,8 +57,12 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Constuctor for options
         /// </summary>
+        /// <param name="entity">entity to persist</param>
         /// <param name="options"></param>
-        public EntityWriter(DbContextOptions<EntityWriter<TEntity>> options) : base(options) { }
+        public EntityWriter(TEntity entity, DbContextOptions<EntityWriter<TEntity>> options) : base(options)
+        {
+            Entity = entity;
+        }
 
         /// <summary>
         /// Constructor
@@ -71,54 +75,70 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Inserts this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="activity">Activity record owning this process</param>
-        public virtual async Task<TEntity> CreateAsync(IActivityContext activity)
+        public async Task<TEntity> CreateAsync()
         {
-            Entity.ActivityContextKey = activity.ActivityContextKey;
             return await SaveAsync();
         }
+
+        ///// <summary>
+        ///// Inserts this object with Workflow-based tracking.
+        ///// </summary>  
+        ///// <param name="activity">Activity record owning this process</param>
+        //public async Task<TEntity> CreateAsync(IActivityContext activity)
+        //{
+        //    Entity.ActivityContextKey = activity.ActivityContextKey;
+        //    return await SaveAsync();
+        //}
 
         /// <summary>
         /// Updates this object with Workflow-based tracking.
         /// </summary>  
-        /// <param name="activity">Activity record owning this process</param>
-        public virtual async Task<TEntity> UpdateAsync(IActivityContext activity)
+        public async Task<TEntity> UpdateAsync()
         {
-            Entity.ActivityContextKey = activity.ActivityContextKey;
             return await SaveAsync();
         }
+        ///// <summary>
+        ///// Updates this object with Workflow-based tracking.
+        ///// </summary>  
+        ///// <param name="activity">Activity record owning this process</param>
+        //public async Task<TEntity> UpdateAsync(IActivityContext activity)
+        //{
+        //    Entity.ActivityContextKey = activity.ActivityContextKey;
+        //    return await SaveAsync();
+        //}
 
-        /// <summary>
-        /// Inserts or Updates this object with Workflow-based tracking.
-        /// </summary>  
-        /// <param name="activity">Activity record owning this process</param>
-        public virtual async Task<TEntity> DeleteAsync(IActivityContext activity)
-        {
-            Entity.ActivityContextKey = activity.ActivityContextKey;
-            return await DeleteAsync();
-        }
+        ///// <summary>
+        ///// Inserts or Updates this object with Workflow-based tracking.
+        ///// </summary>  
+        ///// <param name="activity">Activity record owning this process</param>
+        //public async Task<TEntity> DeleteAsync(IActivityContext activity)
+        //{
+        //    Entity.ActivityContextKey = activity.ActivityContextKey;
+        //    return await DeleteAsync();
+        //}
 
-        /// <summary>
-        /// Inserts or Updates this object with Workflow-based tracking.
-        /// </summary>  
-        /// <param name="activity">Activity record owning this process</param>
-        public virtual async Task<TEntity> SaveAsync(IActivityContext activity)
-        {
-            Entity.ActivityContextKey = activity.ActivityContextKey;
-            return await SaveAsync();
-        }
+        ///// <summary>
+        ///// Inserts or Updates this object with Workflow-based tracking.
+        ///// </summary>  
+        ///// <param name="activity">Activity record owning this process</param>
+        //public async Task<TEntity> SaveAsync(IActivityContext activity)
+        //{
+        //    Entity.ActivityContextKey = activity.ActivityContextKey;
+        //    return await SaveAsync();
+        //}
+
 
         /// <summary>
         /// Worker that saves this object with automatic tracking.
         /// </summary>
-        public virtual async Task<TEntity> SaveAsync()
+        public async Task<TEntity> SaveAsync()
         {
             var activity = new ActivityContext();
             var trackingState = EntityState.Unchanged;
 
             try
             {
-                Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : entity.ActivityContextKey;
+                Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
                 if (CanCreate())
                 {
                     trackingState = EntityState.Added;
@@ -131,7 +151,11 @@ namespace GoodToCode.Framework.Repository
                     Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
                     Entry(Entity).State = trackingState;
                     await SaveChangesAsync();
-                    Entity.Fill(new EntityReader<TEntity>().GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
+                    using (var reader = new EntityReader<TEntity>())
+                    {
+                        var refreshedEntity = reader.GetByKey(Entity.Key);
+                        Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
+                    }
                 }
             }
             catch (Exception ex)
@@ -147,7 +171,7 @@ namespace GoodToCode.Framework.Repository
         /// Worker that deletes this object with automatic tracking
         /// </summary>      
         /// <returns>True if record deleted, false if not</returns>
-        public virtual async Task<TEntity> DeleteAsync()
+        public async Task<TEntity> DeleteAsync()
         {
             try
             {

@@ -12,13 +12,6 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Constructor
         /// </summary>
-        public CustomerSPConfig()
-        {
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
         /// <param name="entity"></param>
         public CustomerSPConfig(CustomerInfo entity) : base(entity)
         {

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Test
 {
@@ -66,7 +67,7 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Entity_CustomerInfo_Insert()
+        public async Task Core_Entity_CustomerInfo_Insert()
         {
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
@@ -85,9 +86,9 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig()))
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
-                resultEntity = await writer.Create();
+                resultEntity = await writer.CreateAsync();
             }
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
@@ -113,9 +114,8 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Entity_CustomerInfo_Insert_Id()
+        public async Task Core_Entity_CustomerInfo_Insert_Id()
         {
-            var customerWriter = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -135,7 +135,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            resultEntity = customerWriter.Create(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                resultEntity = await writer.CreateAsync();
+            }
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
             Assert.IsTrue(resultEntity.Id != Defaults.Integer);
@@ -160,9 +163,8 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Entity_CustomerInfo_Insert_Key()
+        public async Task Core_Entity_CustomerInfo_Insert_Key()
         {
-            var customerWriter = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -181,7 +183,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            resultEntity = customerWriter.Create(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                resultEntity = await writer.CreateAsync();
+            }
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
             Assert.IsTrue(resultEntity.Id != Defaults.Integer);
@@ -206,7 +211,7 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Entity_CustomerInfo_Update()
+        public async Task Core_Entity_CustomerInfo_Update()
         {
             var testEntity = new CustomerInfo();
             var reader = new EntityReader<CustomerInfo>();
@@ -216,7 +221,7 @@ namespace GoodToCode.Framework.Test
             var entityKey = Defaults.Guid;
 
             // Create and capture original data
-            Core_Entity_CustomerInfo_Insert();
+            await Core_Entity_CustomerInfo_Insert();
             testEntity = reader.GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldFirstName = testEntity.FirstName;
             entityId = testEntity.Id;
@@ -228,8 +233,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
-            var writer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
-            writer.Update(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                testEntity = await writer.UpdateAsync();
+            }
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -247,7 +254,7 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Core_Entity_CustomerInfo_Delete()
+        public async Task Core_Entity_CustomerInfo_Delete()
         {
             var reader = new EntityReader<CustomerInfo>();
             var testEntity = new CustomerInfo();
@@ -255,7 +262,7 @@ namespace GoodToCode.Framework.Test
             var oldKey = Defaults.Guid;
 
             // Insert and baseline test
-            Core_Entity_CustomerInfo_Insert();
+            await Core_Entity_CustomerInfo_Insert();
             testEntity = reader.GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
@@ -265,8 +272,10 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
-            var writer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
-            writer.Delete(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                testEntity = await writer.DeleteAsync();
+            }
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -422,7 +431,7 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
             var reader = new EntityReader<CustomerInfo>();
             var toDelete = new CustomerInfo();
@@ -430,8 +439,10 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                var db = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
-                db.Delete(toDelete);
+                using (var db = new StoredProcedureWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }

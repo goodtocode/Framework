@@ -10,7 +10,7 @@ namespace GoodToCode.Framework.Activity
     /// </summary>
     /// <remarks></remarks>
     [DatabaseSchemaName(DatabaseSchemaName.DefaultActivitySchema), ConnectionStringName(ConnectionStringName.DefaultConnectionName)]
-    public classExceptionLog : IExceptionLog
+    public class ExceptionLog : IExceptionLog
     {
         private Uri endpointUrl = Defaults.Uri;
         private Exception currentException = new System.Exception("No Exception");

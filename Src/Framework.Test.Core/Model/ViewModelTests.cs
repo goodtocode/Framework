@@ -142,7 +142,7 @@ namespace GoodToCode.Framework.Test
                 // Update test record
                 var testKey = Guid.NewGuid().ToString();
                 customer.FirstName = customer.FirstName.AddLast(testKey);
-                customer = await viewModel.UpdateAsync(customer);
+                customer = await viewModel.UpdateAsync();
                 Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
                 Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
                 // Verify update success
@@ -179,7 +179,7 @@ namespace GoodToCode.Framework.Test
             {
                 customer = await viewModel.GetByKeyAsync(keyToTest);
                 Assert.IsTrue(interfaceBreakingRelease | !viewModel.MyModel.IsNew);
-                returnCustomer = await viewModel.DeleteAsync(customer);
+                returnCustomer = await viewModel.DeleteAsync();
                 Assert.IsTrue(interfaceBreakingRelease | returnCustomer.IsNew);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.IsNew);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == Defaults.Integer);
@@ -203,13 +203,16 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            var db = new EntityWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
             foreach (Guid item in RecycleBin)
             {
-                db.Delete(reader.GetByKey(item));
+                var toDelete = reader.GetByKey(item);
+                using (var db = new EntityWriter<CustomerInfo>(toDelete))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }

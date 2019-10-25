@@ -1,6 +1,7 @@
 ﻿using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Hosting.Server
 {
@@ -40,17 +41,17 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <summary>
         /// Exposed endpoint name for HTTP_PUT
         /// </summary>
-        public const string PutAction = "Put";
+        public const string PutAction = "PutAsync";
 
         /// <summary>
         /// Exposed endpoint name for HTTP_POST
         /// </summary>
-        public const string PostAction = "Post";
+        public const string PostAction = "PostAsync";
 
         /// <summary>
         /// Exposed endpoint name for HTTP_DELETE
         /// </summary>
-        public const string DeleteAction = "Delete";
+        public const string DeleteAction = "DeleteAsync";
 
         /// <summary>
         /// Constructor
@@ -82,11 +83,11 @@ namespace GoodToCode.Framework.Hosting.Server
         /// </summary>
         /// <returns></returns>
         [HttpPut]
-        public IActionResult Put([FromBody]TEntity entity)
+        public async Task<IActionResult> PutAsync([FromBody]TEntity entity)
         {
-            using (var writer = new EntityWriter<TEntity>())
+            using (var writer = new EntityWriter<TEntity>(entity))
             {
-                var returnEntity = writer.Save(entity);
+                var returnEntity = await writer.SaveAsync();
                 if (returnEntity.IsNew) return BadRequest();
                 return Ok(returnEntity);
             }
@@ -98,11 +99,11 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <param name="entity">Full Person model worth of data with user changes</param>
         /// <returns>PersonDto containing Person data</returns>
         [HttpPost]
-        public IActionResult Post([FromBody]TEntity entity)
+        public async Task<IActionResult> PostAsync([FromBody]TEntity entity)
         {
-            using (var writer = new EntityWriter<TEntity>())
+            using (var writer = new EntityWriter<TEntity>(entity))
             {
-                var returnEntity = writer.Save(entity);
+                var returnEntity = await writer.SaveAsync();
                 if (returnEntity.IsNew) return BadRequest();
                 return Ok(returnEntity);
             }
@@ -114,15 +115,15 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpDelete("{key}")]
-        public IActionResult Delete(string key)
+        public async Task<IActionResult> DeleteAsync(string key)
         {
             using (var reader = new EntityReader<TEntity>())
             {
                 var entity = reader.GetByIdOrKey(key);
                 TEntity returnEntity;
-                using (var writer = new EntityWriter<TEntity>())
+                using (var writer = new EntityWriter<TEntity>(entity))
                 {
-                    returnEntity = writer.Delete(entity);
+                    returnEntity = await writer.DeleteAsync();
                     if (!returnEntity.IsNew) return BadRequest();
                 }                
 

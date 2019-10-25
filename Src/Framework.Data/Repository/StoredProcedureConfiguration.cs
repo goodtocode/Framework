@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Entity to be applied to the stored procedure parameters
         /// </summary>
-        public TEntity Entity { get; } = new TEntity();
+        public TEntity Entity { get; set; } = new TEntity();
 
         /// <summary>
         /// Constructor 

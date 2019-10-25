@@ -145,7 +145,7 @@ namespace GoodToCode.Framework.Repository
         /// Create operation on the object
         /// </summary>
         /// <returns>Object pulled from datastore</returns>
-        public async Task<TEntity> Create()
+        public async Task<TEntity> CreateAsync()
         {
             try
             {
@@ -172,7 +172,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Update the object
         /// </summary>
-        public async Task<TEntity> Update()
+        public async Task<TEntity> UpdateAsync()
         {
             try
             {
@@ -198,19 +198,19 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Worker that saves this object with automatic tracking.
         /// </summary>
-        public virtual async Task<TEntity> Save()
+        public virtual async Task<TEntity> SaveAsync()
         {
             if (CanCreate())
-                return await Create();
+                return await CreateAsync();
             else if (CanUpdate())
-                return await Update();
+                return await UpdateAsync();
             else throw new System.InvalidOperationException("Save() requires an entity that has CanCreate() or CanUpdate() return true.");
         }
 
         /// <summary>
         /// Deletes operation on this entity
         /// </summary>
-        public async Task<TEntity> Delete()
+        public async Task<TEntity> DeleteAsync()
         {
             try
             {

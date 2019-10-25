@@ -5,6 +5,7 @@ using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Test
 {
@@ -18,7 +19,7 @@ namespace GoodToCode.Framework.Test
         /// Initializes class before tests are ran
         /// </summary>
         [ClassInitialize()]
-        public static void ClassInit(TestContext context)
+        public static async Task ClassInit(TestContext context)
         {
             // Database is required for these tests
             var databaseAccess = false;
@@ -30,11 +31,11 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(databaseAccess, @"App_Data\\ConnectionStrings.config DefaultConnection is not able to connect to SQL Server. Please check your connection string and try again.");
             // Need a few records to test with across all functions
             var customerTests = new CustomerInfoTests();
-            customerTests.Core_Entity_CustomerInfo_Insert();
-            customerTests.Core_Entity_CustomerInfo_Insert();
-            customerTests.Core_Entity_CustomerInfo_Insert();
-            customerTests.Core_Entity_CustomerInfo_Insert();
-            customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
+            await customerTests.Core_Entity_CustomerInfo_Insert();
         }
 
         /// <summary>
@@ -198,9 +199,9 @@ namespace GoodToCode.Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            CustomerInfoTests.Cleanup();
+            await CustomerInfoTests.Cleanup();
         }
     }
 }

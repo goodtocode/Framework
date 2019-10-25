@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Entity to be applied to the stored procedure parameters
         /// </summary>
-        TEntity Entity { get; }
+        TEntity Entity { get; set; }
 
         /// <summary>
         /// Stored procedure that creates the entity

@@ -50,7 +50,7 @@ namespace GoodToCode.Framework.Test
         /// Initializes class before tests are ran
         /// </summary>
         [ClassInitialize()]
-        public static async Task ClassInit(TestContext context)
+        public static void ClassInit(TestContext context)
         {
             // Database is required for these tests
             var databaseAccess = false;
@@ -75,7 +75,11 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            resultCustomer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig()).Save(newCustomer);
+
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            {
+                resultCustomer = await writer.SaveAsync();
+            }
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -103,9 +107,9 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig()))
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
             {
-                resultCustomer = await writer.Create();
+                resultCustomer = await writer.CreateAsync();
             }
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
@@ -131,7 +135,7 @@ namespace GoodToCode.Framework.Test
             var dbCustomer = new CustomerInfo();
             var lastKey = Defaults.Guid;
 
-            Core_Entity_StoredProcedureEntity_Create();
+            await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
             dbCustomer = db.GetByKey(lastKey);
@@ -146,35 +150,39 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Update()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>();
+            var item = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
-            var dbCustomer = new CustomerInfo();
             var uniqueValue = RandomString.Next();
             var lastKey = Defaults.Guid;
             var originalID = Defaults.Integer;
             var originalKey = Defaults.Guid;
 
-            Core_Entity_StoredProcedureEntity_Create();
+            await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
-            dbCustomer = db.GetByKey(lastKey);
-            originalID = dbCustomer.Id;
-            originalKey = dbCustomer.Key;
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            item = reader.GetByKey(lastKey);
+            originalID = item.Id;
+            originalKey = item.Key;
+            Assert.IsTrue(item.Id != Defaults.Integer);
+            Assert.IsTrue(item.Key != Defaults.Guid);
 
-            dbCustomer.FirstName = uniqueValue;
-            resultCustomer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig()).Create(dbCustomer);
+            item.FirstName = uniqueValue;
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(item, new CustomerSPConfig(item)))
+            {
+                resultCustomer = await writer.CreateAsync();
+            }
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalID);
-            Assert.IsTrue(dbCustomer.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
+            Assert.IsTrue(item.Id == resultCustomer.Id && resultCustomer.Id == originalID);
+            Assert.IsTrue(item.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
 
-            dbCustomer = db.GetById(originalID);
-            Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalID);
-            Assert.IsTrue(dbCustomer.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            item = reader.GetById(originalID);
+            Assert.IsTrue(item.Id == resultCustomer.Id && resultCustomer.Id == originalID);
+            Assert.IsTrue(item.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
+
+            Assert.IsTrue(item.Id != Defaults.Integer);
+            Assert.IsTrue(item.Key != Defaults.Guid);
         }
 
         /// <summary>
@@ -200,9 +208,9 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Defaults.Guid);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testItem, new CustomerSPConfig()))
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testItem, new CustomerSPConfig(testItem)))
             {
-                var deleteResult = writer.Delete();
+                var deleteResult = await writer.DeleteAsync();
                 Assert.IsTrue(deleteResult.IsNew);
             }
 
@@ -223,7 +231,7 @@ namespace GoodToCode.Framework.Test
             var dbCustomer = new CustomerInfo();
             var lastKey = Defaults.Guid;
 
-            Core_Entity_StoredProcedureEntity_Create();
+            await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
             dbCustomer = dbReader.GetByKey(lastKey);
@@ -242,7 +250,7 @@ namespace GoodToCode.Framework.Test
             var dbReader = new EntityReader<CustomerInfo>();
             var lastKey = Defaults.Guid;
 
-            Core_Entity_StoredProcedureEntity_Create();
+            await Core_Entity_StoredProcedureEntity_Create();
             lastKey = dbReader.GetByKey(RecycleBin.Last()).Key;
 
             dbCustomer = dbReader.GetByKey(lastKey);
@@ -256,12 +264,15 @@ namespace GoodToCode.Framework.Test
         /// </summary>
         [ClassCleanup()]
         public static async Task Cleanup()
-        {
-            var writer = new StoredProcedureWriter<CustomerInfo>(new CustomerSPConfig());
+        {            
             var reader = new EntityReader<CustomerInfo>();
             foreach (Guid item in RecycleBin)
             {
-                writer.Delete(reader.GetByKey(item));
+                var toDelete = reader.GetByKey(item);
+                using (var writer = new StoredProcedureWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                {
+                    await writer.DeleteAsync();
+                }
             }
         }
     }

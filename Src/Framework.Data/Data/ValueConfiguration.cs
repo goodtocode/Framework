@@ -4,6 +4,9 @@ using GoodToCode.Extensions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using GoodToCode.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodToCode.Framework.Data
 {
@@ -12,6 +15,11 @@ namespace GoodToCode.Framework.Data
     /// </summary>
     public class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
     {
+        /// <summary>
+        /// Connection string as read from the config file, or passed as a constructor parameter
+        /// </summary>
+        public string ConnectionString { get { return new ConfigurationManagerCore(ApplicationTypes.Native).ConnectionString(ConnectionName).ToADO(); } }
+
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access
         /// </summary>
@@ -76,6 +84,26 @@ namespace GoodToCode.Framework.Data
         public ValueConfiguration(string databaseSchemaName) : this()
         {
             DatabaseSchema = databaseSchemaName;
+        }
+
+        /// <summary>
+        /// Configures the mapping
+        /// </summary>
+        /// <param name="builder"></param>
+        public void Configure(EntityTypeBuilder<TValue> builder)
+        {
+            // Table
+            builder.ToTable(TableName, DatabaseSchema);
+            builder.HasKey(p => p.Key);
+            // Columns
+            builder.Property(x => x.Key)
+                .HasColumnName($"{ColumnPrefix}Key");
+            // Ignored
+            foreach (var property in IgnoredProperties)
+            {
+                builder.Ignore(property);
+            }
+            builder.Ignore("ThrowException");
         }
 
         /// <summary>
