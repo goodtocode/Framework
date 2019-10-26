@@ -19,6 +19,7 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
+using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -48,7 +49,9 @@ namespace Framework.WebServices
         public IActionResult Get(string key = "-1", string firstName = "", string lastName = "")
         {
             var model = new CustomerSearchModel() { Id = key.TryParseInt32(), Key = key.TryParseGuid(), FirstName = firstName, LastName = lastName };
-            var searchResults = CustomerInfo.GetByAny(model).Take(25);
+            var reader = new EntityReader<CustomerInfo>();
+            var searchResults = reader.GetByWhere(x => x.Key == model.Key || x.FirstName.Contains(model.FirstName) || x.LastName.Contains(model.LastName) || x.BirthDate == model.BirthDate);
+
 
             if (searchResults.Any())
                 model.Results.FillRange(searchResults);
@@ -65,7 +68,8 @@ namespace Framework.WebServices
         public IActionResult Post([FromBody]CustomerModel data)
         {
             var model = new CustomerSearchModel();
-            var searchResults = CustomerInfo.GetByAny(data).Take(25);
+            var reader = new EntityReader<CustomerInfo>();
+            var searchResults = reader.GetByWhere(x => x.Key == data.Key || x.FirstName.Contains(data.FirstName) || x.LastName.Contains(data.LastName) || x.BirthDate == data.BirthDate);
             var form = Request.ReadFormAsync();
             model.Fill(data);
             if (searchResults.Any())

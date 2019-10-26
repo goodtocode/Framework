@@ -19,8 +19,8 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
+using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Framework.Test
@@ -36,7 +36,8 @@ namespace Framework.Test
         {
             var searchChar = "i";
             var searchModel = new CustomerSearchModel() { FirstName = searchChar, LastName = searchChar };
-            var results = CustomerInfo.GetByAny(searchModel);
+            var reader = new EntityReader<CustomerInfo>();
+            var results = reader.GetByWhere(x => x.Key == searchModel.Key || x.FirstName.Contains(searchModel.FirstName) || x.LastName.Contains(searchModel.LastName) || x.BirthDate == searchModel.BirthDate);
             Assert.IsTrue(results.Count() > 0);
             searchModel.Results.FillRange(results);
             Assert.IsTrue(searchModel.FirstName == searchChar && searchModel.LastName == searchChar);

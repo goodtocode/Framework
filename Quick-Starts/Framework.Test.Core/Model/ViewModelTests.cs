@@ -22,6 +22,7 @@ using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Net;
 using GoodToCode.Extensions.Text;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -161,7 +162,7 @@ namespace Framework.Test
                 // Update test record
                 var testKey = RandomString.Next();
                 customer.FirstName = customer.FirstName.AddLast(testKey);
-                customer = await viewModel.UpdateAsync(customer);
+                customer = await viewModel.UpdateAsync();
                 Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
                 Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
                 // Verify update success
@@ -196,7 +197,7 @@ namespace Framework.Test
                 // Test
                 customer = await viewModel.GetByKeyAsync(keyToTest);
                 Assert.IsTrue(interfaceBreakingRelease | !viewModel.MyModel.IsNew);
-                customerReturn = await viewModel.DeleteAsync(customer);
+                customerReturn = await viewModel.DeleteAsync();
                 Assert.IsTrue(interfaceBreakingRelease | customerReturn.IsNew);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.IsNew);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == Defaults.Integer);
@@ -220,13 +221,18 @@ namespace Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
+            var toDelete = new CustomerInfo();
+
             foreach (Guid item in RecycleBin)
             {
-                writer.Delete(reader.GetByKey(item));
+                toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
+                using (var db = new EntityWriter<CustomerInfo>(toDelete))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }

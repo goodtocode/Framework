@@ -21,12 +21,14 @@ using Framework.Customer;
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Framework.Test
 {
@@ -83,28 +85,30 @@ namespace Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Entity_StoredProcedureEntity_Create()
+        public async Task Entity_StoredProcedureEntity_Create()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var newCustomer = new CustomerInfo();
-            var resultCustomer = new CustomerInfo();
-            var dbCustomer = new CustomerInfo();            
-            
+            var resultEntity = new CustomerInfo();
+            var testEntity = new CustomerInfo();
+
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, 5)]);
-            resultCustomer = writer.Create(newCustomer);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            {
+                resultEntity = await writer.CreateAsync();
+            }
 
             Assert.IsTrue(newCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
+            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
 
             // Object in db should match in-memory objects
-            dbCustomer = new EntityReader<CustomerInfo>().GetById(resultCustomer.Id);
-            Assert.IsTrue(!dbCustomer.IsNew);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(dbCustomer.Id == resultCustomer.Id);
-            Assert.IsTrue(dbCustomer.Key == resultCustomer.Key && resultCustomer.Key == newCustomer.Key);
+            testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
+            Assert.IsTrue(!testEntity.IsNew);
+            Assert.IsTrue(testEntity.Id != Defaults.Integer);
+            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == resultEntity.Id);
+            Assert.IsTrue(testEntity.Key == resultEntity.Key && resultEntity.Key == newCustomer.Key);
 
             StoredProcedureEntityTests.RecycleBin.Add(newCustomer.Key);
         }
@@ -113,87 +117,96 @@ namespace Framework.Test
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Entity_StoredProcedureEntity_Update()
+        public async Task Entity_StoredProcedureEntity_Update()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
-            var resultCustomer = new CustomerInfo();
-            var dbCustomer = new CustomerInfo();
+            var resultEntity = new CustomerInfo();
+            var testEntity = new CustomerInfo();
             var uniqueValue = Guid.NewGuid().ToString().Replace("-", "");
             var lastKey = Defaults.Guid;
             var originalId = Defaults.Integer;
             var originalKey = Defaults.Guid;
 
-            Entity_StoredProcedureEntity_Create();
+            await Entity_StoredProcedureEntity_Create();
             lastKey = StoredProcedureEntityTests.RecycleBin.Last();
 
-            dbCustomer = reader.GetByKey(lastKey);
-            originalId = dbCustomer.Id;
-            originalKey = dbCustomer.Key;
-            Assert.IsTrue(!dbCustomer.IsNew);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            testEntity = reader.GetByKey(lastKey);
+            originalId = testEntity.Id;
+            originalKey = testEntity.Key;
+            Assert.IsTrue(!testEntity.IsNew);
+            Assert.IsTrue(testEntity.Id != Defaults.Integer);
+            Assert.IsTrue(testEntity.Key != Defaults.Guid);
 
-            dbCustomer.FirstName = uniqueValue;
-            resultCustomer = writer.Update(dbCustomer);
-            Assert.IsTrue(!resultCustomer.IsNew);
-            Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalId);
-            Assert.IsTrue(dbCustomer.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
+            testEntity.FirstName = uniqueValue;
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                resultEntity = await writer.UpdateAsync();
+            }
+            Assert.IsTrue(!resultEntity.IsNew);
+            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
+            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == resultEntity.Id && resultEntity.Id == originalId);
+            Assert.IsTrue(testEntity.Key == resultEntity.Key && resultEntity.Key == originalKey);
 
-            dbCustomer = dbCustomer = reader.GetById(originalId);
-            Assert.IsTrue(!dbCustomer.IsNew);
-            Assert.IsTrue(dbCustomer.Id == resultCustomer.Id && resultCustomer.Id == originalId);
-            Assert.IsTrue(dbCustomer.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            testEntity = testEntity = reader.GetById(originalId);
+            Assert.IsTrue(!testEntity.IsNew);
+            Assert.IsTrue(testEntity.Id == resultEntity.Id && resultEntity.Id == originalId);
+            Assert.IsTrue(testEntity.Key == resultEntity.Key && resultEntity.Key == originalKey);
+            Assert.IsTrue(testEntity.Id != Defaults.Integer);
+            Assert.IsTrue(testEntity.Key != Defaults.Guid);
         }
 
         /// <summary>
         /// Entity_StoredProcedureEntity
         /// </summary>
         [TestMethod()]
-        public void Entity_StoredProcedureEntity_Delete()
+        public async Task Entity_StoredProcedureEntity_Delete()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
-            var dbCustomer = new CustomerInfo();
+            var testEntity = new CustomerInfo();
             var lastKey = Defaults.Guid;
             var originalId = Defaults.Integer;
             var originalKey = Defaults.Guid;
 
-            Entity_StoredProcedureEntity_Create();
+            await Entity_StoredProcedureEntity_Create();
             lastKey = StoredProcedureEntityTests.RecycleBin.Last();
 
-            dbCustomer = reader.GetByKey(lastKey);
-            originalId = dbCustomer.Id;
-            originalKey = dbCustomer.Key;
-            Assert.IsTrue(!dbCustomer.IsNew);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(dbCustomer.CreatedDate.Date == DateTime.UtcNow.Date);
+            testEntity = reader.GetByKey(lastKey);
+            originalId = testEntity.Id;
+            originalKey = testEntity.Key;
+            Assert.IsTrue(!testEntity.IsNew);
+            Assert.IsTrue(testEntity.Id != Defaults.Integer);
+            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            dbCustomer = writer.Delete(dbCustomer);
-            Assert.IsTrue(dbCustomer.IsNew);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                testEntity = await writer.DeleteAsync();
+            }
+            Assert.IsTrue(testEntity.IsNew);
 
-            dbCustomer = reader.GetById(originalId);
-            Assert.IsTrue(dbCustomer.IsNew);
-            Assert.IsTrue(dbCustomer.Id == Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key == Defaults.Guid);
+            testEntity = reader.GetById(originalId);
+            Assert.IsTrue(testEntity.IsNew);
+            Assert.IsTrue(testEntity.Id == Defaults.Integer);
+            Assert.IsTrue(testEntity.Key == Defaults.Guid);
         }
 
         /// <summary>
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            var writer = new EntityWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
+            var toDelete = new CustomerInfo();
+
             foreach (Guid item in RecycleBin)
             {
-                writer.Delete(reader.GetByKey(item));
+                toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
+                using (var db = new EntityWriter<CustomerInfo>(toDelete))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }

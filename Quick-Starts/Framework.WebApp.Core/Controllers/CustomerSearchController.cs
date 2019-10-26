@@ -19,6 +19,7 @@
 //-----------------------------------------------------------------------
 using Framework.Customer;
 using GoodToCode.Extensions;
+using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -57,7 +58,7 @@ namespace Framework.WebApp
         [AllowAnonymous]
         [HttpGet()]
         public ActionResult Search()
-        {            
+        {
             return View(CustomerSearchController.SearchView, new CustomerSearchModel());
         }
 
@@ -71,10 +72,17 @@ namespace Framework.WebApp
         public ActionResult Search(CustomerModel data)
         {
             var model = new CustomerSearchModel();
-            var searchResults = CustomerInfo.GetByAny(data).Take(25);
+            IQueryable<CustomerInfo> searchResults;
 
-            model.Fill(data);
-            var results = searchResults.ToList();
+            model = data.CastOrFill<CustomerSearchModel>();
+            using (var reader = new EntityReader<CustomerInfo>())
+            {
+                searchResults = reader.GetAll()
+                    .Where(x => (model.FirstName != Defaults.String && x.FirstName.Contains(model.FirstName))
+                        || (model.LastName != Defaults.String && x.LastName.Contains(model.LastName))
+                        || (model.BirthDate != Defaults.Date && x.BirthDate == model.BirthDate)
+                        || (x.Id == model.Id)).Take(25);
+            }
             if (searchResults.Any())
                 model.Results.FillRange(searchResults);
             TempData[ResultMessage] = $"{model.Results.Count} matches found";
@@ -94,8 +102,16 @@ namespace Framework.WebApp
         public ActionResult SearchResults(string id, string firstName, string lastName)
         {
             var model = new CustomerSearchModel() { Id = id.TryParseInt32(), Key = id.TryParseGuid(), FirstName = firstName, LastName = lastName };
-            var searchResults = CustomerInfo.GetByAny(model).Take(25);
+            IQueryable<CustomerInfo> searchResults;
 
+            using (var reader = new EntityReader<CustomerInfo>())
+            {
+                searchResults = reader.GetAll()
+                    .Where(x => (model.FirstName != Defaults.String && x.FirstName.Contains(model.FirstName))
+                        || (model.LastName != Defaults.String && x.LastName.Contains(model.LastName))
+                        || (model.BirthDate != Defaults.Date && x.BirthDate == model.BirthDate)
+                        || (x.Id == model.Id)).Take(25);
+            }
             if (searchResults.Any())
                 model.Results.FillRange(searchResults);
             TempData[ResultMessage] = $"{model.Results.Count} matches found";

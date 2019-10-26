@@ -20,11 +20,13 @@
 using Framework.Customer;
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Framework.WebApp
 {
@@ -105,11 +107,15 @@ namespace Framework.WebApp
         /// <returns>View rendered with model data</returns>
         [AllowAnonymous]
         [HttpPost()]
-        public ActionResult Create(CustomerModel model)
+        public async Task<ActionResult> Create(CustomerModel model)
         {
             var customer = model.CastOrFill<CustomerInfo>();
 
-            customer = customer.Save();
+            using(var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.SaveAsync();
+            }
+            
             if (!customer.IsNew)
                 TempData[ResultMessage] = "Successfully created";
             else
@@ -142,12 +148,15 @@ namespace Framework.WebApp
         /// <returns>View rendered with model data</returns>
         [AllowAnonymous]
         [HttpPost()]
-        public ActionResult Edit(CustomerModel model)
+        public async Task<ActionResult> Edit(CustomerModel model)
         {
             var reader = new EntityReader<CustomerInfo>();
             var customer = model.CastOrFill<CustomerInfo>();
 
-            customer = customer.Save();
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.SaveAsync();
+            }
             if (!customer.IsNew)
                 TempData[ResultMessage] = "Successfully saved";
             else
@@ -180,12 +189,15 @@ namespace Framework.WebApp
         /// <returns>View rendered with model data</returns>
         [AllowAnonymous]
         [HttpPost()]
-        public ActionResult Delete(CustomerModel model)
+        public async Task<ActionResult> Delete(CustomerModel model)
         {
             var reader = new EntityReader<CustomerInfo>();
             var customer = reader.GetByKey(model.Key);
 
-            customer = customer.Delete();
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.DeleteAsync();
+            }
             if (customer.IsNew)
                 TempData[ResultMessage] = "Successfully deleted";
             else

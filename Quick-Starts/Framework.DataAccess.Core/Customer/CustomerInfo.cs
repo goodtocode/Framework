@@ -2,79 +2,21 @@ using GoodToCode.Extensions;
 using GoodToCode.Extensions.Text.Cleansing;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Operation;
 using GoodToCode.Framework.Repository;
 using GoodToCode.Framework.Validation;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Framework.Customer
 {
     /// <summary>
-    /// Database-first entity, Code bound directly to View       
+    /// Database-first entity, Code bound directly to View
     /// </summary>
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"), TableName("CustomerInfo")]
-    public class CustomerInfo : StoredProcedureEntity<CustomerInfo>, IReadOperation<CustomerInfo>
+    public class CustomerInfo : EntityInfo<CustomerInfo>
     {
-        /// <summary>
-        /// Entity Create/Insert Stored Procedure
-        /// </summary>
-        public override StoredProcedure<CustomerInfo> CreateStoredProcedure
-        => new StoredProcedure<CustomerInfo>()
-        {
-            StoredProcedureName = "CustomerInfoInsert",
-            Parameters = new List<SqlParameter>()
-            {
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@FirstName", FirstName),
-                new SqlParameter("@MiddleName", MiddleName),
-                new SqlParameter("@LastName", LastName),
-                new SqlParameter("@BirthDate", BirthDate),
-                new SqlParameter("@GenderId", GenderId),
-                new SqlParameter("@CustomerTypeId", CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
-            }
-        };
-
-        /// <summary>
-        /// Entity Update Stored Procedure
-        /// </summary>
-        public override StoredProcedure<CustomerInfo> UpdateStoredProcedure
-        => new StoredProcedure<CustomerInfo>()
-        {
-            StoredProcedureName = "CustomerInfoUpdate",
-            Parameters = new List<SqlParameter>()
-            {
-                new SqlParameter("@Id", Id),
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@FirstName", FirstName),
-                new SqlParameter("@MiddleName", MiddleName),
-                new SqlParameter("@LastName", LastName),
-                new SqlParameter("@BirthDate", BirthDate),
-                new SqlParameter("@GenderId", GenderId),
-                new SqlParameter("@CustomerTypeId", CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
-            }
-        };
-
-        /// <summary>
-        /// Entity Delete Stored Procedure
-        /// </summary>
-        public override StoredProcedure<CustomerInfo> DeleteStoredProcedure
-        => new StoredProcedure<CustomerInfo>()
-        {
-            StoredProcedureName = "CustomerInfoDelete",
-            Parameters = new List<SqlParameter>()
-            {
-                new SqlParameter("@Id", Id),
-                new SqlParameter("@Key", Key),
-                new SqlParameter("@ActivityContextKey", ActivityContextKey)
-            }
-        };
-
         /// <summary>
         /// Business and Validation rules
         /// </summary>
@@ -152,93 +94,5 @@ namespace Framework.Customer
         /// Constructor
         /// </summary>
         public CustomerInfo() : base() { }
-
-        /// <summary>
-        /// Gets all records that equal first + last + birth date
-        /// Does == style search
-        /// </summary>
-        /// <param name="firstName">First name of customer</param>
-        /// <param name="lastName">Last Name of customer</param>
-        /// <param name="birthDate">Birth Date of customer</param>
-        /// <returns></returns>
-        public static IQueryable<CustomerInfo> GetByNameBirthdayKey(string firstName, string lastName, DateTime birthDate)
-        {
-            var reader = new EntityReader<CustomerInfo>();
-            IQueryable<CustomerInfo> returnValue = reader.GetAll()
-                .Where(x => (firstName != Defaults.String && x.FirstName == firstName)
-                && (lastName != Defaults.String && x.LastName == lastName)
-                && (birthDate != Defaults.Date && x.BirthDate == birthDate));
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Gets all records that contain any of the passed fields.
-        /// Does contains/like style search
-        /// </summary>
-        /// <param name="searchFields">ICustomer with data to search</param>
-        /// <returns>All records matching the passed ICustomer</returns>
-        public static IQueryable<CustomerInfo> GetByAny(ICustomer searchFields)
-        {
-            var reader = new EntityReader<CustomerInfo>();
-            IQueryable<CustomerInfo> returnValue = reader.GetAll()
-                .Where(x => (searchFields.FirstName != Defaults.String && x.FirstName.Contains(searchFields.FirstName))
-                || (searchFields.LastName != Defaults.String && x.LastName.Contains(searchFields.LastName))
-                || (searchFields.BirthDate != Defaults.Date && x.BirthDate == searchFields.BirthDate)
-                || (x.Id == searchFields.Id));
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Read data based on the passed expression
-        /// </summary>
-        /// <param name="expression">Expression to apply to the dataset, such as a where clause</param>
-        /// <returns></returns>
-        public IQueryable<CustomerInfo> Read(Expression<Func<CustomerInfo, bool>> expression)
-        {
-            var reader = new EntityReader<CustomerInfo>();
-            var returnValue = reader.GetByWhere(expression);
-            return returnValue;
-        }
-
-        /// <summary>
-        /// Save the entity to the database. This method will auto-generate activity tracking.
-        /// </summary>
-        public CustomerInfo Save()
-        {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
-            // Ensure data does not contain cross site scripting injection HTML/Js/SQL
-            FirstName = new HtmlUnsafeCleanser(FirstName).Cleanse();
-            MiddleName = new HtmlUnsafeCleanser(MiddleName).Cleanse();
-            LastName = new HtmlUnsafeCleanser(LastName).Cleanse();
-            this.Fill(writer.Save(this));
-            return this;
-        }
-
-        /// <summary>
-        /// Save the entity to the database.
-        /// This method requires a valid Activity to track this database commit
-        /// </summary>
-        /// <param name="activity">Activity tracking this record</param>
-        public CustomerInfo Save(IActivityContext activity)
-        {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
-            ActivityContextKey = activity.ActivityContextKey;
-            // Ensure data does not contain cross site scripting injection HTML/Js/SQL
-            FirstName = new HtmlUnsafeCleanser(FirstName).Cleanse();
-            MiddleName = new HtmlUnsafeCleanser(MiddleName).Cleanse();
-            LastName = new HtmlUnsafeCleanser(LastName).Cleanse();
-            this.Fill(writer.Save(this));
-            return this;
-        }
-
-        /// <summary>
-        /// Save the entity to the database. This method will auto-generate activity tracking.
-        /// </summary>
-        public CustomerInfo Delete()
-        {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
-            this.Fill(writer.Delete(this));
-            return this;
-        }
     }
 }

@@ -21,12 +21,14 @@ using Framework.Customer;
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Framework.Test
 {
@@ -84,9 +86,8 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Data_DatabaseWriter_Insert()
+        public async Task Data_DatabaseWriter_Insert()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
@@ -103,11 +104,14 @@ namespace Framework.Test
             Assert.IsTrue(testEntity.Key == Defaults.Guid);
 
             // Do Insert and check passed entity and returned entity            
-            resultEntity = writer.Create(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                resultEntity = await writer.CreateAsync();
+            }
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
             Assert.IsTrue(resultEntity.Id != Defaults.Integer);
             Assert.IsTrue(resultEntity.Key != Defaults.Guid);
-        
+
             // Pull from DB and retest
             testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
@@ -125,17 +129,16 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Data_DatabaseWriter_Update()
+        public async Task Data_DatabaseWriter_Update()
         {
             var testEntity = new CustomerInfo();
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var oldFirstName = Defaults.String;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
             int entityId = Defaults.Integer;
             var entityKey = Defaults.Guid;
 
             // Create and capture original data
-            this.Data_DatabaseWriter_Insert();
+            await Data_DatabaseWriter_Insert();
             testEntity = new EntityReader<CustomerInfo>().GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldFirstName = testEntity.FirstName;
             entityId = testEntity.Id;
@@ -146,7 +149,10 @@ namespace Framework.Test
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
 
             // Do Update
-            writer.Save(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                testEntity = await writer.SaveAsync();
+            }
 
             // Pull from DB and retest
             testEntity = new EntityReader<CustomerInfo>().GetById(entityId);
@@ -162,15 +168,14 @@ namespace Framework.Test
         /// </summary>
         /// <remarks></remarks>
         [TestMethod()]
-        public void Data_DatabaseWriter_Delete()
+        public async Task Data_DatabaseWriter_Delete()
         {
-            var writer = new StoredProcedureWriter<CustomerInfo>();
             var testEntity = new CustomerInfo();
             var oldId = Defaults.Integer;
             var oldKey = Defaults.Guid;
 
             // Insert and baseline test
-            this.Data_DatabaseWriter_Insert();
+            await Data_DatabaseWriter_Insert();
             testEntity = new EntityReader<CustomerInfo>().GetAll().OrderByDescending(x => x.CreatedDate).FirstOrDefaultSafe();
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
@@ -179,7 +184,10 @@ namespace Framework.Test
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
 
             // Do delete
-            writer.Delete(testEntity);
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            {
+                testEntity = await writer.DeleteAsync();
+            }
 
             // Pull from DB and retest
             testEntity = new EntityReader<CustomerInfo>().GetById(oldId);
@@ -197,13 +205,18 @@ namespace Framework.Test
         /// Cleanup all data
         /// </summary>
         [ClassCleanup()]
-        public static void Cleanup()
+        public static async Task Cleanup()
         {
-            var writer = new EntityWriter<CustomerInfo>();
             var reader = new EntityReader<CustomerInfo>();
+            var toDelete = new CustomerInfo();
+
             foreach (Guid item in RecycleBin)
             {
-                writer.Delete(reader.GetByKey(item));
+                toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
+                using (var db = new EntityWriter<CustomerInfo>(toDelete))
+                {
+                    await db.DeleteAsync();
+                }
             }
         }
     }    

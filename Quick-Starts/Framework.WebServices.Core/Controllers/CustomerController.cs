@@ -20,9 +20,11 @@
 using Framework.Customer;
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 
 namespace Framework.WebServices
 {
@@ -62,10 +64,13 @@ namespace Framework.WebServices
         /// </summary>
         /// <returns></returns>
         [HttpPut(ControllerRoute)]
-        public IActionResult Put([FromBody]CustomerModel model)
+        public async Task<IActionResult> Put([FromBody]CustomerModel model)
         {
             var customer = model.CastOrFill<CustomerInfo>();
-            customer = customer.Save();
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.SaveAsync();
+            }
             return Ok(customer.CastOrFill<CustomerModel>());
         }
 
@@ -75,10 +80,13 @@ namespace Framework.WebServices
         /// <param name="model">Full customer model worth of data with user changes</param>
         /// <returns>CustomerModel containing customer data</returns>
         [HttpPost(ControllerRoute)]
-        public IActionResult Post([FromBody]CustomerModel model)
+        public async Task<IActionResult> Post([FromBody]CustomerModel model)
         {
             var customer = model.CastOrFill<CustomerInfo>();
-            customer = customer.Save();
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.SaveAsync();
+            }
             return Ok(customer.CastOrFill<CustomerModel>());
         }
 
@@ -88,7 +96,7 @@ namespace Framework.WebServices
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpDelete(ControllerRoute + "/{key}")]
-        public IActionResult Delete(string key)
+        public async Task<IActionResult> Delete(string key)
         {
             var reader = new EntityReader<CustomerInfo>();
             var customer = new CustomerInfo();
@@ -96,8 +104,11 @@ namespace Framework.WebServices
             if(key.IsInteger())
                 customer = reader.GetById(key.TryParseInt32());
             else
-                customer = reader.GetByKey(key.TryParseGuid());            
-            customer = customer.Delete();
+                customer = reader.GetByKey(key.TryParseGuid());
+            using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
+            {
+                customer = await writer.DeleteAsync();
+            }
 
             return Ok(customer.CastOrFill<CustomerModel>());
         }
