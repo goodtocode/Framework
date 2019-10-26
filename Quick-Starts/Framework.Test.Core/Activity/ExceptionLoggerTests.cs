@@ -29,7 +29,7 @@ namespace Framework.Test
     /// Tests code first ExceptionLogger functionality
     /// </summary>
     [TestClass()]
-    public partial class ExceptionLoggerTests
+    public class ExceptionLoggerTests
     {
         /// <summary>
         /// Tests code first ExceptionLogger saving to the database

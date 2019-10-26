@@ -29,7 +29,7 @@ namespace Framework.Test
     /// Tests code first ActivityLogger object saving activity to the database 
     /// </summary>
     [TestClass()]
-    public partial class ActivityLoggerTests
+    public class ActivityLoggerTests
     {
         /// <summary>
         /// Tests code first ActivityLogger object saving activity to the database

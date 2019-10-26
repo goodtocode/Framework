@@ -16,7 +16,6 @@ namespace Framework.Customer
     /// <summary>
     /// Database-first entity, Code bound directly to View       
     /// </summary>
-    [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"), TableName("CustomerInfo")]
     public class CustomerInfo : StoredProcedureEntity<CustomerInfo>, IReadOperation<CustomerInfo>
     {
         /// <summary>
