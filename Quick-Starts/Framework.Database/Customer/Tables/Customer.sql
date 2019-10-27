@@ -7,12 +7,10 @@
     [LastName]				NVARCHAR (50)   CONSTRAINT [DF_Customer_LastName] DEFAULT ('') NOT NULL,
     [BirthDate]				DATETIME        CONSTRAINT [DF_Customer_BirthDate] DEFAULT ('01-01-1900') NOT NULL,
 	[GenderId]				INT				CONSTRAINT [DF_Customer_GenderISO] DEFAULT (-1) NOT NULL,
-    [ActivityContextKey]	UniqueIdentifier CONSTRAINT [DF_Customer_ActivityContext] DEFAULT('00000000-0000-0000-0000-000000000000') NOT NULL,
 	[CreatedDate]			DATETIME        CONSTRAINT [DF_Customer_CreatedDate] DEFAULT (getutcdate()) NOT NULL,
     [ModifiedDate]			DATETIME        CONSTRAINT [DF_Customer_ModifiedDate] DEFAULT (getutcdate()) NOT NULL,
     CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED ([CustomerId] ASC),
 	CONSTRAINT [FK_Customer_CustomerType] FOREIGN KEY ([CustomerTypeId]) REFERENCES [Customer].[CustomerType] ([CustomerTypeId]),
-	CONSTRAINT [FK_Customer_ActivityContext] FOREIGN KEY ([ActivityContextKey]) REFERENCES [Activity].[ActivityContext] ([ActivityContextKey]),
 	CONSTRAINT [CC_Customer_Gender] CHECK ([GenderId] BETWEEN -1 AND 9)
 );
 GO

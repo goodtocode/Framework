@@ -16,7 +16,6 @@ namespace GoodToCode.Framework.Entity
     ///  database or file
     /// Use GoodToCode.Framework.Repository classes to read/write to database
     ///   Id and Key can be set before saving
-    ///   Auto-tracks inserts/updates/deletes via Activity.ActivityContext
     ///   Auto-validates before saving
     /// </summary>
     /// <remarks></remarks>
@@ -35,11 +34,6 @@ namespace GoodToCode.Framework.Entity
         ///  only if using GoodToCode.Framework.Repository for CRUD
         /// </summary>
         public virtual Guid Key { get; set; } = Defaults.Guid;
-
-        /// <summary>
-        /// Activity history that created this record
-        /// </summary>
-        public virtual Guid ActivityContextKey { get; set; } = Defaults.Guid;
 
         /// <summary>
         /// Date record was created

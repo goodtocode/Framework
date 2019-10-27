@@ -8,8 +8,6 @@ Select	C.[CustomerId] As [Id],
 		C.[BirthDate], 
 		C.[GenderId],
 		C.CustomerTypeId,
-		-1 As ActivityContextId,
-        C.[ActivityContextKey],
 		C.[CreatedDate], 
 		C.[ModifiedDate]
 From	[Customer].[Customer] C

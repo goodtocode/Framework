@@ -81,16 +81,6 @@ namespace GoodToCode.Framework.Repository
             return await SaveAsync();
         }
 
-        ///// <summary>
-        ///// Inserts this object with Workflow-based tracking.
-        ///// </summary>  
-        ///// <param name="activity">Activity record owning this process</param>
-        //public async Task<TEntity> CreateAsync(IActivityContext activity)
-        //{
-        //    Entity.ActivityContextKey = activity.ActivityContextKey;
-        //    return await SaveAsync();
-        //}
-
         /// <summary>
         /// Updates this object with Workflow-based tracking.
         /// </summary>  
@@ -98,36 +88,6 @@ namespace GoodToCode.Framework.Repository
         {
             return await SaveAsync();
         }
-        ///// <summary>
-        ///// Updates this object with Workflow-based tracking.
-        ///// </summary>  
-        ///// <param name="activity">Activity record owning this process</param>
-        //public async Task<TEntity> UpdateAsync(IActivityContext activity)
-        //{
-        //    Entity.ActivityContextKey = activity.ActivityContextKey;
-        //    return await SaveAsync();
-        //}
-
-        ///// <summary>
-        ///// Inserts or Updates this object with Workflow-based tracking.
-        ///// </summary>  
-        ///// <param name="activity">Activity record owning this process</param>
-        //public async Task<TEntity> DeleteAsync(IActivityContext activity)
-        //{
-        //    Entity.ActivityContextKey = activity.ActivityContextKey;
-        //    return await DeleteAsync();
-        //}
-
-        ///// <summary>
-        ///// Inserts or Updates this object with Workflow-based tracking.
-        ///// </summary>  
-        ///// <param name="activity">Activity record owning this process</param>
-        //public async Task<TEntity> SaveAsync(IActivityContext activity)
-        //{
-        //    Entity.ActivityContextKey = activity.ActivityContextKey;
-        //    return await SaveAsync();
-        //}
-
 
         /// <summary>
         /// Worker that saves this object with automatic tracking.
@@ -138,7 +98,6 @@ namespace GoodToCode.Framework.Repository
 
             try
             {
-                Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
                 if (CanCreate())
                 {
                     trackingState = EntityState.Added;

@@ -11,7 +11,6 @@
     [LockoutEnabled]       BIT              NOT NULL CONSTRAINT [DF_AspNetUsers_LockoutEnabled] DEFAULT (0),
     [AccessFailedCount]    INT              NOT NULL CONSTRAINT [DF_AspNetUsers_AccessFailedCount] DEFAULT ('-1'),
     [Username]             NVARCHAR (256)   NOT NULL CONSTRAINT [DF_AspNetUsers_Username] DEFAULT (''),
-	[ActivityContextId]		INT				NOT NULL CONSTRAINT [DF_AspNetUsers_ActivityContext] DEFAULT ('-1'),
 	[CreatedDate]			DATETIME		NOT NULL CONSTRAINT [DF_AspNetUsers_CreatedDate] DEFAULT (getutcdate()),
 	[ModifiedDate]			DATETIME		NOT NULL CONSTRAINT [DF_AspNetUsers_ModifiedDate] DEFAULT (getutcdate()),
     CONSTRAINT [PKAspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC),

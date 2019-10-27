@@ -74,7 +74,6 @@ namespace GoodToCode.Framework.Test
             var oldKey = Defaults.Guid;
             var newId = Defaults.Integer;
             var newKey = Defaults.Guid;
-            var reader = new ActivityContextReader();
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
@@ -85,7 +84,6 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key == Defaults.Guid);
 
             // Do Insert and check passed entity and returned entity                        
-            testEntity.ActivityContextKey = reader.GetAll().Take(1).FirstOrDefaultSafe().ActivityContextKey;
             using (var writer = new EntityWriter<CustomerEntity>(testEntity))
             {
                 writer.ConfigOptions.IgnoredProperties.Add(p => p.State);

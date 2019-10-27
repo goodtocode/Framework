@@ -32,8 +32,7 @@ namespace Framework.Customer
                 new SqlParameter("@LastName", Entity.LastName),
                 new SqlParameter("@BirthDate", Entity.BirthDate),
                 new SqlParameter("@GenderId", Entity.GenderId),
-                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId)
             }
         };
 
@@ -53,8 +52,7 @@ namespace Framework.Customer
                 new SqlParameter("@LastName", Entity.LastName),
                 new SqlParameter("@BirthDate", Entity.BirthDate),
                 new SqlParameter("@GenderId", Entity.GenderId),
-                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId),
-                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId)
             }
         };
 
@@ -68,8 +66,7 @@ namespace Framework.Customer
             Parameters = new List<SqlParameter>()
             {
                 new SqlParameter("@Id", Entity.Id),
-                new SqlParameter("@Key", Entity.Key),
-                new SqlParameter("@ActivityContextKey", Entity.ActivityContextKey)
+                new SqlParameter("@Key", Entity.Key)
             }
         };
     }

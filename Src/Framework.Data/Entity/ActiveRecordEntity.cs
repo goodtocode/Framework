@@ -23,11 +23,6 @@ namespace GoodToCode.Framework.Entity
         public TConfig SPConfiguration { get; set; } = new TConfig();
 
         /// <summary>
-        /// Activity record for this entities behavior
-        /// </summary>
-        public Guid ActivityContextKey { get; set; } = Defaults.Guid;
-
-        /// <summary>
         /// Gets single record by Id
         /// </summary>
         /// <param name="id">Integer Id that is the primary key or a unique identity</param>
@@ -95,16 +90,6 @@ namespace GoodToCode.Framework.Entity
         }
 
         /// <summary>
-        /// Inserts and Updates to database
-        /// </summary>
-        /// <param name="activity">Activity responsible for tracking this process</param>        
-        public async Task<TEntity> Save(IActivityContext activity)
-        {
-            ActivityContextKey = activity.ActivityContextKey;
-            return await SaveAsync();
-        }
-
-        /// <summary>
         /// Delete from the datastore
         /// </summary>
         public async Task<TEntity> DeleteAsync()
@@ -113,15 +98,6 @@ namespace GoodToCode.Framework.Entity
             {
                 return await writer.DeleteAsync();
             }
-        }
-
-        /// <summary>
-        /// Delete from the datastore
-        /// </summary>
-        public async Task<TEntity> DeleteAsync(IActivityContext activity)
-        {
-            ActivityContextKey = activity.ActivityContextKey;
-            return await DeleteAsync();
         }
     }
 }

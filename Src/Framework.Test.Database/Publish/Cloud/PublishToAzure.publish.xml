@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>FrameworkData</TargetDatabaseName>
     <DeployScriptFileName>GoodToCode.Framework.Test.Database.sql</DeployScriptFileName>
-    <TargetConnectionString>Server=tcp:goodtocode.database.windows.net,1433;Initial Catalog=FrameworkData;Persist Security Info=False;User ID=GSAdmin;Password=Virtualkidd1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</TargetConnectionString>
+    <TargetConnectionString>Data Source=tcp:GoodToCode.database.windows.net,1433;Persist Security Info=True;User ID=publish@goodtocode.com@GoodToCode.database.windows.net;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
     <ScriptDatabaseOptions>True</ScriptDatabaseOptions>
     <BlockOnPossibleDataLoss>False</BlockOnPossibleDataLoss>

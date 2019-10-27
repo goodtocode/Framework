@@ -19,7 +19,6 @@ namespace GoodToCode.Framework.Data
 	{
         private int id = Defaults.Integer;
         private Guid key = Defaults.Guid;
-        private Guid activityContextKey = Defaults.Guid;
         private DateTime createdDate = Defaults.Date;
         private DateTime modifiedDate = Defaults.Date;
 
@@ -32,11 +31,6 @@ namespace GoodToCode.Framework.Data
         /// Guid of record
         /// </summary>
         public virtual Guid Key { get => key; set => SetField(ref key, value); }
-
-        /// <summary>
-        /// Workflow activity that created this record
-        /// </summary>
-        public virtual Guid ActivityContextKey { get => activityContextKey; set => SetField(ref activityContextKey, value); }
 
         /// <summary>
         /// Date record was created

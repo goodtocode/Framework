@@ -155,7 +155,6 @@ namespace GoodToCode.Framework.Repository
                 {
                     if (StoredProcConfig.CreateStoredProcedure.Parameters.Where(x => x.ParameterName == "@Key").Any())
                         Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key; // To re-pull data after save
-                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
                     var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.CreateStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
@@ -181,7 +180,6 @@ namespace GoodToCode.Framework.Repository
                 if (Entity.IsValid() && CanUpdate())
                 {
                     Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key;
-                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
                     var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.UpdateStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
@@ -218,7 +216,6 @@ namespace GoodToCode.Framework.Repository
                 if (StoredProcConfig.DeleteStoredProcedure == null) throw new ArgumentNullException("Delete() requires DeleteStoredProcedure to be initialized properly.");
                 if (CanDelete())
                 {
-                    Entity.ActivityContextKey = Entity.ActivityContextKey == Defaults.Guid ? ActivityContextWriter.Create().ActivityContextKey : Entity.ActivityContextKey;
                     var rowsAffected = await ExecuteSqlCommandAsync(StoredProcConfig.DeleteStoredProcedure);
                     var refreshedEntity = Read(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"

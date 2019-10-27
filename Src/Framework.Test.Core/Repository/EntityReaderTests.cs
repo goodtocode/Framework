@@ -177,9 +177,6 @@ namespace GoodToCode.Framework.Test
             var testItem = new CustomerInfo();
             var emptyGuid = Defaults.Guid;
 
-            // Ignore properties that over complicate this test
-            reader.ConfigOptions.IgnoredProperties.Add(p => p.ActivityContextKey);
-
             // By Id
             var results = reader.GetAllExcludeDefault();
             var first = results.FirstOrDefaultSafe();

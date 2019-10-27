@@ -103,7 +103,6 @@
     <Build Include="CustomerCode\Views\CustomerType.sql" />
     <Build Include="Customer\Tables\Customer.sql" />
     <Build Include="Customer\Tables\CustomerType.sql" />
-    <Build Include="Activity\Tables\ActivityContext.sql" />
     <Build Include="Activity\Tables\ExceptionLog.sql" />
     <Build Include="Security\Customer.sql" />
     <Build Include="Security\Role_db_executor.sql" />
@@ -137,7 +136,7 @@
     <Build Include="Security\Identity.sql" />
     <Build Include="Identity\Tables\AspNetUsers.sql" />
     <Build Include="Identity\Tables\__MigrationHistory.sql" />
-    <Build Include="Activity\Stored Procedures\ExceptionLogInsertByActivity.sql" />
+    <Build Include="Activity\Stored Procedures\ExceptionLogInsertByException.sql" />
     <Build Include="Security\TestUser-Login.sql" />
     <Build Include="Security\TestUser-User.sql" />
   </ItemGroup>

@@ -1,5 +1,4 @@
-﻿CREATE PROCEDURE [Activity].[ExceptionLogInsertByActivity]
-	@ActivityContextId As INT = -1
+﻿CREATE PROCEDURE [Activity].[ExceptionLogInsertByException]	
 AS	
 	-- Build data into message
 	Declare @CustomMessage nvarchar(max)	
@@ -8,5 +7,5 @@ AS
 							+ ' State: ' + Cast(ERROR_STATE() As nvarchar(100))
 							+ ' Procedure: ' + Cast(ERROR_PROCEDURE() As nvarchar(500))
 							+ ' Line: ' + Cast(ERROR_LINE() As nvarchar(100))
-	INSERT INTO [Activity].[ExceptionLog] ([Message], [ActivityContextId], [CustomMessage])
-		   SELECT ERROR_MESSAGE() AS [Message], @ActivityContextId As [ActivityContextId], IsNull(@CustomMessage, '') As [CustomMessage]
+	INSERT INTO [Activity].[ExceptionLog] ([Message], [CustomMessage])
+		   SELECT ERROR_MESSAGE() AS [Message], IsNull(@CustomMessage, '') As [CustomMessage]

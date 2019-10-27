@@ -178,26 +178,37 @@ namespace GoodToCode.Framework.Application
         /// <returns>True for success, false for failure</returns>
         public async Task<TDto> DeleteAsync()
         {
-            var success = Defaults.Boolean;
             var fullUrll = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/").AddLast(MyModel.Id.ToString()).AddLast("/"), UriKind.RelativeOrAbsolute);
-            success = await Sender.SendDeleteAsync(fullUrll);
+            var success = await Sender.SendDeleteAsync(fullUrll);
             if (success) MyModel = new TDto();
             return MyModel;
         }
 
+        /// <summary>
+        /// Allows creates
+        /// </summary>
+        /// <returns></returns>
         public bool CanCreate()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
+        /// <summary>
+        /// Allows updates
+        /// </summary>
+        /// <returns></returns>
         public bool CanUpdate()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
+        /// <summary>
+        /// Allow Deletes
+        /// </summary>
+        /// <returns></returns>
         public bool CanDelete()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

@@ -78,11 +78,6 @@ namespace GoodToCode.Framework.Activity
         public string CustomMessage { get; set; } = Defaults.String;
 
         /// <summary>
-        /// The Activity record that was processing when this exception occurred
-        /// </summary>
-        public int ActivityContextId { get; set; } = Defaults.Integer;
-
-        /// <summary>
         /// MachineName
         /// </summary>
         public string MachineName { get { return Environment.MachineName; } }

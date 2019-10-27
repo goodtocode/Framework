@@ -5,7 +5,7 @@ namespace GoodToCode.Framework.Data
     /// <summary>
     /// Base used for all entity classes
     /// </summary>
-    public interface IEntity : IId, IKey, IActivityContextKey, ICreatedDate, IModifiedDate
+    public interface IEntity : IId, IKey, ICreatedDate, IModifiedDate
     {
         /// <summary>
         /// Is a new object, and most likely not yet committed to the database

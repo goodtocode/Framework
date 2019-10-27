@@ -6,9 +6,7 @@
 	@BirthDate			datetime,
 	@GenderId			int,
 	@CustomerTypeId	    int,
-	@ActivityContextId	int = -1,
-	@Key				uniqueidentifier = '00000000-0000-0000-0000-000000000000',
-    @ActivityContextKey	Uniqueidentifier = '00000000-0000-0000-0000-000000000000'
+	@Key				uniqueidentifier = '00000000-0000-0000-0000-000000000000'
 AS
 	-- Local variables
 	-- Initialize
@@ -17,10 +15,8 @@ AS
 	Select 	@MiddleName		= RTRIM(LTRIM(@MiddleName))
 	Select 	@LastName		= RTRIM(LTRIM(@LastName))
 	
-	-- Get any missing data
-    If (@ActivityContextId = -1) Select @ActivityContextId = IsNull(ActivityContextId, -1) From [Activity].[ActivityContext] Where ActivityContextKey = @ActivityContextKey
 	-- Validate data that will be inserted/updated, and ensure basic values exist
-	If ((@FirstName <> '') Or (@MiddleName <> '') Or (@LastName <> '')) And (@ActivityContextId <> -1) And (@CustomerTypeId Is Not Null)
+	If ((@FirstName <> '') Or (@MiddleName <> '') Or (@LastName <> '')) And (@CustomerTypeId Is Not Null)
 	Begin
 		-- Id and Key are both valid. Sync now.
 		If (@Id <> -1) Select @Key = IsNull(CustomerKey, '00000000-0000-0000-0000-000000000000') From [Customer].[Customer] Where CustomerId = @Id
@@ -31,8 +27,8 @@ AS
 			If (@Id Is Null) Or (@Id = -1)
 			Begin
 				Select @Key = IsNull(NullIf(@Key, '00000000-0000-0000-0000-000000000000'), NewId())
-				Insert Into [Customer].[Customer] (CustomerKey, FirstName, MiddleName, LastName, BirthDate, GenderId, CustomerTypeId, ActivityContextKey, CreatedDate, ModifiedDate)
-					Values (@Key, @FirstName, @MiddleName, @LastName, @BirthDate, @GenderId, @CustomerTypeId, @ActivityContextKey, GetUtcDate(), GetUtcDate())
+				Insert Into [Customer].[Customer] (CustomerKey, FirstName, MiddleName, LastName, BirthDate, GenderId, CustomerTypeId, CreatedDate, ModifiedDate)
+					Values (@Key, @FirstName, @MiddleName, @LastName, @BirthDate, @GenderId, @CustomerTypeId, GetUtcDate(), GetUtcDate())
 				Select	@Id = SCOPE_IDENTITY()
 			End
 			Else
@@ -45,7 +41,6 @@ AS
 					C.BirthDate				= @BirthDate, 
 					C.GenderId				= @GenderId,
 					C.CustomerTypeId		= @CustomerTypeId,
-					C.ActivityContextKey	= @ActivityContextKey,
 					C.ModifiedDate			= GetUTCDate()
 				From	[Customer].[Customer] C
 				Where	C.[CustomerId] = @Id
@@ -54,7 +49,7 @@ AS
 		End Try
 		Begin Catch
 			Rollback;
-			Exec [Activity].[ExceptionLogInsertByActivity] @ActivityContextId;
+			Exec [Activity].[ExceptionLogInsertByException];
 			Throw;
 		End Catch
 	End
