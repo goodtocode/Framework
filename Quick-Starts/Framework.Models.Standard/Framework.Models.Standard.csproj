@@ -35,8 +35,8 @@
 
   <ItemGroup>
     <PackageReference Include="GoodToCode.Extensions" Version="4.19.19295.1" />
-    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19298.2" />
-    <PackageReference Include="GoodToCode.Framework.Dto" Version="4.19.19298.2" />
+    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Framework.Dto" Version="4.19.19300.1" />
   </ItemGroup>
 
   <ItemGroup>

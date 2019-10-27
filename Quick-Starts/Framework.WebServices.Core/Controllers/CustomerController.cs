@@ -49,13 +49,7 @@ namespace Framework.WebServices
         public IActionResult Get(string key)
         {
             var reader = new EntityReader<CustomerInfo>();
-            var customer = new CustomerInfo();
-
-            if (key.IsInteger())
-                customer = reader.GetById(key.TryParseInt32());
-            else
-                customer = reader.GetByKey(key.TryParseGuid());
-
+            var customer = reader.GetByIdOrKey(key);
             return Ok(customer.CastOrFill<CustomerModel>());
         }
 
@@ -99,12 +93,7 @@ namespace Framework.WebServices
         public async Task<IActionResult> Delete(string key)
         {
             var reader = new EntityReader<CustomerInfo>();
-            var customer = new CustomerInfo();
-            
-            if(key.IsInteger())
-                customer = reader.GetById(key.TryParseInt32());
-            else
-                customer = reader.GetByKey(key.TryParseGuid());
+            var customer = reader.GetByIdOrKey(key);
             using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
             {
                 customer = await writer.DeleteAsync();

@@ -56,7 +56,7 @@ namespace Framework.Test
             }
         }
 
-        List<CustomerInfo> testEntities = new List<CustomerInfo>()
+        readonly List<CustomerInfo> testEntities = new List<CustomerInfo>()
         {
             new CustomerInfo() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
             new CustomerInfo() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
@@ -89,7 +89,6 @@ namespace Framework.Test
         {
             var newCustomer = new CustomerInfo();
             var resultEntity = new CustomerInfo();
-            var testEntity = new CustomerInfo();
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, 5)]);
@@ -103,7 +102,7 @@ namespace Framework.Test
             Assert.IsTrue(resultEntity.Key != Defaults.Guid);
 
             // Object in db should match in-memory objects
-            testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
+            var testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
             Assert.IsTrue(!testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
@@ -121,18 +120,14 @@ namespace Framework.Test
         {
             var reader = new EntityReader<CustomerInfo>();
             var resultEntity = new CustomerInfo();
-            var testEntity = new CustomerInfo();
             var uniqueValue = Guid.NewGuid().ToString().Replace("-", "");
-            var lastKey = Defaults.Guid;
-            var originalId = Defaults.Integer;
-            var originalKey = Defaults.Guid;
 
             await Entity_StoredProcedureEntity_Create();
-            lastKey = StoredProcedureEntityTests.RecycleBin.Last();
+            var lastKey = StoredProcedureEntityTests.RecycleBin.Last();
 
-            testEntity = reader.GetByKey(lastKey);
-            originalId = testEntity.Id;
-            originalKey = testEntity.Key;
+            var testEntity = reader.GetByKey(lastKey);
+            var originalId = testEntity.Id;
+            var originalKey = testEntity.Key;
             Assert.IsTrue(!testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
@@ -148,7 +143,7 @@ namespace Framework.Test
             Assert.IsTrue(testEntity.Id == resultEntity.Id && resultEntity.Id == originalId);
             Assert.IsTrue(testEntity.Key == resultEntity.Key && resultEntity.Key == originalKey);
 
-            testEntity = testEntity = reader.GetById(originalId);
+            testEntity = reader.GetById(originalId);
             Assert.IsTrue(!testEntity.IsNew);
             Assert.IsTrue(testEntity.Id == resultEntity.Id && resultEntity.Id == originalId);
             Assert.IsTrue(testEntity.Key == resultEntity.Key && resultEntity.Key == originalKey);
@@ -163,17 +158,12 @@ namespace Framework.Test
         public async Task Entity_StoredProcedureEntity_Delete()
         {
             var reader = new EntityReader<CustomerInfo>();
-            var testEntity = new CustomerInfo();
-            var lastKey = Defaults.Guid;
-            var originalId = Defaults.Integer;
-            var originalKey = Defaults.Guid;
 
             await Entity_StoredProcedureEntity_Create();
-            lastKey = StoredProcedureEntityTests.RecycleBin.Last();
+            var lastKey = StoredProcedureEntityTests.RecycleBin.Last();
 
-            testEntity = reader.GetByKey(lastKey);
-            originalId = testEntity.Id;
-            originalKey = testEntity.Key;
+            var testEntity = reader.GetByKey(lastKey);
+            var originalId = testEntity.Id;
             Assert.IsTrue(!testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);

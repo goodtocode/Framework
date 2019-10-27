@@ -1,15 +1,6 @@
-using GoodToCode.Extensions;
-using GoodToCode.Extensions.Text.Cleansing;
-using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Operation;
-using GoodToCode.Framework.Repository;
-using GoodToCode.Framework.Validation;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Framework.Customer
 {

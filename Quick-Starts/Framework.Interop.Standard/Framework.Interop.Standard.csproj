@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19298.2" />
+    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19300.1" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

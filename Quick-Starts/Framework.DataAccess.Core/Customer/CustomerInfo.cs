@@ -2,6 +2,7 @@ using GoodToCode.Extensions;
 using GoodToCode.Extensions.Text.Cleansing;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Repository;
 using GoodToCode.Framework.Validation;
 using System;

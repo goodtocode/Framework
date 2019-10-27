@@ -149,8 +149,7 @@ namespace Framework.WebApp
         [AllowAnonymous]
         [HttpPost()]
         public async Task<ActionResult> Edit(CustomerModel model)
-        {
-            var reader = new EntityReader<CustomerInfo>();
+        {            
             var customer = model.CastOrFill<CustomerInfo>();
 
             using (var writer = new StoredProcedureWriter<CustomerInfo>(customer, new CustomerSPConfig(customer)))
