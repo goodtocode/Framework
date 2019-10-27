@@ -1,9 +1,10 @@
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
+using GoodToCode.Framework.Data;
 using System;
 using System.Reflection;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Value
 {
     /// <summary>
     /// ReadValueBase
@@ -43,11 +44,10 @@ namespace GoodToCode.Framework.Data
         /// <remarks></remarks>
         public bool Equals(TValue newItem)
         {
-            bool returnValue = Defaults.Boolean;
             Type newObjectType = newItem.GetType();
 
             // Start True
-            returnValue = true;
+            bool returnValue = true;
             // Loop through all new item's properties
             foreach (var newObjectProperty in newObjectType.GetRuntimeProperties())
             {

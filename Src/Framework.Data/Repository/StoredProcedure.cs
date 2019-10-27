@@ -1,5 +1,5 @@
 ﻿using GoodToCode.Extensions;
-using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;

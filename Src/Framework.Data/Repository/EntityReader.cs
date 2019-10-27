@@ -1,6 +1,7 @@
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;

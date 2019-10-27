@@ -1,4 +1,5 @@
 ﻿using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using System;
 
 namespace GoodToCode.Framework.Hosting.Server

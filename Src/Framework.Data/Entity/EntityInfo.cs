@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Entity
 {
     /// <summary>
     /// Entity Data Access Object base class

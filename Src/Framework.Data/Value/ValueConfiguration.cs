@@ -8,7 +8,7 @@ using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Value
 {
     /// <summary>
     /// EF to SQL View for this object

@@ -1,6 +1,7 @@
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Value;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.SqlClient;
@@ -29,7 +30,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Results from any query operation
         /// </summary>
-        public IQueryable<TValue> Results { get; protected set; } = default(IQueryable<TValue>);
+        public IQueryable<TValue> Results { get; protected set; } =  default(IQueryable<TValue>);
 
         /// <summary>
         /// Can connect to database?
@@ -169,8 +170,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns></returns>
         public IQueryable<TValue> GetByPage(Expression<Func<TValue, Boolean>> whereClause, Expression<Func<TValue, Boolean>> orderByClause, int pageSize, int pageNumber)
         {
-            var returnValue = default(IQueryable<TValue>);
-
+            IQueryable<TValue> returnValue;
             try
             {
                 returnValue = (Data).AsQueryable();

@@ -1,4 +1,5 @@
 ﻿using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

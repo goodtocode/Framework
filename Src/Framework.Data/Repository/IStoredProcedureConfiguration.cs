@@ -1,3 +1,5 @@
+using GoodToCode.Framework.Entity;
+
 namespace GoodToCode.Framework.Data
 {
     /// <summary>

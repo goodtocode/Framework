@@ -3,8 +3,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Mathematics;
+using GoodToCode.Framework.Data;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Entity
 {
     /// <summary>
     /// Base DAO class for tables containing image column

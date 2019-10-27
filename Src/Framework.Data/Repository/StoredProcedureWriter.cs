@@ -1,6 +1,7 @@
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -272,7 +273,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public async Task<int> ExecuteSqlCommandAsync(StoredProcedure<TEntity> storedProc)
         {
-            var returnValue = Defaults.Integer;
+            int returnValue;
             switch (ParameterBehavior)
             {
                 case ParameterBehaviors.Named:

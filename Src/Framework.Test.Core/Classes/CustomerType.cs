@@ -1,4 +1,5 @@
 ﻿using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Value;
 
 namespace GoodToCode.Framework.Test
 {

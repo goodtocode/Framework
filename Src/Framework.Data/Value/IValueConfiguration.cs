@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace GoodToCode.Framework.Data
+namespace GoodToCode.Framework.Value
 {
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public partial interface IValueConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access
@@ -17,12 +17,12 @@ namespace GoodToCode.Framework.Data
         string DatabaseSchema { get; set; }
 
         /// <summary>
-        /// Connection String Name (key only) to be used for this object's data access
+        /// Connection String Name (key) to be used for this object's data access
         /// </summary>
         string ConnectionName { get; set; }
 
         /// <summary>
-        /// Connection String (full string) to be used for this object's data access
+        /// Connection String Name (key) to be used for this object's data access
         /// </summary>
         string ConnectionString { get; }
 
@@ -46,12 +46,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Data access behavior of this instance.
         /// </summary>
-        DataAccessBehaviors DataAccessBehavior { get; set; }
-
-        /// <summary>
-        /// Rows affected by any adapter operation
-        /// </summary>
-        int RowsAffected { get; }
+        DataAccessBehaviors DataAccessBehavior { get; }
 
         /// <summary>
         /// List of types to ignore in database operations
@@ -61,6 +56,6 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Properties to ignore in the database mapping
         /// </summary>
-        IList<Expression<Func<TEntity, object>>> IgnoredProperties { get; set; }
+        IList<Expression<Func<TValue, object>>> IgnoredProperties { get; set; }
     }
 }

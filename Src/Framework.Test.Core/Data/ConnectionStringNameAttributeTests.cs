@@ -1,6 +1,7 @@
 ﻿using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Validation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -30,11 +31,9 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ConnectionStringFromConfig()
         {
-            var result = Defaults.String;
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
-            var configConnectString = new ConnectionStringSafe();
-            configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
-            result = configConnectString.ToEF(typeof(ClassWithConnectString));
+            var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
+            string result = configConnectString.ToEF(typeof(ClassWithConnectString));
             Assert.IsTrue(result != Defaults.String);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);
@@ -48,11 +47,9 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ConnectionStringEntity()
         {
-            var result = Defaults.String;
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
-            var configConnectString = new ConnectionStringSafe();
-            configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
-            result = configConnectString.ToEF(typeof(EntityWithConnectString));
+            var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
+            string result = configConnectString.ToEF(typeof(EntityWithConnectString));
             Assert.IsTrue(result != Defaults.String);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);
@@ -66,12 +63,9 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ConnectionStringDatabase()
         {
-            var result = Defaults.String;
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
-            var configConnectString = new ConnectionStringSafe();
-
-            configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
-            result = configConnectString.ToEF(typeof(EntityWithConnectString));
+            var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
+            string result = configConnectString.ToEF(typeof(EntityWithConnectString));
             Assert.IsTrue(result != Defaults.String);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);

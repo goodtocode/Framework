@@ -1,6 +1,7 @@
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
+using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -133,7 +134,6 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public async Task<TEntity> SaveAsync()
         {
-            var activity = new ActivityContext();
             var trackingState = EntityState.Unchanged;
 
             try
@@ -180,7 +180,10 @@ namespace GoodToCode.Framework.Repository
                     Entry(Entity).State = EntityState.Deleted;
                     Data.Remove(Entity);
                     await SaveChangesAsync();
-                    Entity.Fill(new EntityReader<TEntity>().GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
+                    using (EntityReader<TEntity> reader = new EntityReader<TEntity>())
+                    {
+                        Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
+                    }
                 }
             }
             catch (Exception ex)
