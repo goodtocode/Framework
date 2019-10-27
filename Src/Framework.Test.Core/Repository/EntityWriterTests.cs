@@ -36,7 +36,8 @@ namespace GoodToCode.Framework.Test
                 return _recycleBin;
             }
         }
-        List<CustomerEntity> testEntities = new List<CustomerEntity>()
+
+        readonly List<CustomerEntity> testEntities = new List<CustomerEntity>()
         {
             new CustomerEntity() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
             new CustomerEntity() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },

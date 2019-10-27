@@ -37,7 +37,8 @@ namespace GoodToCode.Framework.Test
                 return _recycleBin;
             }
         }
-        List<CustomerInfo> testEntities = new List<CustomerInfo>()
+
+        readonly List<CustomerInfo> testEntities = new List<CustomerInfo>()
         {
             new CustomerInfo() {FirstName = "John", MiddleName = "Adam", LastName = "Doe", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
             new CustomerInfo() {FirstName = "Jane", MiddleName = "Michelle", LastName = "Smith", BirthDate = DateTime.Today.AddYears(Arithmetic.Random(2).Negate()) },
@@ -71,15 +72,11 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
-            var newId = Defaults.Integer;
-            var newKey = Defaults.Guid;
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            oldId = testEntity.Id;
-            oldKey = testEntity.Key;
+            var oldId = testEntity.Id;
+            var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
             Assert.IsTrue(testEntity.Id == Defaults.Integer);
             Assert.IsTrue(testEntity.Key == Defaults.Guid);
@@ -118,17 +115,13 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
-            var newId = Defaults.Integer;
-            var newKey = Defaults.Guid;
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
             testEntity.Id = Defaults.Integer;
             testEntity.Key = Defaults.Guid;
-            oldId = testEntity.Id;
-            oldKey = testEntity.Key;
+            var oldId = testEntity.Id;
+            var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
             Assert.IsTrue(testEntity.Id == Defaults.Integer);
             Assert.IsTrue(testEntity.Key == Defaults.Guid);
@@ -167,17 +160,13 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerInfo();
             var resultEntity = new CustomerInfo();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
-            var newId = Defaults.Integer;
-            var newKey = Defaults.Guid;
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
             testEntity.Id = Defaults.Integer;
             testEntity.Key = Guid.NewGuid();
-            oldId = testEntity.Id;
-            oldKey = testEntity.Key;
+            var oldId = testEntity.Id;
+            var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.Id == Defaults.Integer);
             Assert.IsTrue(testEntity.Key != Defaults.Guid);
             Assert.IsTrue(!testEntity.FailedRules.Any());
@@ -299,13 +288,11 @@ namespace GoodToCode.Framework.Test
         {
             var searchChar = "i";
             var originalObject = new CustomerInfo() { FirstName = searchChar, LastName = searchChar };
-            var resultObject = new CustomerInfo();
-            var resultString = Defaults.String;
             var serializer = new JsonSerializer<CustomerInfo>();
 
-            resultString = serializer.Serialize(originalObject);
+            var resultString = serializer.Serialize(originalObject);
             Assert.IsTrue(resultString != Defaults.String);
-            resultObject = serializer.Deserialize(resultString);
+            var resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar);
             Assert.IsTrue(resultObject.LastName == searchChar);
         }
@@ -318,9 +305,6 @@ namespace GoodToCode.Framework.Test
         {
             var searchChar = "i";
             var serializer = new JsonSerializer<CustomerDto>();
-            var resultObject = new CustomerDto();
-            var resultString = Defaults.String;
-            var zeroTime = Defaults.Date;
             var testMS = new DateTime(1983, 12, 9, 5, 10, 20, 3);
             var noMS = new DateTime(1983, 12, 9, 5, 10, 20, 000);
 
@@ -328,8 +312,8 @@ namespace GoodToCode.Framework.Test
             serializer.DateTimeFormatString = new DateTimeFormat(DateTimeExtension.Formats.ISO8601) { DateTimeStyles = System.Globalization.DateTimeStyles.RoundtripKind };
 
             // 1 digit millisecond
-            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
-            resultString = serializer.Serialize(resultObject);
+            var resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            var resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
             resultObject = serializer.Deserialize(resultString);
@@ -376,17 +360,14 @@ namespace GoodToCode.Framework.Test
         {
             var searchChar = "i";
             var serializer = new JsonSerializer<CustomerDto>();
-            var resultObject = new CustomerDto();
-            var resultString = Defaults.String;
-            var zeroTime = Defaults.Date;
             var testMS = new DateTime(1983, 12, 9, 5, 10, 20, 3);
 
             //Explicitly set
             serializer.DateTimeFormatString = new DateTimeFormat(DateTimeExtension.Formats.ISO8601F) { DateTimeStyles = System.Globalization.DateTimeStyles.RoundtripKind };
 
             // 1 digit millisecond
-            resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
-            resultString = serializer.Serialize(resultObject);
+            var resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
+            var resultString = serializer.Serialize(resultObject);
             Assert.IsTrue(resultString != Defaults.String);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
             resultObject = serializer.Deserialize(resultString);
