@@ -1,5 +1,4 @@
 ﻿using GoodToCode.Extensions;
-using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using System;
@@ -13,7 +12,7 @@ namespace GoodToCode.Framework.Entity
     ///  ActiveRecord abstract class. Based on StoredProcedureEntity
     ///    Includes GetById(), GetByKey(), GetByWhere(), GetAll(), Save(), Delete()
     /// </summary>
-    public abstract class ActiveRecordEntity<TEntity, TConfig> 
+    public abstract class ActiveRecordEntity<TEntity, TConfig> : EntityInfo<TEntity>
         where TEntity : EntityInfo<TEntity>, new()
         where TConfig : StoredProcedureConfiguration<TEntity>, new()
     {
@@ -29,11 +28,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static TEntity GetById(int id)
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetById(id);
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetById(id);
+            return returnValue;
         }
 
         /// <summary>
@@ -43,11 +40,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static TEntity GetByKey(Guid key)
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetByKey(key);
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetByKey(key);
+            return returnValue;
         }
 
         /// <summary>
@@ -56,11 +51,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static IEnumerable<TEntity> GetAll()
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetAll();
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetAll();
+            return returnValue;
         }
 
         /// <summary>
@@ -70,11 +63,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static IEnumerable<TEntity> GetByWhere(Expression<Func<TEntity, bool>> expression)
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetByWhere(expression);
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetByWhere(expression);
+            return returnValue;
         }
 
         /// <summary>

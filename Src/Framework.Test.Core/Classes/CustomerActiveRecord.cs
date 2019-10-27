@@ -12,8 +12,8 @@ namespace GoodToCode.Framework.Test
     /// Database-first entity, Code bound directly to View       
     /// </summary>
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"),
-        TableName("CustomerInfo")]
-    public class CustomerInfo : EntityInfo<CustomerInfo>
+        TableName("CustomerActiveRecord")]
+    public class CustomerActiveRecord : ActiveRecordEntity<CustomerInfo, CustomerSPConfig>
     {        
         /// <summary>
         /// ValidationRules and BusinessRules that ensure no dirty data is committed
@@ -90,7 +90,7 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Constructor
         /// </summary>
-        public CustomerInfo() : base()
+        public CustomerActiveRecord() : base()
         {
         }
     }
