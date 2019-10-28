@@ -16,6 +16,13 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Constructor 
         /// </summary>
+        public StoredProcedureConfiguration()
+        {
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// </summary>
         /// <param name="entity"></param>
         public StoredProcedureConfiguration(TEntity entity)
         {
