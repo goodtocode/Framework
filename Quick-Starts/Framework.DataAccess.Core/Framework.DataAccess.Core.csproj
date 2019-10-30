@@ -29,9 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19295.1" />
-    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19300.3" />
-    <PackageReference Include="GoodToCode.Framework.Data" Version="4.19.19300.3" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Framework.Abstractions" Version="4.19.19303.2" />
+    <PackageReference Include="GoodToCode.Framework.Data" Version="4.19.19303.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
