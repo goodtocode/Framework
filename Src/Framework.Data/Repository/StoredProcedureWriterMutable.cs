@@ -19,6 +19,8 @@ namespace GoodToCode.Framework.Repository
         ISaveMutableAsync<TEntity>, ICreateMutableAsync<TEntity>, IUpdateMutableAsync<TEntity>, IDeleteMutableAsync<TEntity>
         where TEntity : EntityInfo<TEntity>, new()
     {
+        private TEntity _entity = new TEntity();
+
         /// <summary>
         /// Configures stored procedure for specific parameter behavior
         /// Named: @Param1 is used to match parameter with entity data. 
@@ -44,7 +46,15 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Entity to be applied to the stored procedure parameters
         /// </summary>
-        public TEntity Entity { get; private set;  } = new TEntity();
+        public TEntity Entity
+        {
+            get => _entity;
+            private set
+            {
+                _entity = value;
+                StoredProcConfig.Entity = _entity;
+            }
+        }
 
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
