@@ -2,6 +2,7 @@
 using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Hosting.Server
@@ -69,13 +70,20 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpGet("{key}")]
         public IActionResult Get(string key)
         {
-            if (string.IsNullOrEmpty(key)) return BadRequest();
+            if (string.IsNullOrEmpty(key)) return UnprocessableEntity();
 
-            using (var reader = new EntityReader<TEntity>())
+            try
             {
-                var entity = reader.GetByIdOrKey(key);
-                if (entity.IsNew) return NotFound();
-                return Ok(entity);
+                using (var reader = new EntityReader<TEntity>())
+                {
+                    var entity = reader.GetByIdOrKey(key);
+                    if (entity.IsNew) return NotFound();
+                    return Ok(entity);
+                }
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -86,11 +94,18 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpPut]
         public async Task<IActionResult> PutAsync([FromBody]TEntity entity)
         {
-            using (var writer = new EntityWriter<TEntity>(entity))
+            try
             {
-                var returnEntity = await writer.SaveAsync();
-                if (returnEntity.IsNew) return BadRequest();
-                return Ok(returnEntity);
+                using (var writer = new EntityWriter<TEntity>(entity))
+                {
+                    var returnEntity = await writer.SaveAsync();
+                    if (returnEntity.IsNew) return BadRequest();
+                    return Ok(returnEntity);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -102,11 +117,18 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody]TEntity entity)
         {
-            using (var writer = new EntityWriter<TEntity>(entity))
+            try
             {
-                var returnEntity = await writer.SaveAsync();
-                if (returnEntity.IsNew) return BadRequest();
-                return Ok(returnEntity);
+                using (var writer = new EntityWriter<TEntity>(entity))
+                {
+                    var returnEntity = await writer.SaveAsync();
+                    if (returnEntity.IsNew) return BadRequest();
+                    return Ok(returnEntity);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
 
@@ -118,19 +140,25 @@ namespace GoodToCode.Framework.Hosting.Server
         [HttpDelete("{key}")]
         public async Task<IActionResult> DeleteAsync(string key)
         {
-            using (var reader = new EntityReader<TEntity>())
+            try
             {
-                var entity = reader.GetByIdOrKey(key);
-                TEntity returnEntity;
-                using (var writer = new EntityWriter<TEntity>(entity))
-                {
-                    returnEntity = await writer.DeleteAsync();
-                    if (!returnEntity.IsNew) return BadRequest();
-                }                
 
-                return Ok(returnEntity);
+                using (var reader = new EntityReader<TEntity>())
+                {
+                    var entity = reader.GetByIdOrKey(key);
+                    TEntity returnEntity;
+                    using (var writer = new EntityWriter<TEntity>(entity))
+                    {
+                        returnEntity = await writer.DeleteAsync();
+                        if (!returnEntity.IsNew) return BadRequest();
+                    }
+                    return Ok(returnEntity);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
     }
 }
-
