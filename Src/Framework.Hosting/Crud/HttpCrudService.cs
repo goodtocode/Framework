@@ -3,7 +3,6 @@ using GoodToCode.Extensions.Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -73,6 +72,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestPut<TDto>(Uri, item))
             {
                 returnData = await client.SendAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
@@ -91,6 +91,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestGet<TDto>(uriQuery))
             {
                 returnData = await client.SendAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
@@ -108,6 +109,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestGet<TDto>(uriId))
             {
                 returnData = await client.SendAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
@@ -125,6 +127,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestGet<TDto>(uriKey))
             {
                 returnData = await client.SendAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
@@ -141,6 +144,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestPost<TDto>(Uri, item))
             {
                 returnData = await client.SendAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
@@ -157,6 +161,7 @@ namespace GoodToCode.Framework.Hosting
             using (var client = new HttpRequestDelete(Uri))
             {
                 returnData = await client.DeleteAsync();
+                Response = client.Response;
             }
             return await Task.Run(() => returnData);
         }
