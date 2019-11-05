@@ -1,6 +1,7 @@
 ﻿using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -83,7 +84,7 @@ namespace GoodToCode.Framework.Hosting.Server
             }
             catch(Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"{ex.Message}. Inner Exception: {ex.InnerException}" });
             }
         }
 
@@ -105,7 +106,7 @@ namespace GoodToCode.Framework.Hosting.Server
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"{ex.Message}. Inner Exception: {ex.InnerException}" });
             }
         }
 
@@ -128,7 +129,7 @@ namespace GoodToCode.Framework.Hosting.Server
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"{ex.Message}. Inner Exception: {ex.InnerException}" });
             }
         }
 
@@ -157,7 +158,7 @@ namespace GoodToCode.Framework.Hosting.Server
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"{ex.Message}. Inner Exception: {ex.InnerException}" });
             }
         }
     }
