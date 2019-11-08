@@ -85,7 +85,7 @@ namespace GoodToCode.Framework.Test
         /// Tests attributes        
         /// </summary>
         [ConnectionStringName(testValue)]
-        internal class EntityWithConnectString : EntityInfo<EntityWithConnectString>
+        internal class EntityWithConnectString : EntityBase<EntityWithConnectString>
         {
             /// <summary>
             /// ValidationRules and BusinessRules that ensure no dirty data is committed

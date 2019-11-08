@@ -15,7 +15,7 @@ namespace GoodToCode.Framework.Repository
     /// Workaround 1: EF Core in .NET Standard project: csproj - <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     /// Workaround 2: EF Core in test project: csproj - <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     /// </summary>
-    public class ValueReader<TValue> : DbContext where TValue : ValueInfo<TValue>, new()
+    public class ValueReader<TValue> : DbContext where TValue : ValueBase<TValue>, new()
     {
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.

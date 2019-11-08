@@ -13,7 +13,7 @@ namespace GoodToCode.Framework.Value
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
+    public class ValueConfiguration<TValue> : IValueConfiguration<TValue> where TValue : ValueBase<TValue>, new()
     {
         /// <summary>
         /// Connection string as read from the config file, or passed as a constructor parameter

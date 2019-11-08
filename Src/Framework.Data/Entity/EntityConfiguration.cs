@@ -16,7 +16,7 @@ namespace GoodToCode.Framework.Entity
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access

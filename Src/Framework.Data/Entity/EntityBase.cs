@@ -19,7 +19,7 @@ namespace GoodToCode.Framework.Entity
     ///   Auto-validates before saving
     /// </summary>
     /// <remarks></remarks>
-    public abstract partial class EntityInfo<TEntity> : IEntity, ISerializable<TEntity>, IValidatable<TEntity> where TEntity : class, IValidatable<TEntity>, new()
+    public abstract class EntityBase<TEntity> : IEntity, ISerializable<TEntity>, IValidatable<TEntity> where TEntity : class, IValidatable<TEntity>, new()
     {
         /// <summary>
         /// Id of record
@@ -91,7 +91,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityInfo() : base() { }
+        public EntityBase() : base() { }
 
         /// <summary>
         /// Fills this object with another object's data (of the same type)

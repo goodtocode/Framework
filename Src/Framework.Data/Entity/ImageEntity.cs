@@ -11,7 +11,7 @@ namespace GoodToCode.Framework.Entity
     /// Base DAO class for tables containing image column
     /// Separates the heavy image column into its own object
     /// </summary>
-    public abstract class ImageEntity<TEntity> : EntityInfo<TEntity>, IBytesKey where TEntity : ImageEntity<TEntity>, new()
+    public abstract class ImageEntity<TEntity> : EntityBase<TEntity>, IBytesKey where TEntity : ImageEntity<TEntity>, new()
     {
         private byte[] bytesValue = null;
 

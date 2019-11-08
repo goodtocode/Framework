@@ -7,7 +7,7 @@ namespace GoodToCode.Framework.Test
     /// Tests attributes        
     /// </summary>
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode")]
-    public class CustomerType : ValueInfo<CustomerType>
+    public class CustomerType : ValueBase<CustomerType>
     {
 
     }

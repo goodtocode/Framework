@@ -8,7 +8,7 @@ namespace GoodToCode.Framework.Hosting.Server
     /// Crud API that is stored procedure driven
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class CrudApiDatabase<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class CrudApiDatabase<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Type representing the CrudApiController

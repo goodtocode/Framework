@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Test
     /// </summary>
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("Customer"), 
         TableName("Customer"), ColumnPrefix("Customer")]
-    public class CustomerEntity : EntityInfo<CustomerEntity>
+    public class CustomerEntity : EntityBase<CustomerEntity>
     {
         /// <summary>
         /// ValidationRules and BusinessRules that ensure no dirty data is committed

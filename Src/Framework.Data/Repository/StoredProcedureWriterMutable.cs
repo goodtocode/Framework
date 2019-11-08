@@ -17,7 +17,7 @@ namespace GoodToCode.Framework.Repository
     /// </summary>
     public class StoredProcedureWriterMutable<TEntity> : DbContext,
         ISaveMutableAsync<TEntity>, ICreateMutableAsync<TEntity>, IUpdateMutableAsync<TEntity>, IDeleteMutableAsync<TEntity>
-        where TEntity : EntityInfo<TEntity>, new()
+        where TEntity : EntityBase<TEntity>, new()
     {
         private TEntity _entity = new TEntity();
 

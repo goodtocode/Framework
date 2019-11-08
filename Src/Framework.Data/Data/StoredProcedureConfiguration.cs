@@ -6,7 +6,7 @@ namespace GoodToCode.Framework.Data
     ///  StoredProcedureEntity - C-UD operations of an entity against stored procedures
     ///   Read remains EntityReader centric
     /// </summary>
-    public class StoredProcedureConfiguration<TEntity> : IStoredProcedureConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public class StoredProcedureConfiguration<TEntity> : IStoredProcedureConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Entity to be applied to the stored procedure parameters

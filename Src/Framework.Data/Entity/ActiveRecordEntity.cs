@@ -12,8 +12,8 @@ namespace GoodToCode.Framework.Entity
     ///  ActiveRecord abstract class. Based on StoredProcedureEntity
     ///    Includes GetById(), GetByKey(), GetByWhere(), GetAll(), Save(), Delete()
     /// </summary>
-    public abstract class ActiveRecordEntity<TEntity, TConfig> : EntityInfo<TEntity>
-        where TEntity : EntityInfo<TEntity>, new()
+    public abstract class ActiveRecordEntity<TEntity, TConfig> : EntityBase<TEntity>
+        where TEntity : EntityBase<TEntity>, new()
         where TConfig : StoredProcedureConfiguration<TEntity>, new()
     {
         /// <summary>

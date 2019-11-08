@@ -17,7 +17,7 @@ namespace GoodToCode.Framework.Repository
     /// </summary>
     public class StoredProcedureWriter<TEntity> : DbContext,
         ISaveOperationAsync<TEntity>, ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, IDeleteOperationAsync<TEntity>
-        where TEntity : EntityInfo<TEntity>, new()
+        where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Configures stored procedure for specific parameter behavior

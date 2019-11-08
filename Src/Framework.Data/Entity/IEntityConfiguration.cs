@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Entity
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityInfo<TEntity>, new()
+    public partial interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access

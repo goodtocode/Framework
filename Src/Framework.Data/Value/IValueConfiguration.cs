@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Value
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IValueConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueInfo<TValue>, new()
+    public partial interface IValueConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueBase<TValue>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access

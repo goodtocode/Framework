@@ -10,7 +10,7 @@ namespace GoodToCode.Framework.Value
     /// ReadValueBase
     /// </summary>
     /// <remarks>ReadValueBase</remarks>
-    public abstract partial class ValueInfo<TValue> : IValue, ISerializable<TValue> where TValue : class, IValue, ISerializable<TValue>, new()
+    public abstract class ValueBase<TValue> : IValue, ISerializable<TValue> where TValue : class, IValue, ISerializable<TValue>, new()
     {        
         /// <summary>
         /// Guid of record
@@ -35,7 +35,7 @@ namespace GoodToCode.Framework.Value
         /// <summary>
         /// Forces initialization of EF-generated properties (PropertyValue = Defaults.{Type})
         /// </summary>
-        public ValueInfo() : base() { }
+        public ValueBase() : base() { }
 
         /// <summary>
         /// Fills this object with another object's data (of the same type)

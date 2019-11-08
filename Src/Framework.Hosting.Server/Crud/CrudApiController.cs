@@ -18,7 +18,7 @@ namespace GoodToCode.Framework.Hosting.Server
     ///   D - HttpDelete(string idOrKey)
     /// </summary>
     [Route("api/[Controller]")]
-    public class CrudApiController<TEntity> : ControllerBase where TEntity : EntityInfo<TEntity>, new()
+    public class CrudApiController<TEntity> : ControllerBase where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Name of the controller and path part
