@@ -15,9 +15,7 @@ namespace GoodToCode.Framework.Repository
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
     /// </summary>
-    public class StoredProcedureWriter<TEntity> : DbContext,
-        ISaveOperationAsync<TEntity>, ICreateOperationAsync<TEntity>, IUpdateOperationAsync<TEntity>, IDeleteOperationAsync<TEntity>
-        where TEntity : EntityBase<TEntity>, new()
+    public class StoredProcedureWriter<TEntity> : DbContext, IEntityWriter<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Configures stored procedure for specific parameter behavior
@@ -60,7 +58,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        public IEntityConfiguration<TEntity> DatabaseConfig { get; set; } = new EntityConfiguration<TEntity>();
+        public IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>();
 
         /// <summary>
         /// Stored procedure that C-UDs the entity
@@ -86,7 +84,7 @@ namespace GoodToCode.Framework.Repository
             get
             {
                 var returnValue = Defaults.Boolean;
-                using (var connection = new SqlConnection(DatabaseConfig.ConnectionString))
+                using (var connection = new SqlConnection(ConfigOptions.ConnectionString))
                 {
                     returnValue = connection.CanOpen();
                 }
@@ -101,7 +99,7 @@ namespace GoodToCode.Framework.Repository
         public bool CanCreate()
         {
             var returnValue = Defaults.Boolean;
-            if (Entity.IsNew && DatabaseConfig.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
+            if (Entity.IsNew && ConfigOptions.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
                 returnValue = true;
             return returnValue;
         }
@@ -113,7 +111,7 @@ namespace GoodToCode.Framework.Repository
         public bool CanUpdate()
         {
             var returnValue = Defaults.Boolean;
-            if (!Entity.IsNew && DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
                 returnValue = true;
             return returnValue;
         }
@@ -125,7 +123,7 @@ namespace GoodToCode.Framework.Repository
         public bool CanDelete()
         {
             var returnValue = Defaults.Boolean;
-            if (!Entity.IsNew && (DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.AllAccess || DatabaseConfig.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
+            if (!Entity.IsNew && (ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess || ConfigOptions.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
                 returnValue = true;
             return returnValue;
         }
@@ -227,9 +225,9 @@ namespace GoodToCode.Framework.Repository
         {
             if (!options.IsConfigured)
             {
-                if ((DatabaseConfig.ConnectionString.Length == 0 || !CanConnect))
+                if ((ConfigOptions.ConnectionString.Length == 0 || !CanConnect))
                     throw new Exception("Database connection failed or the connection string could not be found. A valid connection string required for data access.");
-                options.UseSqlServer(DatabaseConfig.ConnectionString);
+                options.UseSqlServer(ConfigOptions.ConnectionString);
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
                 base.OnConfiguring(options);
             }
@@ -241,8 +239,8 @@ namespace GoodToCode.Framework.Repository
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(DatabaseConfig);
-            foreach (Type item in DatabaseConfig.IgnoredTypes)
+            modelBuilder.ApplyConfiguration(ConfigOptions);
+            foreach (Type item in ConfigOptions.IgnoredTypes)
             {
                 modelBuilder.Ignore(item);
             }
