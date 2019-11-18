@@ -20,7 +20,7 @@ namespace GoodToCode.Framework.Hosting.Server
     /// </summary>
     public class CrudApiControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
     {
-        private List<CrudApiRoute> typesAndRoutes = new List<CrudApiRoute>();
+        private readonly List<CrudApiRoute> typesAndRoutes = new List<CrudApiRoute>();
 
         /// <summary>
         /// Constructor

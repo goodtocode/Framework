@@ -2,12 +2,10 @@ using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Entity;
-using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace GoodToCode.Framework.Repository

@@ -1,5 +1,4 @@
-﻿using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Entity;
+﻿using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +19,24 @@ namespace GoodToCode.Framework.Hosting.Server
     [Route("api/[Controller]")]
     public class CrudApiController<TEntity> : ControllerBase where TEntity : EntityBase<TEntity>, new()
     {
+        private IEntityConfiguration<TEntity> _config;
+
         /// <summary>
         /// Name of the controller and path part
         /// </summary>
         public string ControllerName => typeof(TEntity).Name;
+
+        /// <summary>
+        /// Database configuration
+        /// </summary>
+        private IEntityConfiguration<TEntity> Config
+        {
+            get
+            {
+                _config = _config ?? (_config = new EntityConfiguration<TEntity>());
+                return _config;
+            }
+        }
 
         /// <summary>
         /// Path part inbetween domain and controller name
@@ -64,6 +77,14 @@ namespace GoodToCode.Framework.Hosting.Server
         }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        public CrudApiController(IEntityConfiguration<TEntity> dbConfig)
+        {
+            _config = dbConfig;
+        }
+
+        /// <summary>
         /// Retrieves item by Id
         /// </summary>        
         /// <param name="key"></param>
@@ -82,7 +103,7 @@ namespace GoodToCode.Framework.Hosting.Server
                     return Ok(entity);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { message = $"{ex.Message}. Inner Exception: {ex.InnerException}" });
             }
@@ -97,7 +118,7 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-                using (var writer = new EntityWriter<TEntity>(entity))
+                using (var writer = new EntityWriter<TEntity>(entity, Config))
                 {
                     var returnEntity = await writer.SaveAsync();
                     if (returnEntity.IsNew) return BadRequest();
@@ -120,7 +141,7 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-                using (var writer = new EntityWriter<TEntity>(entity))
+                using (var writer = new EntityWriter<TEntity>(entity, Config))
                 {
                     var returnEntity = await writer.SaveAsync();
                     if (returnEntity.IsNew) return BadRequest();
@@ -143,12 +164,11 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-
                 using (var reader = new EntityReader<TEntity>())
                 {
                     var entity = reader.GetByIdOrKey(key);
                     TEntity returnEntity;
-                    using (var writer = new EntityWriter<TEntity>(entity))
+                    using (var writer = new EntityWriter<TEntity>(entity, Config))
                     {
                         returnEntity = await writer.DeleteAsync();
                         if (!returnEntity.IsNew) return BadRequest();
