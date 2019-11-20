@@ -14,7 +14,7 @@ namespace GoodToCode.Framework.Test
     [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("CustomerCode"),
         TableName("CustomerActiveRecord")]
     public class CustomerActiveRecord : ActiveRecordEntity<CustomerInfo, CustomerSPConfig>
-    {        
+    {
         /// <summary>
         /// ValidationRules and BusinessRules that ensure no dirty data is committed
         /// </summary>

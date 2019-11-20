@@ -55,11 +55,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static IEnumerable<TEntity> GetAll()
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetAll();
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetAll();
+            return returnValue;
         }
 
         /// <summary>
@@ -69,11 +67,9 @@ namespace GoodToCode.Framework.Entity
         /// <returns></returns>
         public static IEnumerable<TEntity> GetByWhere(Expression<Func<TEntity, bool>> expression)
         {
-            using (var reader = new EntityReader<TEntity>())
-            {
-                var returnValue = reader.GetByWhere(expression);
-                return returnValue;
-            }
+            var reader = new EntityReader<TEntity>();
+            var returnValue = reader.GetByWhere(expression);
+            return returnValue;
         }
 
         /// <summary>

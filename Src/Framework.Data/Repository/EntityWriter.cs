@@ -22,7 +22,11 @@ namespace GoodToCode.Framework.Repository
         /// </summary>        
         public TEntity Entity
         {
-            get => _entity;
+            get
+            {
+                ConfigOptions.EntityData = _entity;
+                return _entity;
+            }
             private set
             {
                 _entity = value;
