@@ -15,10 +15,20 @@ namespace GoodToCode.Framework.Repository
     /// </summary>
     public class EntityWriter<TEntity> : DbContext, IEntityWriter<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
+        private TEntity _entity = new TEntity();
+
         /// <summary>
         /// Entity to be applied to the stored procedure parameters
-        /// </summary>
-        public TEntity Entity { get; } = new TEntity();
+        /// </summary>        
+        public TEntity Entity
+        {
+            get => _entity;
+            private set
+            {
+                _entity = value;
+                ConfigOptions.EntityData = _entity;
+            }
+        }
 
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
@@ -94,7 +104,6 @@ namespace GoodToCode.Framework.Repository
             {
                 if (ConfigOptions.CreateStoredProcedure != null)
                 {
-                    ConfigOptions.EntityData = Entity;
                     var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.CreateStoredProcedure);
                     var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
@@ -133,7 +142,6 @@ namespace GoodToCode.Framework.Repository
             {
                 if (ConfigOptions.UpdateStoredProcedure != null)
                 {
-                    ConfigOptions.EntityData = Entity;
                     var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.UpdateStoredProcedure);
                     var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data 
@@ -170,7 +178,6 @@ namespace GoodToCode.Framework.Repository
             {
                 if (ConfigOptions.DeleteStoredProcedure != null)
                 {
-                    ConfigOptions.EntityData = Entity;
                     var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
                     var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
                     if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"

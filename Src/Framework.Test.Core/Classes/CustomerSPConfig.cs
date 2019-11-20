@@ -16,7 +16,6 @@ namespace GoodToCode.Framework.Test
 
         /// <summary>
         /// Constructor 
-        /// OBSOLETE
         /// </summary>
         /// <param name="entity"></param>
         public CustomerSPConfig(CustomerInfo entity) : base(entity) { }

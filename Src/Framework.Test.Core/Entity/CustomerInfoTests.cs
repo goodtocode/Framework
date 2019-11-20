@@ -83,7 +83,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            var config = new CustomerSPConfig(testEntity);
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, config))
             {
                 resultEntity = await writer.CreateAsync();
             }

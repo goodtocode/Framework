@@ -20,7 +20,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Entity data this configuration may need for stored procedure in-lining
         /// </summary>
-        public TEntity EntityData { get; set; }
+        public TEntity EntityData { get; set; } = new TEntity();
 
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access
@@ -33,17 +33,17 @@ namespace GoodToCode.Framework.Entity
         public string DatabaseSchema { get; set; } = DatabaseSchemaName.DefaultDatabaseSchema;
 
         /// <summary>
-        /// Schema to be used for this object's data access
+        /// Table Name to be used for this object's data access
         /// </summary>
         public string TableName { get; set; } = typeof(TEntity).Name;
 
         /// <summary>
-        /// Schema to be used for this object's data access
+        /// Table Column Prefix to be used for this object's data access
         /// </summary>
         public string ColumnPrefix { get; set; } = Defaults.String;
 
         /// <summary>
-        /// Schema to be used for this object's data access
+        /// Concurrency setting for contention management
         /// </summary>
         public DataConcurrencies DataConcurrency { get; set; } = DataConcurrencies.Optimistic;
 
@@ -119,6 +119,15 @@ namespace GoodToCode.Framework.Entity
         }
 
         /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="entity"></param>
+        public EntityConfiguration(TEntity entity) : this()
+        {
+            EntityData = entity;
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public EntityConfiguration(string databaseSchemaName) : this()
@@ -140,16 +149,6 @@ namespace GoodToCode.Framework.Entity
         public EntityConfiguration(IList<Expression<Func<TEntity, object>>> ignoredProperties) : this()
         {
             IgnoredProperties.AddRange(ignoredProperties);
-        }
-
-        /// <summary>
-        /// Constructor 
-        /// OBSOLETE
-        /// </summary>
-        /// <param name="entity"></param>
-        public EntityConfiguration(TEntity entity)
-        {
-            EntityData = entity;
         }
 
         /// <summary>
