@@ -176,7 +176,7 @@ namespace GoodToCode.Framework.Repository
         public async Task<TEntity> DeleteAsync()
         {
             if (!CanDelete()) throw new NotSupportedException("CanDelete() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
-            if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
+            if (Entity.IsNew) throw new NotSupportedException("IsNew == true. This entity can not be deleted, as it does not exist in the datastore.");
 
             try
             {
