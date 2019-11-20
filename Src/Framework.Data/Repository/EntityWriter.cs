@@ -175,8 +175,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public async Task<TEntity> DeleteAsync()
         {
-            if (!CanDelete()) throw new NotSupportedException("CanDelete() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
-            if (Entity.IsNew) throw new NotSupportedException("IsNew == true. This entity can not be deleted, as it does not exist in the datastore.");
+            if (!CanDelete()) throw new NotSupportedException("CanDelete() == false. This entity can not be deleted from the datastore. Possible causes: IsNew == false. No Id/Key present.");
 
             try
             {
@@ -196,7 +195,6 @@ namespace GoodToCode.Framework.Repository
                         Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -238,7 +236,7 @@ namespace GoodToCode.Framework.Repository
         public bool CanUpdate()
         {
             var returnValue = Defaults.Boolean;
-            if (!Entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && (ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess || ConfigOptions.DataAccessBehavior == DataAccessBehaviors.NoDelete))
                 returnValue = true;
             return returnValue;
         }
@@ -250,7 +248,7 @@ namespace GoodToCode.Framework.Repository
         public bool CanDelete()
         {
             var returnValue = Defaults.Boolean;
-            if (!Entity.IsNew && ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess)
+            if (!Entity.IsNew && (ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess || ConfigOptions.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
                 returnValue = true;
             return returnValue;
         }
