@@ -20,7 +20,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Entity data this configuration may need for stored procedure in-lining
         /// </summary>
-        public TEntity EntityData { get; set; } = new TEntity();
+        public TEntity Entity { get; set; } = new TEntity();
 
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access
@@ -124,7 +124,7 @@ namespace GoodToCode.Framework.Entity
         /// <param name="entity"></param>
         public EntityConfiguration(TEntity entity) : this()
         {
-            EntityData = entity;
+            Entity = entity;
         }
 
         /// <summary>

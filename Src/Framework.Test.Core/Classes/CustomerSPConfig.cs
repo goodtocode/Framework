@@ -29,13 +29,13 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoInsert",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Key", EntityData.Key),
-                new SqlParameter("@FirstName", EntityData.FirstName),
-                new SqlParameter("@MiddleName", EntityData.MiddleName),
-                new SqlParameter("@LastName", EntityData.LastName),
-                new SqlParameter("@BirthDate", EntityData.BirthDate),
-                new SqlParameter("@GenderId", EntityData.GenderId),
-                new SqlParameter("@CustomerTypeId", EntityData.CustomerTypeId)
+                new SqlParameter("@Key", Entity.Key),
+                new SqlParameter("@FirstName", Entity.FirstName),
+                new SqlParameter("@MiddleName", Entity.MiddleName),
+                new SqlParameter("@LastName", Entity.LastName),
+                new SqlParameter("@BirthDate", Entity.BirthDate),
+                new SqlParameter("@GenderId", Entity.GenderId),
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId)
             }
         };
 
@@ -48,14 +48,14 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoUpdate",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Id", EntityData.Id),
-                new SqlParameter("@Key", EntityData.Key),
-                new SqlParameter("@FirstName", EntityData.FirstName),
-                new SqlParameter("@MiddleName", EntityData.MiddleName),
-                new SqlParameter("@LastName", EntityData.LastName),
-                new SqlParameter("@BirthDate", EntityData.BirthDate),
-                new SqlParameter("@GenderId", EntityData.GenderId),
-                new SqlParameter("@CustomerTypeId", EntityData.CustomerTypeId)
+                new SqlParameter("@Id", Entity.Id),
+                new SqlParameter("@Key", Entity.Key),
+                new SqlParameter("@FirstName", Entity.FirstName),
+                new SqlParameter("@MiddleName", Entity.MiddleName),
+                new SqlParameter("@LastName", Entity.LastName),
+                new SqlParameter("@BirthDate", Entity.BirthDate),
+                new SqlParameter("@GenderId", Entity.GenderId),
+                new SqlParameter("@CustomerTypeId", Entity.CustomerTypeId)
             }
         };
 
@@ -68,8 +68,8 @@ namespace GoodToCode.Framework.Test
             StoredProcedureName = "CustomerInfoDelete",
             Parameters = new List<SqlParameter>()
             {
-                new SqlParameter("@Id", EntityData.Id),
-                new SqlParameter("@Key", EntityData.Key)
+                new SqlParameter("@Id", Entity.Id),
+                new SqlParameter("@Key", Entity.Key)
             }
         };
     }

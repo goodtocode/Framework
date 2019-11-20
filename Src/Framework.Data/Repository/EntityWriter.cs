@@ -24,13 +24,13 @@ namespace GoodToCode.Framework.Repository
         {
             get
             {
-                ConfigOptions.EntityData = _entity;
+                ConfigOptions.Entity = _entity;
                 return _entity;
             }
             private set
             {
                 _entity = value;
-                ConfigOptions.EntityData = _entity;
+                ConfigOptions.Entity = _entity;
             }
         }
 

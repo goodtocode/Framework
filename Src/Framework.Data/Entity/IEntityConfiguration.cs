@@ -29,7 +29,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Entity this configuration may need 
         /// </summary>
-        TEntity EntityData { get; set; }
+        TEntity Entity { get; set; }
 
         /// <summary>
         /// Schema to be used for this object's data access
