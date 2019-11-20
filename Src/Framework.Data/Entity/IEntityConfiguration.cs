@@ -14,6 +14,26 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Schema to be used for this object's data access
         /// </summary>
+        DataConcurrencies DataConcurrency { get; set; }
+
+        /// <summary>
+        /// Data access behavior of this instance.
+        /// </summary>
+        DataAccessBehaviors DataAccessBehavior { get; set; }
+
+        /// <summary>
+        /// Stored Procedure parameter behavior, primarily named or ordinal
+        /// </summary>
+        ParameterBehaviors ParameterBehavior { get; set; }
+
+        /// <summary>
+        /// Entity this configuration may need 
+        /// </summary>
+        TEntity EntityData { get; set; }
+
+        /// <summary>
+        /// Schema to be used for this object's data access
+        /// </summary>
         string DatabaseSchema { get; set; }
 
         /// <summary>
@@ -39,14 +59,19 @@ namespace GoodToCode.Framework.Entity
         string ColumnPrefix { get; set; }
 
         /// <summary>
-        /// Schema to be used for this object's data access
+        /// Stored procedure that creates the entity
         /// </summary>
-        DataConcurrencies DataConcurrency { get; set; }
+        StoredProcedure<TEntity> CreateStoredProcedure { get; }
 
         /// <summary>
-        /// Data access behavior of this instance.
+        /// Stored procedure that updates the entity
         /// </summary>
-        DataAccessBehaviors DataAccessBehavior { get; set; }
+        StoredProcedure<TEntity> UpdateStoredProcedure { get; }
+
+        /// <summary>
+        /// Stored procedure that deletes the entity
+        /// </summary>
+        StoredProcedure<TEntity> DeleteStoredProcedure { get; }
 
         /// <summary>
         /// Rows affected by any adapter operation

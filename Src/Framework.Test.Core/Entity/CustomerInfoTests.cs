@@ -83,7 +83,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
                 resultEntity = await writer.CreateAsync();
             }
@@ -128,7 +128,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
                 resultEntity = await writer.CreateAsync();
             }
@@ -172,7 +172,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
                 resultEntity = await writer.CreateAsync();
             }
@@ -222,7 +222,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
                 testEntity = await writer.UpdateAsync();
             }
@@ -261,7 +261,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
             {
                 testEntity = await writer.DeleteAsync();
             }
@@ -420,7 +420,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                using (var db = new StoredProcedureWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                using (var db = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
                 {
                     await db.DeleteAsync();
                 }

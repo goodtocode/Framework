@@ -192,7 +192,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefault();
-                using (var db = new StoredProcedureWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                using (var db = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
                 {
                     await db.DeleteAsync();
                 }

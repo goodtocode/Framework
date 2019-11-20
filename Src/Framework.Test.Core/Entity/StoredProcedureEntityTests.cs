@@ -76,7 +76,7 @@ namespace GoodToCode.Framework.Test
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
 
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
             {
                 resultCustomer = await writer.SaveAsync();
             }
@@ -107,7 +107,7 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
             {
                 resultCustomer = await writer.CreateAsync();
             }
@@ -168,9 +168,9 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(item.Key != Defaults.Guid);
 
             item.FirstName = uniqueValue;
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(item, new CustomerSPConfig(item)))
+            using (var writer = new EntityWriter<CustomerInfo>(item, new CustomerSPConfig(item)))
             {
-                resultCustomer = await writer.CreateAsync();
+                resultCustomer = await writer.UpdateAsync();
             }
             Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
             Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
@@ -208,7 +208,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Defaults.Guid);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            using (var writer = new StoredProcedureWriter<CustomerInfo>(testItem, new CustomerSPConfig(testItem)))
+            using (var writer = new EntityWriter<CustomerInfo>(testItem, new CustomerSPConfig(testItem)))
             {
                 var deleteResult = await writer.DeleteAsync();
                 Assert.IsTrue(deleteResult.IsNew);
@@ -269,7 +269,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 var toDelete = reader.GetByKey(item);
-                using (var writer = new StoredProcedureWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                using (var writer = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
                 {
                     await writer.DeleteAsync();
                 }

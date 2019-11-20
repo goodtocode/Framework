@@ -1,4 +1,3 @@
-
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Collections;
 using GoodToCode.Framework.Data;
@@ -18,6 +17,11 @@ namespace GoodToCode.Framework.Entity
     /// </summary>
     public class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
+        /// <summary>
+        /// Entity data this configuration may need for stored procedure in-lining
+        /// </summary>
+        public TEntity EntityData { get; set; }
+
         /// <summary>
         /// Connection String Name (key) to be used for this object's data access
         /// </summary>
@@ -47,6 +51,11 @@ namespace GoodToCode.Framework.Entity
         /// Data access behavior of this instance.
         /// </summary>
         public DataAccessBehaviors DataAccessBehavior { get; set; } = DataAccessBehaviors.AllAccess;
+
+        /// <summary>
+        /// Defines how stored prorcedure parameters are invoked
+        /// </summary>
+        public ParameterBehaviors ParameterBehavior { get; set; } = ParameterBehaviors.Named;
 
         /// <summary>
         /// Number of rows affected by any operation
@@ -79,6 +88,21 @@ namespace GoodToCode.Framework.Entity
         /// Connection string as read from the config file, or passed as a constructor parameter
         /// </summary>
         public string ConnectionString { get { return new ConfigurationManagerCore(ApplicationTypes.Native).ConnectionString(ConnectionName).ToADO(); } }
+
+        /// <summary>
+        /// Stored procedure that creates the entity
+        /// </summary>
+        public virtual StoredProcedure<TEntity> CreateStoredProcedure { get; }
+
+        /// <summary>
+        /// Stored procedure that updates the entity
+        /// </summary>
+        public virtual StoredProcedure<TEntity> UpdateStoredProcedure { get; }
+
+        /// <summary>
+        /// Stored procedure that deletes the entity
+        /// </summary>
+        public virtual StoredProcedure<TEntity> DeleteStoredProcedure { get; }
 
         /// <summary>
         /// Constructor
@@ -116,6 +140,16 @@ namespace GoodToCode.Framework.Entity
         public EntityConfiguration(IList<Expression<Func<TEntity, object>>> ignoredProperties) : this()
         {
             IgnoredProperties.AddRange(ignoredProperties);
+        }
+
+        /// <summary>
+        /// Constructor 
+        /// OBSOLETE
+        /// </summary>
+        /// <param name="entity"></param>
+        public EntityConfiguration(TEntity entity)
+        {
+            EntityData = entity;
         }
 
         /// <summary>
