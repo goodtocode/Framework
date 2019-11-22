@@ -69,12 +69,12 @@ namespace GoodToCode.Framework.Hosting.Server
         /// </summary>
         public const string DeleteAction = "DeleteAsync";
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public CrudApiController()
-        {
-        }
+        ///// <summary>
+        ///// Constructor
+        ///// </summary>
+        //public CrudApiController()
+        //{
+        //}
 
         /// <summary>
         /// Constructor
