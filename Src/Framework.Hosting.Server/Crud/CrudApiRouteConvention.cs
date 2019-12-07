@@ -23,6 +23,11 @@ namespace GoodToCode.Framework.Hosting.Server
         private List<CrudApiRoute> typesAndRoutes = new List<CrudApiRoute>();
 
         /// <summary>
+        /// Root of the url used in default routes.
+        /// </summary>
+        public string RootPath { get; set; } = "api";
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public CrudApiControllerRouteConvention() { }
@@ -54,13 +59,10 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             if (controller.ControllerType.IsGenericType)
             {
-                // Method 1 - Default
+                // Add Route["api/{Entity}"]
                 var genericType = controller.ControllerType.GenericTypeArguments[0];
-                controller.ControllerName = genericType.Name;
-
-                // Method 2 - Route["api/Entity"]
                 var route = typesAndRoutes.Where(x => x.CrudType == genericType).Select(y => y.CrudRoute).FirstOrDefault()
-                    ?? $"api/{genericType.Name}";
+                    ?? $"{RootPath}/{genericType.Name}";
                 controller.Selectors.Add(new SelectorModel
                 {
                     AttributeRouteModel = new AttributeRouteModel(new RouteAttribute(route)),
