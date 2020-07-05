@@ -15,7 +15,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
 
-name: 4.19.$(Year:yy)$(DayOfYear)$(Rev:.rr)
+name: 5.20.$(Year:yy)$(DayOfYear)$(Rev:.rr)
 
 steps:
 - task: DeleteFiles@1
