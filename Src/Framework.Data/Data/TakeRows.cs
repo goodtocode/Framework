@@ -1,5 +1,5 @@
-using System;
 using GoodToCode.Extensions;
+using System;
 
 namespace GoodToCode.Framework.Data
 {

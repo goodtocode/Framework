@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Extensions.Text;
 using System.Runtime.Serialization.Json;
@@ -10,9 +10,9 @@ namespace GoodToCode.Framework.Test
 {
     public class PersonInfo
     {
-        public string FirstName { get; set; } = Defaults.String;
-        public string LastName { get; set; } = Defaults.String;
-        public DateTime BirthDate { get; set; } = Defaults.Date;
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public DateTime BirthDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
     }
 
     [TestClass()]
@@ -26,13 +26,13 @@ namespace GoodToCode.Framework.Test
         public void Core_Serialization_Json_ValueTypes()
         {
             // Immutable string class
-            var data1= Defaults.String;
+            var data1= string.Empty;
             var Testdata1= "TestDataHere";
             ISerializer<object> Serialzer1 = new JsonSerializer<object>();
             data1= Serialzer1.Serialize(Testdata1);
             Assert.IsTrue(Serialzer1.Deserialize(data1).ToString() == Testdata1);
             
-            var data = Defaults.String;
+            var data = string.Empty;
             StringMutable TestData = "TestDataHere";
             var Serialzer = new JsonSerializer<StringMutable>();
             data = Serialzer.Serialize(TestData);
@@ -54,11 +54,11 @@ namespace GoodToCode.Framework.Test
         {
             // Collections, etc
             var personObject = new PersonInfo() { FirstName = "John", LastName = "Doe", BirthDate = new DateTime(1977, 11, 20) };
-            var personObjectSerialized = Defaults.String;
+            var personObjectSerialized = string.Empty;
             var personDefaultWebAPI = "{\"BirthDate\":\"\\/Date(248860800000-0800)\\/\",\"FirstName\":\"John\",\"LastName\":\"Doe\"}";
             var personISO8601 = "{\"FirstName\":\"John\",\"MiddleName\":\"Michelle\",\"LastName\":\"Doe\",\"BirthDate\":\"1977-11-20T00:00:00\",\"Id\":-1,\"Key\":\"00000000-0000-0000-0000-000000000000\"}";
             var personISO8601F = "{\"FirstName\":\"John\",\"MiddleName\":\"Michelle\",\"LastName\":\"Doe\",\"BirthDate\":\"1977-11-20T00:00:00.000\",\"Id\":-1,\"Key\":\"00000000-0000-0000-0000-000000000000\"}";
-            var personJsonReSerialized = Defaults.String;
+            var personJsonReSerialized = string.Empty;
             var personJsonDeserialized = new PersonInfo();
             var serializer = new JsonSerializer<PersonInfo>();
 
@@ -122,8 +122,8 @@ namespace GoodToCode.Framework.Test
         public void Core_Serialization_Json_StringMutable()
         {
             StringMutable testPhraseMutable = testPhrase;
-            var result = Defaults.String;
-            StringMutable resultMutable = Defaults.String;
+            var result = string.Empty;
+            StringMutable resultMutable = string.Empty;
             var serializerMutable = new JsonSerializer<StringMutable>();
            
             // Serialization            
@@ -140,8 +140,8 @@ namespace GoodToCode.Framework.Test
         public void Core_Serialization_Json_StringToStringMutable()
         {
             StringMutable testPhraseMutable = testPhrase;
-            var result = Defaults.String;
-            StringMutable resultMutable = Defaults.String;
+            var result = string.Empty;
+            StringMutable resultMutable = string.Empty;
             var serializerMutable = new JsonSerializer<StringMutable>();
             var serializer = new JsonSerializer<string>();
 
@@ -152,7 +152,7 @@ namespace GoodToCode.Framework.Test
 
             // StringMutable serialize -> string deserialize
             result = serializerMutable.Deserialize(testPhraseSerialized); // Not supported scenario, should default ot empty string
-            Assert.IsTrue(result == Defaults.String); 
+            Assert.IsTrue(result == string.Empty); 
 
             result = serializerMutable.Deserialize(testPhraseMutableSerialized);
             Assert.IsTrue(result == testPhrase);

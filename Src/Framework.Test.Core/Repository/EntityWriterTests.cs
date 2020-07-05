@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Framework.Activity;
@@ -71,18 +72,18 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerEntity();
             var resultEntity = new CustomerEntity();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
-            var newId = Defaults.Integer;
-            var newKey = Defaults.Guid;
+            var oldId = -1;
+            var oldKey = Guid.Empty;
+            var newId = -1;
+            var newKey = Guid.Empty;
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
 
             // Do Insert and check passed entity and returned entity                        
             using (var writer = new EntityWriter<CustomerEntity>(testEntity))
@@ -91,16 +92,16 @@ namespace GoodToCode.Framework.Test
                 resultEntity = await writer.SaveAsync();
             }
 
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
         
             // Pull from DB and retest
             testEntity = new EntityReader<CustomerEntity>().GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
 
             // Cleanup
             RecycleBin.Add(testEntity.Key);
@@ -115,10 +116,10 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerEntity();
             var reader = new EntityReader<CustomerEntity>();
-            var oldFirstName = Defaults.String;
+            var oldFirstName = string.Empty;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
-            var entityId = Defaults.Integer;
-            var entityKey = Defaults.Guid;
+            var entityId = -1;
+            var entityKey = Guid.Empty;
 
             // Create and capture original data
             await Core_Data_EntityWriter_Insert();
@@ -128,8 +129,8 @@ namespace GoodToCode.Framework.Test
             entityKey = testEntity.Key;
             testEntity.FirstName = newFirstName;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
 
             // Do Update
             using (var writer = new EntityWriter<CustomerEntity>(testEntity))
@@ -142,8 +143,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id == entityId);
             Assert.IsTrue(testEntity.Key == entityKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
         }
 
         /// <summary>
@@ -155,8 +156,8 @@ namespace GoodToCode.Framework.Test
         {
             var reader = new EntityReader<CustomerEntity>();
             var testEntity = new CustomerEntity();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
+            var oldId = -1;
+            var oldKey = Guid.Empty;
 
             // Insert and baseline test
             await Core_Data_EntityWriter_Insert();
@@ -164,8 +165,8 @@ namespace GoodToCode.Framework.Test
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
 
             // Do delete
             using (var writer = new EntityWriter<CustomerEntity>(testEntity))
@@ -178,8 +179,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
 
             // Add to recycle bin for cleanup
             RecycleBin.Add(testEntity.Key);

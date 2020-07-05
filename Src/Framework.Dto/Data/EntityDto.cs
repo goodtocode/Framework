@@ -1,3 +1,4 @@
+
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Text;
@@ -17,10 +18,10 @@ namespace GoodToCode.Framework.Data
 	/// <remarks>ModelBase</remarks>
 	public abstract class EntityDto<TEntity> : IEntity, ISerializable<TEntity>, IValidatable<TEntity>, INotifyPropertyChanged where TEntity : EntityDto<TEntity>, new()
 	{
-        private int id = Defaults.Integer;
-        private Guid key = Defaults.Guid;
-        private DateTime createdDate = Defaults.Date;
-        private DateTime modifiedDate = Defaults.Date;
+        private int id = -1;
+        private Guid key = Guid.Empty;
+        private DateTime createdDate = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
+        private DateTime modifiedDate = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// Id of record
@@ -50,7 +51,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Is this a new object not yet committed to the database
         /// </summary>
-        public virtual bool IsNew => (this.Id == Defaults.Integer);
+        public virtual bool IsNew => (this.Id == -1);
 
         /// <summary>
         /// Rules that failed validation
@@ -88,7 +89,7 @@ namespace GoodToCode.Framework.Data
         /// <remarks></remarks>
         public bool Equals(TEntity newItem)
         {
-            bool returnValue = Defaults.Boolean;
+            bool returnValue = false;
             Type newObjectType = newItem.GetType();
 
             // Start True
@@ -183,7 +184,7 @@ namespace GoodToCode.Framework.Data
         protected bool SetField<TField>(ref TField field, TField value,
         [CallerMemberName] string propertyName = null)
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             if (EqualityComparer<TField>.Default.Equals(field, value) == false)
             {
                 field = value;

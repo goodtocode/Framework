@@ -6,12 +6,12 @@
     <SccLocalPath>SAK</SccLocalPath>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>GoodToCode.Framework</RootNamespace>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
     <PackageId>GoodToCode.Framework.Test.Core</PackageId>
-    <Version>4.18.9</Version>
+    <Version>5.20.7</Version>
     <Authors>GoodToCode</Authors>
     <Company>GoodToCode</Company>
     <Product>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</Product>
@@ -35,7 +35,7 @@
     <None Remove="GoodToCode.Framework.Test.Core.csproj.vspscc" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.19.20187.4" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
@@ -52,7 +52,6 @@
     <ProjectReference Include="..\Framework.Xaml\GoodToCode.Framework.Xaml.csproj" />
     <ProjectReference Include="..\Framework.Data\GoodToCode.Framework.Data.csproj" />
     <ProjectReference Include="..\Framework.Dto\GoodToCode.Framework.Dto.csproj" />
-    <ProjectReference Include="..\Framework.Web.Core\GoodToCode.Framework.Web.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Net;
 using System;
@@ -24,17 +24,17 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Entry point Screen (Typically login screen)
         /// </summary>
-        public Uri StartupUri { get; } = Defaults.Uri;
+        public Uri StartupUri { get; } = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
 
         /// <summary>
         /// Home dashboard screen
         /// </summary>
-        public Uri HomePage { get; } = Defaults.Uri;
+        public Uri HomePage { get; } = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
 
         /// <summary>
         /// Error screen
         /// </summary>
-        public Uri ErrorPage { get; } = Defaults.Uri;
+        public Uri ErrorPage { get; } = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
 
         /// <summary>
         /// Constructor
@@ -60,7 +60,7 @@ namespace GoodToCode.Framework.Test
         /// <returns></returns>
         public virtual async Task WakeServicesAsync()
         {
-            if (MyWebService.ToString() == Defaults.String)
+            if (MyWebService.ToString() == string.Empty)
             {
                 HttpRequestGetString Request = new HttpRequestGetString(MyWebService.ToString())
                 {
@@ -73,17 +73,17 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Can this screen go back
         /// </summary>
-        public bool CanGoBack { get; } = Defaults.Boolean;
+        public bool CanGoBack { get; } = false;
 
         /// <summary>
         /// Can this screen go forward
         /// </summary>
-        public bool CanGoForward { get; } = Defaults.Boolean;
+        public bool CanGoForward { get; } = false;
 
         /// <summary>
         /// Current loaded page
         /// </summary>
-        public Uri CurrentPage { get; } = Defaults.Uri;
+        public Uri CurrentPage { get; } = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
 
         /// <summary>
         /// Navigates back to previous screen

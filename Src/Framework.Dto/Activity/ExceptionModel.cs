@@ -1,5 +1,6 @@
-using System;
 using GoodToCode.Extensions;
+using System;
+
 
 namespace GoodToCode.Framework.Activity
 {
@@ -12,7 +13,7 @@ namespace GoodToCode.Framework.Activity
         /// <summary>
         /// Id
         /// </summary>
-        public int ExceptionLogId { get; set; } = Defaults.Integer;
+        public int ExceptionLogId { get; set; } = -1;
 
         /// <summary>
         /// exceptionField
@@ -40,7 +41,7 @@ namespace GoodToCode.Framework.Activity
                     return CurrentException.InnerException.ToString();
                 } else
                 {
-                    return Defaults.String;
+                    return string.Empty;
                 }
             }
             protected set { }
@@ -58,12 +59,12 @@ namespace GoodToCode.Framework.Activity
         /// <summary>
         /// CustomMessage
         /// </summary>
-        public string CustomMessage { get; set; } = Defaults.String;
+        public string CustomMessage { get; set; } = string.Empty;
 
         /// <summary>
         /// CreatedDate
         /// </summary>
-        public DateTime CreatedDate { get; set; } = Defaults.Date;
+        public DateTime CreatedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// This protected constructor should not be called. Factory methods should be used instead.

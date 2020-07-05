@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Framework.Data;

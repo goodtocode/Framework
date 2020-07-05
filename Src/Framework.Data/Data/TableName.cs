@@ -1,5 +1,5 @@
-using System;
 using GoodToCode.Extensions;
+using System;
 
 namespace GoodToCode.Framework.Data
 {
@@ -14,7 +14,7 @@ namespace GoodToCode.Framework.Data
         /// Name supplied by attribute. 
         /// Default is DefaultConnection
         /// </summary>
-        public string Value { get; set; } = Defaults.String;
+        public string Value { get; set; } = string.Empty;
 
         /// <summary>
         /// Constructor

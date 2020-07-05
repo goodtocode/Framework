@@ -1,3 +1,4 @@
+
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
@@ -52,7 +53,7 @@ namespace GoodToCode.Framework.Repository
         {
             get
             {
-                var returnValue = Defaults.Boolean;
+                var returnValue = false;
                 using (var connection = new SqlConnection(ConfigOptions.ConnectionString))
                 {
                     returnValue = connection.CanOpen();
@@ -102,7 +103,7 @@ namespace GoodToCode.Framework.Repository
         {
             if (!CanCreate()) throw new NotSupportedException("CanCreate() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
-            Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
+            Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
 
             try
             {
@@ -140,7 +141,7 @@ namespace GoodToCode.Framework.Repository
         {
             if (!CanUpdate()) throw new NotSupportedException("CanUpdate() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
-            Entity.Key = Entity.Key == Defaults.Guid ? Guid.NewGuid() : Entity.Key;
+            Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key;
 
             try
             {
@@ -183,7 +184,7 @@ namespace GoodToCode.Framework.Repository
                 {
                     var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
                     var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == Defaults.Guid) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
+                    if (rowsAffected > 0 && refreshedEntity.Key == Guid.Empty) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
                 }
                 else
                 {
@@ -223,7 +224,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>True if rules and setup allow for insert, else false</returns>
         public bool CanCreate()
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             if (Entity.IsNew && ConfigOptions.DataAccessBehavior != DataAccessBehaviors.SelectOnly)
                 returnValue = true;
             return returnValue;
@@ -235,7 +236,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>True if rules and setup allow for update, else false</returns>
         public bool CanUpdate()
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             if (!Entity.IsNew && (ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess || ConfigOptions.DataAccessBehavior == DataAccessBehaviors.NoDelete))
                 returnValue = true;
             return returnValue;
@@ -247,7 +248,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>True if rules and setup allow for delete, else false</returns>
         public bool CanDelete()
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             if (!Entity.IsNew && (ConfigOptions.DataAccessBehavior == DataAccessBehaviors.AllAccess || ConfigOptions.DataAccessBehavior == DataAccessBehaviors.NoUpdate))
                 returnValue = true;
             return returnValue;

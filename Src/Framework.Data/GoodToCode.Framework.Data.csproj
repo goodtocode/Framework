@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
     <PackageId>GoodToCode.Framework.Data</PackageId>
     <RootNamespace>GoodToCode.Framework</RootNamespace>
-    <Version>4.18.9</Version>
+    <Version>5.20.7</Version>
     <Authors>GoodToCode</Authors>
     <Company>GoodToCode</Company>
     <Product>GoodToCode Framework CRUD Data Access Object classes for NET Core and .NET Standard</Product>
@@ -29,7 +29,7 @@
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Data.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.1\GoodToCode.Framework.Data.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,9 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19300.1" />
-    <PackageReference Include="GoodToCode.Extensions.Configuration" Version="4.19.19300.1" />
-    <PackageReference Include="GoodToCode.Extensions.Drawing" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.19.20187.4" />
+    <PackageReference Include="GoodToCode.Extensions.Configuration" Version="4.19.20187.4" />
+    <PackageReference Include="GoodToCode.Extensions.Drawing" Version="4.19.20187.4" />
+    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="4.19.20187.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />

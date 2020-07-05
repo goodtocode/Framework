@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Data;
 
 namespace GoodToCode.Framework.Name
@@ -13,12 +13,12 @@ namespace GoodToCode.Framework.Name
         /// <summary>
         /// Name
         /// </summary>
-		public string Name { get; set; } = Defaults.String;
+		public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Description
         /// </summary>
-		public string Description { get; set; } = Defaults.String;
+		public string Description { get; set; } = string.Empty;
 		
 		/// <summary>
 		/// Constructor

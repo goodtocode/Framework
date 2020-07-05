@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,7 +32,7 @@ namespace GoodToCode.Framework.Data
         [SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         public static bool CanOpen(this SqlConnection connection)
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
 
             try
             {
@@ -63,7 +63,7 @@ namespace GoodToCode.Framework.Data
         [SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         public static async Task<bool> CanOpenAsync(this SqlConnection connection)
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
 
             try
             {

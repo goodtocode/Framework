@@ -1,5 +1,4 @@
 using System;
-using GoodToCode.Extensions;
 using GoodToCode.Extensions.Collections;
 using GoodToCode.Framework.Validation;
 
@@ -24,17 +23,17 @@ namespace GoodToCode.Framework.Worker
         /// <summary>
         /// Id to be returned to caller
         /// </summary>
-        public int ReturnId { get; set; } = Defaults.Integer;
+        public int ReturnId { get; set; } = -1;
 
         /// <summary>
         /// Key to be returned to caller
         /// </summary>
-        public Guid ReturnKey { get; set; } = Defaults.Guid;
+        public Guid ReturnKey { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Serialized data to be returned to caller
         /// </summary>
-        public string ReturnData { get; set; } = Defaults.String;
+        public string ReturnData { get; set; } = string.Empty;
 
         /// <summary>
         /// Constructor

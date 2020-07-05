@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Serialization;
@@ -77,16 +78,16 @@ namespace GoodToCode.Framework.Test
             var oldId = testEntity.Id;
             var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
             var resultEntity = await testEntity.SaveAsync();
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -94,8 +95,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(refreshEntity.IsNew == false);
             Assert.IsTrue(refreshEntity.Id != oldId);
             Assert.IsTrue(refreshEntity.Key != oldKey);
-            Assert.IsTrue(refreshEntity.Id != Defaults.Integer);
-            Assert.IsTrue(refreshEntity.Key != Defaults.Guid);
+            Assert.IsTrue(refreshEntity.Id != -1);
+            Assert.IsTrue(refreshEntity.Key != Guid.Empty);
             Assert.IsTrue(!refreshEntity.FailedRules.Any());
 
             // Cleanup
@@ -110,10 +111,10 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Entity_CustomerActiveRecord_Update()
         {
             var testEntity = new CustomerActiveRecord();
-            var oldFirstName = Defaults.String;
+            var oldFirstName = string.Empty;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
-            var entityId = Defaults.Integer;
-            var entityKey = Defaults.Guid;
+            var entityId = -1;
+            var entityKey = Guid.Empty;
 
             // Create and capture original data
             await Core_Entity_CustomerActiveRecord_Insert();
@@ -123,8 +124,8 @@ namespace GoodToCode.Framework.Test
             entityKey = testEntity.Key;
             testEntity.FirstName = newFirstName;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
@@ -136,8 +137,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(resultEntity.IsNew == false);
             Assert.IsTrue(resultEntity.Id == entityId);
             Assert.IsTrue(resultEntity.Key == entityKey);
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
             Assert.IsTrue(!resultEntity.FailedRules.Any());
         }
 
@@ -148,8 +149,8 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_CustomerActiveRecord_Delete()
         {            
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
+            var oldId = -1;
+            var oldKey = Guid.Empty;
 
             // Insert and baseline test
             await Core_Entity_CustomerActiveRecord_Insert();
@@ -157,8 +158,8 @@ namespace GoodToCode.Framework.Test
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
@@ -172,8 +173,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Add to recycle bin for cleanup

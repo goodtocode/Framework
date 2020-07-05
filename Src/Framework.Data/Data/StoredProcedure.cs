@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Framework.Entity;
 using System.Collections.Generic;
 using System.Data;
@@ -13,8 +14,8 @@ namespace GoodToCode.Framework.Data
     /// <typeparam name="TEntity"></typeparam>
     public class StoredProcedure<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
-        private string sqlStatement = Defaults.String;
-        private string storedProcedureName = Defaults.String;
+        private string sqlStatement = string.Empty;
+        private string storedProcedureName = string.Empty;
         private IEnumerable<SqlParameter> sqlParameters = new List<SqlParameter>();
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace GoodToCode.Framework.Data
         ///  Parameter values are not included.
         ///  I.e. "EXECUTE MySchema.MySPName @Param1 @Param2"
         /// </summary>
-        public string SqlPrefix { get; private set; } = Defaults.String;
+        public string SqlPrefix { get; private set; } = string.Empty;
 
         /// <summary>
         /// Constructor
@@ -119,7 +120,7 @@ namespace GoodToCode.Framework.Data
         /// </summary>
         public override string ToString()
         {
-            if (sqlStatement == Defaults.String)
+            if (sqlStatement == string.Empty)
                 sqlStatement = GenerateSqlStatement();
             return sqlStatement;
         }

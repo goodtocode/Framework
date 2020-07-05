@@ -1,8 +1,10 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -58,7 +60,7 @@ namespace GoodToCode.Framework.Test
 
             // Get an Key to test
             var key = db.GetAllExcludeDefault().FirstOrDefaultSafe().Key;
-            Assert.IsTrue(key != Defaults.Guid);
+            Assert.IsTrue(key != Guid.Empty);
 
             // GetAll().Where count and any
             var resultsWhere = db.GetAll().Where(x => x.Key == key);
@@ -125,8 +127,8 @@ namespace GoodToCode.Framework.Test
             var testId = testItem.Id;
             testType = testList.Where(x => x.Id == testId).FirstOrDefaultSafe();
             Assert.IsTrue(testType.IsNew == false);
-            Assert.IsTrue(testType.Id != Defaults.Integer);
-            Assert.IsTrue(testType.Key != Defaults.Guid);
+            Assert.IsTrue(testType.Id != -1);
+            Assert.IsTrue(testType.Key != Guid.Empty);
         }
 
         /// <summary>
@@ -157,7 +159,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_Lists()
         {
-            var emptyGuid = Defaults.Guid;
+            var emptyGuid = Guid.Empty;
 
             // List Type
             var reader = new EntityReader<CustomerInfo>();
@@ -175,21 +177,21 @@ namespace GoodToCode.Framework.Test
         {
             var reader = new EntityReader<CustomerInfo>();            
             var testItem = new CustomerInfo();
-            var emptyGuid = Defaults.Guid;
+            var emptyGuid = Guid.Empty;
 
             // By Id
             var results = reader.GetAllExcludeDefault();
             var first = results.FirstOrDefaultSafe();
             testItem = reader.GetByKey(first.Key);
             Assert.IsTrue(testItem.IsNew == false);
-            Assert.IsTrue(testItem.Id != Defaults.Integer);
-            Assert.IsTrue(testItem.Key != Defaults.Guid);
+            Assert.IsTrue(testItem.Id != -1);
+            Assert.IsTrue(testItem.Key != Guid.Empty);
 
             // By Key
             testItem = reader.GetByKey(reader.GetAllExcludeDefault().FirstOrDefaultSafe().Key);
             Assert.IsTrue(testItem.IsNew == false);
-            Assert.IsTrue(testItem.Id != Defaults.Integer);
-            Assert.IsTrue(testItem.Key != Defaults.Guid);
+            Assert.IsTrue(testItem.Id != -1);
+            Assert.IsTrue(testItem.Key != Guid.Empty);
         }
 
         /// <summary>

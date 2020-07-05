@@ -1,3 +1,4 @@
+
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
@@ -39,7 +40,7 @@ namespace GoodToCode.Framework.Repository
         {
             get
             {
-                var returnValue = Defaults.Boolean;
+                var returnValue = false;
                 using (var connection = new SqlConnection(ConfigOptions.ConnectionString))
                 {
                     returnValue = connection.CanOpen();
@@ -102,14 +103,14 @@ namespace GoodToCode.Framework.Repository
 
         /// <summary>
         /// All data in this datastore subset, except records with default Id/Key
-        ///  Criteria: Where Id != Defaults.Integer And Also Key != Defaults.Guid
+        ///  Criteria: Where Id != -1 And Also Key != Guid.Empty
         ///  Goal: To exclude "Not Selected" records from lookup tables
         /// </summary>
         public IQueryable<TValue> GetAllExcludeDefault()
         {
             try
             {
-                Results = Data.Where(x => x.Key != Defaults.Guid);
+                Results = Data.Where(x => x.Key != Guid.Empty);
             }
             catch (Exception ex)
             {

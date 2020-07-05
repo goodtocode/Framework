@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Data;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Text;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using GoodToCode.Extensions;
 
 namespace GoodToCode.Framework.Entity
 {
@@ -26,24 +27,24 @@ namespace GoodToCode.Framework.Entity
         ///  Can set Id before saving, and will be preserved
         ///  only if using GoodToCode.Framework.Repository for CRUD
         /// </summary>
-        public virtual int Id { get; set; } = Defaults.Integer;
+        public virtual int Id { get; set; } = -1;
 
         /// <summary>
         /// Key of record
         ///  Can set Key before saving, and will be preserved
         ///  only if using GoodToCode.Framework.Repository for CRUD
         /// </summary>
-        public virtual Guid Key { get; set; } = Defaults.Guid;
+        public virtual Guid Key { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Date record was created
         /// </summary>
-        public virtual DateTime CreatedDate { get; set; } = Defaults.Date;
+        public virtual DateTime CreatedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// Date record was modified
         /// </summary>
-        public virtual DateTime ModifiedDate { get; set; } = Defaults.Date;
+        public virtual DateTime ModifiedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// Status of this record
@@ -57,17 +58,17 @@ namespace GoodToCode.Framework.Entity
         {
             get
             {
-                var returnValue = Defaults.Boolean;
+                var returnValue = false;
                 switch (new TEntity().GetAttributeValue<RecordIdentity, Fields>(Fields.IdOrKey))
                 {
                     case Fields.Id:
-                        returnValue = Id == Defaults.Integer;
+                        returnValue = Id == -1;
                         break;
                     case Fields.Key:
-                        returnValue = Key == Defaults.Guid;
+                        returnValue = Key == Guid.Empty;
                         break;
                     case Fields.IdOrKey:
-                        returnValue = Id == Defaults.Integer || Key == Defaults.Guid;
+                        returnValue = Id == -1 || Key == Guid.Empty;
                         break;
                     case Fields.None:
                     default:
@@ -100,7 +101,7 @@ namespace GoodToCode.Framework.Entity
         /// <remarks></remarks>
         public bool Equals(TEntity newItem)
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             var newObjectType = newItem.GetType();
 
             returnValue = true;

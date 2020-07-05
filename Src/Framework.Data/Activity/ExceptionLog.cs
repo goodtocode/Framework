@@ -12,23 +12,23 @@ namespace GoodToCode.Framework.Activity
     [DatabaseSchemaName(DatabaseSchemaName.DefaultActivitySchema), ConnectionStringName(ConnectionStringName.DefaultConnectionName)]
     public class ExceptionLog : IExceptionLog
     {
-        private Uri endpointUrl = Defaults.Uri;
+        private Uri endpointUrl = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
         private Exception currentException = new System.Exception("No Exception");
 
         /// <summary>
         /// Integer Id of this record
         /// </summary>
-        public int ExceptionLogId { get; set; } = Defaults.Integer;
+        public int ExceptionLogId { get; set; } = -1;
 
         /// <summary>
         /// Guid Id of this record
         /// </summary>
-        public Guid ExceptionLogKey { get; set; } = Defaults.Guid;
+        public Guid ExceptionLogKey { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Date record was created
         /// </summary>
-        public DateTime CreatedDate { get; set; } = Defaults.Date;
+        public DateTime CreatedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// exceptionField
@@ -57,7 +57,7 @@ namespace GoodToCode.Framework.Activity
                 }
                 else
                 {
-                    return Defaults.String;
+                    return string.Empty;
                 }
             }
             protected set { }
@@ -75,7 +75,7 @@ namespace GoodToCode.Framework.Activity
         /// <summary>
         /// CustomMessage
         /// </summary>
-        public string CustomMessage { get; set; } = Defaults.String;
+        public string CustomMessage { get; set; } = string.Empty;
 
         /// <summary>
         /// MachineName

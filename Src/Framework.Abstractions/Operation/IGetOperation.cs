@@ -24,7 +24,7 @@ namespace GoodToCode.Framework.Operation
 
         /// <summary>
         /// All data in this datastore subset, except records with default Id/Key
-        ///  Criteria: Where Id != Defaults.Integer And Also Key != Defaults.Guid
+        ///  Criteria: Where Id != -1 And Also Key != Guid.Empty
         ///  Goal: To exclude "Not Selected" records from lookup tables
         /// </summary>
         IQueryable<TEntity> GetAllExcludeDefault();

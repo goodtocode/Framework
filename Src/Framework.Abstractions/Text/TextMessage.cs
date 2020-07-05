@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Text
 {
@@ -10,12 +10,12 @@ namespace GoodToCode.Framework.Text
         /// <summary>
         /// LanguageISO
         /// </summary>
-        public string LanguageIso { get; set; } = Defaults.String;
+        public string LanguageIso { get; set; } = string.Empty;
 
         /// <summary>
         /// Message
         /// </summary>
-        public string Message { get; set; } = Defaults.String;
+        public string Message { get; set; } = string.Empty;
 
         /// <summary>
         /// Constructor

@@ -1,4 +1,3 @@
-using GoodToCode.Extensions.Serialization;
 
 namespace GoodToCode.Framework.Data
 {

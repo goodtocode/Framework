@@ -1,3 +1,4 @@
+
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Data;
@@ -15,17 +16,17 @@ namespace GoodToCode.Framework.Value
         /// <summary>
         /// Guid of record
         /// </summary>
-        public virtual Guid Key { get; set; } = Defaults.Guid;
+        public virtual Guid Key { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Date record was created
         /// </summary>
-        public virtual DateTime CreatedDate { get; set; } = Defaults.Date;
+        public virtual DateTime CreatedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// Date record was modified
         /// </summary>
-        public virtual DateTime ModifiedDate { get; set; } = Defaults.Date;
+        public virtual DateTime ModifiedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// Status of this record

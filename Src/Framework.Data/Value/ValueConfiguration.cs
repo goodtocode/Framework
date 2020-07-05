@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Data;
 using GoodToCode.Extensions.Serialization;
 using System;
@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using GoodToCode.Extensions;
 
 namespace GoodToCode.Framework.Value
 {

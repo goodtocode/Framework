@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GoodToCode.Framework.Activity;
 using System.Linq;
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Test
 {
@@ -17,8 +17,8 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Activity_ExceptionLog()
         {
-            var preSaveCount = Defaults.Integer;
-            var postSaveCount = Defaults.Integer;
+            var preSaveCount = -1;
+            var postSaveCount = -1;
             var reader = new ExceptionLogReader();
             var writer = new ExceptionLogWriter();
 
@@ -26,7 +26,7 @@ namespace GoodToCode.Framework.Test
             var testItem = new ExceptionLog() { CustomMessage = "test" };
             testItem = writer.Save(testItem);
             postSaveCount = reader.GetAll().Count();
-            Assert.IsTrue(testItem.ExceptionLogId != Defaults.Integer);
+            Assert.IsTrue(testItem.ExceptionLogId != -1);
             Assert.IsTrue(postSaveCount == preSaveCount + 1);
         }
     }

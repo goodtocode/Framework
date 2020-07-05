@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Hosting.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.1\GoodToCode.Framework.Hosting.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.19.20187.4" />
+    <PackageReference Include="GoodToCode.Extensions.AspNetCore" Version="4.19.20187.7" />
+    <PackageReference Include="GoodToCode.Extensions.Net" Version="4.19.20187.4" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />

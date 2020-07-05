@@ -37,7 +37,7 @@ namespace GoodToCode.Framework.Hosting
     /// <typeparam name="TDto">Type of Dto in requests/responses</typeparam>
     public class HttpQueryService<TDto> : IHttpQueryService<TDto> where TDto : new()
     {
-        private string _query = Defaults.String;
+        private string _query = string.Empty;
 
         /// <summary>
         /// Name of the type that is mapped to the query
@@ -47,7 +47,7 @@ namespace GoodToCode.Framework.Hosting
         /// <summary>
         /// Uri of the Query RESTful endpoint
         /// </summary>
-        public Uri Uri { get; set; } = Defaults.Uri;
+        public Uri Uri { get; set; } = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);
 
         /// <summary>
         /// RESTful endpoint Uri + Querystring parameters, well formed

@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>GoodToCodeFramework.snk</AssemblyOriginatorKeyFile>
     <PackageId>GoodToCode.Framework.Models.Standard</PackageId>
     <RootNamespace>GoodToCode.Framework</RootNamespace>
-    <Version>4.18.9</Version>
+    <Version>5.20.7</Version>
     <Authors>GoodToCode</Authors>
     <Company>GoodToCode</Company>
     <Product>GoodToCode Framework Models for MVC, Web API, WPF, Universal, Xamarin, .NET Core, Web Forms and Win Forms</Product>
@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\GoodToCode.Framework.Dto.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.1\GoodToCode.Framework.Dto.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,7 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.19300.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="4.19.20187.4" />
+    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="4.19.20187.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Framework.Abstractions\GoodToCode.Framework.Abstractions.csproj" />

@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

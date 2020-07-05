@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Name;
 using GoodToCode.Framework.Session;
@@ -23,7 +23,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Worker_SessionContextKnownType()
         {
-            String dataToSendSerialized2 = Defaults.String;
+            String dataToSendSerialized2 = string.Empty;
             SessionContext context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
             NameIdDto dataIn = new NameIdDto() { Name = "NameField" };
             WorkerParameter<NameIdDto> item2 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
@@ -31,7 +31,7 @@ namespace GoodToCode.Framework.Test
 
             // Test Serialization            
             dataToSendSerialized2 = serializer2.Serialize(item2);
-            Assert.IsTrue(dataToSendSerialized2 != Defaults.String, "Did not work");
+            Assert.IsTrue(dataToSendSerialized2 != string.Empty, "Did not work");
         }
 
         /// <summary> 
@@ -42,7 +42,7 @@ namespace GoodToCode.Framework.Test
         public void Core_Worker_WorkerParameterSerialize()
         {
             // Initialize
-            var dataToSendSerialized = Defaults.String;
+            var dataToSendSerialized = string.Empty;
             var context = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
             var dataIn = new NameIdDto() { Name = "NameField" };
             var item1 = new WorkerParameter<NameIdDto>() { Context = context, DataIn = dataIn };
@@ -53,7 +53,7 @@ namespace GoodToCode.Framework.Test
 
             // Test Item1 Serialization
             dataToSendSerialized = serializer.Serialize(item1);
-            Assert.IsTrue(dataToSendSerialized != Defaults.String, "Did not work");
+            Assert.IsTrue(dataToSendSerialized != string.Empty, "Did not work");
             item1 = serializer.Deserialize(dataToSendSerialized);
             Assert.IsTrue(item1 != null, "Did not work.");
         }
@@ -66,18 +66,18 @@ namespace GoodToCode.Framework.Test
         public void Core_Worker_WorkerResultSerialize()
         {
             // Initialize
-            var DataToSendSerialized = Defaults.String;
+            var DataToSendSerialized = string.Empty;
             var Item1 = new SessionContext(this.ToString(), Guid.NewGuid().ToString(), "MyName");
             ISerializer<ISessionContext> Serializer1 = new JsonSerializer<ISessionContext>();
             ISerializer<SessionContext> Serializer2 = new JsonSerializer<SessionContext>();
 
             // Test Serialization
             DataToSendSerialized = Serializer1.Serialize(Item1);
-            Assert.IsTrue(DataToSendSerialized != Defaults.String, "Did not work");
+            Assert.IsTrue(DataToSendSerialized != string.Empty, "Did not work");
 
             // Test Serialization
             DataToSendSerialized = Serializer2.Serialize(Item1);
-            Assert.IsTrue(DataToSendSerialized != Defaults.String, "Did not work");
+            Assert.IsTrue(DataToSendSerialized != string.Empty, "Did not work");
         }
     }
 }

@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Data
 {
@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Bytes of BLOB
         /// </summary>
-        public byte[] Bytes { get; set; } = Defaults.Bytes;
+        public byte[] Bytes { get; set; } = new byte[] { 0, 0, 0, 1 };
 		
 		/// <summary>
 		/// Constructor

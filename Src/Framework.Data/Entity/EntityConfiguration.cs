@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Collections;
 using GoodToCode.Framework.Data;
 using GoodToCode.Extensions.Serialization;
@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using GoodToCode.Extensions;
 
 namespace GoodToCode.Framework.Entity
 {
@@ -40,7 +41,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Table Column Prefix to be used for this object's data access
         /// </summary>
-        public string ColumnPrefix { get; set; } = Defaults.String;
+        public string ColumnPrefix { get; set; } = string.Empty;
 
         /// <summary>
         /// Concurrency setting for contention management
@@ -60,7 +61,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Number of rows affected by any operation
         /// </summary>
-        public int RowsAffected { get; set; } = Defaults.Integer;
+        public int RowsAffected { get; set; } = -1;
 
         /// <summary>
         /// OnModelCreating types to ignore

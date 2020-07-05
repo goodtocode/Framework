@@ -1,3 +1,4 @@
+
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Data;
@@ -22,7 +23,7 @@ namespace GoodToCode.Framework.Application
         ///  - ViewModelUrl = MyWebService + / + ControllerName
         ///  - MyWebService from AppSettings.config MyWebService element
         /// </summary>
-        public string MyWebServiceController { get; protected set; } = Defaults.String;
+        public string MyWebServiceController { get; protected set; } = string.Empty;
 
         /// <summary>
         /// Application context of current process
@@ -125,7 +126,7 @@ namespace GoodToCode.Framework.Application
             var fullUrl = new Uri(MyViewModelWebService.ToStringSafe().AddLast("/"), UriKind.RelativeOrAbsolute);
             MyModel = new TDto();
             var results = await Sender.SendGetAsync<List<TDto>>(fullUrl);
-            return results.Where(x => x.Key != Defaults.Guid);
+            return results.Where(x => x.Key != Guid.Empty);
         }
 
         /// <summary>

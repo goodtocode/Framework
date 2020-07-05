@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using System;
 
 namespace GoodToCode.Framework.Data
@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Normal behavior: Allows all querying and changes.
         /// </summary>
-        public static Guid Default = Defaults.Guid;
+        public static Guid Default = Guid.Empty;
 
         /// <summary>
         /// ReadOnly/Locked: Do not allow to be changed. Ignore and log any change request. Alert calling app that record is read only (can be changed back to default to be altered later, not historical.)

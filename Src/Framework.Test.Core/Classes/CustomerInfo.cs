@@ -1,4 +1,4 @@
-﻿using GoodToCode.Extensions;
+﻿
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Validation;
@@ -29,22 +29,22 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// FirstName of customers
         /// </summary>
-        public string FirstName { get; set; } = Defaults.String;
+        public string FirstName { get; set; } = string.Empty;
 
         /// <summary>
         /// MiddleName of customer
         /// </summary>
-        public string MiddleName { get; set; } = Defaults.String;
+        public string MiddleName { get; set; } = string.Empty;
 
         /// <summary>
         /// LastName of customer
         /// </summary>
-        public string LastName { get; set; } = Defaults.String;
+        public string LastName { get; set; } = string.Empty;
 
         /// <summary>
         /// BirthDate of customer
         /// </summary>
-        public DateTime BirthDate { get; set; } = Defaults.Date;
+        public DateTime BirthDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
 
         /// <summary>
         /// BirthDate of customer
@@ -54,7 +54,7 @@ namespace GoodToCode.Framework.Test
         /// <summary>
         /// Type of customer
         /// </summary>
-        public int CustomerTypeId { get; set; } = Defaults.Integer;
+        public int CustomerTypeId { get; set; } = -1;
 
         /// <summary>
         /// ISO 5218 Standard for Gender values

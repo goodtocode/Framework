@@ -1,7 +1,8 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace GoodToCode.Framework.Test
 {
@@ -27,7 +28,7 @@ namespace GoodToCode.Framework.Test
         {
             var service = new HttpQueryService<CustomerDto>(_options);
             Assert.IsTrue(!string.IsNullOrEmpty(service.TypeName));
-            Assert.IsTrue(service.Uri != Defaults.Uri);
+            Assert.IsTrue(service.Uri != new Uri("http://localhost:80", UriKind.RelativeOrAbsolute));
         }
     }
 }

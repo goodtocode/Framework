@@ -1,5 +1,5 @@
 using System.Security.Principal;
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Security
 {
@@ -11,17 +11,17 @@ namespace GoodToCode.Framework.Security
         /// <summary>
         ///  Authentication Type
         /// </summary>
-        public string AuthenticationType { get; protected set; } = Defaults.String;
+        public string AuthenticationType { get; protected set; } = string.Empty;
 
         /// <summary>
         /// Is Authenticated
         /// </summary>
-        public bool IsAuthenticated { get; protected set; } = Defaults.Boolean;
+        public bool IsAuthenticated { get; protected set; } = false;
 
         /// <summary>
         /// User running process is IPrincipal.Name
         /// User logged in is IIdentity.Name
         /// </summary>
-        public string Name { get; protected set; } = Defaults.String;
+        public string Name { get; protected set; } = string.Empty;
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using GoodToCode.Extensions;
-using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Framework.Data;
 
 namespace GoodToCode.Framework.Entity
@@ -84,11 +83,11 @@ namespace GoodToCode.Framework.Entity
         public TEntity ToSize(int newHeight)
         {
             var returnValue = new TEntity();
-            int newWidth = Defaults.Integer;
-            decimal multiplier = Defaults.Decimal;
+            int newWidth = -1;
+            decimal multiplier = 0m;
 
-            multiplier = Arithmetic.Divide(newHeight.ToDecimal(), this.Image.Height.ToDecimal());
-            returnValue = this.ToSize(new Size(Arithmetic.Multiply(this.Image.Width, multiplier).ToInt(), newHeight));
+            multiplier = (newHeight.ToDecimal() / this.Image.Height.ToDecimal());
+            returnValue = this.ToSize(new Size((this.Image.Width * multiplier).ToInt(), newHeight));
 
             return returnValue;
         }

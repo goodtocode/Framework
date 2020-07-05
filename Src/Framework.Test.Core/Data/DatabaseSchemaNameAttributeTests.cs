@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Framework.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

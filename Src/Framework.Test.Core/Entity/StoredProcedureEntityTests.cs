@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Text;
@@ -80,14 +81,14 @@ namespace GoodToCode.Framework.Test
             {
                 resultCustomer = await writer.SaveAsync();
             }
-            Assert.IsTrue(newCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(newCustomer.Key != Guid.Empty);
+            Assert.IsTrue(resultCustomer.Id != -1);
+            Assert.IsTrue(resultCustomer.Key != Guid.Empty);
 
             // Object in db should match in-memory objects
             dbCustomer = db.GetById(resultCustomer.Id);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(dbCustomer.Id != -1);
+            Assert.IsTrue(dbCustomer.Key != Guid.Empty);
             Assert.IsTrue(dbCustomer.Id == resultCustomer.Id);
             Assert.IsTrue(dbCustomer.Key == resultCustomer.Key);
 
@@ -111,14 +112,14 @@ namespace GoodToCode.Framework.Test
             {
                 resultCustomer = await writer.CreateAsync();
             }
-            Assert.IsTrue(newCustomer.Key != Defaults.Guid);
-            Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(newCustomer.Key != Guid.Empty);
+            Assert.IsTrue(resultCustomer.Id != -1);
+            Assert.IsTrue(resultCustomer.Key != Guid.Empty);
 
             // Object in db should match in-memory objects
             dbCustomer = db.GetById(resultCustomer.Id);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(dbCustomer.Id != -1);
+            Assert.IsTrue(dbCustomer.Key != Guid.Empty);
             Assert.IsTrue(dbCustomer.Id == resultCustomer.Id);
             Assert.IsTrue(dbCustomer.Key == resultCustomer.Key);
 
@@ -133,14 +134,14 @@ namespace GoodToCode.Framework.Test
         {
             var db = new EntityReader<CustomerInfo>();
             var dbCustomer = new CustomerInfo();
-            var lastKey = Defaults.Guid;
+            var lastKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
             dbCustomer = db.GetByKey(lastKey);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(dbCustomer.Id != -1);
+            Assert.IsTrue(dbCustomer.Key != Guid.Empty);
             Assert.IsTrue(dbCustomer.CreatedDate.Date == DateTime.UtcNow.Date);
         }
 
@@ -154,9 +155,9 @@ namespace GoodToCode.Framework.Test
             var item = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var uniqueValue = RandomString.Next();
-            var lastKey = Defaults.Guid;
-            var originalID = Defaults.Integer;
-            var originalKey = Defaults.Guid;
+            var lastKey = Guid.Empty;
+            var originalID = -1;
+            var originalKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
@@ -164,16 +165,16 @@ namespace GoodToCode.Framework.Test
             item = reader.GetByKey(lastKey);
             originalID = item.Id;
             originalKey = item.Key;
-            Assert.IsTrue(item.Id != Defaults.Integer);
-            Assert.IsTrue(item.Key != Defaults.Guid);
+            Assert.IsTrue(item.Id != -1);
+            Assert.IsTrue(item.Key != Guid.Empty);
 
             item.FirstName = uniqueValue;
             using (var writer = new EntityWriter<CustomerInfo>(item, new CustomerSPConfig(item)))
             {
                 resultCustomer = await writer.UpdateAsync();
             }
-            Assert.IsTrue(resultCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(resultCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(resultCustomer.Id != -1);
+            Assert.IsTrue(resultCustomer.Key != Guid.Empty);
             Assert.IsTrue(item.Id == resultCustomer.Id && resultCustomer.Id == originalID);
             Assert.IsTrue(item.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
 
@@ -181,8 +182,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(item.Id == resultCustomer.Id && resultCustomer.Id == originalID);
             Assert.IsTrue(item.Key == resultCustomer.Key && resultCustomer.Key == originalKey);
 
-            Assert.IsTrue(item.Id != Defaults.Integer);
-            Assert.IsTrue(item.Key != Defaults.Guid);
+            Assert.IsTrue(item.Id != -1);
+            Assert.IsTrue(item.Key != Guid.Empty);
         }
 
         /// <summary>
@@ -194,9 +195,9 @@ namespace GoodToCode.Framework.Test
             var db = new EntityReader<CustomerInfo>();
             var testItem = new CustomerInfo();
             var testResult = new CustomerInfo();
-            var lastKey = Defaults.Guid;
-            var originalID = Defaults.Integer;
-            var originalKey = Defaults.Guid;
+            var lastKey = Guid.Empty;
+            var originalID = -1;
+            var originalKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
@@ -204,8 +205,8 @@ namespace GoodToCode.Framework.Test
             testItem = db.GetByKey(lastKey);
             originalID = testItem.Id;
             originalKey = testItem.Key;
-            Assert.IsTrue(testItem.Id != Defaults.Integer);
-            Assert.IsTrue(testItem.Key != Defaults.Guid);
+            Assert.IsTrue(testItem.Id != -1);
+            Assert.IsTrue(testItem.Key != Guid.Empty);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
             using (var writer = new EntityWriter<CustomerInfo>(testItem, new CustomerSPConfig(testItem)))
@@ -217,8 +218,8 @@ namespace GoodToCode.Framework.Test
             testItem = db.GetById(originalID);
             Assert.IsTrue(testItem.Id != originalID);
             Assert.IsTrue(testItem.Key != originalKey);
-            Assert.IsTrue(testItem.Id == Defaults.Integer);
-            Assert.IsTrue(testItem.Key == Defaults.Guid);
+            Assert.IsTrue(testItem.Id == -1);
+            Assert.IsTrue(testItem.Key == Guid.Empty);
         }
 
         /// <summary>
@@ -229,14 +230,14 @@ namespace GoodToCode.Framework.Test
         {
             var dbReader = new EntityReader<CustomerInfo>();
             var dbCustomer = new CustomerInfo();
-            var lastKey = Defaults.Guid;
+            var lastKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
             lastKey = RecycleBin.Last();
 
             dbCustomer = dbReader.GetByKey(lastKey);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(dbCustomer.Id != -1);
+            Assert.IsTrue(dbCustomer.Key != Guid.Empty);
             Assert.IsTrue(dbCustomer.CreatedDate.Date == DateTime.UtcNow.Date);
         }
 
@@ -248,14 +249,14 @@ namespace GoodToCode.Framework.Test
         {
             var dbCustomer = new CustomerInfo();
             var dbReader = new EntityReader<CustomerInfo>();
-            var lastKey = Defaults.Guid;
+            var lastKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
             lastKey = dbReader.GetByKey(RecycleBin.Last()).Key;
 
             dbCustomer = dbReader.GetByKey(lastKey);
-            Assert.IsTrue(dbCustomer.Id != Defaults.Integer);
-            Assert.IsTrue(dbCustomer.Key != Defaults.Guid);
+            Assert.IsTrue(dbCustomer.Id != -1);
+            Assert.IsTrue(dbCustomer.Key != Guid.Empty);
             Assert.IsTrue(dbCustomer.CreatedDate.Date == DateTime.UtcNow.Date);
         }
 

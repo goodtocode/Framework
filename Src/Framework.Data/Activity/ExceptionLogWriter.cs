@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,10 +53,10 @@ namespace GoodToCode.Framework.Activity
         {
             var returnValue = entity;
 
-            if (entity.ExceptionLogId == Defaults.Integer)
+            if (entity.ExceptionLogId == -1)
             {
                 Database.EnsureCreated();
-                entity.ExceptionLogKey = entity.ExceptionLogKey == Defaults.Guid ? Guid.NewGuid() : entity.ExceptionLogKey;
+                entity.ExceptionLogKey = entity.ExceptionLogKey == Guid.Empty ? Guid.NewGuid() : entity.ExceptionLogKey;
                 Entry(entity).State = EntityState.Added;                
                 SaveChanges();
                 returnValue = new ExceptionLogReader().GetByKey(entity.ExceptionLogKey);

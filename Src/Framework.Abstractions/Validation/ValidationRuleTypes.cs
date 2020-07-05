@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Text;
 
 namespace GoodToCode.Framework.Validation
@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Validation
         /// <summary>
         /// Non destructive warning when validation fails
         /// </summary>
-        public static Guid Success = Defaults.Guid;
+        public static Guid Success = Guid.Empty;
 
         /// <summary>
         /// Non destructive warning when validation fails

@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Net;
@@ -81,14 +82,14 @@ namespace GoodToCode.Framework.Test
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
-            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
+            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Guid.Empty;
 
             try
             {
                 // Verify update success
                 customer = await viewModel.GetByKeyAsync(keyToTest);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Id != -1);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Guid.Empty);
                 Assert.IsTrue(interfaceBreakingRelease | !customer.IsNew);
             }
             catch (HttpRequestException ex)
@@ -113,7 +114,7 @@ namespace GoodToCode.Framework.Test
             try
             {
                 customer = await request.SendAsync();
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Guid.Empty);
                 RecycleBin.Add(customer.Key);
             }
             catch (HttpRequestException ex)
@@ -134,7 +135,7 @@ namespace GoodToCode.Framework.Test
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
-            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
+            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Guid.Empty;
             // Read test record
             try
             {
@@ -143,8 +144,8 @@ namespace GoodToCode.Framework.Test
                 var testKey = Guid.NewGuid().ToString();
                 customer.FirstName = customer.FirstName.AddLast(testKey);
                 customer = await viewModel.UpdateAsync();
-                Assert.IsTrue(interfaceBreakingRelease | customer.Id != Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Id != -1);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key != Guid.Empty);
                 // Verify update success
                 customer = await viewModel.GetByKeyAsync(keyToTest);
                 Assert.IsTrue(interfaceBreakingRelease | customer.FirstName.Contains(testKey));
@@ -168,11 +169,11 @@ namespace GoodToCode.Framework.Test
             var customer = new CustomerDto();
             var returnCustomer = new CustomerDto();
             var viewModel = new TestViewModel<CustomerDto>("Customer");
-            var success = Defaults.Boolean;
+            var success = false;
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
-            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Defaults.Guid;
+            var keyToTest = RecycleBin.Count() > 0 ? RecycleBin[0] : Guid.Empty;
 
             // Test
             try
@@ -182,16 +183,16 @@ namespace GoodToCode.Framework.Test
                 returnCustomer = await viewModel.DeleteAsync();
                 Assert.IsTrue(interfaceBreakingRelease | returnCustomer.IsNew);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.IsNew);
-                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Key == Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == -1);
+                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Key == Guid.Empty);
                 // Verify update success
                 customer = await viewModel.GetByKeyAsync(keyToTest);
                 Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.IsNew);
-                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Key == Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Id == -1);
+                Assert.IsTrue(interfaceBreakingRelease | viewModel.MyModel.Key == Guid.Empty);
                 Assert.IsTrue(interfaceBreakingRelease | customer.IsNew);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Id == Defaults.Integer);
-                Assert.IsTrue(interfaceBreakingRelease | customer.Key == Defaults.Guid);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Id == -1);
+                Assert.IsTrue(interfaceBreakingRelease | customer.Key == Guid.Empty);
             }
             catch (HttpRequestException ex)
             {

@@ -1,7 +1,7 @@
 
 using System;
 using System.Security.Principal;
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Device;
 using GoodToCode.Framework.Data;
 
@@ -12,22 +12,22 @@ namespace GoodToCode.Framework.Security
     /// </summary>
     public class UserPrincipal : IUserPrincipal, IEntityKey, IDeviceUuid, IApplicationUuid
     {
-        private string principalUserName = Defaults.String;
+        private string principalUserName = string.Empty;
 
         /// <summary>
         /// Universally Unique Id (UuId) of the device. Typically same as IMEI number, or DeviceId from the OS
         /// </summary>
-        public string DeviceUuid { get; set; } = Defaults.String;
+        public string DeviceUuid { get; set; } = string.Empty;
 
         /// <summary>
         /// Universally Unique Id (UuId) of the software application, that identifies this Application + Device combination
         /// </summary>
-        public string ApplicationUuid { get; set; } = Defaults.String;
+        public string ApplicationUuid { get; set; } = string.Empty;
 
         /// <summary>
         /// Person/business submitting the request
         /// </summary>
-        public Guid EntityKey { get; set; } = Defaults.Guid;
+        public Guid EntityKey { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Same as IdentityUserName
@@ -38,7 +38,7 @@ namespace GoodToCode.Framework.Security
         {
             get
             {
-                principalUserName = principalUserName == Defaults.String ? this.Identity.Name : principalUserName;
+                principalUserName = principalUserName == string.Empty ? this.Identity.Name : principalUserName;
                 return principalUserName;
             }
             set { principalUserName = value; }
@@ -52,7 +52,7 @@ namespace GoodToCode.Framework.Security
         {
             get
             {
-                principalUserName = principalUserName == Defaults.String ? this.Identity.Name : principalUserName;
+                principalUserName = principalUserName == string.Empty ? this.Identity.Name : principalUserName;
                 return principalUserName;
             }
             set { principalUserName = value; }
@@ -61,7 +61,7 @@ namespace GoodToCode.Framework.Security
         /// <summary>
         /// Activity tracking record of this session flow
         /// </summary>
-        public int ActivitySessionflowId { get; set; } = Defaults.Integer;
+        public int ActivitySessionflowId { get; set; } = -1;
 
         /// <summary>
         /// Identity of requester

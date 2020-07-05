@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Serialization;
@@ -78,8 +79,8 @@ namespace GoodToCode.Framework.Test
             var oldId = testEntity.Id;
             var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
@@ -88,10 +89,10 @@ namespace GoodToCode.Framework.Test
             {
                 resultEntity = await writer.CreateAsync();
             }
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -99,8 +100,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Cleanup
@@ -119,13 +120,13 @@ namespace GoodToCode.Framework.Test
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            testEntity.Id = Defaults.Integer;
-            testEntity.Key = Defaults.Guid;
+            testEntity.Id = -1;
+            testEntity.Key = Guid.Empty;
             var oldId = testEntity.Id;
             var oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
@@ -133,10 +134,10 @@ namespace GoodToCode.Framework.Test
             {
                 resultEntity = await writer.CreateAsync();
             }
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -144,8 +145,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Cleanup
@@ -164,12 +165,12 @@ namespace GoodToCode.Framework.Test
 
             // Create and insert record
             testEntity.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            testEntity.Id = Defaults.Integer;
+            testEntity.Id = -1;
             testEntity.Key = Guid.NewGuid();
             var oldId = testEntity.Id;
             var oldKey = testEntity.Key;
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
@@ -177,10 +178,10 @@ namespace GoodToCode.Framework.Test
             {
                 resultEntity = await writer.CreateAsync();
             }
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
-            Assert.IsTrue(resultEntity.Id != Defaults.Integer);
-            Assert.IsTrue(resultEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
+            Assert.IsTrue(resultEntity.Id != -1);
+            Assert.IsTrue(resultEntity.Key != Guid.Empty);
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
@@ -188,8 +189,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key == oldKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Cleanup
@@ -205,10 +206,10 @@ namespace GoodToCode.Framework.Test
         {
             var testEntity = new CustomerInfo();
             var reader = new EntityReader<CustomerInfo>();
-            var oldFirstName = Defaults.String;
+            var oldFirstName = string.Empty;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
-            var entityId = Defaults.Integer;
-            var entityKey = Defaults.Guid;
+            var entityId = -1;
+            var entityKey = Guid.Empty;
 
             // Create and capture original data
             await Core_Entity_CustomerInfo_Insert();
@@ -218,8 +219,8 @@ namespace GoodToCode.Framework.Test
             entityKey = testEntity.Key;
             testEntity.FirstName = newFirstName;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
@@ -234,8 +235,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id == entityId);
             Assert.IsTrue(testEntity.Key == entityKey);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
         }
 
@@ -248,8 +249,8 @@ namespace GoodToCode.Framework.Test
         {
             var reader = new EntityReader<CustomerInfo>();
             var testEntity = new CustomerInfo();
-            var oldId = Defaults.Integer;
-            var oldKey = Defaults.Guid;
+            var oldId = -1;
+            var oldKey = Guid.Empty;
 
             // Insert and baseline test
             await Core_Entity_CustomerInfo_Insert();
@@ -257,8 +258,8 @@ namespace GoodToCode.Framework.Test
             oldId = testEntity.Id;
             oldKey = testEntity.Key;
             Assert.IsTrue(testEntity.IsNew == false);
-            Assert.IsTrue(testEntity.Id != Defaults.Integer);
-            Assert.IsTrue(testEntity.Key != Defaults.Guid);
+            Assert.IsTrue(testEntity.Id != -1);
+            Assert.IsTrue(testEntity.Key != Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
@@ -273,8 +274,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.IsNew);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
-            Assert.IsTrue(testEntity.Id == Defaults.Integer);
-            Assert.IsTrue(testEntity.Key == Defaults.Guid);
+            Assert.IsTrue(testEntity.Id == -1);
+            Assert.IsTrue(testEntity.Key == Guid.Empty);
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Add to recycle bin for cleanup
@@ -292,7 +293,7 @@ namespace GoodToCode.Framework.Test
             var serializer = new JsonSerializer<CustomerInfo>();
 
             var resultString = serializer.Serialize(originalObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             var resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar);
             Assert.IsTrue(resultObject.LastName == searchChar);
@@ -315,7 +316,7 @@ namespace GoodToCode.Framework.Test
             // 1 digit millisecond
             var resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             var resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -326,7 +327,7 @@ namespace GoodToCode.Framework.Test
             testMS.AddMilliseconds(30);
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -337,7 +338,7 @@ namespace GoodToCode.Framework.Test
             testMS.AddMilliseconds(300);
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -346,7 +347,7 @@ namespace GoodToCode.Framework.Test
             // Mixed
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0), ModifiedDate = new DateTime(1983, 12, 9, 5, 10, 20, 0) };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -369,7 +370,7 @@ namespace GoodToCode.Framework.Test
             // 1 digit millisecond
             var resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             var resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -380,7 +381,7 @@ namespace GoodToCode.Framework.Test
             testMS = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(30);
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -391,7 +392,7 @@ namespace GoodToCode.Framework.Test
             testMS = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(300);
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS, CreatedDate = testMS, ModifiedDate = testMS };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);
@@ -401,7 +402,7 @@ namespace GoodToCode.Framework.Test
             // Mixed
             resultObject = new CustomerDto() { FirstName = searchChar, LastName = searchChar, BirthDate = testMS.AddMilliseconds(-testMS.Millisecond), CreatedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(30), ModifiedDate = testMS.AddMilliseconds(-testMS.Millisecond).AddMilliseconds(300) };
             resultString = serializer.Serialize(resultObject);
-            Assert.IsTrue(resultString != Defaults.String);
+            Assert.IsTrue(resultString != string.Empty);
             Assert.IsTrue(resultString.Contains(testMS.ToString(DateTimeExtension.Formats.ISO8601F)));
             resultObject = serializer.Deserialize(resultString);
             Assert.IsTrue(resultObject.FirstName == searchChar && resultObject.LastName == searchChar);

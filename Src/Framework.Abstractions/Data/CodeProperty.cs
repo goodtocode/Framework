@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 
 
 namespace GoodToCode.Framework.Data
@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Primary key
         /// </summary>
-        public string Code { get; set; } = Defaults.String;
+        public string Code { get; set; } = string.Empty;
     }
 }
 

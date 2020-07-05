@@ -1,4 +1,5 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Entity;
@@ -34,7 +35,7 @@ namespace GoodToCode.Framework.Test
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
             string result = configConnectString.ToEF(typeof(ClassWithConnectString));
-            Assert.IsTrue(result != Defaults.String);
+            Assert.IsTrue(result != string.Empty);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);
             Assert.IsTrue(configConnectString.ConnectionStringType != ConnectionStringSafe.ConnectionStringTypes.Empty
@@ -50,7 +51,7 @@ namespace GoodToCode.Framework.Test
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
             string result = configConnectString.ToEF(typeof(EntityWithConnectString));
-            Assert.IsTrue(result != Defaults.String);
+            Assert.IsTrue(result != string.Empty);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);
             Assert.IsTrue(configConnectString.ConnectionStringType != ConnectionStringSafe.ConnectionStringTypes.Empty
@@ -66,7 +67,7 @@ namespace GoodToCode.Framework.Test
             var configManager =new ConfigurationManagerCore(ApplicationTypes.Native);
             var configConnectString = configManager.ConnectionString(this.GetAttributeValue<ConnectionStringName>(ConnectionStringName.DefaultConnectionName));
             string result = configConnectString.ToEF(typeof(EntityWithConnectString));
-            Assert.IsTrue(result != Defaults.String);
+            Assert.IsTrue(result != string.Empty);
             Assert.IsTrue(configConnectString.IsValid);
             Assert.IsTrue(configConnectString.IsEF || configConnectString.IsADO);
             Assert.IsTrue(configConnectString.ConnectionStringType != ConnectionStringSafe.ConnectionStringTypes.Empty

@@ -17,7 +17,7 @@
 //       limitations under the License. 
 // </copyright>
 //-----------------------------------------------------------------------
-using GoodToCode.Extensions;
+
 using GoodToCode.Extensions.Net;
 using System;
 using System.Threading.Tasks;
@@ -160,7 +160,7 @@ namespace GoodToCode.Framework.Net
         /// <returns></returns>
         public virtual async Task<bool> SendDeleteAsync(Uri fullUrl)
         {
-            var returnValue = Defaults.Boolean;
+            var returnValue = false;
             var request = new HttpRequestDelete(fullUrl);
 
             OnSendBegin(request);

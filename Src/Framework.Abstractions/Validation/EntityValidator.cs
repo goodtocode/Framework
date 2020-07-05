@@ -1,4 +1,4 @@
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Text;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Validation
     public class EntityValidator<TEntity> : IEntityValidator<TEntity> where TEntity : IValidatable<TEntity>, new()
     {
         private TEntity entity = new TEntity();
-        private bool hasValidated = Defaults.Boolean;
+        private bool hasValidated = false;
 
         /// <summary>
         /// Business rules to run

@@ -1,6 +1,8 @@
-﻿using GoodToCode.Extensions;
+﻿
+using GoodToCode.Extensions;
 using GoodToCode.Framework.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Linq;
 
 namespace GoodToCode.Framework.Test
@@ -29,7 +31,7 @@ namespace GoodToCode.Framework.Test
 
                 // Get an Id to test
                 var key = db.GetAllExcludeDefault().FirstOrDefaultSafe().Key;
-                Assert.IsTrue(key != Defaults.Guid);
+                Assert.IsTrue(key != Guid.Empty);
 
                 // GetAll().Where count and any
                 var resultsWhere = db.GetAll().Where(x => x.Key == key);
@@ -79,7 +81,7 @@ namespace GoodToCode.Framework.Test
             var testItem = testList.FirstOrDefaultSafe();
             var testKey = testItem.Key;
             testType = testList.Where(x => x.Key == testKey).FirstOrDefaultSafe();
-            Assert.IsTrue(testType.Key != Defaults.Guid);
+            Assert.IsTrue(testType.Key != Guid.Empty);
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ValueReader_Lists()
         {
-            var emptyGuid = Defaults.Guid;
+            var emptyGuid = Guid.Empty;
 
             // List Type
             var typeDB = new ValueReader<CustomerType>();
@@ -105,11 +107,11 @@ namespace GoodToCode.Framework.Test
         {
             var reader = new ValueReader<CustomerType>();            
             var testItem = new CustomerType();
-            var emptyGuid = Defaults.Guid;
+            var emptyGuid = Guid.Empty;
 
             // By Key
             testItem = reader.GetByKey(reader.GetAllExcludeDefault().FirstOrDefaultSafe().Key);
-            Assert.IsTrue(testItem.Key != Defaults.Guid);
+            Assert.IsTrue(testItem.Key != Guid.Empty);
         }
     }
 }

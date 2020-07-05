@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 using GoodToCode.Framework.Name;
 
 namespace GoodToCode.Framework.Data
@@ -13,12 +13,12 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Name of this image
         /// </summary>
-        public string Name { get; set; } = Defaults.String;
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Bytes of BLOB image
         /// </summary>
-        public byte[] Bytes { get; set; } = Defaults.Bytes;
+        public byte[] Bytes { get; set; } = new byte[] { 0, 0, 0, 1 };
 
         /// <summary>
         /// Constructor

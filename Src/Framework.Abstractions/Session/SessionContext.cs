@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Session
 {
@@ -11,22 +11,22 @@ namespace GoodToCode.Framework.Session
         /// <summary>
         /// Universally Unique Id (UuId) of the device. Typically same as IMEI number, or DeviceId from the OS
         /// </summary>
-        public string DeviceUuid { get; set; } = Defaults.String;
+        public string DeviceUuid { get; set; } = string.Empty;
 
         /// <summary>
         /// Universally Unique Id (UuId) of the software application, that identifies this Application + Device combination
         /// </summary>
-        public string ApplicationUuid { get; set; } = Defaults.String;
+        public string ApplicationUuid { get; set; } = string.Empty;
 
         /// <summary>
         /// Entity (business or person)
         /// </summary>
-        public Guid EntityKey { get; set; } = Defaults.Guid;
+        public Guid EntityKey { get; set; } = Guid.Empty;
 
         /// <summary>
         /// Name, typically user name
         /// </summary>
-        public string IdentityUserName { get; set; } = Defaults.String;
+        public string IdentityUserName { get; set; } = string.Empty;
 
         /// <summary>
         /// Constructor

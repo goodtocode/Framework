@@ -1,5 +1,5 @@
 using System;
-using GoodToCode.Extensions;
+
 
 namespace GoodToCode.Framework.Data
 {
@@ -11,7 +11,7 @@ namespace GoodToCode.Framework.Data
         /// <summary>
         /// Primary key
         /// </summary>
-        public Guid Key { get; set; } = Defaults.Guid;
+        public Guid Key { get; set; } = Guid.Empty;
     }
 }
 

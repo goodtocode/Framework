@@ -1,4 +1,4 @@
-﻿using GoodToCode.Extensions;
+﻿
 using System;
 using System.Collections.Generic;
 
@@ -9,16 +9,16 @@ namespace GoodToCode.Framework.Test
     /// </summary>
     public class CustomerSearch
     {
-        public int Id { get; set; } = Defaults.Integer;
-        public Guid Key { get; set; } = Defaults.Guid;
-        public string FirstName { get; set; } = Defaults.String;
-        public string MiddleName { get; set; } = Defaults.String;
-        public string LastName { get; set; } = Defaults.String;
-        public DateTime BirthDate { get; set; } = Defaults.Date;
-        public int GenderId { get; set; } = Defaults.Integer;
-        public Guid CustomerTypeKey { get; set; } = Defaults.Guid;
-        public DateTime CreatedDate { get; set; } = Defaults.Date;
-        public DateTime ModifiedDate { get; set; } = Defaults.Date;
+        public int Id { get; set; } = -1;
+        public Guid Key { get; set; } = Guid.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string MiddleName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public DateTime BirthDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
+        public int GenderId { get; set; } = -1;
+        public Guid CustomerTypeKey { get; set; } = Guid.Empty;
+        public DateTime CreatedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
+        public DateTime ModifiedDate { get; set; } = new DateTime(1900, 01, 01, 00, 00, 00, 000, DateTimeKind.Utc);
         public List<CustomerInfo> Results { get; set; } = new List<CustomerInfo>();
         public CustomerSearch()
                 : base()
