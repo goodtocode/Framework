@@ -11,12 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="4.19.20187.4" />
-    <PackageReference Include="GoodToCode.Extensions.Configuration" Version="4.19.20187.4" />
-    <PackageReference Include="GoodToCode.Extensions.Mathematics" Version="4.19.20187.7" />
-    <PackageReference Include="GoodToCode.Extensions.Net" Version="4.19.20187.4" />
-    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="4.19.20187.7" />
-    <PackageReference Include="GoodToCode.Extensions.Text" Version="4.19.20187.7" />
+    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20187.2" />
+    <PackageReference Include="GoodToCode.Extensions.Configuration" Version="5.20.20187.2" />
+    <PackageReference Include="GoodToCode.Extensions.Mathematics" Version="5.20.20187.2" />
+    <PackageReference Include="GoodToCode.Extensions.Net" Version="5.20.20187.2" />
+    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="5.20.20187.2" />
+    <PackageReference Include="GoodToCode.Extensions.Text" Version="5.20.20187.2" />
   </ItemGroup>
 
   <ItemGroup>
