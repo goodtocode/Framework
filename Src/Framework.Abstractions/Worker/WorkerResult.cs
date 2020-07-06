@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GoodToCode.Extensions.Collections;
 using GoodToCode.Framework.Validation;
 
@@ -18,7 +19,7 @@ namespace GoodToCode.Framework.Worker
         /// Errors
         /// </summary>
         /// <value></value>        
-        public KeyValueListString FailedRules { get; set; } = new KeyValueListString();
+        public List<ValidationResult> FailedRules { get; set; } = new List<ValidationResult>();
 
         /// <summary>
         /// Id to be returned to caller

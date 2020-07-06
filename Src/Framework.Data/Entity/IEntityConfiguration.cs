@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Entity
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public partial interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
+    public interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access
@@ -35,11 +35,6 @@ namespace GoodToCode.Framework.Entity
         /// Schema to be used for this object's data access
         /// </summary>
         string DatabaseSchema { get; set; }
-
-        /// <summary>
-        /// Connection String Name (key only) to be used for this object's data access
-        /// </summary>
-        string ConnectionName { get; set; }
 
         /// <summary>
         /// Connection String (full string) to be used for this object's data access

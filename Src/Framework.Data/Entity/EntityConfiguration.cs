@@ -1,15 +1,12 @@
-
-using GoodToCode.Extensions.Collections;
-using GoodToCode.Framework.Data;
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
+using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Validation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using GoodToCode.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using GoodToCode.Extensions;
 
 namespace GoodToCode.Framework.Entity
 {
@@ -22,11 +19,6 @@ namespace GoodToCode.Framework.Entity
         /// Entity data this configuration may need for stored procedure in-lining
         /// </summary>
         public TEntity Entity { get; set; } = new TEntity();
-
-        /// <summary>
-        /// Connection String Name (key) to be used for this object's data access
-        /// </summary>
-        public string ConnectionName { get; set; } = ConnectionStringName.DefaultConnectionName;
 
         /// <summary>
         /// Schema to be used for this object's data access
@@ -73,7 +65,7 @@ namespace GoodToCode.Framework.Entity
                 typeof(ValidationRule<TEntity>),
                 typeof(Serializer<TEntity>),
                 typeof(StoredProcedure<TEntity>),
-                typeof(KeyValueListString)};
+                typeof(List<KeyValuePair<string, string>>)};
 
         /// <summary>
         /// Properties to ignore in the database mapping
@@ -88,7 +80,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Connection string as read from the config file, or passed as a constructor parameter
         /// </summary>
-        public string ConnectionString { get { return new ConfigurationManagerCore(ApplicationTypes.Native).ConnectionString(ConnectionName).ToADO(); } }
+        public string ConnectionString { get; set; } = string.Empty;
 
         /// <summary>
         /// Stored procedure that creates the entity
@@ -111,7 +103,6 @@ namespace GoodToCode.Framework.Entity
         public EntityConfiguration() : base()
         {
             var objectWithAttributes = new TEntity();
-            ConnectionName = objectWithAttributes.GetAttributeValue<ConnectionStringName>(ConnectionName);
             DatabaseSchema = objectWithAttributes.GetAttributeValue<DatabaseSchemaName>(DatabaseSchema);
             TableName = objectWithAttributes.GetAttributeValue<TableName>(TableName);
             ColumnPrefix = objectWithAttributes.GetAttributeValue<ColumnPrefix>(ColumnPrefix);
@@ -122,7 +113,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity"></param>        
         public EntityConfiguration(TEntity entity) : this()
         {
             Entity = entity;
@@ -131,6 +122,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="databaseSchemaName"></param>
         public EntityConfiguration(string databaseSchemaName) : this()
         {
             DatabaseSchema = databaseSchemaName;
@@ -139,6 +131,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="ignoredProperty"></param>
         public EntityConfiguration(Expression<Func<TEntity, object>> ignoredProperty) : this()
         {
             IgnoredProperties.Add(ignoredProperty);
@@ -147,9 +140,11 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="ignoredProperties"></param>
         public EntityConfiguration(IList<Expression<Func<TEntity, object>>> ignoredProperties) : this()
         {
-            IgnoredProperties.AddRange(ignoredProperties);
+            foreach (var item in ignoredProperties)
+                IgnoredProperties.Add(item);
         }
 
         /// <summary>

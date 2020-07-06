@@ -1,13 +1,12 @@
 
-using GoodToCode.Framework.Data;
+using GoodToCode.Extensions;
 using GoodToCode.Extensions.Serialization;
+using GoodToCode.Framework.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using GoodToCode.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using GoodToCode.Extensions;
 
 namespace GoodToCode.Framework.Value
 {
@@ -19,12 +18,7 @@ namespace GoodToCode.Framework.Value
         /// <summary>
         /// Connection string as read from the config file, or passed as a constructor parameter
         /// </summary>
-        public string ConnectionString { get { return new ConfigurationManagerCore(ApplicationTypes.Native).ConnectionString(ConnectionName).ToADO(); } }
-
-        /// <summary>
-        /// Connection String Name (key) to be used for this object's data access
-        /// </summary>
-        public string ConnectionName { get; set; } = ConnectionStringName.DefaultConnectionName;
+        public string ConnectionString { get; set;  }
 
         /// <summary>
         /// Schema to be used for this object's data access
@@ -71,7 +65,6 @@ namespace GoodToCode.Framework.Value
         public ValueConfiguration() : base()
         {
             var objectWithAttributes = new TValue();
-            ConnectionName = objectWithAttributes.GetAttributeValue<ConnectionStringName>(ConnectionName);
             DatabaseSchema = objectWithAttributes.GetAttributeValue<DatabaseSchemaName>(DatabaseSchema);
             TableName = objectWithAttributes.GetAttributeValue<TableName>(TableName);
             ColumnPrefix = objectWithAttributes.GetAttributeValue<ColumnPrefix>(ColumnPrefix);

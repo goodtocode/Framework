@@ -31,7 +31,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Results from any query operation
         /// </summary>
-        public IQueryable<TValue> Results { get; protected set; } =  default(IQueryable<TValue>);
+        public IQueryable<TValue> Results { get; protected set; } = default(IQueryable<TValue>);
 
         /// <summary>
         /// Can connect to database?
@@ -54,7 +54,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public ValueReader() : base()
         {
-            
+
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace GoodToCode.Framework.Repository
         public ValueReader(IValueConfiguration<TValue> databaseConfig) : this()
         {
             ConfigOptions = databaseConfig;
-            
+
         }
 
         /// <summary>
@@ -88,15 +88,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public IQueryable<TValue> GetAll()
         {
-            try
-            {
-                Results = Data;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TValue), "ValueReader.GetAll()");
-                throw;
-            }
+            Results = Data;
 
             return Results;
         }
@@ -108,16 +100,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public IQueryable<TValue> GetAllExcludeDefault()
         {
-            try
-            {
-                Results = Data.Where(x => x.Key != Guid.Empty);
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TValue), "ValueReader.GetAllExcludeDefault()");
-                throw;
-            }
-
+            Results = Data.Where(x => x.Key != Guid.Empty);
             return Results;
         }
 
@@ -128,16 +111,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>Single entity that matches by Key, or an empty entity for not found</returns>
         public TValue GetByKey(Guid key)
         {
-            try
-            {
-                Results = Data.Where(x => x.Key == key);
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TValue), "ValueReader.GetByKey()");
-                throw;
-            }
-
+            Results = Data.Where(x => x.Key == key);
             return Results.FirstOrDefaultSafe(); ;
         }
 
@@ -148,16 +122,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns></returns>
         public IQueryable<TValue> GetByWhere(Expression<Func<TValue, Boolean>> whereClause)
         {
-            try
-            {
-                Results = (whereClause != null) ? Data.Where<TValue>(whereClause) : Data;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TValue), "ValueReader.GetByWhere()");
-                throw;
-            }
-
+            Results = (whereClause != null) ? Data.Where<TValue>(whereClause) : Data;
             return Results;
         }
 
@@ -172,19 +137,10 @@ namespace GoodToCode.Framework.Repository
         public IQueryable<TValue> GetByPage(Expression<Func<TValue, Boolean>> whereClause, Expression<Func<TValue, Boolean>> orderByClause, int pageSize, int pageNumber)
         {
             IQueryable<TValue> returnValue;
-            try
-            {
-                returnValue = (Data).AsQueryable();
-                returnValue = (whereClause != null) ? returnValue.Where<TValue>(whereClause).AsQueryable() : returnValue;
-                returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
-                returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip((pageNumber * pageSize)).Take(pageSize).AsQueryable() : returnValue;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TValue), "EntityReader.GetByPage()");
-                throw;
-            }
-
+            returnValue = (Data).AsQueryable();
+            returnValue = (whereClause != null) ? returnValue.Where<TValue>(whereClause).AsQueryable() : returnValue;
+            returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
+            returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip((pageNumber * pageSize)).Take(pageSize).AsQueryable() : returnValue;
             return returnValue;
         }
 

@@ -105,30 +105,22 @@ namespace GoodToCode.Framework.Repository
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
             Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
 
-            try
+            if (ConfigOptions.CreateStoredProcedure != null)
             {
-                if (ConfigOptions.CreateStoredProcedure != null)
-                {
-                    var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.CreateStoredProcedure);
-                    var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
-                }
-                else
-                {
-                    Data.Add(Entity);                    
-                    Entry(Entity).State = EntityState.Added;
-                    await SaveChangesAsync();
-                    using (var reader = new EntityReader<TEntity>())
-                    {
-                        var refreshedEntity = reader.GetByKey(Entity.Key);
-                        Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
-                    }
-                }
+                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.CreateStoredProcedure);
+                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
             }
-            catch (Exception ex)
+            else
             {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), $"StoredProcedureWriter.Create() on {GetType().ToStringSafe()}");
-                throw;
+                Data.Add(Entity);
+                Entry(Entity).State = EntityState.Added;
+                await SaveChangesAsync();
+                using (var reader = new EntityReader<TEntity>())
+                {
+                    var refreshedEntity = reader.GetByKey(Entity.Key);
+                    Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
+                }
             }
 
             return Entity;
@@ -143,29 +135,21 @@ namespace GoodToCode.Framework.Repository
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
             Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key;
 
-            try
+            if (ConfigOptions.UpdateStoredProcedure != null)
             {
-                if (ConfigOptions.UpdateStoredProcedure != null)
-                {
-                    var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.UpdateStoredProcedure);
-                    var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data 
-                }
-                else
-                {
-                    Entry(Entity).State = EntityState.Modified;
-                    await SaveChangesAsync();
-                    using (var reader = new EntityReader<TEntity>())
-                    {
-                        var refreshedEntity = reader.GetByKey(Entity.Key);
-                        Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
-                    }
-                }
+                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.UpdateStoredProcedure);
+                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data 
             }
-            catch (Exception ex)
+            else
             {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), $"StoredProcedureWriter.Create() on {GetType().ToStringSafe()}");
-                throw;
+                Entry(Entity).State = EntityState.Modified;
+                await SaveChangesAsync();
+                using (var reader = new EntityReader<TEntity>())
+                {
+                    var refreshedEntity = reader.GetByKey(Entity.Key);
+                    Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
+                }
             }
 
             return Entity;
@@ -178,29 +162,22 @@ namespace GoodToCode.Framework.Repository
         {
             if (!CanDelete()) throw new NotSupportedException("CanDelete() == false. This entity can not be deleted from the datastore. Possible causes: IsNew == false. No Id/Key present.");
 
-            try
+
+            if (ConfigOptions.DeleteStoredProcedure != null)
             {
-                if (ConfigOptions.DeleteStoredProcedure != null)
-                {
-                    var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
-                    var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                    if (rowsAffected > 0 && refreshedEntity.Key == Guid.Empty) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
-                }
-                else
-                {
-                    Entry(Entity).State = EntityState.Deleted;
-                    Data.Remove(Entity);
-                    await SaveChangesAsync();
-                    using (EntityReader<TEntity> reader = new EntityReader<TEntity>())
-                    {
-                        Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
-                    }
-                }
+                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
+                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
+                if (rowsAffected > 0 && refreshedEntity.Key == Guid.Empty) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
             }
-            catch (Exception ex)
+            else
             {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), $"StoredProcedureWriter.Create() on {GetType().ToStringSafe()}");
-                throw;
+                Entry(Entity).State = EntityState.Deleted;
+                Data.Remove(Entity);
+                await SaveChangesAsync();
+                using (EntityReader<TEntity> reader = new EntityReader<TEntity>())
+                {
+                    Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
+                }
             }
 
             return Entity;

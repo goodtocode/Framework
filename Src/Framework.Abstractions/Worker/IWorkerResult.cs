@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using GoodToCode.Extensions.Collections;
+using GoodToCode.Framework.Validation;
 
 namespace GoodToCode.Framework.Worker
 {
@@ -32,7 +34,7 @@ namespace GoodToCode.Framework.Worker
         /// <summary>
         /// FailedRules
         /// </summary>
-        KeyValueListString FailedRules { get; set; }
+        List<ValidationResult> FailedRules { get; set; }
 
         /// <summary>
         /// Return Id - Primary Key of record

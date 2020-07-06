@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Activity
     /// This data-only object is used by EF code-first to define the schema of the table that log Exceptions
     /// </summary>
     /// <remarks></remarks>
-    [DatabaseSchemaName(DatabaseSchemaName.DefaultActivitySchema), ConnectionStringName(ConnectionStringName.DefaultConnectionName)]
+    [DatabaseSchemaName(DatabaseSchemaName.DefaultActivitySchema)]
     public class ExceptionLog : IExceptionLog
     {
         private Uri endpointUrl = new Uri("http://localhost:80", UriKind.RelativeOrAbsolute);

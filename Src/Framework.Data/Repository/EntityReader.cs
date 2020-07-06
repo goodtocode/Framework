@@ -53,7 +53,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public EntityReader() : base()
         {
-            
+
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace GoodToCode.Framework.Repository
         public EntityReader(IEntityConfiguration<TEntity> databaseConfig) : this()
         {
             ConfigOptions = databaseConfig;
-            
+
         }
 
         /// <summary>
@@ -87,16 +87,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public IQueryable<TEntity> GetAll()
         {
-            try
-            {
-                Results = Data;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetAll()");
-                throw;
-            }
-
+            Results = Data;
             return Results;
         }
 
@@ -107,16 +98,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         public IQueryable<TEntity> GetAllExcludeDefault()
         {
-            try
-            {
-                Results = Data.Where(x => x.Id != -1 && x.Key != Guid.Empty);
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetAllExcludeDefault()");
-                throw;
-            }
-
+            Results = Data.Where(x => x.Id != -1 && x.Key != Guid.Empty);
             return Results;
         }
 
@@ -141,16 +123,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>Single entity that matches by id, or an empty entity for not found</returns>
         public TEntity GetById(int id)
         {
-            try
-            {
-                Results = Data.Where(x => x.Id == id);
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetById()");
-                throw;
-            }
-
+            Results = Data.Where(x => x.Id == id);
             return Results.FirstOrDefaultSafe();
         }
 
@@ -161,16 +134,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns>Single entity that matches by Key, or an empty entity for not found</returns>
         public TEntity GetByKey(Guid key)
         {
-            try
-            {
-                Results = Data.Where(x => x.Key == key);
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByKey()");
-                throw;
-            }
-
+            Results = Data.Where(x => x.Key == key);
             return Results.FirstOrDefaultSafe(); ;
         }
 
@@ -181,16 +145,7 @@ namespace GoodToCode.Framework.Repository
         /// <returns></returns>
         public IQueryable<TEntity> GetByWhere(Expression<Func<TEntity, Boolean>> whereClause)
         {
-            try
-            {
-                Results = (whereClause != null) ? Data.Where<TEntity>(whereClause) : Data;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByWhere()");
-                throw;
-            }
-
+            Results = (whereClause != null) ? Data.Where<TEntity>(whereClause) : Data;
             return Results;
         }
 
@@ -205,19 +160,10 @@ namespace GoodToCode.Framework.Repository
         public IQueryable<TEntity> GetByPage(Expression<Func<TEntity, bool>> whereClause, Expression<Func<TEntity, object>> orderByClause, int pageSize, int pageNumber)
         {
             IQueryable<TEntity> returnValue;
-            try
-            {
-                returnValue = (Data).AsQueryable();
-                returnValue = (whereClause != null) ? returnValue.Where<TEntity>(whereClause).AsQueryable() : returnValue;
-                returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
-                returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip(((pageNumber - 1) * pageSize)).Take(pageSize).AsQueryable() : returnValue;
-            }
-            catch (Exception ex)
-            {
-                ExceptionLogWriter.Create(ex, typeof(TEntity), "EntityReader.GetByPage()");
-                throw;
-            }
-
+            returnValue = (Data).AsQueryable();
+            returnValue = (whereClause != null) ? returnValue.Where<TEntity>(whereClause).AsQueryable() : returnValue;
+            returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
+            returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip(((pageNumber - 1) * pageSize)).Take(pageSize).AsQueryable() : returnValue;
             return returnValue;
         }
 

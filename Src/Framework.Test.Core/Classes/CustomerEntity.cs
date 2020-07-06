@@ -10,7 +10,7 @@ namespace GoodToCode.Framework.Test
     /// <summary>
     /// Database-first entity, Code bound directly to View       
     /// </summary>
-    [ConnectionStringName("DefaultConnection"), DatabaseSchemaName("Customer"), 
+    [DatabaseSchemaName("Customer"), 
         TableName("Customer"), ColumnPrefix("Customer")]
     public class CustomerEntity : EntityBase<CustomerEntity>
     {
