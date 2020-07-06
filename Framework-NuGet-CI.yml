@@ -133,13 +133,6 @@ steps:
   enabled: false
   continueOnError: true
 
-- task: NuGetCommand@2
-  displayName: 'NuGet pack Framework.Web.Core.nuspec'
-  inputs:
-    command: pack
-    packagesToPack: Build/Build.Content/NuGet/Framework.Web.Core.nuspec
-    versioningScheme: byBuildNumber
-
 - task: CopyFiles@2
   displayName: 'Copy Files Set-PackageQuality.ps1'
   inputs:
