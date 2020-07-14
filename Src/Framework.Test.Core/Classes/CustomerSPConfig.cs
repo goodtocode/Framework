@@ -5,12 +5,12 @@ using System.Data.SqlClient;
 
 namespace GoodToCode.Framework.Test
 {
-    public class CustomerSPConfig : EntityConfiguration<CustomerInfo>
+    public class CustomerSPConfig : EntityWriterConfiguration<CustomerInfo>
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public CustomerSPConfig()
+        public CustomerSPConfig(string connectionString) : base(connectionString)
         {
         }
 
@@ -18,7 +18,7 @@ namespace GoodToCode.Framework.Test
         /// Constructor 
         /// </summary>
         /// <param name="entity"></param>
-        public CustomerSPConfig(CustomerInfo entity) : base(entity) { }
+        public CustomerSPConfig(string connectionString, CustomerInfo entity) : base(connectionString, entity) { }
 
         /// <summary>
         /// Entity Create/Insert Stored Procedure

@@ -2,6 +2,7 @@
 using GoodToCode.Framework.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading.Tasks;
 
@@ -19,7 +20,8 @@ namespace GoodToCode.Framework.Hosting.Server
     [Route("api/[Controller]")]
     public class CrudApiController<TEntity> : ControllerBase where TEntity : EntityBase<TEntity>, new()
     {
-        private IEntityConfiguration<TEntity> _config;
+        private IEntityWriterConfiguration<TEntity> _dbConfig;
+        private IConfiguration _appConfig;
 
         /// <summary>
         /// Name of the controller and path part
@@ -29,12 +31,12 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <summary>
         /// Database configuration
         /// </summary>
-        private IEntityConfiguration<TEntity> Config
+        private IEntityWriterConfiguration<TEntity> Config
         {
             get
             {
-                _config = _config ?? (_config = new EntityConfiguration<TEntity>());
-                return _config;
+                _dbConfig = _dbConfig ?? (_dbConfig = new EntityWriterConfiguration<TEntity>(_appConfig["ConnectionStrings:DefaultConnection"]));
+                return _dbConfig;
             }
         }
 
@@ -79,9 +81,9 @@ namespace GoodToCode.Framework.Hosting.Server
         /// <summary>
         /// Constructor
         /// </summary>
-        public CrudApiController(IEntityConfiguration<TEntity> dbConfig)
+        public CrudApiController(IConfiguration appConfig, IEntityWriterConfiguration<TEntity> dbConfig)
         {
-            _config = dbConfig;
+            _dbConfig = dbConfig;
         }
 
         /// <summary>
@@ -96,7 +98,7 @@ namespace GoodToCode.Framework.Hosting.Server
 
             try
             {
-                using (var reader = new EntityReader<TEntity>())
+                using (var reader = new EntityReader<TEntity>(Config.ConnectionString))
                 {
                     var entity = reader.GetByIdOrKey(key);
                     if (entity.IsNew) return NotFound();
@@ -164,7 +166,7 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-                using (var reader = new EntityReader<TEntity>())
+                using (var reader = new EntityReader<TEntity>(Config.ConnectionString))
                 {
                     var entity = reader.GetByIdOrKey(key);
                     TEntity returnEntity;

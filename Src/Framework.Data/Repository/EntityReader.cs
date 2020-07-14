@@ -6,6 +6,7 @@ using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
@@ -18,14 +19,14 @@ namespace GoodToCode.Framework.Repository
     public class EntityReader<TEntity> : DbContext, IEntityReader<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
+        /// Configuration class for dbContext options
+        /// </summary>
+        public IEntityReaderConfiguration<TEntity> ConfigOptions { get; private set; }
+
+        /// <summary>
         /// Data set DbSet class that gets/saves the entity.
         /// </summary>
         public DbSet<TEntity> Data { get; set; }
-
-        /// <summary>
-        /// Configuration class for dbContext options
-        /// </summary>
-        public IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>();
 
         /// <summary>
         /// Results from any query operation
@@ -49,27 +50,24 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
-        /// Constructor
+        /// Constuctor for options
         /// </summary>
-        public EntityReader() : base()
-        {
-
-        }
+        /// <param name="connectionString"></param>
+        public EntityReader(string connectionString) : base() { ConfigOptions = new EntityReaderConfiguration<TEntity>(connectionString); }
 
         /// <summary>
         /// Constuctor for options
         /// </summary>
-        /// <param name="options"></param>
-        public EntityReader(DbContextOptions<EntityReader<TEntity>> options) : base(options) { }
+        /// <param name="connectionString"></param>
+        /// <param name="ignoredTypes"></param>
+        public EntityReader(string connectionString, IList<Type> ignoredTypes) : this(connectionString) { ConfigOptions.IgnoredTypes = ignoredTypes; }
 
         /// <summary>
-        /// Constructor
+        /// Constuctor for options
         /// </summary>
-        public EntityReader(IEntityConfiguration<TEntity> databaseConfig) : this()
-        {
-            ConfigOptions = databaseConfig;
-
-        }
+        /// <param name="connectionString"></param>
+        /// <param name="options"></param>
+        public EntityReader(string connectionString, DbContextOptions<EntityReader<TEntity>> options) : base(options) { ConfigOptions = new EntityReaderConfiguration<TEntity>(connectionString); }
 
         /// <summary>
         /// Retrieves data with purpose of displaying results over multiple pages (i.e. in Grid/table)
@@ -192,9 +190,8 @@ namespace GoodToCode.Framework.Repository
         {
             modelBuilder.ApplyConfiguration(ConfigOptions);
             foreach (Type item in ConfigOptions.IgnoredTypes)
-            {
                 modelBuilder.Ignore(item);
-            }
+            
             base.OnModelCreating(modelBuilder);
         }
     }

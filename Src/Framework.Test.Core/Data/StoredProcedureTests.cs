@@ -108,7 +108,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_StoredProcedure_Create()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var testData = "Test";
             var testItem = new CustomerInfo()
             {
@@ -142,7 +142,7 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Data_StoredProcedure_Update()
         {
             var testItem = new CustomerInfo();
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var customerTests = new CustomerInfoTests();
 
             await customerTests.Core_Entity_CustomerInfo_Insert();
@@ -174,7 +174,7 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Data_StoredProcedure_Delete()
         {
             var testItem = new CustomerInfo();
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var customerTests = new CustomerInfoTests();
 
             await customerTests.Core_Entity_CustomerInfo_Insert();
@@ -198,7 +198,7 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static async Task Cleanup()
         {            
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var toDelete = new CustomerInfo();
 
             foreach (Guid item in RecycleBin)

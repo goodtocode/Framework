@@ -5,6 +5,7 @@ using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Serialization;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Repository;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace GoodToCode.Framework.Test
     [TestClass()]
     public class CustomerInfoTests
     {
+        private string _connectionString = string.Empty;
         private static readonly object LockObject = new object();
         private static volatile List<Guid> _recycleBin = null;
         /// <summary>
@@ -49,19 +51,24 @@ namespace GoodToCode.Framework.Test
         };
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        public CustomerInfoTests()
+        {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile($"appsettings.{(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT ") ?? "Development")}.json")
+                .AddJsonFile("appsettings.json")
+                .Build();
+            _connectionString = config["ConnectionStrings:DefaultConnection"];
+        }
+
+        /// <summary>
         /// Initializes class before tests are ran
         /// </summary>
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            // Database is required for these tests
-            var databaseAccess = false;
-            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
-            using (var connection = new SqlConnection(configuration.ConnectionStringValue("DefaultConnection")))
-            {
-                databaseAccess = connection.CanOpen();
-            }
-            Assert.IsTrue(databaseAccess, @"App_Data\\ConnectionStrings.config DefaultConnection is not able to connect to SQL Server. Please check your connection string and try again.");
+
         }
 
         /// <summary>
@@ -84,7 +91,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            var config = new CustomerSPConfig(testEntity);
+            var config = new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testEntity);
             using (var writer = new EntityWriter<CustomerInfo>(testEntity, config))
             {
                 resultEntity = await writer.CreateAsync();
@@ -96,7 +103,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
-            testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
+            testEntity = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection()).GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
@@ -130,7 +137,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testEntity)))
             {
                 resultEntity = await writer.CreateAsync();
             }
@@ -141,7 +148,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
-            testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
+            testEntity = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection()).GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
@@ -174,7 +181,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Insert and check passed entity and returned entity
-            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testEntity)))
             {
                 resultEntity = await writer.CreateAsync();
             }
@@ -185,7 +192,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!resultEntity.FailedRules.Any());
 
             // Pull from DB and retest
-            testEntity = new EntityReader<CustomerInfo>().GetById(resultEntity.Id);
+            testEntity = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection()).GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key == oldKey);
@@ -205,7 +212,7 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Entity_CustomerInfo_Update()
         {
             var testEntity = new CustomerInfo();
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var oldFirstName = string.Empty;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
             var entityId = -1;
@@ -224,7 +231,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do Update
-            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testEntity)))
             {
                 testEntity = await writer.UpdateAsync();
             }
@@ -247,7 +254,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_CustomerInfo_Delete()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var testEntity = new CustomerInfo();
             var oldId = -1;
             var oldKey = Guid.Empty;
@@ -263,7 +270,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(!testEntity.FailedRules.Any());
 
             // Do delete
-            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(testEntity)))
+            using (var writer = new EntityWriter<CustomerInfo>(testEntity, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testEntity)))
             {
                 testEntity = await writer.DeleteAsync();
             }
@@ -416,13 +423,13 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static async Task Cleanup()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var toDelete = new CustomerInfo();
 
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                using (var db = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                using (var db = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  toDelete)))
                 {
                     await db.DeleteAsync();
                 }

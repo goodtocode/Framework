@@ -1,7 +1,10 @@
 using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace GoodToCode.Framework.Repository
 {
@@ -18,7 +21,7 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        IEntityConfiguration<TEntity> ConfigOptions { get; set; }
+        IEntityReaderConfiguration<TEntity> ConfigOptions { get; }
 
         /// <summary>
         /// Results from any query operation

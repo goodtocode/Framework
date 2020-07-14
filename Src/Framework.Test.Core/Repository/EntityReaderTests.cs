@@ -46,7 +46,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_CountAny()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var db = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
 
             // GetAll() count and any
             var resultsAll = db.GetAll();
@@ -74,7 +74,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_GetAll()
         {
-            var typeDB = new EntityReader<CustomerInfo>();
+            var typeDB = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var typeResults = typeDB.GetAll().Take(1);
             Assert.IsTrue(typeResults.Count() > 0);
         }
@@ -85,7 +85,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_GetById()
         {
-            var custData = new EntityReader<CustomerInfo>();
+            var custData = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var custEntity = new CustomerInfo();
 
             var existingId = custData.GetAllExcludeDefault().FirstOrDefaultSafe().Id;
@@ -104,7 +104,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_GetByKey()
         {
-            var custData = new EntityReader<CustomerInfo>();
+            var custData = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
 
             // ByKey Should return 1 record
             var existingKey = custData.GetAll().FirstOrDefaultSafe().Key;
@@ -120,7 +120,7 @@ namespace GoodToCode.Framework.Test
         public void Core_Data_EntityReader_GetWhere()
         {
             // Plain EntityInfo object
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var testType = new CustomerInfo();            
             var testList = reader.GetAllExcludeDefault();
             var testItem = testList.FirstOrDefaultSafe();
@@ -138,7 +138,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_GetByPage()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var item = new CustomerInfo();
             var pageCount = 3;
             var pageCurrent = 1;
@@ -162,7 +162,7 @@ namespace GoodToCode.Framework.Test
             var emptyGuid = Guid.Empty;
 
             // List Type
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var typeResults = reader.GetAllExcludeDefault();
             Assert.IsTrue(typeResults.Count() > 0);
             Assert.IsTrue(typeResults.Any(x => x.Key == emptyGuid) == false);
@@ -175,7 +175,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_EntityReader_Singles()
         {
-            var reader = new EntityReader<CustomerInfo>();            
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());            
             var testItem = new CustomerInfo();
             var emptyGuid = Guid.Empty;
 

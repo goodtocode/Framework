@@ -19,12 +19,12 @@ namespace GoodToCode.Framework.Repository
         /// Data set DbSet class that gets/saves the entity.
         ///     Note: EF requires public get/set
         /// </summary>
-        DbSet<TEntity> Data { get; set; }
+        DbSet<TEntity> Data { get; }
 
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        IEntityConfiguration<TEntity> ConfigOptions { get; set; }
+        IEntityWriterConfiguration<TEntity> ConfigOptions { get; }
 
         /// <summary>
         /// Can connect to database?

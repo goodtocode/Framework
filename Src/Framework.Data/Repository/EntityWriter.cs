@@ -1,6 +1,5 @@
 
 using GoodToCode.Extensions;
-using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
 using GoodToCode.Framework.Entity;
 using Microsoft.EntityFrameworkCore;
@@ -25,13 +24,15 @@ namespace GoodToCode.Framework.Repository
         {
             get
             {
-                ConfigOptions.Entity = _entity;
                 return _entity;
             }
             private set
             {
                 _entity = value;
-                ConfigOptions.Entity = _entity;
+                if (ConfigOptions != null)
+                {
+                    ConfigOptions.Entity = _entity;
+                }
             }
         }
 
@@ -39,12 +40,12 @@ namespace GoodToCode.Framework.Repository
         /// Data set DbSet class that gets/saves the entity.
         ///     Note: EF requires public get/set
         /// </summary>
-        public DbSet<TEntity> Data { get; set; }
+        public DbSet<TEntity> Data { get; private set; }
 
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        public IEntityConfiguration<TEntity> ConfigOptions { get; set; } = new EntityConfiguration<TEntity>(prop => prop.Id);
+        public IEntityWriterConfiguration<TEntity> ConfigOptions { get; private set; }
 
         /// <summary>
         /// Can connect to database?
@@ -90,8 +91,8 @@ namespace GoodToCode.Framework.Repository
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityWriter(TEntity entity, IEntityConfiguration<TEntity> databaseConfig) : this(entity)
-        {
+        public EntityWriter(TEntity entity, IEntityWriterConfiguration<TEntity> databaseConfig) : this(entity)
+        {            
             ConfigOptions = databaseConfig;
         }
 
@@ -116,7 +117,7 @@ namespace GoodToCode.Framework.Repository
                 Data.Add(Entity);
                 Entry(Entity).State = EntityState.Added;
                 await SaveChangesAsync();
-                using (var reader = new EntityReader<TEntity>())
+                using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
                 {
                     var refreshedEntity = reader.GetByKey(Entity.Key);
                     Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
@@ -145,7 +146,7 @@ namespace GoodToCode.Framework.Repository
             {
                 Entry(Entity).State = EntityState.Modified;
                 await SaveChangesAsync();
-                using (var reader = new EntityReader<TEntity>())
+                using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
                 {
                     var refreshedEntity = reader.GetByKey(Entity.Key);
                     Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
@@ -174,7 +175,7 @@ namespace GoodToCode.Framework.Repository
                 Entry(Entity).State = EntityState.Deleted;
                 Data.Remove(Entity);
                 await SaveChangesAsync();
-                using (EntityReader<TEntity> reader = new EntityReader<TEntity>())
+                using (EntityReader<TEntity> reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
                 {
                     Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
                 }
@@ -256,9 +257,8 @@ namespace GoodToCode.Framework.Repository
         {
             modelBuilder.ApplyConfiguration(ConfigOptions);
             foreach (Type item in ConfigOptions.IgnoredTypes)
-            {
                 modelBuilder.Ignore(item);
-            }
+
             base.OnModelCreating(modelBuilder);
         }
 

@@ -83,7 +83,6 @@ namespace GoodToCode.Framework.Entity
         public TEntity ToSize(int newHeight)
         {
             var returnValue = new TEntity();
-            int newWidth = -1;
             decimal multiplier = 0m;
 
             multiplier = (newHeight.ToDecimal() / this.Image.Height.ToDecimal());

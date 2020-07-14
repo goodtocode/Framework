@@ -169,7 +169,6 @@ namespace GoodToCode.Framework.Test
             var customer = new CustomerDto();
             var returnCustomer = new CustomerDto();
             var viewModel = new TestViewModel<CustomerDto>("Customer");
-            var success = false;
 
             // Create test record
             await Core_ViewModel_CRUD_Create();
@@ -206,7 +205,7 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static async Task Cleanup()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             foreach (Guid item in RecycleBin)
             {
                 var toDelete = reader.GetByKey(item);

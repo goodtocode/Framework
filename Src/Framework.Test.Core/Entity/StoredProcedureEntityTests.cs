@@ -69,7 +69,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Save()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var db = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var newCustomer = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var dbCustomer = new CustomerInfo();
@@ -77,7 +77,7 @@ namespace GoodToCode.Framework.Test
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
 
-            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
             {
                 resultCustomer = await writer.SaveAsync();
             }
@@ -101,14 +101,14 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Create()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var db = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var newCustomer = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var dbCustomer = new CustomerInfo();
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
             {
                 resultCustomer = await writer.CreateAsync();
             }
@@ -132,7 +132,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Read()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var db = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var dbCustomer = new CustomerInfo();
             var lastKey = Guid.Empty;
 
@@ -151,7 +151,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Update()
         {
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var item = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var uniqueValue = RandomString.Next();
@@ -169,7 +169,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(item.Key != Guid.Empty);
 
             item.FirstName = uniqueValue;
-            using (var writer = new EntityWriter<CustomerInfo>(item, new CustomerSPConfig(item)))
+            using (var writer = new EntityWriter<CustomerInfo>(item, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), item)))
             {
                 resultCustomer = await writer.UpdateAsync();
             }
@@ -192,7 +192,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_Delete()
         {
-            var db = new EntityReader<CustomerInfo>();
+            var db = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var testItem = new CustomerInfo();
             var testResult = new CustomerInfo();
             var lastKey = Guid.Empty;
@@ -209,7 +209,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Guid.Empty);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            using (var writer = new EntityWriter<CustomerInfo>(testItem, new CustomerSPConfig(testItem)))
+            using (var writer = new EntityWriter<CustomerInfo>(testItem, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testItem)))
             {
                 var deleteResult = await writer.DeleteAsync();
                 Assert.IsTrue(deleteResult.IsNew);
@@ -228,7 +228,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Entity_StoredProcedureEntity_GetById()
         {
-            var dbReader = new EntityReader<CustomerInfo>();
+            var dbReader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var dbCustomer = new CustomerInfo();
             var lastKey = Guid.Empty;
 
@@ -248,7 +248,7 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Entity_StoredProcedureEntity_GetByKey()
         {
             var dbCustomer = new CustomerInfo();
-            var dbReader = new EntityReader<CustomerInfo>();
+            var dbReader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             var lastKey = Guid.Empty;
 
             await Core_Entity_StoredProcedureEntity_Create();
@@ -266,11 +266,11 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static async Task Cleanup()
         {            
-            var reader = new EntityReader<CustomerInfo>();
+            var reader = new EntityReader<CustomerInfo>(new ConnectionStringFactory().GetDefaultConnection());
             foreach (Guid item in RecycleBin)
             {
                 var toDelete = reader.GetByKey(item);
-                using (var writer = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(toDelete)))
+                using (var writer = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  toDelete)))
                 {
                     await writer.DeleteAsync();
                 }

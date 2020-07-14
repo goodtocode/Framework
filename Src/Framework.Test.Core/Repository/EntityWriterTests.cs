@@ -74,7 +74,6 @@ namespace GoodToCode.Framework.Test
             var resultEntity = new CustomerEntity();
             var oldId = -1;
             var oldKey = Guid.Empty;
-            var newId = -1;
             var newKey = Guid.Empty;
 
             // Create and insert record
@@ -96,7 +95,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(resultEntity.Key != Guid.Empty);
         
             // Pull from DB and retest
-            testEntity = new EntityReader<CustomerEntity>().GetById(resultEntity.Id);
+            testEntity = new EntityReader<CustomerEntity>(new ConnectionStringFactory().GetDefaultConnection()).GetById(resultEntity.Id);
             Assert.IsTrue(testEntity.IsNew == false);
             Assert.IsTrue(testEntity.Id != oldId);
             Assert.IsTrue(testEntity.Key != oldKey);
@@ -115,7 +114,7 @@ namespace GoodToCode.Framework.Test
         public async Task Core_Data_EntityWriter_Update()
         {
             var testEntity = new CustomerEntity();
-            var reader = new EntityReader<CustomerEntity>();
+            var reader = new EntityReader<CustomerEntity>(new ConnectionStringFactory().GetDefaultConnection());
             var oldFirstName = string.Empty;
             var newFirstName = DateTime.UtcNow.Ticks.ToString();
             var entityId = -1;
@@ -154,7 +153,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public async Task Core_Data_EntityWriter_Delete()
         {
-            var reader = new EntityReader<CustomerEntity>();
+            var reader = new EntityReader<CustomerEntity>(new ConnectionStringFactory().GetDefaultConnection());
             var testEntity = new CustomerEntity();
             var oldId = -1;
             var oldKey = Guid.Empty;
@@ -192,7 +191,7 @@ namespace GoodToCode.Framework.Test
         [ClassCleanup()]
         public static async Task Cleanup()
         {
-            var reader = new EntityReader<CustomerEntity>();
+            var reader = new EntityReader<CustomerEntity>(new ConnectionStringFactory().GetDefaultConnection());
             var toDelete = new CustomerEntity();
 
             foreach (Guid item in RecycleBin)

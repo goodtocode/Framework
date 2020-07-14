@@ -9,7 +9,7 @@ namespace GoodToCode.Framework.Entity
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public interface IEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
+    public interface IEntityWriterConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access
@@ -76,7 +76,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// List of types to ignore in database operations
         /// </summary>
-        IList<Type> IgnoredTypes { get; }
+        IList<Type> IgnoredTypes { get; set; }
 
         /// <summary>
         /// Properties to ignore in the database mapping

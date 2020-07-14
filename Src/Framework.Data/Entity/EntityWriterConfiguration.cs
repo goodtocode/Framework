@@ -13,7 +13,7 @@ namespace GoodToCode.Framework.Entity
     /// <summary>
     /// EF to SQL View for this object
     /// </summary>
-    public class EntityConfiguration<TEntity> : IEntityConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
+    public class EntityWriterConfiguration<TEntity> : IEntityWriterConfiguration<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Entity data this configuration may need for stored procedure in-lining
@@ -80,7 +80,7 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Connection string as read from the config file, or passed as a constructor parameter
         /// </summary>
-        public string ConnectionString { get; set; } = string.Empty;
+        public string ConnectionString { get; } = string.Empty;
 
         /// <summary>
         /// Stored procedure that creates the entity
@@ -100,9 +100,11 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityConfiguration() : base()
+        /// <param name="connectionString"></param>
+        public EntityWriterConfiguration(string connectionString) : base()
         {
             var objectWithAttributes = new TEntity();
+            ConnectionString = connectionString;
             DatabaseSchema = objectWithAttributes.GetAttributeValue<DatabaseSchemaName>(DatabaseSchema);
             TableName = objectWithAttributes.GetAttributeValue<TableName>(TableName);
             ColumnPrefix = objectWithAttributes.GetAttributeValue<ColumnPrefix>(ColumnPrefix);
@@ -113,17 +115,19 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor 
         /// </summary>
-        /// <param name="entity"></param>        
-        public EntityConfiguration(TEntity entity) : this()
+        /// <param name="entity"></param>
+        /// <param name="connectionString"></param>
+        public EntityWriterConfiguration(string connectionString, TEntity entity) : this(connectionString)
         {
-            Entity = entity;
+            Entity = entity;            
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="connectionString"></param>
         /// <param name="databaseSchemaName"></param>
-        public EntityConfiguration(string databaseSchemaName) : this()
+        public EntityWriterConfiguration(string connectionString, string databaseSchemaName) : this(connectionString)
         {
             DatabaseSchema = databaseSchemaName;
         }
@@ -131,8 +135,9 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="connectionString"></param>
         /// <param name="ignoredProperty"></param>
-        public EntityConfiguration(Expression<Func<TEntity, object>> ignoredProperty) : this()
+        public EntityWriterConfiguration(string connectionString, Expression<Func<TEntity, object>> ignoredProperty) : this(connectionString)
         {
             IgnoredProperties.Add(ignoredProperty);
         }
@@ -140,8 +145,9 @@ namespace GoodToCode.Framework.Entity
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="connectionString"></param>
         /// <param name="ignoredProperties"></param>
-        public EntityConfiguration(IList<Expression<Func<TEntity, object>>> ignoredProperties) : this()
+        public EntityWriterConfiguration(string connectionString, IList<Expression<Func<TEntity, object>>> ignoredProperties) : this(connectionString)
         {
             foreach (var item in ignoredProperties)
                 IgnoredProperties.Add(item);
