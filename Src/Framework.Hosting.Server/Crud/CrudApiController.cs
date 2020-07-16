@@ -1,5 +1,5 @@
 ﻿using GoodToCode.Framework.Entity;
-using GoodToCode.Framework.Repository;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -120,7 +120,7 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-                using (var writer = new EntityWriter<TEntity>(entity, Config))
+                using (var writer = new EntityWriter<TEntity>(Config))
                 {
                     var returnEntity = await writer.SaveAsync();
                     if (returnEntity.IsNew) return BadRequest();
@@ -143,7 +143,7 @@ namespace GoodToCode.Framework.Hosting.Server
         {
             try
             {
-                using (var writer = new EntityWriter<TEntity>(entity, Config))
+                using (var writer = new EntityWriter<TEntity>(Config))
                 {
                     var returnEntity = await writer.SaveAsync();
                     if (returnEntity.IsNew) return BadRequest();
@@ -170,7 +170,7 @@ namespace GoodToCode.Framework.Hosting.Server
                 {
                     var entity = reader.GetByIdOrKey(key);
                     TEntity returnEntity;
-                    using (var writer = new EntityWriter<TEntity>(entity, Config))
+                    using (var writer = new EntityWriter<TEntity>(Config))
                     {
                         returnEntity = await writer.DeleteAsync();
                         if (!returnEntity.IsNew) return BadRequest();

@@ -1,4 +1,4 @@
-﻿namespace GoodToCode.Framework.Entity
+﻿namespace GoodToCode.Framework.Data
 {
     /// <summary>
     /// Configures stored procedure for specific parameter behavior

@@ -1,14 +1,12 @@
-
 using GoodToCode.Extensions;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoodToCode.Framework.Repository
+namespace GoodToCode.Framework.Entity
 {
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
@@ -64,35 +62,34 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
-        /// Constructor
+        /// Constuctor
         /// </summary>
-        public EntityWriter()
-        {
-        }
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public EntityWriter(TEntity entity)
+        /// <param name="entity">entity to persist</param>
+        /// <param name="connectionString"></param>
+        public EntityWriter(TEntity entity, string connectionString) : base()
         {
             Entity = entity;
+            ConfigOptions = new EntityWriterConfiguration<TEntity>(connectionString, entity);
         }
 
         /// <summary>
         /// Constuctor for options
         /// </summary>
         /// <param name="entity">entity to persist</param>
+        /// <param name="connectionString"></param>
         /// <param name="options"></param>
-        public EntityWriter(TEntity entity, DbContextOptions<EntityWriter<TEntity>> options) : base(options)
+        public EntityWriter(TEntity entity, string connectionString, DbContextOptions<EntityWriter<TEntity>> options) : base(options)
         {
             Entity = entity;
+            ConfigOptions = new EntityWriterConfiguration<TEntity>(connectionString, entity);
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public EntityWriter(TEntity entity, IEntityWriterConfiguration<TEntity> databaseConfig) : this(entity)
-        {            
+        public EntityWriter(IEntityWriterConfiguration<TEntity> databaseConfig) : base()
+        {
+            Entity = databaseConfig.Entity;
             ConfigOptions = databaseConfig;
         }
 
@@ -104,25 +101,22 @@ namespace GoodToCode.Framework.Repository
         {
             if (!CanCreate()) throw new NotSupportedException("CanCreate() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
-            Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key; // Required to re-pull data after save
+            Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key;
+            var refreshedEntity = new TEntity();
+            int rowsAffected;
 
             if (ConfigOptions.CreateStoredProcedure != null)
-            {
-                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.CreateStoredProcedure);
-                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data
-            }
+                rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.CreateStoredProcedure);
             else
             {
                 Data.Add(Entity);
                 Entry(Entity).State = EntityState.Added;
-                await SaveChangesAsync();
-                using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
-                {
-                    var refreshedEntity = reader.GetByKey(Entity.Key);
-                    Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
-                }
+                rowsAffected = await SaveChangesAsync();
             }
+            using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
+                refreshedEntity = reader.GetByKey(Entity.Key);                
+
+            if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity);
 
             return Entity;
         }
@@ -135,23 +129,20 @@ namespace GoodToCode.Framework.Repository
             if (!CanUpdate()) throw new NotSupportedException("CanUpdate() == false. This entity can not be created in the datastore. Possible causes: Object already has an Id/Key. Object has no data to persist.");
             if (!Entity.IsValid()) throw new NotSupportedException("IsValid() == false. This entity can not be persisted, it is not valid. Please check the object's IsValid() method for valid requirements.");
             Entity.Key = Entity.Key == Guid.Empty ? Guid.NewGuid() : Entity.Key;
+            int rowsAffected;
+            var refreshedEntity = new TEntity();
 
             if (ConfigOptions.UpdateStoredProcedure != null)
-            {
-                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.UpdateStoredProcedure);
-                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity); // Re-pull clean object, the DB is allowed to alter data 
-            }
+                rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.UpdateStoredProcedure);                
             else
             {
                 Entry(Entity).State = EntityState.Modified;
-                await SaveChangesAsync();
-                using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
-                {
-                    var refreshedEntity = reader.GetByKey(Entity.Key);
-                    Entity.Fill(refreshedEntity); // Re-pull clean object, exactly as the DB has stored
-                }
+                rowsAffected = await SaveChangesAsync();
             }
+            using (var reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
+                refreshedEntity = reader.GetByKey(Entity.Key);
+
+            if (rowsAffected > 0 && refreshedEntity.Key == Entity.Key) Entity.Fill(refreshedEntity);
 
             return Entity;
         }
@@ -162,24 +153,21 @@ namespace GoodToCode.Framework.Repository
         public async Task<TEntity> DeleteAsync()
         {
             if (!CanDelete()) throw new NotSupportedException("CanDelete() == false. This entity can not be deleted from the datastore. Possible causes: IsNew == false. No Id/Key present.");
-
+            int rowsAffected;
+            var refreshedEntity = new TEntity();
 
             if (ConfigOptions.DeleteStoredProcedure != null)
-            {
-                var rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
-                var refreshedEntity = Data.Where(x => x.Key == Entity.Key).FirstOrDefaultSafe();
-                if (rowsAffected > 0 && refreshedEntity.Key == Guid.Empty) Entity.Fill(refreshedEntity); // Re-pull clean object, should be "not found"
-            }
+                rowsAffected = await ExecuteSqlCommandAsync(ConfigOptions.DeleteStoredProcedure);
             else
             {
                 Entry(Entity).State = EntityState.Deleted;
                 Data.Remove(Entity);
-                await SaveChangesAsync();
-                using (EntityReader<TEntity> reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
-                {
-                    Entity.Fill(reader.GetByKey(Entity.Key)); // Re-pull clean object, exactly as the DB has stored
-                }
+                rowsAffected = await SaveChangesAsync();
             }
+
+            using (EntityReader<TEntity> reader = new EntityReader<TEntity>(ConfigOptions.ConnectionString))
+                refreshedEntity = reader.GetByKey(Entity.Key);
+            if (rowsAffected > 0 && refreshedEntity.Key == Guid.Empty) Entity.Fill(refreshedEntity);
 
             return Entity;
         }

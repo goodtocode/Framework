@@ -4,7 +4,7 @@ using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Extensions.Text;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Repository;
+using GoodToCode.Framework.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -77,7 +77,7 @@ namespace GoodToCode.Framework.Test
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
 
-            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
             {
                 resultCustomer = await writer.SaveAsync();
             }
@@ -108,7 +108,7 @@ namespace GoodToCode.Framework.Test
 
             // Create should update original object, and pass back a fresh-from-db object
             newCustomer.Fill(testEntities[Arithmetic.Random(1, testEntities.Count)]);
-            using (var writer = new EntityWriter<CustomerInfo>(newCustomer, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
+            using (var writer = new EntityWriter<CustomerInfo>(new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), newCustomer)))
             {
                 resultCustomer = await writer.CreateAsync();
             }
@@ -155,21 +155,17 @@ namespace GoodToCode.Framework.Test
             var item = new CustomerInfo();
             var resultCustomer = new CustomerInfo();
             var uniqueValue = RandomString.Next();
-            var lastKey = Guid.Empty;
-            var originalID = -1;
-            var originalKey = Guid.Empty;
-
             await Core_Entity_StoredProcedureEntity_Create();
-            lastKey = RecycleBin.Last();
+            Guid lastKey = RecycleBin.Last();
 
             item = reader.GetByKey(lastKey);
-            originalID = item.Id;
-            originalKey = item.Key;
+            var originalID = item.Id;
+            Guid originalKey = item.Key;
             Assert.IsTrue(item.Id != -1);
             Assert.IsTrue(item.Key != Guid.Empty);
 
             item.FirstName = uniqueValue;
-            using (var writer = new EntityWriter<CustomerInfo>(item, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), item)))
+            using (var writer = new EntityWriter<CustomerInfo>(new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(), item)))
             {
                 resultCustomer = await writer.UpdateAsync();
             }
@@ -209,7 +205,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testItem.Key != Guid.Empty);
             Assert.IsTrue(testItem.CreatedDate.Date == DateTime.UtcNow.Date);
 
-            using (var writer = new EntityWriter<CustomerInfo>(testItem, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testItem)))
+            using (var writer = new EntityWriter<CustomerInfo>(new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  testItem)))
             {
                 var deleteResult = await writer.DeleteAsync();
                 Assert.IsTrue(deleteResult.IsNew);
@@ -270,7 +266,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 var toDelete = reader.GetByKey(item);
-                using (var writer = new EntityWriter<CustomerInfo>(toDelete, new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  toDelete)))
+                using (var writer = new EntityWriter<CustomerInfo>(new CustomerSPConfig(new ConnectionStringFactory().GetDefaultConnection(),  toDelete)))
                 {
                     await writer.DeleteAsync();
                 }

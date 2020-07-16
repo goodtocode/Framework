@@ -12,7 +12,7 @@ namespace GoodToCode.Framework.Data
     /// Stored Procedure for entity class
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class StoredProcedure<TEntity> where TEntity : EntityBase<TEntity>, new()
+    public class StoredProcedure<TEntity> where TEntity : IDataObject, new()
     {
         private string sqlStatement = string.Empty;
         private string storedProcedureName = string.Empty;

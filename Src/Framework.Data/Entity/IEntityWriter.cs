@@ -1,8 +1,7 @@
-using GoodToCode.Framework.Entity;
 using GoodToCode.Framework.Operation;
 using Microsoft.EntityFrameworkCore;
 
-namespace GoodToCode.Framework.Repository
+namespace GoodToCode.Framework.Entity
 {
     /// <summary>
     /// EF DbContext for read-only GetBy* operations

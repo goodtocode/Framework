@@ -73,6 +73,7 @@ namespace GoodToCode.Framework.Entity
         public IList<Expression<Func<TEntity, object>>> IgnoredProperties { get; set; }
             = new List<Expression<Func<TEntity, object>>>()
             {
+                p => p.Id,
                 p => p.State,
                 p => p.FailedRules
             };

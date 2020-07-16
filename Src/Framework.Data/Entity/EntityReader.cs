@@ -1,37 +1,34 @@
 
 using GoodToCode.Extensions;
-using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Value;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace GoodToCode.Framework.Repository
+namespace GoodToCode.Framework.Entity
 {
     /// <summary>
     /// EF DbContext for read-only GetBy* operations
-    /// Workaround 1: EF Core in .NET Standard project: csproj - <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    /// Workaround 2: EF Core in test project: csproj - <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     /// </summary>
-    public class ValueReader<TValue> : DbContext where TValue : ValueBase<TValue>, new()
+    public class EntityReader<TEntity> : DbContext, IEntityReader<TEntity> where TEntity : EntityBase<TEntity>, new()
     {
         /// <summary>
         /// Data set DbSet class that gets/saves the entity.
         /// </summary>
-        public DbSet<TValue> Data { get; set; }
+        public DbSet<TEntity> Data { get; set; }
 
         /// <summary>
         /// Configuration class for dbContext options
         /// </summary>
-        public IValueConfiguration<TValue> ConfigOptions { get; set; } = new ValueConfiguration<TValue>();
+        public IEntityReaderConfiguration<TEntity> ConfigOptions { get; private set; }
 
         /// <summary>
         /// Results from any query operation
         /// </summary>
-        public IQueryable<TValue> Results { get; protected set; } = default(IQueryable<TValue>);
+        public IQueryable<TEntity> Results { get; protected set; } = default(IQueryable<TEntity>);
 
         /// <summary>
         /// Can connect to database?
@@ -50,34 +47,31 @@ namespace GoodToCode.Framework.Repository
         }
 
         /// <summary>
-        /// Constructor
+        /// Constuctor for options
         /// </summary>
-        public ValueReader() : base()
-        {
-
-        }
+        /// <param name="connectionString"></param>
+        public EntityReader(string connectionString) : base() { ConfigOptions = new EntityReaderConfiguration<TEntity>(connectionString); }
 
         /// <summary>
         /// Constuctor for options
         /// </summary>
-        /// <param name="options"></param>
-        public ValueReader(DbContextOptions<ValueReader<TValue>> options) : base(options) { }
+        /// <param name="connectionString"></param>
+        /// <param name="ignoredTypes"></param>
+        public EntityReader(string connectionString, IList<Type> ignoredTypes) : this(connectionString) { ConfigOptions.IgnoredTypes = ignoredTypes; }
 
         /// <summary>
-        /// Constructor
+        /// Constuctor for options
         /// </summary>
-        public ValueReader(IValueConfiguration<TValue> databaseConfig) : this()
-        {
-            ConfigOptions = databaseConfig;
-
-        }
+        /// <param name="connectionString"></param>
+        /// <param name="options"></param>
+        public EntityReader(string connectionString, DbContextOptions<EntityReader<TEntity>> options) : base(options) { ConfigOptions = new EntityReaderConfiguration<TEntity>(connectionString); }
 
         /// <summary>
         /// Retrieves data with purpose of displaying results over multiple pages (i.e. in Grid/table)
         /// </summary>
         /// <param name="whereClause">Expression for where clause</param>
         /// <returns></returns>
-        public IQueryable<TValue> Read(Expression<Func<TValue, Boolean>> whereClause)
+        public IQueryable<TEntity> Read(Expression<Func<TEntity, Boolean>> whereClause)
         {
             return GetByWhere(whereClause);
         }
@@ -86,10 +80,9 @@ namespace GoodToCode.Framework.Repository
         /// All data in this datastore subset
         ///  Can add clauses, such as GetAll().Take(1), GetAll().Where(), etc.
         /// </summary>
-        public IQueryable<TValue> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
             Results = Data;
-
             return Results;
         }
 
@@ -98,10 +91,35 @@ namespace GoodToCode.Framework.Repository
         ///  Criteria: Where Id != -1 And Also Key != Guid.Empty
         ///  Goal: To exclude "Not Selected" records from lookup tables
         /// </summary>
-        public IQueryable<TValue> GetAllExcludeDefault()
+        public IQueryable<TEntity> GetAllExcludeDefault()
         {
-            Results = Data.Where(x => x.Key != Guid.Empty);
+            Results = Data.Where(x => x.Id != -1 && x.Key != Guid.Empty);
             return Results;
+        }
+
+        /// <summary>
+        /// Gets one or no items based on exact ID or Key match
+        ///   Id used if value entered is of type int
+        ///   Key used if value passed is of type Guid
+        /// </summary>
+        /// <returns>One or no TEntity based on exact Key match</returns>
+        public TEntity GetByIdOrKey(string idOrKey)
+        {
+            if (idOrKey.IsInteger())
+                return GetById(idOrKey.TryParseInt32());
+            else
+                return GetByKey(idOrKey.TryParseGuid());
+        }
+
+        /// <summary>
+        /// Gets database record with exact Id match
+        /// </summary>
+        /// <param name="id">Database Id of the record to pull</param>
+        /// <returns>Single entity that matches by id, or an empty entity for not found</returns>
+        public TEntity GetById(int id)
+        {
+            Results = Data.Where(x => x.Id == id);
+            return Results.FirstOrDefaultSafe();
         }
 
         /// <summary>
@@ -109,7 +127,7 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         /// <param name="key">Database Key of the record to pull</param>
         /// <returns>Single entity that matches by Key, or an empty entity for not found</returns>
-        public TValue GetByKey(Guid key)
+        public TEntity GetByKey(Guid key)
         {
             Results = Data.Where(x => x.Key == key);
             return Results.FirstOrDefaultSafe(); ;
@@ -120,9 +138,9 @@ namespace GoodToCode.Framework.Repository
         /// </summary>
         /// <param name="whereClause">Expression for where clause</param>
         /// <returns></returns>
-        public IQueryable<TValue> GetByWhere(Expression<Func<TValue, Boolean>> whereClause)
+        public IQueryable<TEntity> GetByWhere(Expression<Func<TEntity, Boolean>> whereClause)
         {
-            Results = (whereClause != null) ? Data.Where<TValue>(whereClause) : Data;
+            Results = (whereClause != null) ? Data.Where<TEntity>(whereClause) : Data;
             return Results;
         }
 
@@ -133,14 +151,14 @@ namespace GoodToCode.Framework.Repository
         /// <param name="orderByClause">Expression for order by clause</param>
         /// <param name="pageSize">Size of each result</param>
         /// <param name="pageNumber">Page number</param>
-        /// <returns></returns>
-        public IQueryable<TValue> GetByPage(Expression<Func<TValue, Boolean>> whereClause, Expression<Func<TValue, Boolean>> orderByClause, int pageSize, int pageNumber)
+        /// <returns>Page of data, based on passed clauses and page parameters</returns>
+        public IQueryable<TEntity> GetByPage(Expression<Func<TEntity, bool>> whereClause, Expression<Func<TEntity, object>> orderByClause, int pageSize, int pageNumber)
         {
-            IQueryable<TValue> returnValue;
+            IQueryable<TEntity> returnValue;
             returnValue = (Data).AsQueryable();
-            returnValue = (whereClause != null) ? returnValue.Where<TValue>(whereClause).AsQueryable() : returnValue;
+            returnValue = (whereClause != null) ? returnValue.Where<TEntity>(whereClause).AsQueryable() : returnValue;
             returnValue = (orderByClause != null) ? returnValue.OrderBy(orderByClause).AsQueryable() : returnValue;
-            returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip((pageNumber * pageSize)).Take(pageSize).AsQueryable() : returnValue;
+            returnValue = (pageNumber > 0 && pageSize > 0) ? returnValue.Skip(((pageNumber - 1) * pageSize)).Take(pageSize).AsQueryable() : returnValue;
             return returnValue;
         }
 
@@ -169,9 +187,8 @@ namespace GoodToCode.Framework.Repository
         {
             modelBuilder.ApplyConfiguration(ConfigOptions);
             foreach (Type item in ConfigOptions.IgnoredTypes)
-            {
                 modelBuilder.Ignore(item);
-            }
+            
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -1,6 +1,6 @@
 ﻿
 using GoodToCode.Extensions;
-using GoodToCode.Framework.Repository;
+using GoodToCode.Framework.Value;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ValueReader_CountAny()
         {
-            using (var db = new ValueReader<CustomerType>())
+            using (var db = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection()))
             {
 
                 // GetAll() count and any
@@ -46,7 +46,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ValueReader_GetAll()
         {
-            using (var typeDB = new ValueReader<CustomerType>())
+            using (var typeDB = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection()))
             {
                 var typeResults = typeDB.GetAll().Take(1);
                 Assert.IsTrue(typeResults.Count() > 0);
@@ -59,7 +59,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ValueReader_GetByKey()
         {
-            var custData = new ValueReader<CustomerType>();
+            var custData = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection());
 
             // ByKey Should return 1 record
             var existingKey = custData.GetAll().FirstOrDefaultSafe().Key;
@@ -75,7 +75,7 @@ namespace GoodToCode.Framework.Test
         public void Core_Data_ValueReader_GetWhere()
         {
             // Plain EntityInfo object
-            var typeData = new ValueReader<CustomerType>();
+            var typeData = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection());
             var testType = new CustomerType();            
             var testList = typeData.GetAllExcludeDefault();
             var testItem = testList.FirstOrDefaultSafe();
@@ -93,7 +93,7 @@ namespace GoodToCode.Framework.Test
             var emptyGuid = Guid.Empty;
 
             // List Type
-            var typeDB = new ValueReader<CustomerType>();
+            var typeDB = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection());
             var typeResults = typeDB.GetAllExcludeDefault();
             Assert.IsTrue(typeResults.Count() > 0);
             Assert.IsTrue(typeResults.Any(x => x.Key == emptyGuid) == false);
@@ -105,7 +105,7 @@ namespace GoodToCode.Framework.Test
         [TestMethod()]
         public void Core_Data_ValueReader_Singles()
         {
-            var reader = new ValueReader<CustomerType>();            
+            var reader = new ValueReader<CustomerType>(new ConnectionStringFactory().GetDefaultConnection());            
             var testItem = new CustomerType();
             var emptyGuid = Guid.Empty;
 

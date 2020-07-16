@@ -2,7 +2,7 @@
 using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Repository;
+using GoodToCode.Framework.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data.SqlClient;

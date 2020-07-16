@@ -1,4 +1,3 @@
-using GoodToCode.Framework.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace GoodToCode.Framework.Value
     /// <summary>
     /// Database connection and metadata info
     /// </summary>
-    public interface IValueConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueBase<TValue>, new()
+    public interface IValueReaderConfiguration<TValue> : IEntityTypeConfiguration<TValue> where TValue : ValueBase<TValue>, new()
     {
         /// <summary>
         /// Schema to be used for this object's data access
@@ -17,7 +16,7 @@ namespace GoodToCode.Framework.Value
         string DatabaseSchema { get; set; }
 
         /// <summary>
-        /// Connection String Name (key) to be used for this object's data access
+        /// Connection String (full string) to be used for this object's data access
         /// </summary>
         string ConnectionString { get; }
 
@@ -34,19 +33,9 @@ namespace GoodToCode.Framework.Value
         string ColumnPrefix { get; set; }
 
         /// <summary>
-        /// Schema to be used for this object's data access
-        /// </summary>
-        DataConcurrencies DataConcurrency { get; set; }
-
-        /// <summary>
-        /// Data access behavior of this instance.
-        /// </summary>
-        DataAccessBehaviors DataAccessBehavior { get; }
-
-        /// <summary>
         /// List of types to ignore in database operations
         /// </summary>
-        IList<Type> IgnoredTypes { get; }
+        IList<Type> IgnoredTypes { get; set; }
 
         /// <summary>
         /// Properties to ignore in the database mapping

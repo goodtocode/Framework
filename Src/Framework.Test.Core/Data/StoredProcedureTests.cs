@@ -3,7 +3,7 @@ using GoodToCode.Extensions;
 using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Repository;
+using GoodToCode.Framework.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -204,7 +204,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetByKey(item);
-                using (var writer = new EntityWriter<CustomerInfo>(toDelete))
+                using (var writer = new EntityWriter<CustomerInfo>(toDelete, new ConnectionStringFactory().GetDefaultConnection()))
                 {
                     await writer.DeleteAsync();
                 }

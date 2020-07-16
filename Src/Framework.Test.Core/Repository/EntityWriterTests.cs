@@ -4,7 +4,7 @@ using GoodToCode.Extensions.Configuration;
 using GoodToCode.Extensions.Mathematics;
 using GoodToCode.Framework.Activity;
 using GoodToCode.Framework.Data;
-using GoodToCode.Framework.Repository;
+using GoodToCode.Framework.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -85,9 +85,8 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key == Guid.Empty);
 
             // Do Insert and check passed entity and returned entity                        
-            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity, new ConnectionStringFactory().GetDefaultConnection()))
             {
-                writer.ConfigOptions.IgnoredProperties.Add(p => p.State);
                 resultEntity = await writer.SaveAsync();
             }
 
@@ -132,7 +131,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key != Guid.Empty);
 
             // Do Update
-            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity, new ConnectionStringFactory().GetDefaultConnection()))
             {
                 testEntity = await writer.SaveAsync();
             }
@@ -168,7 +167,7 @@ namespace GoodToCode.Framework.Test
             Assert.IsTrue(testEntity.Key != Guid.Empty);
 
             // Do delete
-            using (var writer = new EntityWriter<CustomerEntity>(testEntity))
+            using (var writer = new EntityWriter<CustomerEntity>(testEntity, new ConnectionStringFactory().GetDefaultConnection()))
             {
                 testEntity = await writer.DeleteAsync();
             }
@@ -197,7 +196,7 @@ namespace GoodToCode.Framework.Test
             foreach (Guid item in RecycleBin)
             {
                 toDelete = reader.GetAll().Where(x => x.Key == item).FirstOrDefaultSafe();
-                using (var db = new EntityWriter<CustomerEntity>(toDelete))
+                using (var db = new EntityWriter<CustomerEntity>(toDelete, new ConnectionStringFactory().GetDefaultConnection()))
                 {
                     await db.DeleteAsync();
                 }
