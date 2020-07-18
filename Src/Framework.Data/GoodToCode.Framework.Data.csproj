@@ -36,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20188.1" />
-    <PackageReference Include="GoodToCode.Extensions.Drawing" Version="5.20.20188.1" />
-    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="5.20.20188.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20200.1" />
+    <PackageReference Include="GoodToCode.Extensions.Drawing" Version="5.20.20200.1" />
+    <PackageReference Include="GoodToCode.Extensions.Serialization" Version="5.20.20200.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />

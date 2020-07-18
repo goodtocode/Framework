@@ -7,7 +7,7 @@
     <DocumentationFile>bin\Debug\netstandard2.1\GoodToCode.Framework.Hosting.Server.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20188.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20200.1" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.2.2" />

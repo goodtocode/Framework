@@ -19,7 +19,7 @@
   </Target>
 
   <ItemGroup>
-    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20188.1" />
+    <PackageReference Include="GoodToCode.Extensions" Version="5.20.20200.1" />
   </ItemGroup>
 
 </Project>
