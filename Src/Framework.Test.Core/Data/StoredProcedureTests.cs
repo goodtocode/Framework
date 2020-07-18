@@ -54,8 +54,8 @@ namespace GoodToCode.Framework.Test
         {
             // Database is required for these tests
             var databaseAccess = false;
-            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
-            using (var connection = new SqlConnection(configuration.ConnectionStringValue("DefaultConnection")))
+            
+            using (var connection = new SqlConnection(new ConnectionStringFactory().GetDefaultConnection()))
             {
                 databaseAccess = connection.CanOpen();
             }
@@ -146,7 +146,7 @@ namespace GoodToCode.Framework.Test
             var customerTests = new CustomerInfoTests();
 
             await customerTests.Core_Entity_CustomerInfo_Insert();
-            testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefaultSafe());
+            testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefault());
 
             var updateProc = new StoredProcedure<CustomerInfo>()
             {
@@ -178,7 +178,7 @@ namespace GoodToCode.Framework.Test
             var customerTests = new CustomerInfoTests();
 
             await customerTests.Core_Entity_CustomerInfo_Insert();
-            testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefaultSafe());
+            testItem = reader.GetByKey(CustomerTests.RecycleBin.LastOrDefault());
             var deleteProc = new StoredProcedure<CustomerInfo>()
             {
                 StoredProcedureName = "CustomerInfoDelete",

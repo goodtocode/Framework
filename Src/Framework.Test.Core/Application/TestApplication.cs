@@ -11,15 +11,11 @@ namespace GoodToCode.Framework.Test
     /// </summary>
     public class TestApplication : ITestApplication
     {
-        /// <summary>
-        /// Persistent ConfigurationManager class, automatically loaded with this project .config files
-        /// </summary>
-        public IConfigurationManager ConfigurationManager { get; set; } = new ConfigurationManagerCore(ApplicationTypes.Native);
 
         /// <summary>
         /// MyWebService
         /// </summary>
-        public Uri MyWebService { get { return new Uri(ConfigurationManager.AppSettingValue("MyWebService"), UriKind.RelativeOrAbsolute); } }
+        public Uri MyWebService { get { return new Uri(new AppSettingFactory().MyWebService, UriKind.RelativeOrAbsolute); } }
 
         /// <summary>
         /// Entry point Screen (Typically login screen)
@@ -50,8 +46,7 @@ namespace GoodToCode.Framework.Test
         /// <returns></returns>
         public async Task LoadDataAsync()
         {
-            await Task.Delay(1);
-            ConfigurationManager =new ConfigurationManagerCore(ApplicationTypes.Native);
+            await Task.Delay(1);            
         }
 
         /// <summary>

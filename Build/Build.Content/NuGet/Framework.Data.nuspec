@@ -19,6 +19,7 @@
         <dependency id="GoodToCode.Extensions" version="[4,6)" />        
         <dependency id="GoodToCode.Extensions.Drawing" version="[4,6)" />
         <dependency id="GoodToCode.Extensions.Serialization" version="[4,6)" />
+        <dependency id="GoodToCode.Framework.Abstractions" version="[4,6)" />
       </group>
     </dependencies>
   </metadata>

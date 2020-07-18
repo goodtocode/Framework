@@ -53,8 +53,8 @@ namespace GoodToCode.Framework.Test
         {
             // Database is required for these tests
             var databaseAccess = false;
-            var configuration = new ConfigurationManagerCore(ApplicationTypes.Native);
-            using (var connection = new SqlConnection(configuration.ConnectionStringValue("DefaultConnection")))
+            
+            using (var connection = new SqlConnection(new ConnectionStringFactory().GetDefaultConnection()))
             {
                 databaseAccess = connection.CanOpen();
             }

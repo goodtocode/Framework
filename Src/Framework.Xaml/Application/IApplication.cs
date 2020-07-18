@@ -13,10 +13,5 @@ namespace GoodToCode.Framework.Application
         /// MyWebService
         /// </summary>
         Uri MyWebService { get; }
-
-        /// <summary>
-        /// Configuration data, XML .config style
-        /// </summary>
-        IConfigurationManager ConfigurationManager { get; }
     }
 }
