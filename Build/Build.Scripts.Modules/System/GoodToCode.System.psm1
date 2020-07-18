@@ -1202,7 +1202,7 @@ export-modulemember -function Test-Unc
 # Update-LineByContains [-Path [<String>]]
 #                  [-Contains [<String[]>] [-Close [<String[]>]]
 #
-# Example: .\Update-LineByContains -Path \\source\path -Include AssemblyInfo.cs -Contains 'AssemblyVersion(' -Line '[assembly: AssemblyVersion("4.18.05")]'
+# Example: .\Update-LineByContains -Path \\source\path -Include AssemblyInfo.cs -Contains 'AssemblyVersion(' -Line '[assembly: AssemblyVersion("5.20.07")]'
 #-----------------------------------------------------------------------
 function Update-LineByContains
 {
@@ -1392,7 +1392,7 @@ export-modulemember -function Update-Text
 # Update-TextByContains [-Path [<String>]]
 #                  [-Contains [<String[]>] [-Close [<String[]>]]
 #
-# Example: .\Update-TextByContains -Path \\source\path -Include AssemblyInfo.cs -Contains 'AssemblyVersion(' -Line '[assembly: AssemblyVersion("4.18.05")]'
+# Example: .\Update-TextByContains -Path \\source\path -Include AssemblyInfo.cs -Contains 'AssemblyVersion(' -Line '[assembly: AssemblyVersion("5.20.07")]'
 #-----------------------------------------------------------------------
 function Update-TextByContains
 {

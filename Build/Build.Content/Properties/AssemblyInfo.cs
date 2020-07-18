@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("GoodToCode")]
 [assembly: AssemblyProduct("GoodToCode")]
-[assembly: AssemblyCopyright("Copyright © 2018 GoodToCode. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2016-2020 GoodToCode. All rights reserved.")]
 [assembly: AssemblyTrademark("GoodToCode is a registered trademark of GoodToCode. GoodToCode Framework and GoodToCode Cloud Dev Environment are trademarks of GoodToCode.")]
 [assembly: AssemblyCulture("")]
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("4.18.05.0")]
-[assembly: AssemblyFileVersion("4.18.05.0")]
+[assembly: AssemblyVersion("5.20.07.0")]
+[assembly: AssemblyFileVersion("5.20.07.0")]

@@ -84,8 +84,6 @@
     <Content Include="GitHub\Framework\contributing.md" />
     <Content Include="GitHub\Framework\LICENSE" />
     <Content Include="GitHub\Framework\README.md" />
-    <Content Include="NuGet\Framework.Universal.nuspec" />
-    <Content Include="NuGet\Framework.Windows.nuspec" />
     <Content Include="GitHub\Framework-for-Core\.gitattributes" />
     <Content Include="GitHub\Framework-for-Core\.gitignore" />
     <Content Include="GitHub\Framework-for-Core\coding-style.md" />
@@ -192,7 +190,6 @@
     <Content Include="NuGet\Framework.Data.nuspec" />
     <Content Include="NuGet\Framework.Abstractions.nuspec" />
     <Content Include="NuGet\Framework.Dto.nuspec" />
-    <Content Include="NuGet\Framework.Web.Core.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
